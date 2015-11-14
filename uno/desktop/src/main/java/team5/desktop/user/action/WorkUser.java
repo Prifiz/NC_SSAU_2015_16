@@ -28,6 +28,10 @@ public class WorkUser{
         arrUsers = new ArrayList ();
     }
     
+    public ArrayList<User> getArrOfUsers()
+    {
+        return arrUsers;
+    }
     public User addUser(String name, String surname, String country, String sity, String login, String password, String email, LocalDate bDay){
         if (this.search(login)!=null) {
             return null;
