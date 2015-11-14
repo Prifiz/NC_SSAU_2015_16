@@ -8,7 +8,6 @@ package team5.desktop.user;
 
 
 import team5.desktop.user.AddressInitializer;
-import team5.desktop.user.AddressInitializer;
 
 /**
  *
@@ -19,6 +18,7 @@ public class SimpleAddressInitializer implements AddressInitializer{
     private Address address;
 
     public SimpleAddressInitializer() {
+        this.address = new Address();
     }
 
     public SimpleAddressInitializer(Address address) {
@@ -31,4 +31,3 @@ public class SimpleAddressInitializer implements AddressInitializer{
      }
     
 }
-

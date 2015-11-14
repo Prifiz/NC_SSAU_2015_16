@@ -7,7 +7,7 @@ package team5.desktop.user;
 
 
 import team5.desktop.user.AddressInitializer;
-import team5.desktop.user.AddressInitializer;
+
 
 /**
  *
@@ -59,7 +59,7 @@ public class Address {
             return false;
         }
         Address address = (Address)object;
-        if ((this.getCity().compareTo(address.getCity())==0)&&(this.getCountry().compareTo(address.getCountry())==0)){
+        if ((city.equals(address.getCity()))&&(country.equals(address.getCountry()))){
             return true;
         }
           return false;
@@ -68,18 +68,17 @@ public class Address {
     @Override
     public int hashCode() {
         int result = 17;
-        result = 37 * result + this.getCity().hashCode()+this.getCountry().hashCode();
+        result += 37 * result + city.hashCode()+country.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        StringBuilder buffer=new StringBuilder();
-        buffer.append(" Address: ").append(getCity()).append(", ").append(getCountry()).append(" ");
-        return buffer.toString();
+        StringBuilder builder=new StringBuilder();
+        builder.append(" Address: ").append(city).append(", ").append(country).append(" ");
+        return builder.toString();
     }
     
     
     
 }
-

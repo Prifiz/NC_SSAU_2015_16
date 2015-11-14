@@ -5,8 +5,6 @@
  */
 package team5.desktop.user.action;
 
-
-
 import team5.desktop.gui.Rules;
 import team5.desktop.gui.StartFrame;
 import java.util.ArrayList;
@@ -32,4 +30,3 @@ public class Controller {
     }
     
 }
-

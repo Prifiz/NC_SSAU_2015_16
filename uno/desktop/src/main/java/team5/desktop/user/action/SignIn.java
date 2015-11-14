@@ -5,7 +5,6 @@
  */
 package team5.desktop.user.action;
 
-
 import java.util.ArrayList;
 import team5.desktop.user.User;
 
@@ -34,4 +33,3 @@ public class SignIn {
         
     }
 }
-

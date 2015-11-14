@@ -5,18 +5,21 @@
  */
 package team5.desktop.user;
 
+import java.time.LocalDate;
 
 /**
  *
  * @author chanta
  */
-public class Initials {
+public class PrivateInformation {
     private String name;
     private String surname;
+    private LocalDate bDay;
 
-    public Initials(String name, String surname) {
+    public PrivateInformation(String name, String surname, LocalDate bDay) {
         this.name = name;
         this.surname = surname;
+        this.bDay = bDay;
     }
 
     public String getName() {
@@ -27,12 +30,20 @@ public class Initials {
         return surname;
     }
 
+    public LocalDate getbDay() {
+        return bDay;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public void setbDay(LocalDate bDay) {
+        this.bDay = bDay;
     }
 
     @Override
@@ -43,11 +54,12 @@ public class Initials {
         if (object == this) {
             return true;
         }
-        if (!(object instanceof Initials)) {
+        if (object instanceof PrivateInformation) {
             return false;
-        }
-        Initials initials =(Initials)object;
-        if ((this.getName().compareTo(initials.getName())==0)&&(this.getSurname().compareTo(initials.getSurname())==0)){
+    }
+        PrivateInformation privateInformation =(PrivateInformation)object;
+        if ((name.equals(privateInformation.getName()))&&(surname.equals(privateInformation.getSurname()))
+                &&(bDay.equals(privateInformation.bDay))){
             return true;
         }
           return false;
@@ -55,19 +67,19 @@ public class Initials {
 
     @Override
     public String toString() {
-        StringBuilder buffer=new StringBuilder();
-        buffer.append(" ").append(this.getName()).append(", ").append(this.getSurname()).append(" ");
-        return buffer.toString();    
+        StringBuilder builder=new StringBuilder();
+        builder.append(" ").append(name).append(", ").append(surname).append(" ")
+                .append(bDay);
+        return builder.toString();    
     }
 
     @Override
     public int hashCode() {
         int result = 17;
-        result = 37 * result + this.getName().hashCode()+this.getSurname().hashCode();
+        result += 37 * result + name.hashCode()+surname.hashCode()+bDay.hashCode();
         return result;
     }
     
     
     
 }
-

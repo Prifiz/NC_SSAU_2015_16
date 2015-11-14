@@ -5,11 +5,10 @@
  */
 package team5.desktop.user.action;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import team5.desktop.user.User;
-import team5.desktop.user.action.WorkUser;
+
 /**
  *
  * @author chanta
@@ -22,6 +21,7 @@ public class Registration {
 //        
        // WorkUser workUser= new WorkUser();
          WorkUser workUser = WorkUser.getWork();
+         
         if ((name.compareTo("")==0)||(surname.compareTo("")==0)||(login.compareTo("")==0)||(password.compareTo("")==0)||(email.compareTo("")==0))
             return false;
         else{
@@ -39,4 +39,3 @@ public class Registration {
 //        return false;
 //    }
 }
-

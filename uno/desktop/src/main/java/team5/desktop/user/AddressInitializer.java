@@ -14,4 +14,3 @@ package team5.desktop.user;
 public interface AddressInitializer {
     public void initDefaultAddress();
 }
-

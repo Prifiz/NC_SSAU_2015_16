@@ -6,27 +6,23 @@
 package team5.desktop.user;
 
 
-import java.util.GregorianCalendar;
-import java.time.LocalDate;
 /**
  *
  * @author chanta
  */
 public class User {
-    private Initials initials;
+    private PrivateInformation privateInformation;
     private Address address;
-    private LocalDate bDay;
-    private ServiceInfo serviceInfo; //дата регистрации куда деть?
+    private ServiceInfo serviceInfo; 
     
-    public User(Initials initials, Address address, LocalDate bDay, ServiceInfo serviceInfo) {
-        this.initials = initials;
+    public User(PrivateInformation privateInformation, Address address, ServiceInfo serviceInfo) {
+        this.privateInformation = privateInformation;
         this.address = address;
-        this.bDay = bDay;
         this.serviceInfo = serviceInfo;
     }
 
-    public Initials getInitials() {
-        return initials;
+    public PrivateInformation getPrivateInformation() {
+        return privateInformation;
     }
 
     
@@ -38,14 +34,9 @@ public class User {
         return serviceInfo;
     }
 
-    public LocalDate getbDay() {
-        return bDay;
+    public void setPrivateInformation(PrivateInformation privateInformation) {
+        this.privateInformation = privateInformation;
     }
-
-    public void setInitials(Initials initials) {
-        this.initials = initials;
-    }
-
     
     public void setAddress(Address address) {
         this.address = address;
@@ -53,10 +44,6 @@ public class User {
 
     public void setServiceInfo(ServiceInfo serviceInfo) {
         this.serviceInfo = serviceInfo;
-    }
-
-    public void setbDay(LocalDate bDay) {
-        this.bDay = bDay;
     }
 
     @Override
@@ -72,8 +59,8 @@ public class User {
         }
         User user =(User)object;
         
-        if ((this.getInitials().equals(user.getInitials()))&&(this.address.equals(user.address))
-                &&(this.bDay.equals(user.bDay))&&(this.serviceInfo.equals(user.serviceInfo))){
+        if ((privateInformation.equals(user.getPrivateInformation()))&&(address.equals(user.address))
+                &&(serviceInfo.equals(user.serviceInfo))){
             return true;
         }
           return false;
@@ -81,19 +68,15 @@ public class User {
 
     @Override
     public String toString() {
-        StringBuilder buffer=new StringBuilder();
-        buffer.append("User: ").append(getInitials().toString()).append(", ").append(bDay.toString())
+        StringBuilder builder=new StringBuilder();
+        builder.append("User: ").append(privateInformation.toString()).append(", ")
                 .append(", ").append(address.toString()).append("\n");
-        return buffer.toString();
+        return builder.toString();
     }
 
     @Override
     public int hashCode() {
-        int result = 17;
-        result =  this.getAddress().hashCode()+this.getServiceInfo().hashCode()+
-                this.getInitials().hashCode()+getbDay().hashCode();
-       
-        return result;
+        return  address.hashCode()+serviceInfo.hashCode()+privateInformation.hashCode();
     }
     
     
@@ -101,4 +84,3 @@ public class User {
     
     
 }
-

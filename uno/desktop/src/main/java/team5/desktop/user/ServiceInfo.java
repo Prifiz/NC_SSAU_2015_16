@@ -5,7 +5,6 @@
  */
 package team5.desktop.user;
 
-
 import java.time.LocalDate;//????
 //import org.joda.time.*;
 
@@ -69,8 +68,8 @@ public class ServiceInfo {
             return false;
         }
         ServiceInfo info =(ServiceInfo)object;
-        if ((this.getLogin().compareTo(info.getLogin())==0)&&(this.password.compareTo(info.getPassword())==0)
-            &&(this.dateOfRegistration.equals(info.getDateOfRegistration()))&&(this.email.compareTo(info.email))==0)
+        if ((login.equals(info.getLogin()))&&(password.equals(info.getPassword()))
+            &&(dateOfRegistration.equals(info.getDateOfRegistration()))&&(email.equals(info.email)))
             return true;
         
         return false;
@@ -79,17 +78,17 @@ public class ServiceInfo {
     @Override
     public int hashCode() {
         int result = 17;
-        result = 37 * result + this.getLogin().hashCode()+this.getPassword().hashCode();
-        result = 37 * result + this.getEmail().hashCode()+this.getDateOfRegistration().hashCode();
+        result += 37 * result + login.hashCode()+password.hashCode();
+        result += 37 * result + email.hashCode()+dateOfRegistration.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        StringBuilder buffer=new StringBuilder();
-        buffer.append(" ServiceInfo: ").append(getLogin()).append(", ").append(getPassword()).append(", ")
-                .append(getEmail()).append(" ").append(getDateOfRegistration()).append(" ");
-        return buffer.toString();
+        StringBuilder builder=new StringBuilder();
+        builder.append(" ServiceInfo: ").append(login).append(", ").append(password).append(", ")
+                .append(email).append(" ").append(dateOfRegistration).append(" ");
+        return builder.toString();
     }
     
     

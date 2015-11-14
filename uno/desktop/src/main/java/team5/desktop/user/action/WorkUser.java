@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team5.desktop.user.action;
-
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import team5.desktop.user.Address;
-import team5.desktop.user.Initials;
+import team5.desktop.user.PrivateInformation;
 import team5.desktop.user.ServiceInfo;
 import team5.desktop.user.User;
 
@@ -32,31 +25,32 @@ public class WorkUser{
         if (this.search(login)!=null) {
             return null;
         }
-        Initials initials =new Initials(name,surname);
+        PrivateInformation  privateInformation =new PrivateInformation(name,surname,bDay);
         Address address =new Address(country, sity);
-        ServiceInfo serviceInfo =new ServiceInfo( login, password, email);
-	User us = new User(initials, address, bDay, serviceInfo);
+        ServiceInfo serviceInfo =new ServiceInfo(login, password, email);
+	User us = new User(privateInformation, address, serviceInfo);
         arrUsers.add(us);
         return  us;
     }
-
+    
+    
     //не работает!
     public User editUser(String name, String surname, String country, String sity, String login, String password, LocalDate calendar, String email, LocalDate bDay){ 
-	User tmp=this.search(login);
-	if(tmp!=null){
-            Initials initials =new Initials(name,surname);
+        User tmp=this.search(login);
+	if(tmp!=null){     
             Address address =new Address(country, sity);
             ServiceInfo serviceInfo =new ServiceInfo( login, password, email);
-		tmp.setInitials(initials);
-		tmp.setAddress(address);
-                tmp.setbDay(bDay);
-                tmp.setServiceInfo(serviceInfo);
-                return tmp;
+            PrivateInformation information = new PrivateInformation(name,surname,bDay);
+            tmp.setPrivateInformation(information);
+            tmp.setAddress(address);
+            tmp.setServiceInfo(serviceInfo);
+            return tmp;
 	}
 	else{
-		return null;
+            return null;
         }
     }
+
     
     
     public User deleteUser(String login){ 
@@ -78,19 +72,21 @@ public class WorkUser{
         if (login==null) {
             return  null;
         }
-	while((i<arrUsers.size())&&(!arrUsers.get(i).getServiceInfo().getLogin().equals(login)))
+	while((i<arrUsers.size())&&(!arrUsers.get(i).getServiceInfo().getLogin().equals(login))) {
 		i++;
-        if(i<arrUsers.size())
-            return arrUsers.get(i);            
+        }
+        if(i<arrUsers.size()) {
+            
+            return arrUsers.get(i);     
+        }
         return null;
     
     }
     
     public String viewUsers(){
-        StringBuilder buffer=new StringBuilder();
+        StringBuilder builder=new StringBuilder();
         for(User u : arrUsers)
-            buffer.append(u.toString());
-        return buffer.toString();
+            builder.append(u.toString());
+        return builder.toString();
     }
 }
-
