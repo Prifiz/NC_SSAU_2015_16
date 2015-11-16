@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.desktop.user;
+package team5.desktop.user.adress;
 
 
 

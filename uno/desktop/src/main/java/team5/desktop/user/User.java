@@ -5,6 +5,7 @@
  */
 package team5.desktop.user;
 
+import team5.desktop.user.adress.Address;
 
 /**
  *
@@ -25,7 +26,6 @@ public class User {
         return privateInformation;
     }
 
-    
     public Address getAddress() {
         return address;
     }
@@ -58,9 +58,7 @@ public class User {
             return false;
         }
         User user =(User)object;
-        
-        if ((privateInformation.equals(user.getPrivateInformation()))&&(address.equals(user.address))
-                &&(serviceInfo.equals(user.serviceInfo))){
+        if (serviceInfo.getLogin().equals(user.serviceInfo.getLogin())){
             return true;
         }
           return false;
@@ -69,7 +67,7 @@ public class User {
     @Override
     public String toString() {
         StringBuilder builder=new StringBuilder();
-        builder.append("User: ").append(privateInformation.toString()).append(", ")
+        builder.append("User: ").append(privateInformation.toString()).append(", ").append(serviceInfo.toString())
                 .append(", ").append(address.toString()).append("\n");
         return builder.toString();
     }
@@ -78,9 +76,5 @@ public class User {
     public int hashCode() {
         return  address.hashCode()+serviceInfo.hashCode()+privateInformation.hashCode();
     }
-    
-    
 
-    
-    
 }

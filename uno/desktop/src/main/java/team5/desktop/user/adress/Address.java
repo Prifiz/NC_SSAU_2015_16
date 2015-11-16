@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.desktop.user;
+package team5.desktop.user.adress;
 
 
-import team5.desktop.user.AddressInitializer;
+import team5.desktop.user.adress.AddressInitializer;
 
 
 /**
@@ -22,14 +22,11 @@ public class Address {
         this.city = city;
     }
     public Address(){
-        AddressInitializer addInit =new SimpleAddressInitializer();
-        addInit.initDefaultAddress();
+        city = new String();
+        country = new String();
+        AddressInitializer addInit =new SimpleAddressInitializer(this);
+        addInit.initDefaultAddress();  
     }
-//    public Address() {
-//        this.country = "";
-//        this.city = "";
-//    }
-    
 
     public String getCity() {
         return city;
@@ -74,7 +71,7 @@ public class Address {
 
     @Override
     public String toString() {
-        StringBuilder builder=new StringBuilder();
+        StringBuilder builder=new StringBuilder(10);
         builder.append(" Address: ").append(city).append(", ").append(country).append(" ");
         return builder.toString();
     }

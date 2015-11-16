@@ -67,7 +67,7 @@ public class PrivateInformation {
 
     @Override
     public String toString() {
-        StringBuilder builder=new StringBuilder();
+        StringBuilder builder=new StringBuilder(10);
         builder.append(" ").append(name).append(", ").append(surname).append(" ")
                 .append(bDay);
         return builder.toString();    

@@ -5,8 +5,7 @@
  */
 package team5.desktop.user;
 
-import java.time.LocalDate;//????
-//import org.joda.time.*;
+import java.time.LocalDate;
 
 
 /**
@@ -85,7 +84,7 @@ public class ServiceInfo {
 
     @Override
     public String toString() {
-        StringBuilder builder=new StringBuilder();
+        StringBuilder builder=new StringBuilder(10);
         builder.append(" ServiceInfo: ").append(login).append(", ").append(password).append(", ")
                 .append(email).append(" ").append(dateOfRegistration).append(" ");
         return builder.toString();
