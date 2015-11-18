@@ -1,11 +1,14 @@
 package team5.desktop.user.action;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import team5.desktop.user.Address;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import team5.desktop.user.PrivateInformation;
 import team5.desktop.user.ServiceInfo;
 import team5.desktop.user.User;
+import team5.desktop.user.adress.Address;
 
 public class WorkUser{
     
@@ -25,21 +28,31 @@ public class WorkUser{
     {
         return arrUsers;
     }
-    public User addUser(String name, String surname, String country, String sity, String login, String password, String email, LocalDate bDay){
+    public User addUser(String name, String surname, String country, String sity, String login, String password, String email, String  bDay){
         if (this.search(login)!=null) {
             return null;
         }
-        PrivateInformation  privateInformation =new PrivateInformation(name,surname,bDay);
+        
+        PrivateInformation  privateInformation =new PrivateInformation(name,surname,stringToLocalDate(bDay));
         Address address =new Address(country, sity);
         ServiceInfo serviceInfo =new ServiceInfo(login, password, email);
 	User us = new User(privateInformation, address, serviceInfo);
         arrUsers.add(us);
         return  us;
     }
+    public  LocalDate stringToLocalDate(String  s)
+    {
+       String [] str = s.split("\\.");
+       int n = str.length;
+       int year = Integer.parseInt(str[2]);
+       int month = Integer.parseInt(str[1]);
+       int day = Integer.parseInt(str[0]);
+       return  LocalDate.of(year,month,day);
+    }
     
     
     //не работает!
-    public User editUser(String name, String surname, String country, String sity, String login, String password, LocalDate calendar, String email, LocalDate bDay){ 
+    /*public User editUser(String name, String surname, String country, String sity, String login, String password, LocalDate calendar, String email, String bDay){ 
         User tmp=this.search(login);
 	if(tmp!=null){     
             Address address =new Address(country, sity);
@@ -53,7 +66,7 @@ public class WorkUser{
 	else{
             return null;
         }
-    }
+    }*/
 
     
     

@@ -29,6 +29,7 @@ public class MemberList extends javax.swing.JFrame {
     private JTextField tfemail;
     private JTextField tflogin;
     private JTextField tfpassword;
+    private JTextField tfbday;
     
     private JLabel labname;
     private JLabel labsurname;
@@ -37,6 +38,7 @@ public class MemberList extends javax.swing.JFrame {
     private JLabel labemail;
     private JLabel lablogin;
     private JLabel labpassword;
+     private JLabel labbday;
     
     private JScrollPane jScrollPane1;
     private JTable jTable1;
@@ -53,16 +55,16 @@ public class MemberList extends javax.swing.JFrame {
     private void initComponents() {
 
         setLayout(null);
-        setBounds(200, 10, 620, 860);
+        setBounds(200, 10, 680, 860);
         setTitle("Member list");
         
         panel = new JPanel();
         panel.setBorder(new TitledBorder("Add/delete users"));
-        panel.setBounds(10,440,580,360);
+        panel.setBounds(10,440,640,360);
         panel.setLayout(null);
         
         jScrollPane1 = new JScrollPane(jTable1);
-        jScrollPane1.setBounds(10,10,580,420);
+        jScrollPane1.setBounds(10,10,640,420);
         //Таблица и модель
         UserTableModel model = new UserTableModel();
         jTable1 = new JTable(model);
@@ -76,7 +78,7 @@ public class MemberList extends javax.swing.JFrame {
         backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         backButton.setText("Back");
         panel.add(backButton);
-        backButton.setBounds(250, 300 ,80 ,30);
+        backButton.setBounds(310, 300 ,80 ,30);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -132,17 +134,22 @@ public class MemberList extends javax.swing.JFrame {
         tfemail = new JTextField();
         tfemail.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         panel.add(tfemail);
-        tfemail.setBounds(430, 30, 130, 30);
+        tfemail.setBounds(490, 30, 130, 30);
         
         tflogin = new JTextField();
         tflogin.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         panel.add(tflogin);
-        tflogin.setBounds(430, 70, 130, 30);
+        tflogin.setBounds(490, 70, 130, 30);
         
         tfpassword = new JTextField();
         tfpassword.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         panel.add(tfpassword);
-        tfpassword.setBounds(430, 110, 130, 30);
+        tfpassword.setBounds(490, 110, 130, 30);
+        
+        tfbday = new JTextField();
+        tfbday.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
+        panel.add(tfbday);
+        tfbday.setBounds(490, 150, 130, 30);
         
         
         //Labels
@@ -169,18 +176,23 @@ public class MemberList extends javax.swing.JFrame {
         
         labemail = new JLabel("Email");
         labemail.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        labemail.setBounds(330, 30, 90, 30);
+        labemail.setBounds(390, 30, 90, 30);
         panel.add(labemail);
         
         lablogin = new JLabel("Login");
         lablogin.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        lablogin.setBounds(330, 70, 90, 30);
+        lablogin.setBounds(390, 70, 90, 30);
         panel.add(lablogin);
         
         labpassword = new JLabel("Password");
         labpassword.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        labpassword.setBounds(330, 110, 90, 30);
+        labpassword.setBounds(390, 110, 90, 30);
         panel.add(labpassword);
+        
+        labbday = new JLabel("BirthDay");
+        labbday.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
+        labbday.setBounds(390, 150, 90, 30);
+        panel.add(labbday);
         
 
         //add(jTable1);
@@ -203,13 +215,14 @@ public class MemberList extends javax.swing.JFrame {
     private void addButtonActionPerfomed(ActionEvent evt)
     {
         WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
-                tfpassword.getText(), tfemail.getText(), LocalDate.MIN);
+                tfpassword.getText(), tfemail.getText(),tfbday.getText());//остановился тут
         tfname.setText("");
         tfsurname.setText("");
         tfcountry.setText("");
         tfcity.setText("");
         tflogin.setText("");
         tfpassword.setText("");
+        tfbday.setText("");
         tfemail.setText("");
         jTable1.revalidate();
         jTable1.repaint();

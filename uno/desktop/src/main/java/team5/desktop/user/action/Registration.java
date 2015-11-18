@@ -15,7 +15,7 @@ import team5.desktop.user.User;
  */
 public class Registration {
     
-    public Boolean registrationUser(String name, String surname, String country, String sity, String login, String password, String email, LocalDate bDay){
+    public Boolean registrationUser(String name, String surname, String country, String sity, String login, String password, String email, String bDay){
 //        if(checkOfExistenceOfUser(user))
 //            System.out.println("This user has already been created");
 //        

@@ -20,7 +20,7 @@ public class UserTableModel extends AbstractTableModel {
     private final Set<TableModelListener> listeners = new HashSet<TableModelListener>();
     private WorkUser work = WorkUser.getWork();
     ArrayList<User> user = work.getArrOfUsers();
-    String [] names = {"Name", "Surname" , "Country", "City","Email","Login","Password"};
+    String [] names = {"Name", "Surname" ,"BirthDay", "Country", "City","Email","Login","Password"};
 
     @Override
     public void addTableModelListener(TableModelListener listener){listeners.add(listener);}
@@ -46,6 +46,8 @@ public class UserTableModel extends AbstractTableModel {
                 return names[5];
             case 6:
                 return names[6];
+            case 7:
+                return names[7];
         }
         return "";
         
@@ -61,19 +63,22 @@ public class UserTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex){
             case 0:
-                return user.get(rowIndex).getInitials().getName();
+                return user.get(rowIndex).getPrivateInformation().getName();
             case 1:
-                return user.get(rowIndex).getInitials().getSurname();
+                return user.get(rowIndex).getPrivateInformation().getSurname();
             case 2:
-                return user.get(rowIndex).getAddress().getCountry();
+                return user.get(rowIndex).getPrivateInformation().getbDay();
             case 3:
-                return user.get(rowIndex).getAddress().getCity();
+                return user.get(rowIndex).getAddress().getCountry();
             case 4:
-                return user.get(rowIndex).getServiceInfo().getEmail();
+                return user.get(rowIndex).getAddress().getCity();
             case 5:
-                return user.get(rowIndex).getServiceInfo().getLogin();
+                return user.get(rowIndex).getServiceInfo().getEmail();
             case 6:
+                return user.get(rowIndex).getServiceInfo().getLogin();
+            case 7:
                 return user.get(rowIndex).getServiceInfo().getPassword();
+            
         }
         return null;
         
@@ -84,38 +89,40 @@ public class UserTableModel extends AbstractTableModel {
         return true;
         
     }
-    @Override
+    /*@Override
     public Class<?> getColumnClass(int columnIndex)
     {
         return String.class;
-    }
+    }*/
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex)
     {
         switch(columnIndex)
         {
             case 0:
-                user.get(rowIndex).getInitials().setName((String)aValue);
+                user.get(rowIndex).getPrivateInformation().setName((String)aValue);
                 break;
             case 1:
-                user.get(rowIndex).getInitials().setSurname((String)aValue);
+                user.get(rowIndex).getPrivateInformation().setSurname((String)aValue);
                 break;
             case 2:
+                user.get(rowIndex).getPrivateInformation().setbDay(work.stringToLocalDate((String)aValue));
+            case 3:
                 user.get(rowIndex).getAddress().setCity((String)aValue);
                 break;
-            case 3:
+            case 4:
                 user.get(rowIndex).getAddress().setCountry((String)aValue);
                 break;
-            case 4:
+            case 5:
                 user.get(rowIndex).getServiceInfo().setEmail((String)aValue);
                 break;
-            case 5:
+            case 6:
                 if(work.search((String)aValue)==null)
                 {
                     user.get(rowIndex).getServiceInfo().setLogin((String)aValue);
                 }
                 //нужно написать обработку, когда лгин не может быть изменен
-            case 6:
+            case 7:
                 user.get(rowIndex).getServiceInfo().setPassword((String)aValue);   
                 break;
                 

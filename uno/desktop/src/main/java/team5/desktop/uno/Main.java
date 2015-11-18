@@ -29,7 +29,7 @@ public class Main {
 //        User user4 = new User(new Initials("Adam", "Smith"), new Address("USA","VS"),new GregorianCalendar(1994, 12, 12) , new ServiceInfo("ggrtr", "123411", "smi@gmai.com"));
 //        User user5 = new User(new Initials("Berk", "Kok"), new Address("USA","Cd"),new GregorianCalendar(1991, 12, 12) , new ServiceInfo("uyy", "124334", "smiki@gmai.com"));
 //        java.awt.EventQueue.invokeLater(new Runnable() {
-            java.awt.EventQueue.invokeLater(new Runnable() {
+ /*           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartFrame().setVisible(true);
             }
@@ -50,7 +50,7 @@ public class Main {
         char[] ch = new char[]{'1','2','3','4'};
         //String charToString = Character.toString(ch);
         in.sign("sf",ch);
-
+*/
     }
     
 }
