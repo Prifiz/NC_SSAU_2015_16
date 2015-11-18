@@ -7,6 +7,10 @@ package team5.desktop.uno;
 
 
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import team5.desktop.actions.SerializableData;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.exceptions.*;
 import team5.desktop.gui.StartFrame;
@@ -24,13 +28,29 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//       
-//        User user1 = new User(new Initials("Adam", "Smith"), new Address("USA","VS"),new GregorianCalendar(1995, 12, 12) , new ServiceInfo("ggg", "1231114", "smi@gmai.com"));
-//        User user2 = new User(new Initials("Mikki", "Black"), new Address("US","nh"),new GregorianCalendar(1994, 12, 12) , new ServiceInfo("gtrf", "123114", "gdsmi@gmai.com"));
-//        User user3 = new User(new Initials("Djo", "Nicco"), new Address("Canada","ho"),new GregorianCalendar(1992, 12, 12) , new ServiceInfo("trt", "12341", "sfdami@gmai.com"));
-//        User user4 = new User(new Initials("Adam", "Smith"), new Address("USA","VS"),new GregorianCalendar(1994, 12, 12) , new ServiceInfo("ggrtr", "123411", "smi@gmai.com"));
-//        User user5 = new User(new Initials("Berk", "Kok"), new Address("USA","Cd"),new GregorianCalendar(1991, 12, 12) , new ServiceInfo("uyy", "124334", "smiki@gmai.com"));
-//        java.awt.EventQueue.invokeLater(new Runnable() {
+
+        try {
+            WorkUser wu = WorkUser.getWork();
+            SerializableData sd = new SerializableData();
+            wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
+            
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartFrame().setVisible(true);
@@ -53,7 +73,7 @@ public class Main {
             
         }
         try{
-            System.out.println("Search: "+UserSearch.Search("put..").toString());
+            System.out.println("Search: "+UserSearch.Search("(\\d|\\s|\\w)").toString());
             
         }catch(UserNotFoundException e){
             System.out.println("Ошибка!"); 

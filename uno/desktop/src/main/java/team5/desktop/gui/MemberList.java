@@ -28,6 +28,7 @@ public class MemberList extends javax.swing.JFrame {
     private JButton backButton;
     private JButton deleteButton;
     private JButton addButton;
+    private JButton searchButton;
     
     private JTextField tfname;
     private JTextField tfsurname;
@@ -51,29 +52,36 @@ public class MemberList extends javax.swing.JFrame {
     private JTable jTable1;
     private JPanel panel;
     
+    private UserTableModel model ;
+    
     
     public MemberList() {
         initComponents();
     }
+    
+//    public JTable getJTable(){
+//        return jTable1;
+//    }
+//    JTextField[] fields={tfname,tfsurname, tfcity,tfcountry, tfemail, tflogin,tfpassword, tfbday  };
 
     
     @SuppressWarnings("unchecked")
                   
     private void initComponents() {
 
-        setLayout(null);
-        setBounds(200, 10, 680, 860);
+          setLayout(null);
+        setBounds(200, 10, 700, 760);
         setTitle("Member list");
         
         panel = new JPanel();
         panel.setBorder(new TitledBorder("Add/delete users"));
-        panel.setBounds(10,440,640,360);
+        panel.setBounds(10,440,670,280);
         panel.setLayout(null);
         
         jScrollPane1 = new JScrollPane(jTable1);
-        jScrollPane1.setBounds(10,10,640,420);
+        jScrollPane1.setBounds(10,10,670,420);
         //Таблица и модель
-        UserTableModel model = new UserTableModel();
+        model = new UserTableModel();
         jTable1 = new JTable(model);
         model.addTableModelListener(jTable1);
         jTable1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -81,14 +89,25 @@ public class MemberList extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         
         
-        backButton = new javax.swing.JButton();    
+       backButton = new javax.swing.JButton();    
         backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         backButton.setText("Back");
         panel.add(backButton);
-        backButton.setBounds(480, 220, 130, 30);
+        backButton.setBounds(500, 220, 150, 30);//310 300 80 30
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        
+        searchButton = new javax.swing.JButton();    
+        searchButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        searchButton.setText("Search");
+        panel.add(searchButton);
+        searchButton.setBounds(340, 220, 150, 30);//310 300 80 30
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
             }
         });
 
@@ -96,7 +115,7 @@ public class MemberList extends javax.swing.JFrame {
         addButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         addButton.setText("Add User");
         panel.add(addButton);
-        addButton.setBounds(20,220,130,30);
+        addButton.setBounds(20,220,150,30);
         addButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 addButtonActionPerfomed(e);
@@ -108,12 +127,13 @@ public class MemberList extends javax.swing.JFrame {
         deleteButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         deleteButton.setText("Delete User");
         panel.add(deleteButton);
-        deleteButton.setBounds(180, 220, 130, 30);
+        deleteButton.setBounds(180, 220, 150, 30);
         deleteButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 deleteButtonActionPerfomed(e);
             }
         });
+        
         
         //TextFields
         tfname = new JTextField();
@@ -234,7 +254,7 @@ public class MemberList extends javax.swing.JFrame {
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }                     
-
+    //При запросе поиска и удалении после вывода его результатов почему-то не обновляется таблица сразу.
     private void deleteButtonActionPerfomed(ActionEvent evt)
     {
         try{
@@ -245,7 +265,7 @@ public class MemberList extends javax.swing.JFrame {
         }
         catch(UserNotFoundException e)
         {
-            
+             ///???????
         }
         jTable1.revalidate();
         jTable1.repaint();
@@ -258,7 +278,7 @@ public class MemberList extends javax.swing.JFrame {
         }
         catch(UserExistException e)
         {
-            
+            ///???????
         }
         tfname.setText("");
         tfsurname.setText("");
@@ -276,7 +296,13 @@ public class MemberList extends javax.swing.JFrame {
         SelectRooms rooms =new SelectRooms();
         rooms.setVisible(true);
         this.setVisible(false);
-    }                                        
+    }    
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        
+        Search search =new Search(jTable1, model);
+        search.setVisible(true);
+        
+    }      
 
     /**
      * @param args the command line arguments

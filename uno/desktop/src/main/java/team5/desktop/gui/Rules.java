@@ -40,7 +40,7 @@ public class Rules extends javax.swing.JFrame {
     }
             return text;
         } catch (FileNotFoundException ex) {
-            throw new FileNotFoundException("Not find file.");
+            throw new FileNotFoundException("File not found.");
         } 
     }
     /**

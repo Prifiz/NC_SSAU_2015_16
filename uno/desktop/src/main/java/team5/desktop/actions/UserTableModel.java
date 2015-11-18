@@ -20,8 +20,15 @@ import team5.desktop.user.User;
 public class UserTableModel extends AbstractTableModel {
     private final Set<TableModelListener> listeners = new HashSet<TableModelListener>();
     private WorkUser work = WorkUser.getWork();
-    ArrayList<User> user = work.getArrOfUsers();
+    private ArrayList<User> user = work.getArrOfUsers();
     String [] names = {"Name", "Surname" ,"BirthDay", "Country", "City","Email","Login","Password"};
+    
+    public ArrayList getUser(){
+        return user;
+    }
+    public void setUser(ArrayList<User> user){
+        this.user=user;
+    }
 
     @Override
     public void addTableModelListener(TableModelListener listener){listeners.add(listener);}
