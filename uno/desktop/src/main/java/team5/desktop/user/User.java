@@ -11,7 +11,7 @@ import team5.desktop.user.adress.Address;
  *
  * @author chanta
  */
-public class User {
+public class User implements java.io.Serializable{
     private PrivateInformation privateInformation;
     private Address address;
     private ServiceInfo serviceInfo; 
@@ -76,5 +76,4 @@ public class User {
     public int hashCode() {
         return  address.hashCode()+serviceInfo.hashCode()+privateInformation.hashCode();
     }
-
 }

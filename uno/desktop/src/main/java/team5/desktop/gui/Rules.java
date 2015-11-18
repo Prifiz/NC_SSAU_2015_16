@@ -5,6 +5,17 @@
  */
 package team5.desktop.gui;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import team5.desktop.actions.SerializableData;
+import team5.desktop.actions.WorkUser;
+
 
 /**
  *
@@ -19,6 +30,19 @@ public class Rules extends javax.swing.JFrame {
         initComponents();
     }
 
+    private String textRule(String fileName) throws FileNotFoundException, IOException{
+        String text="";
+        String s="";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+             while((s=br.readLine())!=null){
+                text+=s;
+    }
+            return text;
+        } catch (FileNotFoundException ex) {
+            throw new FileNotFoundException("Not find file.");
+        } 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +66,13 @@ public class Rules extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("      Players are dealt 7 cards. The top card of \nthe deck is turned face up and with it the game \nbegins (this card is the beginning of the game \ndeck).\n      The game begins in a clockwise direction.\n      On his turn, each player must put a card in \nthe game deck, and the card must match the \ntop card in the game deck on color or image. \nIf the player does not have a suitable card, \nthen he takes one card from the deck of the \nbank, and if the card is suitable, it could make \na move if he wants to. If a player has taken \nfrom the deck of the bank the right card, but \nshe did not move - he receives no fine. The \nnext player to act in a clockwise direction.\n");
+        jTextArea1.setLineWrap(true);
+        try {
+            //jTextArea1.setText("      Players are dealt 7 cards. The top card of \nthe deck is turned face up and with it the game \nbegins (this card is the beginning of the game \ndeck).\n      The game begins in a clockwise direction.\n      On his turn, each player must put a card in \nthe game deck, and the card must match the \ntop card in the game deck on color or image. \nIf the player does not have a suitable card, \nthen he takes one card from the deck of the \nbank, and if the card is suitable, it could make \na move if he wants to. If a player has taken \nfrom the deck of the bank the right card, but \nshe did not move - he receives no fine. The \nnext player to act in a clockwise direction.\n");
+            jTextArea1.setText(textRule("textRule.txt"));
+        } catch (IOException ex) {
+            Logger.getLogger(Rules.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -51,6 +81,31 @@ public class Rules extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
+        });
+        
+        addWindowListener(new WindowListener() {
+ 
+            public void windowActivated(WindowEvent event) {}
+            public void windowClosed(WindowEvent event) {}
+            public void windowClosing(WindowEvent event) {
+                try {
+                    WorkUser wu= WorkUser.getWork();
+                    SerializableData sd = new SerializableData();
+                    sd.serializableData("serializableData_WorkUser.bin", wu );
+                    
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                } catch (IOException ex) {
+                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                finally{
+                    event.getWindow().setVisible(false);
+                    System.exit(0);
+            }
+            }
+            public void windowDeactivated(WindowEvent event) {}
+            public void windowDeiconified(WindowEvent event) {}
+            public void windowIconified(WindowEvent event) {}
+            public void windowOpened(WindowEvent event) {}
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

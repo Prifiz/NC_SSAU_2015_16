@@ -7,15 +7,11 @@ package team5.desktop.user.adress;
 
 
 
-import static jdk.nashorn.internal.parser.TokenType.CONST;
-import team5.desktop.user.adress.Address;
-import team5.desktop.user.adress.AddressInitializer;
-
 /**
  *
  * @author chanta
  */
-public class SimpleAddressInitializer implements AddressInitializer{
+public class SimpleAddressInitializer implements AddressInitializer, java.io.Serializable{
     private Address address;
 
     public SimpleAddressInitializer(Address address) {

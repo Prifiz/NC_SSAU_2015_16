@@ -6,11 +6,18 @@
 package team5.desktop.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import team5.desktop.user.action.UserTableModel;
-import team5.desktop.user.action.WorkUser;
+import team5.desktop.actions.SerializableData;
+import team5.desktop.actions.UserTableModel;
+import team5.desktop.actions.WorkUser;
+import team5.desktop.exceptions.UserExistException;
+import team5.desktop.exceptions.UserNotFoundException;
 
 /**
  *
@@ -78,7 +85,7 @@ public class MemberList extends javax.swing.JFrame {
         backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         backButton.setText("Back");
         panel.add(backButton);
-        backButton.setBounds(310, 300 ,80 ,30);
+        backButton.setBounds(480, 220, 130, 30);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -199,23 +206,60 @@ public class MemberList extends javax.swing.JFrame {
         add(panel);
         add(jScrollPane1);
         
+        addWindowListener(new WindowListener() {
+ 
+            public void windowActivated(WindowEvent event) {}
+            public void windowClosed(WindowEvent event) {}
+            public void windowClosing(WindowEvent event) {
+                try {
+                    WorkUser wu= WorkUser.getWork();
+                    SerializableData sd = new SerializableData();
+                    sd.serializableData("serializableData_WorkUser.bin", wu );
+                    
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                } catch (IOException ex) {
+                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                finally{
+                    event.getWindow().setVisible(false);
+                    System.exit(0);
+            }
+            }
+            public void windowDeactivated(WindowEvent event) {}
+            public void windowDeiconified(WindowEvent event) {}
+            public void windowIconified(WindowEvent event) {}
+            public void windowOpened(WindowEvent event) {}
+        });
+        
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }                     
 
     private void deleteButtonActionPerfomed(ActionEvent evt)
     {
+        try{
         if((jTable1.getSelectedRow()>=0)&&(jTable1.getSelectedRow()<WorkUser.getWork().getArrOfUsers().size()))
         {
             WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
+        }
+        }
+        catch(UserNotFoundException e)
+        {
+            
         }
         jTable1.revalidate();
         jTable1.repaint();
     }
     private void addButtonActionPerfomed(ActionEvent evt)
     {
+        try{
         WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
                 tfpassword.getText(), tfemail.getText(),tfbday.getText());//остановился тут
+        }
+        catch(UserExistException e)
+        {
+            
+        }
         tfname.setText("");
         tfsurname.setText("");
         tfcountry.setText("");

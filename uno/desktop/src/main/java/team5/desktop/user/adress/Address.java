@@ -6,14 +6,11 @@
 package team5.desktop.user.adress;
 
 
-import team5.desktop.user.adress.AddressInitializer;
-
-
 /**
  *
  * @author chanta
  */
-public class Address {
+public class Address implements java.io.Serializable{
     private String country;
     private String city;
 

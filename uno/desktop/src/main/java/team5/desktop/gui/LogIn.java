@@ -5,7 +5,14 @@
  */
 package team5.desktop.gui;
 
-import team5.desktop.user.action.SignIn;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import team5.desktop.actions.SerializableData;
+import team5.desktop.actions.SignIn;
+import team5.desktop.actions.WorkUser;
 
 /**
  *
@@ -64,7 +71,32 @@ public class LogIn extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
+        
+        addWindowListener(new WindowListener() {
+ 
+            public void windowActivated(WindowEvent event) {}
+            public void windowClosed(WindowEvent event) {}
+            public void windowClosing(WindowEvent event) {
+                try {
+                    WorkUser wu= WorkUser.getWork();
+                    SerializableData sd = new SerializableData();
+                    sd.serializableData("serializableData_WorkUser.bin", wu );
+                    
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                } catch (IOException ex) {
+                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                finally{
+                    event.getWindow().setVisible(false);
+                    System.exit(0);
+            }
+            }
+            public void windowDeactivated(WindowEvent event) {}
+            public void windowDeiconified(WindowEvent event) {}
+            public void windowIconified(WindowEvent event) {}
+            public void windowOpened(WindowEvent event) {}
+        });
+        
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         jLabel2.setText("Login");
 
@@ -116,12 +148,13 @@ public class LogIn extends javax.swing.JFrame {
                     .addComponent(jButton2))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
-
+        
         pack();
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         SignIn sign = new SignIn();
+       // WorkUser wu = WorkUser.getWork();
         if(sign.sign(this.jTextField1.getText(), this.jPasswordField1.getPassword()))
         {
             SelectRooms rooms = new SelectRooms();

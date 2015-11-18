@@ -12,7 +12,7 @@ import java.time.LocalDate;
  *
  * @author chanta
  */
-public class ServiceInfo {
+public class ServiceInfo implements java.io.Serializable{
     private String login;
     private String password;
     private final LocalDate dateOfRegistration;

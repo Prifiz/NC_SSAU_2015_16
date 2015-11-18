@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.desktop.user.action;
+package team5.desktop.actions;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import team5.desktop.user.User;
+import team5.desktop.exceptions.*;
 
 /**
  *
@@ -15,21 +13,27 @@ import team5.desktop.user.User;
  */
 public class Registration {
     
-    public Boolean registrationUser(String name, String surname, String country, String sity, String login, String password, String email, String bDay){
+    public Boolean registrationUser(String name, String surname, String country, String sity, String login, String password, String email, String bDay)
+    throws UserExistException {
 //        if(checkOfExistenceOfUser(user))
 //            System.out.println("This user has already been created");
 //        
        // WorkUser workUser= new WorkUser();
-         WorkUser workUser = WorkUser.getWork();
-         
-        if ((name.compareTo("")==0)||(surname.compareTo("")==0)||(login.compareTo("")==0)||(password.compareTo("")==0)||(email.compareTo("")==0))
+        try{
+        WorkUser workUser = WorkUser.getWork();
+        if(("".equals(name))||("".equals(surname))||("".equals(login))||("".equals(password))||("".equals(email))){
             return false;
+        }
         else{
             workUser.addUser(name, surname, country, sity, login, password, email, bDay);
             return true;
         }
-        
+        }catch(UserExistException e){
+            throw new UserExistException("Registration "+ e.getMessage());
+            //return false;
+        }
     }
+    
     
 //    private boolean checkOfExistenceOfUser(User user){
 //        for (User u : users) {

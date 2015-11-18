@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.desktop.user.action;
+package team5.desktop.actions;
 
-import java.util.ArrayList;
 import team5.desktop.user.User;
+import team5.desktop.exceptions.*;
 
 /**
  *
@@ -17,6 +17,7 @@ public class SignIn {
     
     public boolean sign(String login, char[]password)
     {
+        try{
         WorkUser work = WorkUser.getWork();
         User user = work.search(login);
         String s=""; 
@@ -30,6 +31,10 @@ public class SignIn {
         }
         else
             return false;
+        }catch(UserNotFoundException e){
+            return false;
+            //Надо написать обработчик некорректного логина, пароля!!!!!
+        }
         
     }
 }

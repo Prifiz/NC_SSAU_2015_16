@@ -6,13 +6,12 @@
 package team5.desktop.user;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 
 /**
  *
  * @author chanta
  */
-public class PrivateInformation {
+public class PrivateInformation implements java.io.Serializable{
     private String name;
     private String surname;
     private LocalDate bDay;

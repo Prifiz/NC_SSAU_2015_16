@@ -6,8 +6,15 @@
 package team5.desktop.gui;
 
 
-import java.time.LocalDate;
-import team5.desktop.user.action.Registration;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import team5.desktop.actions.Registration;
+import team5.desktop.exceptions.*;
+import team5.desktop.actions.SerializableData;
+import team5.desktop.actions.WorkUser;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -57,6 +64,7 @@ public class SecondFrame extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         jLabel3.setText("Name");
@@ -76,7 +84,7 @@ public class SecondFrame extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        jButton1.setText("OK");
+        jButton1.setText("OK");      
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -86,6 +94,30 @@ public class SecondFrame extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
+        });
+        addWindowListener(new WindowListener() {
+ 
+            public void windowActivated(WindowEvent event) {}
+            public void windowClosed(WindowEvent event) {}
+            public void windowClosing(WindowEvent event) {
+                try {
+                    WorkUser wu= WorkUser.getWork();
+                    SerializableData sd = new SerializableData();
+                    sd.serializableData("serializableData_WorkUser.bin", wu );
+                    
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                } catch (IOException ex) {
+                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                finally{
+                    event.getWindow().setVisible(false);
+                    System.exit(0);
+            }
+            }
+            public void windowDeactivated(WindowEvent event) {}
+            public void windowDeiconified(WindowEvent event) {}
+            public void windowIconified(WindowEvent event) {}
+            public void windowOpened(WindowEvent event) {}
         });
 
         jLabel9.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -188,19 +220,31 @@ public class SecondFrame extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(8, 8, 8))
         );
-
+       
         pack();
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
        // SignIn sign = new SignIn();
-        Registration r = new Registration();
+        try{
+           // WorkUser wu =WorkUser.getWork();
+            Registration r = new Registration();
         //if(sign.sign(this.jTextField1.getText(), this.jPasswordField1.getPassword()))
-        if(r.registrationUser(this.jTextField3.getText(), this.jTextField4.getText(), this.jTextField5.getText(), this.jTextField6.getText(), this.jTextField1.getText(), this.jTextField2.getText(), this.jTextField7.getText(), "12.05.2000" ))
+            
+//            if(r.registrationUser(this.jTextField3.getText(), this.jTextField4.getText(), this.jTextField5.getText(), this.jTextField6.getText(), this.jTextField1.getText(), this.jTextField2.getText(), this.jTextField7.getText(), LocalDate.now().toString()))
+//            {
+//            LogIn logIn = new LogIn();
+//            logIn.setVisible(true);
+//            this.setVisible(false);
+//            }
+        if(r.registrationUser(this.jTextField3.getText(), this.jTextField4.getText(), this.jTextField5.getText(), this.jTextField6.getText(), this.jTextField1.getText(), this.jTextField2.getText(), this.jTextField7.getText(), "12.05.2010"))
         {
         LogIn logIn = new LogIn();
         logIn.setVisible(true);
         this.setVisible(false);
+        }
+        }catch(UserExistException e){
+            //Надо написать обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
         }
     }                                        
 
@@ -219,7 +263,7 @@ public class SecondFrame extends javax.swing.JFrame {
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
     }                                           
-
+    
     /**
      * @param args the command line arguments
      */

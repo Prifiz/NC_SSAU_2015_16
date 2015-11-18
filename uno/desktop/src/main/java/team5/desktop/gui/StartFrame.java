@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package team5.desktop.gui;
-
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import team5.desktop.actions.SerializableData;
+import team5.desktop.actions.WorkUser;
 
 /**
  *
@@ -33,6 +39,8 @@ public class StartFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        //setBounds(450, 200, 200, 200); 
+       // setSize(250, 150);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 3, 36)); // NOI18N
@@ -50,11 +58,36 @@ public class StartFrame extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        jButton2.setText("Play");
+        jButton2.setText("Еnter the game");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
+        });
+        
+        addWindowListener(new WindowListener() {
+ 
+            public void windowActivated(WindowEvent event) {}
+            public void windowClosed(WindowEvent event) {}
+            public void windowClosing(WindowEvent event) {
+                try {
+                    WorkUser wu= WorkUser.getWork();
+                    SerializableData sd = new SerializableData();
+                    sd.serializableData("serializableData_WorkUser.bin", wu );
+                    
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                } catch (IOException ex) {
+                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                finally{
+                    event.getWindow().setVisible(false);
+                    System.exit(0);
+            }
+            }
+            public void windowDeactivated(WindowEvent event) {}
+            public void windowDeiconified(WindowEvent event) {}
+            public void windowIconified(WindowEvent event) {}
+            public void windowOpened(WindowEvent event) {}
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,7 +107,7 @@ public class StartFrame extends javax.swing.JFrame {
                         .addGap(127, 127, 127)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
+                        .addGap(125, 125, 125)
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -117,6 +150,10 @@ public class StartFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+            WorkUser wu = WorkUser.getWork();
+            SerializableData sd = new SerializableData();
+            wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
+            
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -131,15 +168,18 @@ public class StartFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartFrame().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify                     

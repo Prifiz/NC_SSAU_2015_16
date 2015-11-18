@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.desktop.user.action;
+package team5.desktop.actions;
 
 import team5.desktop.gui.Rules;
 import team5.desktop.gui.StartFrame;

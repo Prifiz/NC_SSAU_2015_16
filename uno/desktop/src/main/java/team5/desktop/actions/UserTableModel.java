@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.desktop.user.action;
+package team5.desktop.actions;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.event.TableModelListener;
+import team5.desktop.exceptions.UserNotFoundException;
 import team5.desktop.user.User;
 
 /**
@@ -117,10 +118,16 @@ public class UserTableModel extends AbstractTableModel {
                 user.get(rowIndex).getServiceInfo().setEmail((String)aValue);
                 break;
             case 6:
+                try{
                 if(work.search((String)aValue)==null)
                 {
                     user.get(rowIndex).getServiceInfo().setLogin((String)aValue);
                 }
+                }
+            catch(UserNotFoundException e)
+            {
+                
+            }
                 //нужно написать обработку, когда лгин не может быть изменен
             case 7:
                 user.get(rowIndex).getServiceInfo().setPassword((String)aValue);   
