@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -18,6 +19,8 @@ import team5.desktop.actions.UserTableModel;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.exceptions.UserExistException;
 import team5.desktop.exceptions.UserNotFoundException;
+import team5.desktop.searches.UserSearch;
+import team5.desktop.user.User;
 
 /**
  *
@@ -25,6 +28,7 @@ import team5.desktop.exceptions.UserNotFoundException;
  */
 public class MemberList extends javax.swing.JFrame {
 
+    private Search search;
     private JButton backButton;
     private JButton deleteButton;
     private JButton addButton;
@@ -69,8 +73,9 @@ public class MemberList extends javax.swing.JFrame {
                   
     private void initComponents() {
 
+        search = new Search();
           setLayout(null);
-        setBounds(200, 10, 700, 760);
+        setBounds(200, 10, 710, 790);
         setTitle("Member list");
         
         panel = new JPanel();
@@ -261,12 +266,19 @@ public class MemberList extends javax.swing.JFrame {
         if((jTable1.getSelectedRow()>=0)&&(jTable1.getSelectedRow()<WorkUser.getWork().getArrOfUsers().size()))
         {
             WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
+            if(search.getSearchRequest()!=null)
+            {
+            model.setUser((ArrayList<User>)UserSearch.Search(search.getSearchRequest()));
+            }
         }
         }
         catch(UserNotFoundException e)
         {
              ///???????
         }
+        
+           
+       
         jTable1.revalidate();
         jTable1.repaint();
     }
@@ -275,10 +287,16 @@ public class MemberList extends javax.swing.JFrame {
         try{
         WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
                 tfpassword.getText(), tfemail.getText(),tfbday.getText());//остановился тут
+        if(search.getSearchRequest()!=null)
+        {
+                model.setUser((ArrayList<User>)UserSearch.Search(search.getSearchRequest()));
+        }
         }
         catch(UserExistException e)
         {
             ///???????
+        } catch (UserNotFoundException ex) {
+            Logger.getLogger(MemberList.class.getName()).log(Level.SEVERE, null, ex);
         }
         tfname.setText("");
         tfsurname.setText("");
@@ -296,10 +314,12 @@ public class MemberList extends javax.swing.JFrame {
         SelectRooms rooms =new SelectRooms();
         rooms.setVisible(true);
         this.setVisible(false);
+        model.setUser(WorkUser.getWork().getArrOfUsers());
+        search.setSearchRequest(null);
     }    
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         
-        Search search =new Search(jTable1, model);
+        search =new Search(jTable1, model);
         search.setVisible(true);
         
     }      

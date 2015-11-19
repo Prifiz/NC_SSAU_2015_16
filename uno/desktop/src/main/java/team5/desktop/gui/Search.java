@@ -28,6 +28,7 @@ import team5.desktop.user.User;
  */
 public class Search extends javax.swing.JFrame {
 
+    private String searchRequest;
     private JButton backButton;    
     private JButton okButton; 
     private JTable table;
@@ -49,6 +50,21 @@ public class Search extends javax.swing.JFrame {
         this.model=model;
         initComponents();
     }
+    public String getSearchRequest()
+    {
+        if(searchRequest!= null)
+        {
+        return searchRequest;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public void setSearchRequest(String searchRequest)
+    {
+        this.searchRequest = searchRequest;
+    }
 
     
     @SuppressWarnings("unchecked")
@@ -56,7 +72,7 @@ public class Search extends javax.swing.JFrame {
     private void initComponents() {
 
           setLayout(null);
-        setBounds(200, 10, 400, 200);
+        setBounds(200, 10, 400, 250);
         setTitle("Search");
         
         panel = new JPanel();
@@ -108,7 +124,7 @@ public class Search extends javax.swing.JFrame {
 //    
     private void okButtonActionPerfomed(ActionEvent evt)
     {   
-        String searchRequest=tfsearch.getText();
+        searchRequest=tfsearch.getText();
         try{
             
             model.setUser((ArrayList<User>)UserSearch.Search(searchRequest));
