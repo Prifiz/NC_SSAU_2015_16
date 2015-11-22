@@ -33,6 +33,7 @@ public class MemberList extends javax.swing.JFrame {
     private JButton deleteButton;
     private JButton addButton;
     private JButton searchButton;
+    private JButton cleanButton;
     
     private JTextField tfname;
     private JTextField tfsurname;
@@ -76,6 +77,8 @@ public class MemberList extends javax.swing.JFrame {
         search = new Search();
           setLayout(null);
         setBounds(200, 10, 710, 790);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         setTitle("Member list");
         
         panel = new JPanel();
@@ -94,7 +97,7 @@ public class MemberList extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         
         
-       backButton = new javax.swing.JButton();    
+        backButton = new javax.swing.JButton();    
         backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         backButton.setText("Back");
         panel.add(backButton);
@@ -109,18 +112,29 @@ public class MemberList extends javax.swing.JFrame {
         searchButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         searchButton.setText("Search");
         panel.add(searchButton);
-        searchButton.setBounds(340, 220, 150, 30);//310 300 80 30
+        searchButton.setBounds(200, 190 , 150, 30);//310 300 80 30
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });
 
+        cleanButton = new javax.swing.JButton();    
+        cleanButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        cleanButton.setText("Clean");
+        panel.add(cleanButton);
+        cleanButton.setBounds(200, 230, 150, 30);//310 300 80 30
+        cleanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+        
         addButton = new JButton();
         addButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         addButton.setText("Add User");
         panel.add(addButton);
-        addButton.setBounds(20,220,150,30);
+        addButton.setBounds(20,190,150,30);
         addButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 addButtonActionPerfomed(e);
@@ -132,7 +146,7 @@ public class MemberList extends javax.swing.JFrame {
         deleteButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         deleteButton.setText("Delete User");
         panel.add(deleteButton);
-        deleteButton.setBounds(180, 220, 150, 30);
+        deleteButton.setBounds(20, 230, 150, 30);
         deleteButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 deleteButtonActionPerfomed(e);
@@ -323,7 +337,13 @@ public class MemberList extends javax.swing.JFrame {
         search.setVisible(true);
         
     }      
-
+    private void clearButtonActionPerformed(ActionEvent evt)
+    {
+        model.setUser(WorkUser.getWork().getArrOfUsers());
+        search.setSearchRequest(null);
+        jTable1.revalidate();
+        jTable1.repaint();
+    }
     /**
      * @param args the command line arguments
      */

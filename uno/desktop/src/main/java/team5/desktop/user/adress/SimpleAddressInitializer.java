@@ -12,15 +12,14 @@ package team5.desktop.user.adress;
  * @author chanta
  */
 public class SimpleAddressInitializer implements AddressInitializer, java.io.Serializable{
-    private Address address;
+     
 
-    public SimpleAddressInitializer(Address address) {
-        this.address = address;
+    public SimpleAddressInitializer() {
     }
 
-    public void initDefaultAddress(){
-        address.setCity("");
-        address.setCountry("");
+    public Address initDefaultAddress(){
+        
+        return new Address("", "");
      }
     
 }

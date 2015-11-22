@@ -220,7 +220,7 @@ public class SecondFrame extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(8, 8, 8))
         );
-       
+        //this.setLocationRelativeTo(null);
         pack();
     }// </editor-fold>                        
 

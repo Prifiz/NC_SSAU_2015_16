@@ -38,26 +38,8 @@ public class UserTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int columnIndex)
     {
-        switch(columnIndex)
-        {
-            case 0:
-                return names[0];
-            case 1:
-                return names[1];
-            case 2:
-                return names[2];
-            case 3:
-                return names[3];
-            case 4:
-                return names[4];
-            case 5:
-                return names[5];
-            case 6:
-                return names[6];
-            case 7:
-                return names[7];
-        }
-        return "";
+        return names[columnIndex];
+        
         
     }
     public int getRowCount() {
@@ -85,7 +67,12 @@ public class UserTableModel extends AbstractTableModel {
             case 6:
                 return user.get(rowIndex).getServiceInfo().getLogin();
             case 7:
-                return user.get(rowIndex).getServiceInfo().getPassword();
+                String s = user.get(rowIndex).getServiceInfo().getPassword();
+                StringBuilder str = new StringBuilder();
+                for (int i = 0; i < s.length(); i++) {
+                    str.append('*');
+                }
+                return str.toString();
             
         }
         return null;
@@ -133,7 +120,7 @@ public class UserTableModel extends AbstractTableModel {
                 }
             catch(UserNotFoundException e)
             {
-                
+                // TODO
             }
                 //нужно написать обработку, когда лгин не может быть изменен
             case 7:

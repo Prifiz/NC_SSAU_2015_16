@@ -71,8 +71,9 @@ public class Search extends javax.swing.JFrame {
                   
     private void initComponents() {
 
-          setLayout(null);
         setBounds(200, 10, 400, 250);
+        this.setLocationRelativeTo(null);
+          setLayout(null);
         setTitle("Search");
         
         panel = new JPanel();

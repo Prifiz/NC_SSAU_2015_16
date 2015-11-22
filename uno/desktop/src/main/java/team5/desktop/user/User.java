@@ -6,6 +6,8 @@
 package team5.desktop.user;
 
 import team5.desktop.user.adress.Address;
+import team5.desktop.user.adress.AddressInitializer;
+import team5.desktop.user.adress.SimpleAddressInitializer;
 
 /**
  *
@@ -13,7 +15,8 @@ import team5.desktop.user.adress.Address;
  */
 public class User implements java.io.Serializable{
     private PrivateInformation privateInformation;
-    private Address address;
+    AddressInitializer addressInitializer = new SimpleAddressInitializer();
+    private Address address = addressInitializer.initDefaultAddress();
     private ServiceInfo serviceInfo; 
     
     public User(PrivateInformation privateInformation, Address address, ServiceInfo serviceInfo) {

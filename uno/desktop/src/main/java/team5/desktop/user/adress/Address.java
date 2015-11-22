@@ -21,8 +21,6 @@ public class Address implements java.io.Serializable{
     public Address(){
         city = new String();
         country = new String();
-        AddressInitializer addInit =new SimpleAddressInitializer(this);
-        addInit.initDefaultAddress();  
     }
 
     public String getCity() {

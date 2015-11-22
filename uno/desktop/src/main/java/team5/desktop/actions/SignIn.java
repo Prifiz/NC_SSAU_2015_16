@@ -14,6 +14,12 @@ import team5.desktop.exceptions.*;
  */
 public class SignIn {
     
+    /**
+     * 
+     * @param login
+     * @param password
+     * @return 
+     */
     
     public boolean sign(String login, char[]password)
     {
@@ -24,7 +30,7 @@ public class SignIn {
         for (int i = 0; i <password.length ; i++) { 
             s+=password[i]; 
         }
-        if(user.getServiceInfo().getPassword().compareTo(s)==0)
+        if(user.getServiceInfo().getPassword().equals(s))
         {
             //открытие фрейма с комнатами
             return true;

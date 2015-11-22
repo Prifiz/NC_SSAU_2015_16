@@ -33,13 +33,13 @@ public class StartFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
+        //this.setLocationRelativeTo(null);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        //setBounds(450, 200, 200, 200); 
+        //setBounds(0,0, 200, 200); 
        // setSize(250, 150);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,6 +124,8 @@ public class StartFrame extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(62, 62, 62))
         );
+        
+        
 
         pack();
     }// </editor-fold>                        
