@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import team5.desktop.actions.SerializableData;
+import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.UserTableModel;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.exceptions.UserExistException;

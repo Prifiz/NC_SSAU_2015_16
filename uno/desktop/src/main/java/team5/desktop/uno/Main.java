@@ -8,7 +8,7 @@ package team5.desktop.uno;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import team5.desktop.actions.SerializableData;
+import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.exceptions.*;
 import team5.desktop.gui.StartFrame;
@@ -28,7 +28,7 @@ public class Main {
 
         try {
             WorkUser wu = WorkUser.getWork();
-            SerializableData sd = new SerializableData();
+            WorkWithFiles sd = new WorkWithFiles();
             wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
 
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

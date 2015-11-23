@@ -9,7 +9,7 @@ import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import team5.desktop.actions.SerializableData;
+import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 
 /**
@@ -78,7 +78,7 @@ public class StartFrame extends javax.swing.JFrame {
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser wu= WorkUser.getWork();
-                    SerializableData sd = new SerializableData();
+                    WorkWithFiles sd = new WorkWithFiles();
                     sd.serializableData("serializableData_WorkUser.bin", wu );
                     
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -160,7 +160,7 @@ public class StartFrame extends javax.swing.JFrame {
          */
         try {
             WorkUser wu = WorkUser.getWork();
-            SerializableData sd = new SerializableData();
+            WorkWithFiles sd = new WorkWithFiles();
             wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
             
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

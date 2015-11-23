@@ -44,7 +44,7 @@ public class NumericCard extends Card{
     public boolean equals(Object obj) {
         if(this.getClass()==obj.getClass())
         {
-            if((((NumericCard)obj).getColor()==this.getColor())&&((NumericCard)obj).getIcon()==this.getIcon())
+            if((((NumericCard)obj).getColor().equals(this.getColor()))&&((NumericCard)obj).getIcon()==this.getIcon())
                 return true;
             else
                 return false;
