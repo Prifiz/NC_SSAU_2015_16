@@ -56,8 +56,10 @@ public class Rules extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        
+        setLayout(null);
+        this.setResizable(false);  
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel1.setText("Rules");
@@ -137,7 +139,9 @@ public class Rules extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); 
         pack();
+        this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         

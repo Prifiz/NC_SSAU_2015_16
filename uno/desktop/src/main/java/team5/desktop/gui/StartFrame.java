@@ -38,10 +38,16 @@ public class StartFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-
-        //setBounds(0,0, 200, 200); 
-       // setSize(250, 150);
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
+        
+        setLayout(null);
+        this.setBounds(200, 10, 710, 790); 
+        this.setSize(250,250);
+        
+        this.setResizable(false);
+        //this.setLocationRelativeTo(null);
+        
+       
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 3, 36)); // NOI18N
         jLabel1.setText("UNO");
@@ -125,9 +131,10 @@ public class StartFrame extends javax.swing.JFrame {
                 .addGap(62, 62, 62))
         );
         
-        
+         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pack();
+        this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         

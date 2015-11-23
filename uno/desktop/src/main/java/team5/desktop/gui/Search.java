@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package team5.desktop.gui;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import java.awt.event.WindowEvent;
@@ -29,61 +30,61 @@ import team5.desktop.user.User;
 public class Search extends javax.swing.JFrame {
 
     private String searchRequest;
-    private JButton backButton;    
-    private JButton okButton; 
+    private JButton backButton;
+    private JButton okButton;
     private JTable table;
-    
+    private JLabel jMessage;
+
     private JTextField tfsearch;
 //    private JTextField[] fields;
-    UserTableModel model ;  
-      
+    UserTableModel model;
+
     private JPanel panel;
-    
-    
+
     public Search() {
         initComponents();
     }
-    
-    public Search(JTable table,UserTableModel model ) {
-        this.table=table;
+
+    public Search(JTable table, UserTableModel model) {
+        this.table = table;
         //this.fields=fields;
-        this.model=model;
+        this.model = model;
         initComponents();
     }
-    public String getSearchRequest()
-    {
-        if(searchRequest!= null)
-        {
-        return searchRequest;
-        }
-        else
-        {
+
+    public String getSearchRequest() {
+        if (searchRequest != null) {
+            return searchRequest;
+        } else {
             return null;
         }
     }
-    public void setSearchRequest(String searchRequest)
-    {
+
+    public void setSearchRequest(String searchRequest) {
         this.searchRequest = searchRequest;
     }
 
-    
     @SuppressWarnings("unchecked")
-                  
+
     private void initComponents() {
 
         setBounds(200, 10, 400, 250);
         this.setLocationRelativeTo(null);
-          setLayout(null);
+        setLayout(null);
         setTitle("Search");
-        
+
         panel = new JPanel();
         panel.setBorder(new TitledBorder("Search"));
-        panel.setBounds(10,10,360,170);
+        panel.setBounds(10, 10, 360, 170);
         panel.setLayout(null);
+
+        jMessage = new javax.swing.JLabel();
+        jMessage.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
+        this.add(jMessage);
+        jMessage.setBounds(40, 90, 150, 30);
+        jMessage.setText("");
         
-//     
-        
-       backButton = new javax.swing.JButton();    
+        backButton = new javax.swing.JButton();
         backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         backButton.setText("Back");
         panel.add(backButton);
@@ -93,70 +94,62 @@ public class Search extends javax.swing.JFrame {
                 backButtonActionPerformed(evt);
             }
         });
-        
-               
-        
+
         okButton = new JButton();
         okButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         okButton.setText("OK");
         panel.add(okButton);
         okButton.setBounds(140, 120, 80, 30);
-        okButton.addActionListener(new ActionListener(){
+        okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 okButtonActionPerfomed(e);
             }
         });
-        
-        
+
         //TextFields
         tfsearch = new JTextField();
         tfsearch.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         panel.add(tfsearch);
         tfsearch.setBounds(30, 30, 300, 30);
-        
-        
+
 //        
         add(panel);
 //        
-        
+
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-    }                     
+    }
 
 //    
-    private void okButtonActionPerfomed(ActionEvent evt)
-    {   
-        searchRequest=tfsearch.getText();
-        try{
-            
-            model.setUser((ArrayList<User>)UserSearch.Search(searchRequest));
-        
-        
-        
-//       
-        table.revalidate();
-        table.repaint();
-        
-       
-        }catch(UserNotFoundException e){
-            
-        }
-        finally{
+    private void okButtonActionPerfomed(ActionEvent evt) {
+        searchRequest = tfsearch.getText();
+        try {
+
+            model.setUser((ArrayList<User>) UserSearch.Search(searchRequest));
+            table.revalidate();
+            table.repaint();
             this.setVisible(false);
-        }
+
+        } catch (UserNotFoundException e) {
+            jMessage.setText("Nothing found.");
+        } 
+         //   finally {
+       //     this.setVisible(false);
+       // }
     }
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
+
 //        MemberList memberList =new MemberList();
 //        memberList.setVisible(true);
         this.setVisible(false);
-    }    
+    }
 //    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -173,7 +166,7 @@ public class Search extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MemberList().setVisible(true);
@@ -181,5 +174,4 @@ public class Search extends javax.swing.JFrame {
         });
     }
 
-           
 }

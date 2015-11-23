@@ -43,13 +43,22 @@ public class LogIn extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jMessage = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLayout(null);
+        this.setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel1.setText("Sign In");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setPreferredSize(new java.awt.Dimension(47, 21));
+        
+        jMessage.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
+        this.add(jMessage);
+        jMessage.setBounds(300, 370, 300, 30);
+        jMessage.setText("");
+        //jMessage.setPreferredSize(new java.awt.Dimension(57, 21));
+        
 
         jTextField1.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
 
@@ -149,7 +158,9 @@ public class LogIn extends javax.swing.JFrame {
                 .addContainerGap(148, Short.MAX_VALUE))
         );
         
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); 
         pack();
+        this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -160,6 +171,9 @@ public class LogIn extends javax.swing.JFrame {
             SelectRooms rooms = new SelectRooms();
             rooms.setVisible(true);
             this.setVisible(false);
+        }
+        else {
+            jMessage.setText("Invalid login/password. Try it again.");
         }
     }                                        
 
@@ -212,5 +226,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jMessage;
     // End of variables declaration                   
 }
