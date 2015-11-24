@@ -316,9 +316,10 @@ public class MemberList extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-
-        SelectRooms rooms = new SelectRooms();
-        rooms.setVisible(true);
+        AdminRoom adminRoom = new AdminRoom();
+        //SelectRooms rooms = new SelectRooms();
+        //rooms.setVisible(true);
+        adminRoom.setVisible(true);
         this.setVisible(false);
         model.setUser(WorkUser.getWork().getArrOfUsers());
         search.setSearchRequest(null);

@@ -51,9 +51,14 @@ public class SelectRooms extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         jButton1.setText("Start!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        jButton2.setText("Member List");
+        jButton2.setText("Admin room");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -139,8 +144,16 @@ public class SelectRooms extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        MemberList list = new MemberList();
-        list.setVisible(true);
+        AdminRoom adminRoom = new AdminRoom();
+        adminRoom.setVisible(true);
+        //MemberList list = new MemberList();
+        //list.setVisible(true);
+        this.setVisible(false);
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        GameFrame gameFrame = new GameFrame();
+        gameFrame.setVisible(true);
         this.setVisible(false);
     }
 

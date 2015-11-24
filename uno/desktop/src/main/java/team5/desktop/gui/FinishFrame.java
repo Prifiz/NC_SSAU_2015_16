@@ -1,0 +1,153 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package team5.desktop.gui;
+
+import java.awt.Dimension;
+import java.awt.HeadlessException;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import team5.desktop.actions.WorkUser;
+import team5.desktop.actions.WorkWithFiles;
+
+/**
+ *
+ * @author chanta
+ */
+public class FinishFrame extends JFrame {
+
+    private JButton playAgainButton;
+    private JButton backButton;
+    private JLabel resultLabel;
+
+    public FinishFrame() {
+        initComponents();
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initComponents() {
+        setPreferredSize(new Dimension(400, 300));
+        setLayout(null);
+        this.setResizable(false);
+        setTitle("Finish game");
+
+        playAgainButton = new JButton();
+        playAgainButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        playAgainButton.setText("Play again");
+        add(playAgainButton);
+        playAgainButton.setBounds(120, 150, 150, 30);//310 300 80 30
+        playAgainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playAgainButtonActionPerformed(evt);
+            }
+        });
+
+        backButton = new JButton();
+        backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        backButton.setText("Back select rooms");
+        add(backButton);
+        backButton.setBounds(120, 190, 150, 30);//310 300 80 30
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        
+        resultLabel = new JLabel();
+       resultLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        resultLabel.setText("YOU WIN");
+        add(resultLabel);
+        resultLabel.setBounds(135, 100, 150, 30);
+
+        addWindowListener(new WindowListener() {
+
+            public void windowActivated(WindowEvent event) {
+            }
+
+            public void windowClosed(WindowEvent event) {
+            }
+
+            public void windowClosing(WindowEvent event) {
+                try {
+                    WorkUser workUser = WorkUser.getWork();
+                    WorkWithFiles sd = new WorkWithFiles();
+                    sd.serializableData("serializableData_WorkUser.bin", workUser);
+
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                } catch (IOException ex) {
+                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    event.getWindow().setVisible(false);
+                    System.exit(0);
+                }
+            }
+
+            public void windowDeactivated(WindowEvent event) {
+            }
+
+            public void windowDeiconified(WindowEvent event) {
+            }
+
+            public void windowIconified(WindowEvent event) {
+            }
+
+            public void windowOpened(WindowEvent event) {
+            }
+        });
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pack();
+        this.setLocationRelativeTo(null);
+    }
+
+    private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) {
+
+        GameFrame gameFrame = new GameFrame();
+        gameFrame.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
+
+        SelectRooms rooms = new SelectRooms();
+        rooms.setVisible(true);
+        this.setVisible(false);
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FinishFrame().setVisible(true);
+            }
+        });
+    }
+}
