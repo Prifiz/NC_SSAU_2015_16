@@ -5,7 +5,6 @@
  */
 package team5.desktop.actions;
 
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,10 +22,11 @@ import team5.desktop.card.NumericCard;
  * @author chanta
  */
 public class WorkWithFiles {
-    public void serializableData(String fileName, Object data) throws IOException{
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream (fileName));
-        if (data instanceof WorkUser){
-            oos.writeObject((WorkUser)data);  
+
+    public void serializableData(String fileName, Object data) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName));
+        if (data instanceof WorkUser) {
+            oos.writeObject((WorkUser) data);
         }
         //при создание класса работы с картами добавить сериализацию для них
         //else (data instanceof WorkCard){
@@ -34,41 +34,37 @@ public class WorkWithFiles {
         //}
         oos.close();
     }
-    
-    public WorkUser deserializableData(String fileName) throws IOException, ClassNotFoundException{
+
+    public WorkUser deserializableData(String fileName) throws IOException, ClassNotFoundException {
         WorkUser workUser;
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
-        workUser = (WorkUser)ois.readObject();
+        workUser = (WorkUser) ois.readObject();
         ois.close();
         return workUser;
     }
-    
-    public static void writeCards(ArrayList<Card> pack, Writer out) throws IOException
-    {
-        for(Card card:pack)
-        {
+
+    public static void writeCards(ArrayList<Card> pack, Writer out) throws IOException {
+        for (Card card : pack) {
             out.write(card.toString());
         }
         out.flush();
     }
-    public static ArrayList<Card> readCards(Reader in) throws IOException
-    {
+
+    public static ArrayList<Card> readCards(Reader in) throws IOException {
         StreamTokenizer st = new StreamTokenizer(in);
-        Card  card = null;
+        Card card = null;
         ArrayList<Card> pack = new ArrayList();
-        while(st.nextToken()!=StreamTokenizer.TT_EOF)
-        {
-        String type = st.sval;
-        st.nextToken();
-        String color = st.sval;
-        st.nextToken();
-        int icon = (int)st.nval;
-        if(type.equals("Numeric"))
-        {
-             card = new NumericCard(icon, color);
+        while (st.nextToken() != StreamTokenizer.TT_EOF) {
+            String type = st.sval;
+            st.nextToken();
+            String color = st.sval;
+            st.nextToken();
+            int icon = (int) st.nval;
+            if (type.equals("Numeric")) {
+                card = new NumericCard(icon, color);
+            }
+            pack.add(card);
         }
-        pack.add(card);
-    }
         return pack;
     }
 }

@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 
-
 /**
  *
  * @author chanta
@@ -30,19 +29,20 @@ public class Rules extends javax.swing.JFrame {
         initComponents();
     }
 
-    private String textRule(String fileName) throws FileNotFoundException, IOException{
-        String text="";
-        String s="";
+    private String textRule(String fileName) throws FileNotFoundException, IOException {
+        String text = "";
+        String s = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
-             while((s=br.readLine())!=null){
-                text+=s;
-    }
+            while ((s = br.readLine()) != null) {
+                text += s;
+            }
             return text;
         } catch (FileNotFoundException ex) {
             throw new FileNotFoundException("File not found.");
-        } 
+        }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,10 +56,9 @@ public class Rules extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
-        
-        setLayout(null);
-        this.setResizable(false);  
 
+        setLayout(null);
+        this.setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel1.setText("Rules");
@@ -84,71 +83,82 @@ public class Rules extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        
+
         addWindowListener(new WindowListener() {
- 
-            public void windowActivated(WindowEvent event) {}
-            public void windowClosed(WindowEvent event) {}
+
+            public void windowActivated(WindowEvent event) {
+            }
+
+            public void windowClosed(WindowEvent event) {
+            }
+
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser wu= WorkUser.getWork();
+                    WorkUser wu = WorkUser.getWork();
                     WorkWithFiles sd = new WorkWithFiles();
-                    sd.serializableData("serializableData_WorkUser.bin", wu );
-                    
+                    sd.serializableData("serializableData_WorkUser.bin", wu);
+
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 } catch (IOException ex) {
                     Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                finally{
+                } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
+                }
             }
+
+            public void windowDeactivated(WindowEvent event) {
             }
-            public void windowDeactivated(WindowEvent event) {}
-            public void windowDeiconified(WindowEvent event) {}
-            public void windowIconified(WindowEvent event) {}
-            public void windowOpened(WindowEvent event) {}
+
+            public void windowDeiconified(WindowEvent event) {
+            }
+
+            public void windowIconified(WindowEvent event) {
+            }
+
+            public void windowOpened(WindowEvent event) {
+            }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(153, 153, 153)
+                                        .addComponent(jButton1))
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(162, 162, 162)
+                                        .addComponent(jLabel1))
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(36, 36, 36)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton1)
-                .addGap(20, 20, 20))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1)
+                        .addGap(20, 20, 20))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         StartFrame start = new StartFrame();
         start.setVisible(true);
         this.setVisible(false);
-    }                                        
+    }
 
     /**
      * @param args the command line arguments

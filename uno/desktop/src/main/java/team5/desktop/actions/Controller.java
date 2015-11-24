@@ -15,18 +15,18 @@ import team5.desktop.user.User;
  * @author андрей
  */
 public class Controller {
+
     ArrayList<User> users;
-    
-    public Controller(ArrayList<User> users)
-    {
+
+    public Controller(ArrayList<User> users) {
         this.users = users;
     }
-    public void startFrameButtonRulesClick(java.awt.event.ActionEvent evt)
-    {
+
+    public void startFrameButtonRulesClick(java.awt.event.ActionEvent evt) {
         StartFrame start = new StartFrame();
         Rules rule = new Rules();
         rule.setVisible(true);
         start.setVisible(false);
     }
-    
+
 }

@@ -18,30 +18,36 @@ import team5.desktop.user.User;
  * @author андрей
  */
 public class UserTableModel extends AbstractTableModel {
+
     private final Set<TableModelListener> listeners = new HashSet<TableModelListener>();
     private WorkUser work = WorkUser.getWork();
     private ArrayList<User> user = work.getArrOfUsers();
-    String [] names = {"Name", "Surname" ,"BirthDay", "Country", "City","Email","Login","Password"};
-    
-    public ArrayList getUser(){
+    String[] names = {"Name", "Surname", "BirthDay", "Country", "City", "Email", "Login", "Password"};
+
+    public ArrayList getUser() {
         return user;
     }
-    public void setUser(ArrayList<User> user){
-        this.user=user;
+
+    public void setUser(ArrayList<User> user) {
+        this.user = user;
     }
 
     @Override
-    public void addTableModelListener(TableModelListener listener){listeners.add(listener);}
-    @Override
-    public void removeTableModelListener(TableModelListener listener){listeners.remove(listener);}
+    public void addTableModelListener(TableModelListener listener) {
+        listeners.add(listener);
+    }
 
     @Override
-    public String getColumnName(int columnIndex)
-    {
+    public void removeTableModelListener(TableModelListener listener) {
+        listeners.remove(listener);
+    }
+
+    @Override
+    public String getColumnName(int columnIndex) {
         return names[columnIndex];
-        
-        
+
     }
+
     public int getRowCount() {
         return user.size();
     }
@@ -51,7 +57,7 @@ public class UserTableModel extends AbstractTableModel {
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch(columnIndex){
+        switch (columnIndex) {
             case 0:
                 return user.get(rowIndex).getPrivateInformation().getName();
             case 1:
@@ -73,61 +79,57 @@ public class UserTableModel extends AbstractTableModel {
                     str.append('*');
                 }
                 return str.toString();
-            
+
         }
         return null;
-        
+
     }
+
     @Override
-    public boolean isCellEditable(int rowIndex, int columnIndex)
-    {
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
-        
+
     }
     /*@Override
-    public Class<?> getColumnClass(int columnIndex)
-    {
-        return String.class;
-    }*/
+     public Class<?> getColumnClass(int columnIndex)
+     {
+     return String.class;
+     }*/
+
     @Override
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex)
-    {
-        switch(columnIndex)
-        {
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        switch (columnIndex) {
             case 0:
-                user.get(rowIndex).getPrivateInformation().setName((String)aValue);
+                user.get(rowIndex).getPrivateInformation().setName((String) aValue);
                 break;
             case 1:
-                user.get(rowIndex).getPrivateInformation().setSurname((String)aValue);
+                user.get(rowIndex).getPrivateInformation().setSurname((String) aValue);
                 break;
             case 2:
-                user.get(rowIndex).getPrivateInformation().setbDay(work.stringToLocalDate((String)aValue));
+                user.get(rowIndex).getPrivateInformation().setbDay(work.stringToLocalDate((String) aValue));
             case 3:
-                user.get(rowIndex).getAddress().setCity((String)aValue);
+                user.get(rowIndex).getAddress().setCity((String) aValue);
                 break;
             case 4:
-                user.get(rowIndex).getAddress().setCountry((String)aValue);
+                user.get(rowIndex).getAddress().setCountry((String) aValue);
                 break;
             case 5:
-                user.get(rowIndex).getServiceInfo().setEmail((String)aValue);
+                user.get(rowIndex).getServiceInfo().setEmail((String) aValue);
                 break;
             case 6:
-                try{
-                if(work.search((String)aValue)==null)
-                {
-                    user.get(rowIndex).getServiceInfo().setLogin((String)aValue);
+                try {
+                    if (work.search((String) aValue) == null) {
+                        user.get(rowIndex).getServiceInfo().setLogin((String) aValue);
+                    }
+                } catch (UserNotFoundException e) {
+                    // TODO
                 }
-                }
-            catch(UserNotFoundException e)
-            {
-                // TODO
-            }
-                //нужно написать обработку, когда лгин не может быть изменен
+            //нужно написать обработку, когда лгин не может быть изменен
             case 7:
-                user.get(rowIndex).getServiceInfo().setPassword((String)aValue);   
+                user.get(rowIndex).getServiceInfo().setPassword((String) aValue);
                 break;
-                
+
         }
     }
-    
+
 }

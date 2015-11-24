@@ -6,13 +6,14 @@
 package team5.desktop.user;
 
 import java.time.LocalDate;
-
+import java.io.Serializable;
 
 /**
  *
  * @author chanta
  */
-public class ServiceInfo implements java.io.Serializable{
+public class ServiceInfo implements Serializable {
+
     private String login;
     private String password;
     private final LocalDate dateOfRegistration;
@@ -41,7 +42,6 @@ public class ServiceInfo implements java.io.Serializable{
         return email;
     }
 
-
     public void setLogin(String login) {
         this.login = login;
     }
@@ -53,44 +53,42 @@ public class ServiceInfo implements java.io.Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
-    
 
     @Override
     public boolean equals(Object object) {
-        if (object ==null)
+        if (object == null) {
             return false;
-         
+        }
+
         if (object == this) {
             return true;
         }
         if (!(object instanceof ServiceInfo)) {
             return false;
         }
-        ServiceInfo info =(ServiceInfo)object;
-        if ((login.equals(info.getLogin()))&&(password.equals(info.getPassword()))
-            &&(dateOfRegistration.equals(info.getDateOfRegistration()))&&(email.equals(info.email)))
+        ServiceInfo info = (ServiceInfo) object;
+        if ((login.equals(info.getLogin())) && (password.equals(info.getPassword()))
+                && (dateOfRegistration.equals(info.getDateOfRegistration())) && (email.equals(info.email))) {
             return true;
-        
+        }
+
         return false;
     }
 
     @Override
     public int hashCode() {
         int result = 17;
-        result += 37 * result + login.hashCode()+password.hashCode();
-        result += 37 * result + email.hashCode()+dateOfRegistration.hashCode();
+        result += 37 * result + login.hashCode() + password.hashCode();
+        result += 37 * result + email.hashCode() + dateOfRegistration.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        StringBuilder builder=new StringBuilder(10);
+        StringBuilder builder = new StringBuilder(10);
         builder.append(" ServiceInfo: ").append(login).append(", ").append(password).append(", ")
                 .append(email).append(" ").append(dateOfRegistration).append(" ");
         return builder.toString();
     }
-    
-    
-            
-    
+
 }

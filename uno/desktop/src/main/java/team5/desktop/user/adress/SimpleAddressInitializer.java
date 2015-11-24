@@ -5,21 +5,20 @@
  */
 package team5.desktop.user.adress;
 
-
+import java.io.Serializable;
 
 /**
  *
  * @author chanta
  */
-public class SimpleAddressInitializer implements AddressInitializer, java.io.Serializable{
-     
+public class SimpleAddressInitializer implements AddressInitializer, Serializable {
 
     public SimpleAddressInitializer() {
     }
 
-    public Address initDefaultAddress(){
-        
+    public Address initDefaultAddress() {
+
         return new Address("", "");
-     }
-    
+    }
+
 }

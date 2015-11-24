@@ -246,7 +246,7 @@ public class SecondFrame extends javax.swing.JFrame {
         try {
             // WorkUser wu =WorkUser.getWork();
             Registration r = new Registration();
-        //if(sign.sign(this.jTextField1.getText(), this.jPasswordField1.getPassword()))
+            //if(sign.sign(this.jTextField1.getText(), this.jPasswordField1.getPassword()))
 
 //            if(r.registrationUser(this.jTextField3.getText(), this.jTextField4.getText(), this.jTextField5.getText(), this.jTextField6.getText(), this.jTextField1.getText(), this.jTextField2.getText(), this.jTextField7.getText(), LocalDate.now().toString()))
 //            {

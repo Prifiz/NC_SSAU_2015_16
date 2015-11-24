@@ -10,10 +10,12 @@ package team5.desktop.exceptions;
  * @author Dmitry
  */
 public class UserNotFoundException extends Exception {
-    public UserNotFoundException(){
-        
+
+    public UserNotFoundException() {
+
     }
-    public UserNotFoundException(String msg){
+
+    public UserNotFoundException(String msg) {
         super(msg);
     }
 }

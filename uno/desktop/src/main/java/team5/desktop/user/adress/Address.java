@@ -5,12 +5,14 @@
  */
 package team5.desktop.user.adress;
 
+import java.io.Serializable;
 
 /**
  *
  * @author chanta
  */
-public class Address implements java.io.Serializable{
+public class Address implements Serializable {
+
     private String country;
     private String city;
 
@@ -18,7 +20,8 @@ public class Address implements java.io.Serializable{
         this.country = country;
         this.city = city;
     }
-    public Address(){
+
+    public Address() {
         city = new String();
         country = new String();
     }
@@ -41,36 +44,35 @@ public class Address implements java.io.Serializable{
 
     @Override
     public boolean equals(Object object) {
-        if (object ==null)
+        if (object == null) {
             return false;
-         
+        }
+
         if (object == this) {
             return true;
         }
         if (!(object instanceof Address)) {
             return false;
         }
-        Address address = (Address)object;
-        if ((city.equals(address.getCity()))&&(country.equals(address.getCountry()))){
+        Address address = (Address) object;
+        if ((city.equals(address.getCity())) && (country.equals(address.getCountry()))) {
             return true;
         }
-          return false;
+        return false;
     }
 
     @Override
     public int hashCode() {
         int result = 17;
-        result += 37 * result + city.hashCode()+country.hashCode();
+        result += 37 * result + city.hashCode() + country.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        StringBuilder builder=new StringBuilder(10);
+        StringBuilder builder = new StringBuilder(10);
         builder.append(" Address: ").append(city).append(", ").append(country).append(" ");
         return builder.toString();
     }
-    
-    
-    
+
 }

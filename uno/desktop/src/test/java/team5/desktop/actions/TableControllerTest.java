@@ -20,12 +20,9 @@ import team5.desktop.card.NumericCard;
  * @author андрей
  */
 public class TableControllerTest {
-    
+
     public TableControllerTest() {
     }
-
-   
-   
 
     /**
      * Test of isRightCard method, of class TableController.
@@ -33,9 +30,9 @@ public class TableControllerTest {
     @Test
     public void testIsRightCard() {
         System.out.println("isRightCard");
-        Card card = new NumericCard(9,"green");
+        Card card = new NumericCard(9, "green");
         TableController instance = TableController.getTableController();
-        instance.setLastCard(new NumericCard(9,"green"));
+        instance.setLastCard(new NumericCard(9, "green"));
         boolean expResult = true;
         boolean result = instance.isRightCard(card);
         assertEquals(expResult, result);
@@ -48,7 +45,7 @@ public class TableControllerTest {
     public void testGetCardFromPack() {
         System.out.println("getCardFromPack");
         TableController instance = TableController.getTableController();
-        int expResult = instance.getPack().size()-1;
+        int expResult = instance.getPack().size() - 1;
         Card card = instance.getCardFromPack();
         int result = instance.getPack().size();
         assertEquals(expResult, result);
@@ -63,9 +60,9 @@ public class TableControllerTest {
         Reader in = new FileReader("Cards.txt");
         TableController instance = TableController.getTableController();
         instance.setNewPack();
-        Card expResult = new NumericCard(9,"green");
-        Card result = instance.getPack().get(instance.getPack().size()-1);
+        Card expResult = new NumericCard(9, "green");
+        Card result = instance.getPack().get(instance.getPack().size() - 1);
         assertEquals(expResult, result);
     }
-    
+
 }

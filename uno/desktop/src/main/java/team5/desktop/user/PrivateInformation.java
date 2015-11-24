@@ -6,12 +6,14 @@
 package team5.desktop.user;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 
 /**
  *
  * @author chanta
  */
-public class PrivateInformation implements java.io.Serializable{
+public class PrivateInformation implements Serializable {
+
     private String name;
     private String surname;
     private LocalDate bDay;
@@ -48,38 +50,37 @@ public class PrivateInformation implements java.io.Serializable{
 
     @Override
     public boolean equals(Object object) {
-        if (object ==null)
+        if (object == null) {
             return false;
-         
+        }
+
         if (object == this) {
             return true;
         }
         if (object instanceof PrivateInformation) {
             return false;
-    }
-        PrivateInformation privateInformation =(PrivateInformation)object;
-        if ((name.equals(privateInformation.getName()))&&(surname.equals(privateInformation.getSurname()))
-                &&(bDay.equals(privateInformation.bDay))){
+        }
+        PrivateInformation privateInformation = (PrivateInformation) object;
+        if ((name.equals(privateInformation.getName())) && (surname.equals(privateInformation.getSurname()))
+                && (bDay.equals(privateInformation.bDay))) {
             return true;
         }
-          return false;
+        return false;
     }
 
     @Override
     public String toString() {
-        StringBuilder builder=new StringBuilder(10);
+        StringBuilder builder = new StringBuilder(10);
         builder.append(" ").append(name).append(", ").append(surname).append(" ")
                 .append(bDay);
-        return builder.toString();    
+        return builder.toString();
     }
 
     @Override
     public int hashCode() {
         int result = 17;
-        result += 37 * result + name.hashCode()+surname.hashCode()+bDay.hashCode();
+        result += 37 * result + name.hashCode() + surname.hashCode() + bDay.hashCode();
         return result;
     }
-    
-    
-    
+
 }

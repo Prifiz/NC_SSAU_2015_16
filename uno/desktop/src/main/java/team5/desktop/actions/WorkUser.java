@@ -22,7 +22,7 @@ public class WorkUser implements Serializable {
 
     public WorkUser() {
         arrUsers = new ArrayList();
-        
+
     }
 
     public ArrayList<User> getArrOfUsers() {

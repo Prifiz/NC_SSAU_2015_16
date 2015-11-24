@@ -7,18 +7,10 @@ package team5.desktop.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.awt.event.WindowEvent;
-//import java.awt.event.WindowListener;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.UserTableModel;
-import team5.desktop.actions.WorkUser;
-import team5.desktop.exceptions.UserExistException;
 import team5.desktop.exceptions.UserNotFoundException;
 import team5.desktop.searches.*;
 import team5.desktop.user.User;
@@ -83,7 +75,7 @@ public class Search extends javax.swing.JFrame {
         this.add(jMessage);
         jMessage.setBounds(40, 90, 150, 30);
         jMessage.setText("");
-        
+
         backButton = new javax.swing.JButton();
         backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         backButton.setText("Back");
@@ -131,10 +123,10 @@ public class Search extends javax.swing.JFrame {
 
         } catch (UserNotFoundException e) {
             jMessage.setText("Nothing found.");
-        } 
+        }
          //   finally {
-       //     this.setVisible(false);
-       // }
+        //     this.setVisible(false);
+        // }
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {

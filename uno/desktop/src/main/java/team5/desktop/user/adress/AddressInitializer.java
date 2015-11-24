@@ -5,12 +5,11 @@
  */
 package team5.desktop.user.adress;
 
-
-
 /**
  *
  * @author chanta
  */
 public interface AddressInitializer {
+
     public Address initDefaultAddress();
 }

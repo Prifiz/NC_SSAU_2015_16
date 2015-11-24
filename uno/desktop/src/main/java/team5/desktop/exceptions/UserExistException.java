@@ -10,10 +10,12 @@ package team5.desktop.exceptions;
  * @author Dmitry
  */
 public class UserExistException extends Exception {
-     public UserExistException(){
-        
+
+    public UserExistException() {
+
     }
-    public UserExistException(String msg){
+
+    public UserExistException(String msg) {
         super(msg);
     }
 }

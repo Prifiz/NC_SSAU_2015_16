@@ -19,57 +19,51 @@ import team5.desktop.card.Card;
  * @author андрей
  */
 public class TableController {
-    
+
     private ArrayList<Card> pack;
     private Card lastcard;
     private static final TableController tablecontroller = new TableController();
     private int counter_for_random;
-    
-    private TableController()
-    {
+
+    private TableController() {
         setNewPack();
         counter_for_random = 76;
     }
-    
-    public static TableController getTableController()
-    {
+
+    public static TableController getTableController() {
         return tablecontroller;
     }
-    
+
     public ArrayList<Card> getPack() {
         return pack;
     }
-    public Card getLastCard()
-    {
+
+    public Card getLastCard() {
         return lastcard;
     }
-    public void setLastCard(Card card)
-    {
+
+    public void setLastCard(Card card) {
         lastcard = card;
     }
-    public boolean isRightCard(Card card)
-    {
-        if(lastcard.equals(card))
-        {
+
+    public boolean isRightCard(Card card) {
+        if (lastcard.equals(card)) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
-    public Card getCardFromPack()
-    {
+
+    public Card getCardFromPack() {
         Random random = new Random();
-        int i = random.nextInt(counter_for_random)+1;
+        int i = random.nextInt(counter_for_random) + 1;
         Card card = pack.get(i);
         pack.remove(i);
         counter_for_random--;
         return card;
     }
-    
-    public void setNewPack()
-    {
+
+    public void setNewPack() {
         FileReader fr = null;
         try {
             fr = new FileReader("Cards.txt");
@@ -82,5 +76,5 @@ public class TableController {
             Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

@@ -13,34 +13,31 @@ import team5.desktop.exceptions.*;
  * @author андрей
  */
 public class SignIn {
-    
+
     /**
-     * 
+     *
      * @param login
      * @param password
-     * @return 
+     * @return
      */
-    
-    public boolean sign(String login, char[]password)
-    {
-        try{
-        WorkUser work = WorkUser.getWork();
-        User user = work.search(login);
-        String s=""; 
-        for (int i = 0; i <password.length ; i++) { 
-            s+=password[i]; 
-        }
-        if(user.getServiceInfo().getPassword().equals(s))
-        {
-            //открытие фрейма с комнатами
-            return true;
-        }
-        else
-            return false;
-        }catch(UserNotFoundException e){
+    public boolean sign(String login, char[] password) {
+        try {
+            WorkUser work = WorkUser.getWork();
+            User user = work.search(login);
+            String s = "";
+            for (int i = 0; i < password.length; i++) {
+                s += password[i];
+            }
+            if (user.getServiceInfo().getPassword().equals(s)) {
+                //открытие фрейма с комнатами
+                return true;
+            } else {
+                return false;
+            }
+        } catch (UserNotFoundException e) {
             return false;
             //Надо написать обработчик некорректного логина, пароля!!!!!
         }
-        
+
     }
 }

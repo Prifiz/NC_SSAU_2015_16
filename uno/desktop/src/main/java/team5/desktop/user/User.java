@@ -8,17 +8,19 @@ package team5.desktop.user;
 import team5.desktop.user.adress.Address;
 import team5.desktop.user.adress.AddressInitializer;
 import team5.desktop.user.adress.SimpleAddressInitializer;
+import java.io.Serializable;
 
 /**
  *
  * @author chanta
  */
-public class User implements java.io.Serializable{
+public class User implements Serializable {
+
     private PrivateInformation privateInformation;
     AddressInitializer addressInitializer = new SimpleAddressInitializer();
     private Address address = addressInitializer.initDefaultAddress();
-    private ServiceInfo serviceInfo; 
-    
+    private ServiceInfo serviceInfo;
+
     public User(PrivateInformation privateInformation, Address address, ServiceInfo serviceInfo) {
         this.privateInformation = privateInformation;
         this.address = address;
@@ -40,7 +42,7 @@ public class User implements java.io.Serializable{
     public void setPrivateInformation(PrivateInformation privateInformation) {
         this.privateInformation = privateInformation;
     }
-    
+
     public void setAddress(Address address) {
         this.address = address;
     }
@@ -51,25 +53,26 @@ public class User implements java.io.Serializable{
 
     @Override
     public boolean equals(Object object) {
-        if (object ==null)
+        if (object == null) {
             return false;
-         
+        }
+
         if (object == this) {
             return true;
         }
         if (!(object instanceof User)) {
             return false;
         }
-        User user =(User)object;
-        if (serviceInfo.getLogin().equals(user.serviceInfo.getLogin())){
+        User user = (User) object;
+        if (serviceInfo.getLogin().equals(user.serviceInfo.getLogin())) {
             return true;
         }
-          return false;
+        return false;
     }
 
     @Override
     public String toString() {
-        StringBuilder builder=new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         builder.append("User: ").append(privateInformation.toString()).append(", ").append(serviceInfo.toString())
                 .append(", ").append(address.toString()).append("\n");
         return builder.toString();
@@ -77,6 +80,6 @@ public class User implements java.io.Serializable{
 
     @Override
     public int hashCode() {
-        return  address.hashCode()+serviceInfo.hashCode()+privateInformation.hashCode();
+        return address.hashCode() + serviceInfo.hashCode() + privateInformation.hashCode();
     }
 }
