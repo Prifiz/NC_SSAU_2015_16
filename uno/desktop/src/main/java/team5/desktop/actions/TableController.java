@@ -25,8 +25,8 @@ public class TableController {
     private int counter_for_random;
 
     public TableController() {
-        setNewPack();
-        counter_for_random = 76;
+        loadNewPack();
+        counter_for_random = 75;
     }
 
     public ArrayList<Card> getPack() {
@@ -42,10 +42,19 @@ public class TableController {
     }
 
     public boolean isRightCard(Card card) {
-        if (lastcard.equals(card)) {
+        if(lastcard!=null)
+        {
+        if ((lastcard.getColor().equals(card.getColor()))||(lastcard.getIcon()==card.getIcon())) {
+            lastcard = card;
             return true;
         } else {
             return false;
+        }
+        }
+        else
+        {
+            lastcard = card;
+            return true;
         }
     }
 
@@ -58,7 +67,7 @@ public class TableController {
         return card;
     }
 
-    public void setNewPack() {
+    public void loadNewPack() {
         FileReader fr = null;
         try {
             fr = new FileReader("Cards.txt");
@@ -72,4 +81,17 @@ public class TableController {
         }
     }
 
+    public void setNewPack(ArrayList<Card> l1, ArrayList<Card> l2)
+    {
+        loadNewPack();
+        for (Card l11 : l1) {
+            pack.remove(l11);
+        }
+        for (Card l22:l2)
+        {
+            pack.remove(l22);
+        }
+        pack.remove(lastcard);
+    }
+            
 }

@@ -59,7 +59,7 @@ public class TableControllerTest {
         System.out.println("setNewPack");
         Reader in = new FileReader("Cards.txt");
         TableController instance = new TableController();
-        instance.setNewPack();
+        instance.loadNewPack();
         Card expResult = new NumericCard(9, "green");
         Card result = instance.getPack().get(instance.getPack().size() - 1);
         assertEquals(expResult, result);
