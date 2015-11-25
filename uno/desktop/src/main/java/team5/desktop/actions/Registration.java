@@ -24,6 +24,7 @@ public class Registration {
             // apache commons-lang
             // StringUtils.isBlank(String string)
             if (("".equals(name)) || ("".equals(surname)) || ("".equals(login)) || ("".equals(password)) || ("".equals(email))) {
+                
                 return false;
             } else {
                 workUser.addUser(name, surname, country, sity, login, password, email, bDay);

@@ -29,20 +29,20 @@ public class WorkWithFiles {
             oos.writeObject((WorkUser) data);
         }
         //при создание класса работы с картами добавить сериализацию для них
-        //else (data instanceof WorkCard){
-        //    oos.writeObject((WorkCard)data);
-        //}
+        else if (data instanceof WorkCard){
+           oos.writeObject((WorkCard)data);
+        }
         oos.close();
     }
 
-    public WorkUser deserializableData(String fileName) throws IOException, ClassNotFoundException {
+    public WorkUser/* Object*/ deserializableData(String fileName) throws IOException, ClassNotFoundException {
         WorkUser workUser;
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
         workUser = (WorkUser) ois.readObject();
         ois.close();
         return workUser;
     }
-
+    
     public static void writeCards(ArrayList<Card> pack, Writer out) throws IOException {
         for (Card card : pack) {
             out.write(card.toString());

@@ -38,6 +38,9 @@ public class GameFrame extends JFrame {
     private JLabel lastCardLabel;
     private JLabel uno;
     private JPanel panel;
+    private JTabbedPane pane;
+    private JPanel pn1;
+    private JPanel pn2;
 
     public GameFrame() {
         initComponents();
@@ -61,25 +64,25 @@ public class GameFrame extends JFrame {
         panel.setLayout(null);
         add(panel);
 
-        JTabbedPane pane = new JTabbedPane();
+        pane = new JTabbedPane();
         pane.setBounds(50, 300, 500, 200);
         pane.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        JPanel pn1 = new JPanel();
-        JPanel pn2 = new JPanel();
+        pn1 = new JPanel();
+        pn2 = new JPanel();
         pn1.setBackground(Color.white);
         pn2.setBackground(Color.white);
         pane.add(pn1, "Player1");
         pane.add(pn2, "Player2");
         pane.setEnabledAt(1, false);// вторая вкладка заблокирована
         add(pane);
-        
+
         //http://spec-zone.ru/RU/Java/Docs/7/api/javax/swing/ButtonGroup.html
         buttonGroup = new ButtonGroup();
         for (int i = 1; i <= 4; i++) {
             JRadioButton jRadioButton = new JRadioButton();
-            jRadioButton.setText("Card " + i); 
+            jRadioButton.setText("Card " + i);
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup.add(jRadioButton); 
+            buttonGroup.add(jRadioButton);
             //выравниваем кнопку в центр панели по горизонтали
             jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             pn1.add(jRadioButton);
@@ -201,6 +204,13 @@ public class GameFrame extends JFrame {
     }
 
     private void finishMoveButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        if (pane.isEnabledAt(0)) {
+            pane.setEnabledAt(0, false);// первая вкладка заблокирована
+            pane.setEnabledAt(1, true);//вторая вкладка активная
+        } else {
+            pane.setEnabledAt(0, true);// вторая вкладка заблокирована
+            pane.setEnabledAt(1, false);//первая вкладка активная  
+        }
 
     }
 

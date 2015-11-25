@@ -262,6 +262,7 @@ public class SecondFrame extends javax.swing.JFrame {
                 jMessage.setText("The field is empty. Fill in all the fields.");
             }
         } catch (UserExistException e) {
+             jMessage.setText("User already created");
             //Надо написать обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
         }
     }

@@ -8,6 +8,7 @@ package team5.desktop.gui;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import team5.desktop.actions.WorkWithFiles;

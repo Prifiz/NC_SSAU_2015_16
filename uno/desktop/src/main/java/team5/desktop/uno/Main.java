@@ -14,6 +14,8 @@ import team5.desktop.exceptions.*;
 import team5.desktop.gui.StartFrame;
 import team5.desktop.user.adress.Address;
 import team5.desktop.searches.UserSearch;
+import team5.desktop.user.User;
+import team5.desktop.user.admin.Admin;
 
 /**
  *

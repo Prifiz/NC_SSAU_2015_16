@@ -9,6 +9,7 @@ import team5.desktop.user.adress.Address;
 import team5.desktop.user.adress.AddressInitializer;
 import team5.desktop.user.adress.SimpleAddressInitializer;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  *
@@ -20,6 +21,17 @@ public class User implements Serializable {
     AddressInitializer addressInitializer = new SimpleAddressInitializer();
     private Address address = addressInitializer.initDefaultAddress();
     private ServiceInfo serviceInfo;
+
+    public User() {
+        serviceInfo.setLogin("");
+        serviceInfo.setPassword("");
+        serviceInfo.setEmail("");
+        address.setCity("");
+        address.setCountry("");
+        privateInformation.setName("");
+        privateInformation.setSurname("");
+        privateInformation.setbDay(LocalDate.now());
+    }
 
     public User(PrivateInformation privateInformation, Address address, ServiceInfo serviceInfo) {
         this.privateInformation = privateInformation;

@@ -9,6 +9,7 @@ import team5.desktop.user.PrivateInformation;
 import team5.desktop.user.ServiceInfo;
 import team5.desktop.user.User;
 import team5.desktop.exceptions.*;
+import team5.desktop.user.admin.Admin;
 
 public class WorkUser implements Serializable {
 
@@ -22,6 +23,9 @@ public class WorkUser implements Serializable {
 
     public WorkUser() {
         arrUsers = new ArrayList();
+        
+        //User admin = new Admin();
+        //arrUsers.add(admin);
 
     }
 
