@@ -46,7 +46,7 @@ public class GameFrame extends JFrame {
     private JPanel panel;
     private JPanel pn1 ;
     private JPanel pn2 ;
-    private JTabbedPane pane; 
+    private JTabbedPane pane;
     public GameFrame() {
         initComponents();
     }
@@ -84,7 +84,7 @@ public class GameFrame extends JFrame {
         pane.add(pn2, "Player2");
         pane.setEnabledAt(1, false);// вторая вкладка заблокирована
         add(pane);
-        
+
         //http://spec-zone.ru/RU/Java/Docs/7/api/javax/swing/ButtonGroup.html
         buttonGroup1 = new ButtonGroup();
         buttonGroup2 = new ButtonGroup();
@@ -201,13 +201,13 @@ public class GameFrame extends JFrame {
     }
 
     private void takeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
- 
+
         if(pane.isEnabledAt(0))
         {
             JRadioButton jRadioButton = new JRadioButton();
-            jRadioButton.setText(table.getCardFromPack().toString()); 
+            jRadioButton.setText(table.getCardFromPack().toString());
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup1.add(jRadioButton); 
+            buttonGroup1.add(jRadioButton);
             //выравниваем кнопку в центр панели по горизонтали
             jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             pn1.add(jRadioButton);
@@ -217,35 +217,35 @@ public class GameFrame extends JFrame {
         if(pane.isEnabledAt(1))
         {
             JRadioButton jRadioButton = new JRadioButton();
-            jRadioButton.setText(table.getCardFromPack().toString()); 
+            jRadioButton.setText(table.getCardFromPack().toString());
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup2.add(jRadioButton); 
+            buttonGroup2.add(jRadioButton);
             //выравниваем кнопку в центр панели по горизонтали
             jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             pn2.add(jRadioButton);
             pn2.revalidate();
             pn2.repaint();
         }
-        
+
     }
 
     private void firstDistribution()
     {
-        
+
         for (int i = 1; i <= 7; i++) {
             JRadioButton jRadioButton = new JRadioButton();
-            jRadioButton.setText(table.getCardFromPack().toString()); 
+            jRadioButton.setText(table.getCardFromPack().toString());
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup1.add(jRadioButton); 
+            buttonGroup1.add(jRadioButton);
             //выравниваем кнопку в центр панели по горизонтали
             jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             pn1.add(jRadioButton);
         }
         for (int i = 1; i <= 7; i++) {
             JRadioButton jRadioButton = new JRadioButton();
-            jRadioButton.setText(table.getCardFromPack().toString()); 
+            jRadioButton.setText(table.getCardFromPack().toString());
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup2.add(jRadioButton); 
+            buttonGroup2.add(jRadioButton);
             //выравниваем кнопку в центр панели по горизонтали
             jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             pn2.add(jRadioButton);
@@ -262,7 +262,7 @@ public class GameFrame extends JFrame {
         {
             pane.setEnabledAt(1,false);
             pane.setEnabledAt(0,true);
-        }
+    }
     }
 
     /**
