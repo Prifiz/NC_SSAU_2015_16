@@ -88,8 +88,8 @@ public class GameFrame extends JFrame {
         pane.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         pn1 = new JPanel();
         pn2 = new JPanel();
-        pn1.setBackground(Color.white);
-        pn2.setBackground(Color.white);
+        pn1.setBackground(Color.LIGHT_GRAY);
+        pn2.setBackground(Color.LIGHT_GRAY);
         pane.addTab("Player1", pn1);
         pane.addTab("Player2", pn2);
         pane.setEnabledAt(1, false);// вторая вкладка заблокирована
@@ -162,9 +162,9 @@ public class GameFrame extends JFrame {
 
         lastCardLabel = new JLabel();
         lastCardLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        lastCardLabel.setText("Last card");
+        lastCardLabel.setText("Select start card");
         panel.add(lastCardLabel);
-        lastCardLabel.setBounds(30, 40, 120, 30);
+        lastCardLabel.setBounds(10, 40, 170, 30);
 
         addWindowListener(new WindowListener() {
 
@@ -218,7 +218,7 @@ public class GameFrame extends JFrame {
 
         Rules rules = new Rules();
         rules.setVisible(true);
-       // this.setVisible(false);
+        // this.setVisible(false);
     }
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +244,7 @@ public class GameFrame extends JFrame {
                 Card card = table.getCardFromPack();
                 gamer1.addCardToHand(card);
                 jRadioButton.setText(card.toString());
+                jRadioButton.setForeground(isCardColor(card.getColor()));//color
                 jRadioButton.setActionCommand(card.toString());
                 //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
                 buttonGroup1.add(jRadioButton);
@@ -265,6 +266,7 @@ public class GameFrame extends JFrame {
                 Card card = table.getCardFromPack();
                 gamer2.addCardToHand(card);
                 jRadioButton.setText(card.toString());
+                jRadioButton.setForeground(isCardColor(card.getColor()));//color
                 jRadioButton.setActionCommand(card.toString());
                 //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
                 buttonGroup2.add(jRadioButton);
@@ -281,6 +283,24 @@ public class GameFrame extends JFrame {
 
     }
 
+    private Color isCardColor(String color) {
+        if ("blue".equals(color)) {
+            return Color.BLUE;
+        } else {
+            if ("yellow".equals(color)) {
+                return Color.YELLOW;
+            } else {
+                if ("green".equals(color)) {
+                    return Color.GREEN;
+                } else {
+                    return Color.RED;
+                }
+
+            }
+        }
+
+    }
+
     private void firstDistribution() {
 
         pane.setSelectedIndex(0);
@@ -289,6 +309,7 @@ public class GameFrame extends JFrame {
             Card card = table.getCardFromPack();
             gamer1.addCardToHand(card);
             jRadioButton.setText(card.toString());
+            jRadioButton.setForeground(isCardColor(card.getColor()));//color
             jRadioButton.setActionCommand(card.toString());
             jRadioButton.setSelected(true);
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
@@ -302,6 +323,7 @@ public class GameFrame extends JFrame {
             Card card = table.getCardFromPack();
             gamer2.addCardToHand(card);
             jRadioButton.setText(card.toString());
+            jRadioButton.setForeground(isCardColor(card.getColor()));//color
             jRadioButton.setActionCommand(card.toString());
             jRadioButton.setSelected(true);
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
@@ -332,6 +354,7 @@ public class GameFrame extends JFrame {
                 }
 
                 lastCardLabel.setText(str);
+                lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                 buttonGroup1.remove(jr);
                 if (buttonGroup1.getButtonCount() == 0) {
                     FinishFrame finish = new FinishFrame();
