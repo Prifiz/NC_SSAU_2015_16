@@ -38,7 +38,7 @@ public class NumericCard extends Card implements Serializable{
 
     @Override
     public String toString() {
-        return "Numeric " + getColor() + " " + getIcon();
+        return getColor() + " " + getIcon();
     }
 
     @Override
