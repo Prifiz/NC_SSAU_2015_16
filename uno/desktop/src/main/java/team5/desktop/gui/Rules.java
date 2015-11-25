@@ -155,8 +155,8 @@ public class Rules extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        StartFrame start = new StartFrame();
-        start.setVisible(true);
+      //  StartFrame start = new StartFrame();
+      //  start.setVisible(true);
         this.setVisible(false);
     }
 

@@ -51,9 +51,10 @@ public class GameFrame extends JFrame {
     private JLabel lastCardLabel;
     private JLabel uno;
     private JPanel panel;
-    private JPanel pn1 ;
-    private JPanel pn2 ;
-    private JTabbedPane pane; 
+    private JPanel pn1;
+    private JPanel pn2;
+    private JTabbedPane pane;
+
     public GameFrame() {
         initComponents();
     }
@@ -89,12 +90,11 @@ public class GameFrame extends JFrame {
         pn2 = new JPanel();
         pn1.setBackground(Color.white);
         pn2.setBackground(Color.white);
-        pane.addTab( "Player1",pn1);
-        pane.addTab( "Player2",pn2);
+        pane.addTab("Player1", pn1);
+        pane.addTab("Player2", pn2);
         pane.setEnabledAt(1, false);// вторая вкладка заблокирована
         add(pane);
-        
-        
+
         //http://spec-zone.ru/RU/Java/Docs/7/api/javax/swing/ButtonGroup.html
         buttonGroup1 = new ButtonGroup();
         buttonGroup2 = new ButtonGroup();
@@ -121,7 +121,7 @@ public class GameFrame extends JFrame {
             }
         });
 
-         checkButton = new JButton();
+        checkButton = new JButton();
         checkButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         checkButton.setText("Chek");
         add(checkButton);
@@ -131,7 +131,7 @@ public class GameFrame extends JFrame {
                 checkButtonActionPerformed(evt);
             }
         });
-        
+
         takeCardButton = new JButton();
         takeCardButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         takeCardButton.setText("Take card");
@@ -165,7 +165,7 @@ public class GameFrame extends JFrame {
         lastCardLabel.setText("Last card");
         panel.add(lastCardLabel);
         lastCardLabel.setBounds(30, 40, 120, 30);
-        
+
         addWindowListener(new WindowListener() {
 
             public void windowActivated(WindowEvent event) {
@@ -218,94 +218,81 @@ public class GameFrame extends JFrame {
 
         Rules rules = new Rules();
         rules.setVisible(true);
-        this.setVisible(false);
+       // this.setVisible(false);
     }
 
-     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {
-         if(pane.isEnabledAt(0))
-        {
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        if (pane.isEnabledAt(0)) {
             pane.setSelectedIndex(1);
-            pane.setEnabledAt(0,false);
-            pane.setEnabledAt(1,true);
+            pane.setEnabledAt(0, false);
+            pane.setEnabledAt(1, true);
+            isTakeCard = false;
+        } else {
+            pane.setSelectedIndex(0);
+            pane.setEnabledAt(1, false);
+            pane.setEnabledAt(0, true);
             isTakeCard = false;
         }
-         else
-         {
-             pane.setSelectedIndex(0);
-             pane.setEnabledAt(1,false);
-             pane.setEnabledAt(0,true);
-             isTakeCard = false;
-         }
-     }
-    private void takeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
- 
-        
-        if(pane.isEnabledAt(0))
-        {
-            if(!isTakeCard)
-            {
-            pane.setSelectedIndex(0);
-            JRadioButton jRadioButton = new JRadioButton();
-            Card card = table.getCardFromPack();
-            gamer1.addCardToHand(card);
-            jRadioButton.setText(card.toString()); 
-            jRadioButton.setActionCommand(card.toString());
-            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup1.add(jRadioButton); 
-            //выравниваем кнопку в центр панели по горизонтали
-            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            pn1.add(jRadioButton);
-            pn1.revalidate();
-            pn1.repaint();
-            isTakeCard = true;
-            }
-            else
-            {
-                JOptionPane.showConfirmDialog(null, "You can't take card more","Wou wou", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        
-        if(pane.isEnabledAt(1))
-        {
-            if(!isTakeCard)
-            {
-            pane.setSelectedIndex(1);
-            JRadioButton jRadioButton = new JRadioButton();
-            Card card = table.getCardFromPack();
-            gamer2.addCardToHand(card);
-            jRadioButton.setText(card.toString()); 
-            jRadioButton.setActionCommand(card.toString()); 
-            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup2.add(jRadioButton); 
-            //выравниваем кнопку в центр панели по горизонтали
-            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            pn2.add(jRadioButton);
-            pn2.revalidate();
-            pn2.repaint();
-            isTakeCard = true;
-            }
-            else
-            {
-                JOptionPane.showConfirmDialog(null, "You can't take card more","Wou wou", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        
-        
     }
 
-    private  void firstDistribution()
-    {
-        
+    private void takeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
+
+        if (pane.isEnabledAt(0)) {
+            if (!isTakeCard) {
+                pane.setSelectedIndex(0);
+                JRadioButton jRadioButton = new JRadioButton();
+                Card card = table.getCardFromPack();
+                gamer1.addCardToHand(card);
+                jRadioButton.setText(card.toString());
+                jRadioButton.setActionCommand(card.toString());
+                //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
+                buttonGroup1.add(jRadioButton);
+                //выравниваем кнопку в центр панели по горизонтали
+                jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+                pn1.add(jRadioButton);
+                pn1.revalidate();
+                pn1.repaint();
+                isTakeCard = true;
+            } else {
+                JOptionPane.showConfirmDialog(null, "You can't take card more", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+        if (pane.isEnabledAt(1)) {
+            if (!isTakeCard) {
+                pane.setSelectedIndex(1);
+                JRadioButton jRadioButton = new JRadioButton();
+                Card card = table.getCardFromPack();
+                gamer2.addCardToHand(card);
+                jRadioButton.setText(card.toString());
+                jRadioButton.setActionCommand(card.toString());
+                //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
+                buttonGroup2.add(jRadioButton);
+                //выравниваем кнопку в центр панели по горизонтали
+                jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+                pn2.add(jRadioButton);
+                pn2.revalidate();
+                pn2.repaint();
+                isTakeCard = true;
+            } else {
+                JOptionPane.showConfirmDialog(null, "You can't take card more", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+    }
+
+    private void firstDistribution() {
+
         pane.setSelectedIndex(0);
         for (int i = 1; i <= 7; i++) {
             JRadioButton jRadioButton = new JRadioButton();
             Card card = table.getCardFromPack();
             gamer1.addCardToHand(card);
-            jRadioButton.setText(card.toString()); 
+            jRadioButton.setText(card.toString());
             jRadioButton.setActionCommand(card.toString());
             jRadioButton.setSelected(true);
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup1.add(jRadioButton); 
+            buttonGroup1.add(jRadioButton);
             //выравниваем кнопку в центр панели по горизонтали
             jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             pn1.add(jRadioButton);
@@ -314,123 +301,101 @@ public class GameFrame extends JFrame {
             JRadioButton jRadioButton = new JRadioButton();
             Card card = table.getCardFromPack();
             gamer2.addCardToHand(card);
-            jRadioButton.setText(card.toString()); 
+            jRadioButton.setText(card.toString());
             jRadioButton.setActionCommand(card.toString());
             jRadioButton.setSelected(true);
             //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup2.add(jRadioButton); 
+            buttonGroup2.add(jRadioButton);
             //выравниваем кнопку в центр панели по горизонтали
             jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             pn2.add(jRadioButton);
         }
     }
+
     private void finishMoveButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        if(pane.isEnabledAt(0))
-        {
+        if (pane.isEnabledAt(0)) {
             JRadioButton jr = new JRadioButton();
             String str = buttonGroup1.getSelection().getActionCommand();
             Card card = gamer1.searchCardInHand(str);
-            if(table.isRightCard(card))
-            {
+            if (table.isRightCard(card)) {
                 JRadioButton jr2 = null;
-                 Enumeration en =  buttonGroup1.getElements();
-                 while(en.hasMoreElements())
-                 {
+                Enumeration en = buttonGroup1.getElements();
+                while (en.hasMoreElements()) {
                     jr = (JRadioButton) en.nextElement();
-                    if(jr.getText().equals(str))
-                    {
-                        
+                    if (jr.getText().equals(str)) {
+
                         break;
-                    }
-                    else
-                    {
+                    } else {
                         jr2 = jr;
                     }
-                 }
-                
+                }
+
                 lastCardLabel.setText(str);
                 buttonGroup1.remove(jr);
-                if(buttonGroup1.getButtonCount()==0)
-                {
+                if (buttonGroup1.getButtonCount() == 0) {
                     FinishFrame finish = new FinishFrame();
                     finish.setVisible(true);
                     this.setVisible(false);
                 }
-                 if(jr2 == null)
-                {
-                     jr2 = (JRadioButton) en.nextElement();//выскакивае исключение есди нет следующего
+                if (jr2 == null) {
+                    jr2 = (JRadioButton) en.nextElement();//выскакивае исключение есди нет следующего
                 }
                 buttonGroup1.setSelected(jr2.getModel(), true);
                 pn1.remove(jr);
                 pn1.revalidate();
                 pn1.repaint();
                 isTakeCard = false;
-                
+
                 pane.setSelectedIndex(1);
-                pane.setEnabledAt(0,false);
-                pane.setEnabledAt(1,true);
+                pane.setEnabledAt(0, false);
+                pane.setEnabledAt(1, true);
+            } else {
+                JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
-            else
-            {
-                JOptionPane.showConfirmDialog(null, "This card isn't right","Wou wou", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
-            }
-            
-            
-        }
-        else
-        {
-           
-            
+
+        } else {
+
             JRadioButton jr = new JRadioButton();
             String str = buttonGroup2.getSelection().getActionCommand();
             Card card = gamer2.searchCardInHand(str);
-            if(table.isRightCard(card))
-            {
+            if (table.isRightCard(card)) {
                 JRadioButton jr2 = null;
-                 Enumeration en =  buttonGroup2.getElements();
-                 while(en.hasMoreElements())
-                 {
+                Enumeration en = buttonGroup2.getElements();
+                while (en.hasMoreElements()) {
                     jr = (JRadioButton) en.nextElement();
-                    if(jr.getText().equals(str))
-                    {
+                    if (jr.getText().equals(str)) {
                         break;
-                    }
-                    else
-                    {
+                    } else {
                         jr2 = jr;
                     }
-                 }
-                
+                }
+
                 lastCardLabel.setText(str);
                 buttonGroup2.remove(jr);
-                if(buttonGroup2.getButtonCount()==0)
-                {
+                if (buttonGroup2.getButtonCount() == 0) {
                     FinishFrame finish = new FinishFrame();
                     finish.setVisible(true);
                     this.setVisible(false);
                 }
-                if(jr2 == null)
-                {
-                     jr2 = (JRadioButton) en.nextElement();//выскакивает исключение если нет следующего
+                if (jr2 == null) {
+                    jr2 = (JRadioButton) en.nextElement();//выскакивает исключение если нет следующего
                 }
+
                 buttonGroup2.setSelected(jr2.getModel(), true);
                 pn2.remove(jr);
                 pn2.revalidate();
                 pn2.repaint();
                 isTakeCard = false;
-                 
-            pane.setSelectedIndex(0);
-            pane.setEnabledAt(1,false);
-            pane.setEnabledAt(0,true);
-            
-        }
-            else
-            {
-                JOptionPane.showConfirmDialog(null, "This card isn't right","Wou wou", JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
+
+                pane.setSelectedIndex(0);
+                pane.setEnabledAt(1, false);
+                pane.setEnabledAt(0, true);
+            } else {
+                JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
-            
-    }
+
+        }
     }
 
     /**
@@ -458,7 +423,7 @@ public class GameFrame extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GameFrame().setVisible(true);
-                
+
             }
         });
     }

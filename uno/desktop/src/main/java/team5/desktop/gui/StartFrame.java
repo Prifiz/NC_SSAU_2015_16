@@ -149,7 +149,7 @@ public class StartFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         Rules rule = new Rules();
         rule.setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
