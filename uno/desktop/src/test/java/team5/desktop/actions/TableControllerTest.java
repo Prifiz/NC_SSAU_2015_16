@@ -31,7 +31,7 @@ public class TableControllerTest {
     public void testIsRightCard() {
         System.out.println("isRightCard");
         Card card = new NumericCard(9, "green");
-        TableController instance = TableController.getTableController();
+        TableController instance = new TableController();
         instance.setLastCard(new NumericCard(9, "green"));
         boolean expResult = true;
         boolean result = instance.isRightCard(card);
@@ -44,7 +44,7 @@ public class TableControllerTest {
     @Test
     public void testGetCardFromPack() {
         System.out.println("getCardFromPack");
-        TableController instance = TableController.getTableController();
+        TableController instance = new TableController();
         int expResult = instance.getPack().size() - 1;
         Card card = instance.getCardFromPack();
         int result = instance.getPack().size();
@@ -58,7 +58,7 @@ public class TableControllerTest {
     public void testSetNewPack() throws FileNotFoundException {
         System.out.println("setNewPack");
         Reader in = new FileReader("Cards.txt");
-        TableController instance = TableController.getTableController();
+        TableController instance = new TableController();
         instance.setNewPack();
         Card expResult = new NumericCard(9, "green");
         Card result = instance.getPack().get(instance.getPack().size() - 1);
