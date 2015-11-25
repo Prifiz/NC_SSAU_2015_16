@@ -24,8 +24,8 @@ public class WorkUser implements Serializable {
     public WorkUser() {
         arrUsers = new ArrayList();
         
-        //User admin = new Admin();
-        //arrUsers.add(admin);
+        User admin = new Admin();
+        arrUsers.add(admin);
 
     }
 

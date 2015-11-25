@@ -280,7 +280,7 @@ public class MemberList extends javax.swing.JFrame {
             if ((jTable1.getSelectedRow() >= 0) && (jTable1.getSelectedRow() < WorkUser.getWork().getArrOfUsers().size())) {
                 WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
                 if (search.getSearchRequest() != null) {
-                    model.setUser((ArrayList<User>) UserSearch.Search(search.getSearchRequest()));
+                    model.setUser((ArrayList<User>) UserSearch.regularSearch(search.getSearchRequest()));
                 }
             }
         } catch (UserNotFoundException e) {
@@ -296,7 +296,7 @@ public class MemberList extends javax.swing.JFrame {
             WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
                     tfpassword.getText(), tfemail.getText(), tfbday.getText());//остановился тут
             if (search.getSearchRequest() != null) {
-                model.setUser((ArrayList<User>) UserSearch.Search(search.getSearchRequest()));
+                model.setUser((ArrayList<User>) UserSearch.regularSearch(search.getSearchRequest()));
             }
         } catch (UserExistException e) {
             ///???????

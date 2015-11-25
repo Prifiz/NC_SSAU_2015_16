@@ -15,10 +15,11 @@ import team5.desktop.exceptions.UserNotFoundException;
  *
  * @author Dmitry
  */
-public class UserSearch {
+public class UserSearch  {
 
     //private  ArrayList<User>  resultOfSearch;
-    public static List Search(String request)
+    
+    public static List regularSearch(String request)
             throws UserNotFoundException {
         ArrayList<User> users = WorkUser.getWork().getArrOfUsers();
         ArrayList<User> resultOfSearch = new ArrayList<User>();

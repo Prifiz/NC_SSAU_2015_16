@@ -116,7 +116,7 @@ public class Search extends javax.swing.JFrame {
         searchRequest = tfsearch.getText();
         try {
 
-            model.setUser((ArrayList<User>) UserSearch.Search(searchRequest));
+            model.setUser((ArrayList<User>) UserSearch.regularSearch(searchRequest));
             table.revalidate();
             table.repaint();
             this.setVisible(false);

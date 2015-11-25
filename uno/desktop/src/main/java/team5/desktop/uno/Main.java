@@ -70,7 +70,7 @@ public class Main {
 
         }
         try {
-            System.out.println("Search: " + UserSearch.Search("(\\d|\\s|\\w)").toString());
+            System.out.println("Search: " + UserSearch.regularSearch("(\\d|\\s|\\w)").toString());
 
         } catch (UserNotFoundException e) {
             System.out.println("Ошибка!");

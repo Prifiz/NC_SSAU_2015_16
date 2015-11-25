@@ -23,14 +23,16 @@ public class User implements Serializable {
     private ServiceInfo serviceInfo;
 
     public User() {
-        serviceInfo.setLogin("");
-        serviceInfo.setPassword("");
-        serviceInfo.setEmail("");
+        serviceInfo=new ServiceInfo("","","");//изменил
+//        serviceInfo.setLogin("");
+//        serviceInfo.setPassword("");
+//        serviceInfo.setEmail("");
         address.setCity("");
         address.setCountry("");
-        privateInformation.setName("");
-        privateInformation.setSurname("");
-        privateInformation.setbDay(LocalDate.now());
+        privateInformation=new PrivateInformation("", "", LocalDate.now());//изменил
+//        privateInformation.setName("");
+//        privateInformation.setSurname("");
+//        privateInformation.setbDay(LocalDate.now());
     }
 
     public User(PrivateInformation privateInformation, Address address, ServiceInfo serviceInfo) {
