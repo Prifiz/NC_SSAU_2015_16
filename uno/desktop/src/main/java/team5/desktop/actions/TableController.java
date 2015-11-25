@@ -22,16 +22,11 @@ public class TableController {
 
     private ArrayList<Card> pack;
     private Card lastcard;
-    private static final TableController tablecontroller = new TableController();
     private int counter_for_random;
 
-    private TableController() {
+    public TableController() {
         setNewPack();
         counter_for_random = 76;
-    }
-
-    public static TableController getTableController() {
-        return tablecontroller;
     }
 
     public ArrayList<Card> getPack() {

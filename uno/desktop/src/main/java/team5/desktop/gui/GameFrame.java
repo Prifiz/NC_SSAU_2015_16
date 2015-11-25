@@ -21,6 +21,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
+import team5.desktop.actions.GamerController;
+import team5.desktop.actions.RoomController;
+import team5.desktop.actions.TableController;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.actions.WorkWithFiles;
 
@@ -30,24 +33,30 @@ import team5.desktop.actions.WorkWithFiles;
  */
 public class GameFrame extends JFrame {
 
+    private RoomController room;
+    private TableController table;
     private JButton exitGameButton;
     private JButton rulesButton;
     private JButton takeCardButton;
     private JButton finishMoveButton;
-    private ButtonGroup buttonGroup;
+    private ButtonGroup buttonGroup1;
+    private ButtonGroup buttonGroup2;
     private JLabel lastCardLabel;
     private JLabel uno;
     private JPanel panel;
-    private JTabbedPane pane;
-    private JPanel pn1;
-    private JPanel pn2;
-
+    private JPanel pn1 ;
+    private JPanel pn2 ;
+    private JTabbedPane pane; 
     public GameFrame() {
         initComponents();
     }
 
     private void initComponents() {
 
+        room = new RoomController();
+        room.addGamer(new GamerController("Player1"));
+        room.addGamer(new GamerController("Player2"));
+        table = room.getTableController();
         setPreferredSize(new Dimension(800, 600));
         setLayout(null);
         //setBounds(200, 10, 710, 790);
@@ -75,18 +84,10 @@ public class GameFrame extends JFrame {
         pane.add(pn2, "Player2");
         pane.setEnabledAt(1, false);// вторая вкладка заблокирована
         add(pane);
-
+        
         //http://spec-zone.ru/RU/Java/Docs/7/api/javax/swing/ButtonGroup.html
-        buttonGroup = new ButtonGroup();
-        for (int i = 1; i <= 4; i++) {
-            JRadioButton jRadioButton = new JRadioButton();
-            jRadioButton.setText("Card " + i);
-            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-            buttonGroup.add(jRadioButton);
-            //выравниваем кнопку в центр панели по горизонтали
-            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            pn1.add(jRadioButton);
-        }
+        buttonGroup1 = new ButtonGroup();
+        buttonGroup2 = new ButtonGroup();
 
         exitGameButton = new JButton();
         exitGameButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -143,7 +144,7 @@ public class GameFrame extends JFrame {
         lastCardLabel.setText("Last card");
         panel.add(lastCardLabel);
         lastCardLabel.setBounds(30, 40, 120, 30);
-
+        firstDistribution();
         addWindowListener(new WindowListener() {
 
             public void windowActivated(WindowEvent event) {
@@ -200,18 +201,68 @@ public class GameFrame extends JFrame {
     }
 
     private void takeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+ 
+        if(pane.isEnabledAt(0))
+        {
+            JRadioButton jRadioButton = new JRadioButton();
+            jRadioButton.setText(table.getCardFromPack().toString()); 
+            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
+            buttonGroup1.add(jRadioButton); 
+            //выравниваем кнопку в центр панели по горизонтали
+            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            pn1.add(jRadioButton);
+            pn1.revalidate();
+            pn1.repaint();
+        }
+        if(pane.isEnabledAt(1))
+        {
+            JRadioButton jRadioButton = new JRadioButton();
+            jRadioButton.setText(table.getCardFromPack().toString()); 
+            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
+            buttonGroup2.add(jRadioButton); 
+            //выравниваем кнопку в центр панели по горизонтали
+            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            pn2.add(jRadioButton);
+            pn2.revalidate();
+            pn2.repaint();
+        }
+        
     }
 
-    private void finishMoveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if (pane.isEnabledAt(0)) {
-            pane.setEnabledAt(0, false);// первая вкладка заблокирована
-            pane.setEnabledAt(1, true);//вторая вкладка активная
-        } else {
-            pane.setEnabledAt(0, true);// вторая вкладка заблокирована
-            pane.setEnabledAt(1, false);//первая вкладка активная  
+    private void firstDistribution()
+    {
+        
+        for (int i = 1; i <= 7; i++) {
+            JRadioButton jRadioButton = new JRadioButton();
+            jRadioButton.setText(table.getCardFromPack().toString()); 
+            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
+            buttonGroup1.add(jRadioButton); 
+            //выравниваем кнопку в центр панели по горизонтали
+            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            pn1.add(jRadioButton);
         }
+        for (int i = 1; i <= 7; i++) {
+            JRadioButton jRadioButton = new JRadioButton();
+            jRadioButton.setText(table.getCardFromPack().toString()); 
+            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
+            buttonGroup2.add(jRadioButton); 
+            //выравниваем кнопку в центр панели по горизонтали
+            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            pn2.add(jRadioButton);
+        }
+    }
+    private void finishMoveButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
+        if(pane.isEnabledAt(0))
+        {
+            pane.setEnabledAt(0,false);
+            pane.setEnabledAt(1,true);
+        }
+        else
+        {
+            pane.setEnabledAt(1,false);
+            pane.setEnabledAt(0,true);
+        }
     }
 
     /**
