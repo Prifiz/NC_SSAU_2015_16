@@ -40,7 +40,13 @@ public class TableController {
     public void setLastCard(Card card) {
         lastcard = card;
     }
-
+/**
+ * This method return true, if card is equivalent to the last card in tabel.
+ * Else return false.
+ * 
+ * @param card
+ * @return true/false
+ */
     public boolean isRightCard(Card card) {
         if(lastcard!=null)
         {

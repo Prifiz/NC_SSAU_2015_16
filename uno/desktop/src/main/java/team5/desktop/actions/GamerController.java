@@ -7,7 +7,6 @@ package team5.desktop.actions;
 
 import java.util.ArrayList;
 import team5.desktop.card.Card;
-import team5.desktop.card.NumericCard;
 import team5.desktop.exceptions.CardNotFoundException;
 
 /**

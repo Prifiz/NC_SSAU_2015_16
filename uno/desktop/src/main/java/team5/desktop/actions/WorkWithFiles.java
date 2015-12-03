@@ -42,14 +42,25 @@ public class WorkWithFiles {
         ois.close();
         return workUser;
     }
-    
+    /**
+     * This method write cards to text file look as: "Type of cad" "color of card" "int value of card". 
+     * @param pack
+     * @param out
+     * @throws IOException 
+     */
     public static void writeCards(ArrayList<Card> pack, Writer out) throws IOException {
         for (Card card : pack) {
             out.write(card.toString());
         }
         out.flush();
     }
-
+/**
+ * This method read cards from text file and return list of cards.
+ * Records in the file should look as: "Type of cad" "color of card" "int value of card". 
+ * @param in
+ * @return ArrayList<Card>
+ * @throws IOException 
+ */
     public static ArrayList<Card> readCards(Reader in) throws IOException {
         StreamTokenizer st = new StreamTokenizer(in);
         Card card = null;

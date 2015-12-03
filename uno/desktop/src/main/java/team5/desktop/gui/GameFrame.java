@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -356,23 +357,33 @@ public class GameFrame extends JFrame {
                 lastCardLabel.setText(str);
                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                 buttonGroup1.remove(jr);
+                boolean endgame = false;
                 if (buttonGroup1.getButtonCount() == 0) {
                     FinishFrame finish = new FinishFrame();
                     finish.setVisible(true);
                     this.setVisible(false);
+                    endgame = true;
                 }
-                if (jr2 == null) {
-                    jr2 = (JRadioButton) en.nextElement();//выскакивае исключение есди нет следующего
-                }
-                buttonGroup1.setSelected(jr2.getModel(), true);
-                pn1.remove(jr);
-                pn1.revalidate();
-                pn1.repaint();
-                isTakeCard = false;
+                if (!endgame) {
+                    try {
+                        if ((jr2 == null) && (en.hasMoreElements())) {
+                            en = buttonGroup1.getElements();
+                            jr2 = (JRadioButton) en.nextElement();//выскакивае исключение есди нет следующего
+                        }
+                    
+                    buttonGroup1.setSelected(jr2.getModel(), true);
+                    } catch (NullPointerException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    pn1.remove(jr);
+                    pn1.revalidate();
+                    pn1.repaint();
+                    isTakeCard = false;
 
-                pane.setSelectedIndex(1);
-                pane.setEnabledAt(0, false);
-                pane.setEnabledAt(1, true);
+                    pane.setSelectedIndex(1);
+                    pane.setEnabledAt(0, false);
+                    pane.setEnabledAt(1, true);
+                }
             } else {
                 JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
@@ -397,24 +408,33 @@ public class GameFrame extends JFrame {
                 lastCardLabel.setText(str);
                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                 buttonGroup2.remove(jr);
+                boolean endgame = false;
                 if (buttonGroup2.getButtonCount() == 0) {
                     FinishFrame finish = new FinishFrame();
                     finish.setVisible(true);
                     this.setVisible(false);
+                    endgame = true;
                 }
-                if (jr2 == null) {
-                    jr2 = (JRadioButton) en.nextElement();//выскакивает исключение если нет следующего
+                if (!endgame) {
+                    try {
+                        if ((jr2 == null) && (en.hasMoreElements())) {
+                            en = buttonGroup2.getElements();
+                            jr2 = (JRadioButton) en.nextElement();//выскакивает исключение если нет следующего
+                        }
+                    
+                    buttonGroup2.setSelected(jr2.getModel(), true);
+                    } catch (NullPointerException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    pn2.remove(jr);
+                    pn2.revalidate();
+                    pn2.repaint();
+                    isTakeCard = false;
+
+                    pane.setSelectedIndex(0);
+                    pane.setEnabledAt(1, false);
+                    pane.setEnabledAt(0, true);
                 }
-
-                buttonGroup2.setSelected(jr2.getModel(), true);
-                pn2.remove(jr);
-                pn2.revalidate();
-                pn2.repaint();
-                isTakeCard = false;
-
-                pane.setSelectedIndex(0);
-                pane.setEnabledAt(1, false);
-                pane.setEnabledAt(0, true);
             } else {
                 JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
