@@ -47,7 +47,7 @@ public class WorkCardTest {
         WorkCard workCard = new WorkCard();
         Card expected = new NumericCard(1, "red");
         Card result = workCard.addCard(1, "red");
-        assertEquals("true", expected, result);
+        assertEquals(expected, result);
     }
 
     /**

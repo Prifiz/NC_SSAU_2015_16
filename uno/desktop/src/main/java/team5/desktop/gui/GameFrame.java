@@ -123,7 +123,7 @@ public class GameFrame extends JFrame {
 
         checkButton = new JButton();
         checkButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        checkButton.setText("Chek");
+        checkButton.setText("Check");
         add(checkButton);
         checkButton.setBounds(650, 390, 100, 30);//310 300 80 30
         checkButton.addActionListener(new java.awt.event.ActionListener() {
@@ -395,6 +395,7 @@ public class GameFrame extends JFrame {
                 }
 
                 lastCardLabel.setText(str);
+                lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                 buttonGroup2.remove(jr);
                 if (buttonGroup2.getButtonCount() == 0) {
                     FinishFrame finish = new FinishFrame();
