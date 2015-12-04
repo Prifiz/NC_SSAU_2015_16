@@ -339,106 +339,118 @@ public class GameFrame extends JFrame {
 
         if (pane.isEnabledAt(0)) {
             JRadioButton jr = new JRadioButton();
-            String str = buttonGroup1.getSelection().getActionCommand();
-            Card card = gamer1.searchCardInHand(str);
-            if (table.isRightCard(card)) {
-                JRadioButton jr2 = null;
-                Enumeration en = buttonGroup1.getElements();
-                while (en.hasMoreElements()) {
-                    jr = (JRadioButton) en.nextElement();
-                    if (jr.getText().equals(str)) {
+            if (buttonGroup1.getSelection() != null) {
+                String str = buttonGroup1.getSelection().getActionCommand();
 
-                        break;
-                    } else {
-                        jr2 = jr;
-                    }
-                }
+                Card card = gamer1.searchCardInHand(str);
+                if (table.isRightCard(card)) {
+                    // JRadioButton jr2 = null;
+                    Enumeration en = buttonGroup1.getElements();
+                    while (en.hasMoreElements()) {
+                        jr = (JRadioButton) en.nextElement();
+                        if (jr.getText().equals(str)) {
 
-                lastCardLabel.setText(str);
-                lastCardLabel.setForeground(isCardColor(card.getColor()));//color
-                buttonGroup1.remove(jr);
-                boolean endgame = false;
-                if (buttonGroup1.getButtonCount() == 0) {
-                    FinishFrame finish = new FinishFrame();
-                    finish.setVisible(true);
-                    this.setVisible(false);
-                    endgame = true;
-                }
-                if (!endgame) {
-                    try {
-                        if ((jr2 == null) && (en.hasMoreElements())) {
-                            en = buttonGroup1.getElements();
-                            jr2 = (JRadioButton) en.nextElement();//выскакивае исключение есди нет следующего
+                            break;
+                        } else {
+                            //jr2 = jr;
                         }
-                    
-                    buttonGroup1.setSelected(jr2.getModel(), true);
-                    } catch (NullPointerException e) {
-                        System.out.println(e.getMessage());
                     }
-                    pn1.remove(jr);
-                    pn1.revalidate();
-                    pn1.repaint();
-                    isTakeCard = false;
 
-                    pane.setSelectedIndex(1);
-                    pane.setEnabledAt(0, false);
-                    pane.setEnabledAt(1, true);
+                    lastCardLabel.setText(str);
+                    lastCardLabel.setForeground(isCardColor(card.getColor()));//color
+                    buttonGroup1.remove(jr);
+                    boolean endgame = false;
+
+                    if (buttonGroup1.getButtonCount() == 0) {
+                        FinishFrame finish = new FinishFrame();
+                        finish.setVisible(true);
+                        this.setVisible(false);
+                        endgame = true;
+                    }
+                    if (!endgame) {
+                        /*try {
+                         if ((jr2 == null) && (en.hasMoreElements())) {
+                         en = buttonGroup1.getElements();
+                         jr2 = (JRadioButton) en.nextElement();//выскакивае исключение есди нет следующего
+                         }
+
+                         buttonGroup1.setSelected(jr2.getModel(), true);
+                         } catch (NullPointerException e) {
+                         System.out.println(e.getMessage());
+                         }*/
+                        pn1.remove(jr);
+                        pn1.revalidate();
+                        pn1.repaint();
+                        isTakeCard = false;
+
+                        pane.setSelectedIndex(1);
+                        pane.setEnabledAt(0, false);
+                        pane.setEnabledAt(1, true);
+                    }
+                } else {
+                    JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
-                JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "You didn't select card", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
 
         } else {
 
             JRadioButton jr = new JRadioButton();
-            String str = buttonGroup2.getSelection().getActionCommand();
-            Card card = gamer2.searchCardInHand(str);
-            if (table.isRightCard(card)) {
-                JRadioButton jr2 = null;
-                Enumeration en = buttonGroup2.getElements();
-                while (en.hasMoreElements()) {
-                    jr = (JRadioButton) en.nextElement();
-                    if (jr.getText().equals(str)) {
-                        break;
-                    } else {
-                        jr2 = jr;
-                    }
-                }
+            if (buttonGroup2.getSelection() != null) {
+                String str = buttonGroup2.getSelection().getActionCommand();
 
-                lastCardLabel.setText(str);
-                lastCardLabel.setForeground(isCardColor(card.getColor()));//color
-                buttonGroup2.remove(jr);
-                boolean endgame = false;
-                if (buttonGroup2.getButtonCount() == 0) {
-                    FinishFrame finish = new FinishFrame();
-                    finish.setVisible(true);
-                    this.setVisible(false);
-                    endgame = true;
-                }
-                if (!endgame) {
-                    try {
-                        if ((jr2 == null) && (en.hasMoreElements())) {
-                            en = buttonGroup2.getElements();
-                            jr2 = (JRadioButton) en.nextElement();//выскакивает исключение если нет следующего
+                Card card = gamer2.searchCardInHand(str);
+                if (table.isRightCard(card)) {
+                    //JRadioButton jr2 = null;
+                    Enumeration en = buttonGroup2.getElements();
+                    while (en.hasMoreElements()) {
+                        jr = (JRadioButton) en.nextElement();
+                        if (jr.getText().equals(str)) {
+                            break;
+                        } else {
+                            //jr2 = jr;
                         }
-                    
-                    buttonGroup2.setSelected(jr2.getModel(), true);
-                    } catch (NullPointerException e) {
-                        System.out.println(e.getMessage());
                     }
-                    pn2.remove(jr);
-                    pn2.revalidate();
-                    pn2.repaint();
-                    isTakeCard = false;
 
-                    pane.setSelectedIndex(0);
-                    pane.setEnabledAt(1, false);
-                    pane.setEnabledAt(0, true);
+                    lastCardLabel.setText(str);
+                    lastCardLabel.setForeground(isCardColor(card.getColor()));//color
+                    buttonGroup2.remove(jr);
+                    boolean endgame = false;
+                    if (buttonGroup2.getButtonCount() == 0) {
+                        FinishFrame finish = new FinishFrame();
+                        finish.setVisible(true);
+                        this.setVisible(false);
+                        endgame = true;
+                    }
+                    if (!endgame) {
+                        /*try {
+                         if ((jr2 == null) && (en.hasMoreElements())) {
+                         en = buttonGroup2.getElements();
+                         jr2 = (JRadioButton) en.nextElement();//выскакивает исключение если нет следующего
+                         }
+
+                         buttonGroup2.setSelected(jr2.getModel(), true);
+                         } catch (NullPointerException e) {
+                         System.out.println(e.getMessage());
+                         }*/
+                        pn2.remove(jr);
+                        pn2.revalidate();
+                        pn2.repaint();
+                        isTakeCard = false;
+
+                        pane.setSelectedIndex(0);
+                        pane.setEnabledAt(1, false);
+                        pane.setEnabledAt(0, true);
+                    }
+                } else {
+                    JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 }
-            } else {
-                JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-            }
 
+            } else {
+                JOptionPane.showConfirmDialog(null, "You didn't select card", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
         }
     }
 
