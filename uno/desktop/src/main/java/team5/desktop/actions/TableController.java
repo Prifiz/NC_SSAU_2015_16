@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 import team5.desktop.card.Card;
 
 /**
@@ -20,6 +20,7 @@ import team5.desktop.card.Card;
  */
 public class TableController {
 
+    private Logger log = Logger.getLogger(TableController.class);
     private ArrayList<Card> pack;
     private Card lastcard;
     private int counter_for_random;
@@ -78,12 +79,12 @@ public class TableController {
         try {
             fr = new FileReader("Cards.txt");
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
         try {
             pack = WorkWithFiles.readCards(fr);
         } catch (IOException ex) {
-            Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         }
     }
 

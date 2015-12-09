@@ -9,11 +9,10 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import org.apache.log4j.Logger;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.actions.WorkWithFiles;
 
@@ -23,6 +22,7 @@ import team5.desktop.actions.WorkWithFiles;
  */
 public class AdminRoom extends JFrame {
 
+    private Logger log = Logger.getLogger(AdminRoom.class);
     private JButton memberListButton;
     private JButton cardListButton;
     private JButton backButton;
@@ -92,9 +92,9 @@ public class AdminRoom extends JFrame {
                     WorkWithFiles sd = new WorkWithFiles();
                     sd.serializableData("serializableData_WorkUser.bin", workUser);
 
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    
                 } catch (IOException ex) {
-                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -145,6 +145,7 @@ public class AdminRoom extends JFrame {
      */
     public static void main(String args[]) {
 
+        Logger log = Logger.getLogger(AdminRoom.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -153,13 +154,13 @@ public class AdminRoom extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+             log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+             log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+             log.debug(ex.getMessage());
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {

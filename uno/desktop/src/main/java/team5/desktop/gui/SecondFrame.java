@@ -9,13 +9,13 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import team5.desktop.actions.Registration;
 import team5.desktop.exceptions.*;
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import javax.swing.*;
+import org.apache.log4j.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,6 +28,7 @@ import javax.swing.*;
  */
 public class SecondFrame extends JFrame {
 
+    private Logger log = Logger.getLogger(SecondFrame.class);
     private JButton okButton;
     private JButton canselButton;
     private JLabel emailLabel;
@@ -202,7 +203,7 @@ public class SecondFrame extends JFrame {
 
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 } catch (IOException ex) {
-                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                   log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -264,11 +265,7 @@ public class SecondFrame extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        Logger log = Logger.getLogger(SecondFrame.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -277,13 +274,13 @@ public class SecondFrame extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SecondFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SecondFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SecondFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SecondFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         }
         //</editor-fold>
 

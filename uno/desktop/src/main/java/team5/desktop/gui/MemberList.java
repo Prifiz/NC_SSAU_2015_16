@@ -11,10 +11,10 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import org.apache.log4j.Logger;
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.UserTableModel;
 import team5.desktop.actions.WorkUser;
@@ -29,6 +29,7 @@ import team5.desktop.user.User;
  */
 public class MemberList extends javax.swing.JFrame {
 
+    private Logger log = Logger.getLogger(MemberList.class);
     private Search search;
     private JButton backButton;
     private JButton deleteButton;
@@ -249,9 +250,9 @@ public class MemberList extends javax.swing.JFrame {
                     WorkWithFiles sd = new WorkWithFiles();
                     sd.serializableData("serializableData_WorkUser.bin", wu);
 
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    
                 } catch (IOException ex) {
-                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                   log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -284,7 +285,7 @@ public class MemberList extends javax.swing.JFrame {
                 }
             }
         } catch (UserNotFoundException e) {
-            ///???????
+           log.debug(e.getMessage());
         }
 
         jTable1.revalidate();
@@ -299,9 +300,9 @@ public class MemberList extends javax.swing.JFrame {
                 model.setUser((ArrayList<User>) UserSearch.regularSearch(search.getSearchRequest()));
             }
         } catch (UserExistException e) {
-            ///???????
+           log.debug(e.getMessage());
         } catch (UserNotFoundException ex) {
-            Logger.getLogger(MemberList.class.getName()).log(Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
         tfname.setText("");
         tfsurname.setText("");
@@ -344,6 +345,7 @@ public class MemberList extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
+        Logger log = Logger.getLogger(MemberList.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -352,13 +354,13 @@ public class MemberList extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {

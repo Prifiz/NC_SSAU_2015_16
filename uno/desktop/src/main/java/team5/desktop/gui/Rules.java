@@ -12,11 +12,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import javax.swing.*;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -24,10 +24,12 @@ import javax.swing.*;
  */
 public class Rules extends JFrame {
 
+    private Logger log = Logger.getLogger(Rules.class);
     private JButton backButton;
     private JLabel rulesLabel;
     private JScrollPane jScrollPane;
     private JTextArea ruleTextArea;
+
     /**
      * Creates new form Rules
      */
@@ -35,7 +37,7 @@ public class Rules extends JFrame {
         initComponents();
     }
 
-    private String textRule(String fileName) throws FileNotFoundException, IOException {
+    private String textRule(String fileName) {
         String text = "";
         String s = "";
         try {
@@ -43,21 +45,24 @@ public class Rules extends JFrame {
             while ((s = br.readLine()) != null) {
                 text += s;
             }
-            return text;
+
         } catch (FileNotFoundException ex) {
-            throw new FileNotFoundException("File not found.");
+            log.debug(ex.getMessage());
+        } catch (IOException ex) {
+            log.debug(ex.getMessage());
         }
+        return text;
+
     }
 
-    
-    @SuppressWarnings("unchecked")                       
+    @SuppressWarnings("unchecked")
     private void initComponents() {
 
         rulesLabel = new JLabel();
         jScrollPane = new JScrollPane();
         ruleTextArea = new JTextArea();
         backButton = new JButton();
-        
+
         setPreferredSize(new Dimension(400, 330));
         setLayout(null);
         this.setResizable(false);
@@ -72,12 +77,9 @@ public class Rules extends JFrame {
         ruleTextArea.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         ruleTextArea.setRows(5);
         ruleTextArea.setLineWrap(true);
-        try {
-            //jTextArea1.setText("      Players are dealt 7 cards. The top card of \nthe deck is turned face up and with it the game \nbegins (this card is the beginning of the game \ndeck).\n      The game begins in a clockwise direction.\n      On his turn, each player must put a card in \nthe game deck, and the card must match the \ntop card in the game deck on color or image. \nIf the player does not have a suitable card, \nthen he takes one card from the deck of the \nbank, and if the card is suitable, it could make \na move if he wants to. If a player has taken \nfrom the deck of the bank the right card, but \nshe did not move - he receives no fine. The \nnext player to act in a clockwise direction.\n");
-            ruleTextArea.setText(textRule("textRule.txt"));
-        } catch (IOException ex) {
-            Logger.getLogger(Rules.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        //jTextArea1.setText("      Players are dealt 7 cards. The top card of \nthe deck is turned face up and with it the game \nbegins (this card is the beginning of the game \ndeck).\n      The game begins in a clockwise direction.\n      On his turn, each player must put a card in \nthe game deck, and the card must match the \ntop card in the game deck on color or image. \nIf the player does not have a suitable card, \nthen he takes one card from the deck of the \nbank, and if the card is suitable, it could make \na move if he wants to. If a player has taken \nfrom the deck of the bank the right card, but \nshe did not move - he receives no fine. The \nnext player to act in a clockwise direction.\n");
+        ruleTextArea.setText(textRule("textRule.txt"));
         jScrollPane.setViewportView(ruleTextArea);
         add(jScrollPane);
         jScrollPane.setBounds(30, 80, 320, 150);
@@ -108,7 +110,7 @@ public class Rules extends JFrame {
 
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 } catch (IOException ex) {
-                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                   log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -129,7 +131,6 @@ public class Rules extends JFrame {
         });
 
 //       
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
@@ -137,7 +138,7 @@ public class Rules extends JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
       //  StartFrame start = new StartFrame();
-      //  start.setVisible(true);
+        //  start.setVisible(true);
         this.setVisible(false);
     }
 
@@ -145,11 +146,7 @@ public class Rules extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+       Logger log = Logger.getLogger(Rules.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -158,13 +155,13 @@ public class Rules extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rules.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rules.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rules.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rules.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
         //</editor-fold>
 
@@ -176,5 +173,4 @@ public class Rules extends JFrame {
         });
     }
 
-                     
 }

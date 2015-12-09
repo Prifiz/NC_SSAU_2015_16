@@ -3,6 +3,7 @@ package team5.desktop.actions;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 import team5.desktop.exceptions.UserNotFoundException;
 import team5.desktop.user.adress.Address;
 import team5.desktop.user.PrivateInformation;
@@ -13,6 +14,7 @@ import team5.desktop.user.admin.Admin;
 
 public class WorkUser implements Serializable {
 
+    private Logger log = Logger.getLogger(WorkUser.class);
     private static WorkUser work = new WorkUser();
 
     public static WorkUser getWork() {

@@ -13,8 +13,6 @@ import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.NoSuchElementException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
+import org.apache.log4j.Logger;
 import team5.desktop.actions.GamerController;
 import team5.desktop.actions.RoomController;
 import team5.desktop.actions.TableController;
@@ -37,6 +36,7 @@ import team5.desktop.card.Card;
  */
 public class GameFrame extends JFrame {
 
+    private Logger log = Logger.getLogger(GameFrame.class);
     private boolean isTakeCard = false;
     private RoomController room;
     private TableController table;
@@ -62,6 +62,7 @@ public class GameFrame extends JFrame {
 
     private void initComponents() {
 
+        
         room = new RoomController();
         gamer1 = new GamerController("Player1");
         room.addGamer(gamer1);
@@ -183,7 +184,7 @@ public class GameFrame extends JFrame {
 
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 } catch (IOException ex) {
-                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                   log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -459,6 +460,7 @@ public class GameFrame extends JFrame {
      */
     public static void main(String args[]) {
 
+        Logger log = Logger.getLogger(GameFrame.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -467,13 +469,13 @@ public class GameFrame extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
