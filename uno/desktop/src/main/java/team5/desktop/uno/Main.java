@@ -38,7 +38,7 @@ public class Main {
         } catch (IOException ex) {
             log.debug(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
+           log.debug(ex.getMessage());
         }
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

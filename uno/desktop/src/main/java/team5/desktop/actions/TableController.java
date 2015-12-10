@@ -10,7 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.logging.Level;
 import org.apache.log4j.Logger;
 import team5.desktop.card.Card;
 
@@ -88,15 +87,15 @@ public class TableController {
         }
     }
 
-    public void setNewPack(ArrayList<Card> l1, ArrayList<Card> l2)
+    public void setNewPack(ArrayList<Card> cards1, ArrayList<Card> cards2)
     {
         loadNewPack();
-        for (Card l11 : l1) {
-            pack.remove(l11);
+        for (Card card : cards1) {
+            pack.remove(card);
         }
-        for (Card l22:l2)
+        for (Card card:cards2)
         {
-            pack.remove(l22);
+            pack.remove(card);
         }
         pack.remove(lastcard);
     }

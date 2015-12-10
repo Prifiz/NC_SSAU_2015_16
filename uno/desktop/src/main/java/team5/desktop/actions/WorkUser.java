@@ -14,7 +14,7 @@ import team5.desktop.user.admin.Admin;
 
 public class WorkUser implements Serializable {
 
-    private Logger log = Logger.getLogger(WorkUser.class);
+    private static Logger log = Logger.getLogger(WorkUser.class);
     private static WorkUser work = new WorkUser();
 
     public static WorkUser getWork() {
