@@ -6,11 +6,13 @@
 package team5.desktop.user.adress;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author chanta
  */
+@XmlRootElement
 public class SimpleAddressInitializer implements AddressInitializer, Serializable {
 
     public SimpleAddressInitializer() {

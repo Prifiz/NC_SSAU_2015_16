@@ -10,9 +10,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
+import java.io.File;
 import java.util.Enumeration;
-import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -24,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
+import javax.xml.bind.JAXBException;
 import team5.desktop.actions.GamerController;
 import team5.desktop.actions.RoomController;
 import team5.desktop.actions.TableController;
@@ -178,12 +178,16 @@ public class GameFrame extends JFrame {
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
-                    WorkWithFiles sd = new WorkWithFiles();
-                    sd.serializableData("serializableData_WorkUser.bin", workUser);
-
+                    WorkWithFiles workWithFiles = new WorkWithFiles();
+                    //sd.serializableData("serializableData_WorkUser.bin", workUser);
+                    workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } catch (IOException ex) {
-                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+//                catch (IOException ex) {
+//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+//                } 
+                catch (JAXBException ex) {
+                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);

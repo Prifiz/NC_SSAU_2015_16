@@ -6,11 +6,15 @@
 package team5.desktop.user.adress;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author chanta
  */
+@XmlType(propOrder = { /*"country", "city"*/}, name = "address")
+@XmlRootElement
 public class Address implements Serializable {
 
     private String country;

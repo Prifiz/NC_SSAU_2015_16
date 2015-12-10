@@ -7,11 +7,15 @@ package team5.desktop.user;
 
 import java.time.LocalDate;
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author chanta
  */
+@XmlType(propOrder = {/* "name", "surname", "bDay"*/}, name = "privateInformation")
+@XmlRootElement
 public class PrivateInformation implements Serializable {
 
     private String name;
@@ -23,6 +27,11 @@ public class PrivateInformation implements Serializable {
         this.surname = surname;
         this.bDay = bDay;
     }
+
+    private PrivateInformation() {
+    }
+    
+    
 
     public String getName() {
         return name;

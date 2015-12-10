@@ -9,12 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.xml.bind.JAXBException;
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.UserTableModel;
 import team5.desktop.actions.WorkUser;
@@ -245,13 +246,17 @@ public class MemberList extends javax.swing.JFrame {
 
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser wu = WorkUser.getWork();
-                    WorkWithFiles sd = new WorkWithFiles();
-                    sd.serializableData("serializableData_WorkUser.bin", wu);
-
+                    WorkUser workUser = WorkUser.getWork();
+                    WorkWithFiles workWithFiles = new WorkWithFiles();
+                    //sd.serializableData("serializableData_WorkUser.bin", wu);
+                    workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } catch (IOException ex) {
-                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+//                catch (IOException ex) {
+//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+                catch (JAXBException ex) {
+                    Logger.getLogger(MemberList.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);

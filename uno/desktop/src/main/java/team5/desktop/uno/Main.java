@@ -5,9 +5,11 @@
  */
 package team5.desktop.uno;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.bind.JAXBException;
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.exceptions.*;
@@ -29,10 +31,11 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            WorkUser wu = WorkUser.getWork();
-            WorkWithFiles sd = new WorkWithFiles();
-            wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
-
+            WorkUser workUser = WorkUser.getWork();
+            WorkWithFiles workWithFiles = new WorkWithFiles();
+            //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
+            workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
+          
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -47,9 +50,12 @@ public class Main {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (JAXBException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+//        catch (IOException ex) {
+//            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartFrame().setVisible(true);
@@ -61,10 +67,10 @@ public class Main {
         try {
             wu.addUser("putin", "d", "d", "d", "sf", "d", "d", "19.12.12");
             wu.addUser("sasdq", "d", "d", "d", "d", "d", "d", "19.12.12");
-            wu.addUser("f", "d", "d", "d", "sfsdf", "d", "d", "19.12.12");
-            wu.addUser("d", "d", "d", "d", "putin", "d", "d", "19.12.12");
+            wu.addUser("f", "d", "d", "d", "sfsdf", "d", "d", "19-12-12");
+            wu.addUser("d", "d", "d", "d", "putin", "d", "d", "19-12-12");
             //wu.addUser("asda", "d", "d", "d", "d", "d", "d", "19.12.12");
-            wu.addUser("putin", "d", "d", "d", "putin ", "d", "d", "19.12.2333");
+            wu.addUser("putin", "d", "d", "d", "putin ", "d", "d", "19-12-2333");
 
         } catch (UserExistException e) {
 

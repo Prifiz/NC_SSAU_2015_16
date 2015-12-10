@@ -3,15 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package team5.desktop.user;
 
 import java.time.LocalDate;
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author chanta
  */
+
+@XmlType(propOrder = {/*"login", "password","dateOfRegistration", "email"*/}, name = "serviceInfo")
+@XmlRootElement
 public class ServiceInfo implements Serializable {
 
     private String login;
@@ -25,6 +31,11 @@ public class ServiceInfo implements Serializable {
         this.dateOfRegistration = LocalDate.now();
         this.email = email;
     }
+
+    private ServiceInfo() {
+        this.dateOfRegistration = LocalDate.now();
+    }
+    
 
     public LocalDate getDateOfRegistration() {
         return dateOfRegistration;

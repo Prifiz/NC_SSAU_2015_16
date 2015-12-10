@@ -6,15 +6,15 @@
 package team5.desktop.gui;
 
 import java.awt.Dimension;
-import java.awt.HeadlessException;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.xml.bind.JAXBException;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.actions.WorkWithFiles;
 
@@ -78,12 +78,16 @@ public class FinishFrame extends JFrame {
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
-                    WorkWithFiles sd = new WorkWithFiles();
-                    sd.serializableData("serializableData_WorkUser.bin", workUser);
-
+                    WorkWithFiles workWithFiles = new WorkWithFiles();
+                    //workWithFiles.serializableData("serializableData_WorkUser.bin", workUser);
+                    workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } catch (IOException ex) {
-                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+//                catch (IOException ex) {
+//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+                catch (JAXBException ex) {
+                    Logger.getLogger(FinishFrame.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);

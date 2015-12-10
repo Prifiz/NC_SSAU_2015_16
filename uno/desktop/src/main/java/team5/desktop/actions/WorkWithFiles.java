@@ -5,6 +5,7 @@
  */
 package team5.desktop.actions;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +15,10 @@ import java.io.Reader;
 import java.io.StreamTokenizer;
 import java.io.Writer;
 import java.util.ArrayList;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import team5.desktop.card.Card;
 import team5.desktop.card.NumericCard;
 
@@ -23,6 +28,12 @@ import team5.desktop.card.NumericCard;
  */
 public class WorkWithFiles {
 
+    /**
+     * This method serializes the data WorkUser in the file
+     * @param fileName
+     * @param data
+     * @throws IOException 
+     */
     public void serializableData(String fileName, Object data) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName));
         if (data instanceof WorkUser) {
@@ -34,7 +45,14 @@ public class WorkWithFiles {
         }
         oos.close();
     }
-
+    
+    /**
+     * This demethod serializes the data WorkUser file's data in type  WorkUser
+     * @param fileName
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public WorkUser/* Object*/ deserializableData(String fileName) throws IOException, ClassNotFoundException {
         WorkUser workUser;
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
@@ -42,6 +60,34 @@ public class WorkWithFiles {
         ois.close();
         return workUser;
     }
+    
+    /**
+     * This demethod marshales the data WorkUser file's data in type  WorkUser
+     * @param fileNme
+     * @return workUser 
+     * @throws JAXBException 
+     */
+    public WorkUser unmarshalData(String fileNme) throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(WorkUser.class);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        WorkUser workUser = (WorkUser)unmarshaller.unmarshal(new File(fileNme));
+        return workUser;
+    }
+ 
+    /**
+     * This demethod marshales the data WorkUser file's data in type  WorkUser
+     * @param fileName
+     * @param workUser
+     * @throws JAXBException 
+     */
+    public void marshalData(String fileName, WorkUser workUser) throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(workUser.getClass());
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(workUser, new File(fileName));
+       
+    }
+    
     /**
      * This method write cards to text file look as: "Type of cad" "color of card" "int value of card". 
      * @param pack

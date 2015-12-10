@@ -10,11 +10,15 @@ import team5.desktop.user.adress.AddressInitializer;
 import team5.desktop.user.adress.SimpleAddressInitializer;
 import java.io.Serializable;
 import java.time.LocalDate;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author chanta
  */
+@XmlType(propOrder = {/* "privateInformation", "address", "serviceInfo"*/ }, name = "User")
+@XmlRootElement
 public class User implements Serializable {
 
     private PrivateInformation privateInformation;

@@ -8,7 +8,7 @@ package team5.desktop.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import team5.desktop.actions.Registration;
@@ -16,6 +16,7 @@ import team5.desktop.exceptions.*;
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import javax.swing.*;
+import javax.xml.bind.JAXBException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -196,12 +197,16 @@ public class SecondFrame extends JFrame {
 
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser wu = WorkUser.getWork();
-                    WorkWithFiles sd = new WorkWithFiles();
-                    sd.serializableData("serializableData_WorkUser.bin", wu);
-
+                    WorkUser workUser = WorkUser.getWork();
+                    WorkWithFiles workWithFiles = new WorkWithFiles();
+                    //sd.serializableData("serializableData_WorkUser.bin", wu);
+                    workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } catch (IOException ex) {
+                }
+//                catch (IOException ex) {
+//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+//                } 
+                catch (JAXBException ex) {
                     Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                     event.getWindow().setVisible(false);
