@@ -10,8 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 import team5.desktop.card.Card;
 
 /**
@@ -20,6 +19,7 @@ import team5.desktop.card.Card;
  */
 public class TableController {
 
+    private Logger log = Logger.getLogger(TableController.class);
     private ArrayList<Card> pack;
     private Card lastcard;
     private int counter_for_random;
@@ -78,24 +78,24 @@ public class TableController {
         try {
             fr = new FileReader("Cards.txt");
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
         try {
             pack = WorkWithFiles.readCards(fr);
         } catch (IOException ex) {
-            Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         }
     }
 
-    public void setNewPack(ArrayList<Card> l1, ArrayList<Card> l2)
+    public void setNewPack(ArrayList<Card> cards1, ArrayList<Card> cards2)
     {
         loadNewPack();
-        for (Card l11 : l1) {
-            pack.remove(l11);
+        for (Card card : cards1) {
+            pack.remove(card);
         }
-        for (Card l22:l2)
+        for (Card card:cards2)
         {
-            pack.remove(l22);
+            pack.remove(card);
         }
         pack.remove(lastcard);
     }

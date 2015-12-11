@@ -15,6 +15,11 @@ import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
+import team5.desktop.actions.WorkWithFiles;
+import team5.desktop.actions.WorkUser;
+import javax.swing.*;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -22,6 +27,7 @@ import javax.xml.bind.JAXBException;
  */
 public class SelectRooms extends JFrame {
 
+    private Logger log = Logger.getLogger(SelectRooms.class);
      private javax.swing.JButton startButton;
     private javax.swing.JButton adminRoomButton;
     private javax.swing.JComboBox jComboBox;
@@ -99,6 +105,8 @@ public class SelectRooms extends JFrame {
                 //} 
                 catch (JAXBException ex) {
                     Logger.getLogger(SelectRooms.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -142,11 +150,7 @@ public class SelectRooms extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        Logger log = Logger.getLogger(SelectRooms.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -155,13 +159,13 @@ public class SelectRooms extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SelectRooms.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SelectRooms.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SelectRooms.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SelectRooms.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
         //</editor-fold>
 

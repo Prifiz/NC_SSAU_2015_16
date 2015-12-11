@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import org.apache.log4j.Logger;
 import team5.desktop.actions.UserTableModel;
 import team5.desktop.exceptions.UserNotFoundException;
 import team5.desktop.searches.*;
@@ -21,6 +22,7 @@ import team5.desktop.user.User;
  */
 public class Search extends javax.swing.JFrame {
 
+    
     private String searchRequest;
     private JButton backButton;
     private JButton okButton;
@@ -142,6 +144,7 @@ public class Search extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
+        Logger log = Logger.getLogger(Search.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -150,13 +153,13 @@ public class Search extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+          log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
+import org.apache.log4j.Logger;
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.exceptions.*;
@@ -28,14 +29,24 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
+        Logger log = Logger.getLogger(Main.class);
         try {
             WorkUser workUser = WorkUser.getWork();
             WorkWithFiles workWithFiles = new WorkWithFiles();
             //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
           
+           
+        } catch (IOException ex) {
+            log.debug(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+           log.debug(ex.getMessage());
+        } catch (JAXBException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -43,11 +54,12 @@ public class Main {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (JAXBException ex) {
@@ -56,12 +68,15 @@ public class Main {
 //        catch (IOException ex) {
 //            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+        
+//            log.debug(ex.getMessage());
+//        }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartFrame().setVisible(true);
             }
         });
-       // ArrayList<User> users = null;
+        // ArrayList<User> users = null;
         // users.add(user1);
         WorkUser wu = WorkUser.getWork();
         try {
@@ -73,7 +88,7 @@ public class Main {
             wu.addUser("putin", "d", "d", "d", "putin ", "d", "d", "19-12-2333");
 
         } catch (UserExistException e) {
-
+            log.debug(e.getMessage());
         }
         try {
             System.out.println("Search: " + UserSearch.regularSearch("(\\d|\\s|\\w)").toString());
@@ -82,10 +97,9 @@ public class Main {
             System.out.println("Ошибка!");
         }
         System.out.println(wu.viewUsers());
-
-       // WorkUser wu =new WorkUser();
+        // WorkUser wu =new WorkUser();
         //wu.addUser("Adam", "Smith", "USA","VS",new GregorianCalendar(1995, 12, 12) , "ggg", "1231114", "smi@gmai.com");
-       // wu.addUser("bob1", "Clark", "Usa", "XX", "sf", "1234", "email@gmail.com",LocalDate.of(2014, 3, 4));
+        // wu.addUser("bob1", "Clark", "Usa", "XX", "sf", "1234", "email@gmail.com",LocalDate.of(2014, 3, 4));
         // wu.addUser("bob2", "Clark", "Usa", "XX", "sf", "1234", "email@gmail.com", LocalDate.now());
         // wu.addUser("bob3", "Clark", "Usa", "XX", "sfsd", "1234", "email@gmail.com", LocalDate.now());
         // wu.addUser("bob4", "Clark", "Usa", "XX", "sfsdf", "1234", "email@gmail.com", LocalDate.now());
@@ -102,7 +116,7 @@ public class Main {
         //String charToString = Character.toString(ch);
         // in.sign("sf",ch);
         Address a = new Address();
-       // System.out.println(a.toString());
+        // System.out.println(a.toString());
 
     }
 

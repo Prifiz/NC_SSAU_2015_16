@@ -15,6 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import org.apache.log4j.Logger;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.actions.WorkWithFiles;
 
@@ -24,6 +29,7 @@ import team5.desktop.actions.WorkWithFiles;
  */
 public class FinishFrame extends JFrame {
 
+    private Logger log = Logger.getLogger(FinishFrame.class);
     private JButton playAgainButton;
     private JButton backButton;
     private JLabel resultLabel;
@@ -87,7 +93,9 @@ public class FinishFrame extends JFrame {
 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
 //                }
                 catch (JAXBException ex) {
-                    Logger.getLogger(FinishFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FinishFrame.class.getName()).log(Level.SEVERE, null, ex);  
+                } catch (IOException ex) {
+                    log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -131,6 +139,7 @@ public class FinishFrame extends JFrame {
      */
     public static void main(String args[]) {
 
+        Logger log = Logger.getLogger(FinishFrame.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -139,13 +148,13 @@ public class FinishFrame extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MemberList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           log.debug(ex.getMessage());
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {

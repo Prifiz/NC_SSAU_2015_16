@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import org.apache.log4j.Logger;
 import team5.desktop.exceptions.UserNotFoundException;
 import team5.desktop.user.adress.Address;
 import team5.desktop.user.PrivateInformation;
@@ -25,7 +26,12 @@ import team5.desktop.user.admin.Admin;
 //@XmlType(propOrder = {"user"})
 public class WorkUser implements Serializable {
 
+
     private static final WorkUser work = new WorkUser();
+
+    private static  Logger log = Logger.getLogger(WorkUser.class);
+    //private static WorkUser work = new WorkUser();
+
 
     public static WorkUser getWork() {
         return work;
