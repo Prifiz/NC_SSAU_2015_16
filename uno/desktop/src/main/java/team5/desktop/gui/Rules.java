@@ -115,10 +115,9 @@ public class Rules extends JFrame {
 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
 //                } 
                 catch (JAXBException ex) {
-                    Logger.getLogger(Rules.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                   log.debug(ex.getMessage());
-                } finally {
+                    log.debug(ex.getMessage());
+                } 
+                 finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }

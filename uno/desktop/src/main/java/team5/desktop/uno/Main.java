@@ -7,8 +7,7 @@ package team5.desktop.uno;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.desktop.actions.WorkWithFiles;
@@ -39,12 +38,8 @@ public class Main {
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
           
            
-        } catch (IOException ex) {
-            log.debug(ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-           log.debug(ex.getMessage());
         } catch (JAXBException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            log.debug(ex.getMessage());
         }
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -62,8 +57,6 @@ public class Main {
             log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (JAXBException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } 
 //        catch (IOException ex) {
 //            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,7 +87,7 @@ public class Main {
             System.out.println("Search: " + UserSearch.regularSearch("(\\d|\\s|\\w)").toString());
 
         } catch (UserNotFoundException e) {
-            System.out.println("Ошибка!");
+            log.debug(e.getMessage());
         }
         System.out.println(wu.viewUsers());
         // WorkUser wu =new WorkUser();

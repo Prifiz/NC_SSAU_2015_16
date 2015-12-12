@@ -9,8 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import java.io.IOException;
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.SignIn;
@@ -128,9 +127,7 @@ public class LogIn extends JFrame {
 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
 //                } 
                 catch (JAXBException ex) {
-                    Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                   log.debug(ex.getMessage());
+                     log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);

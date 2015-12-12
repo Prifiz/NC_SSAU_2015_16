@@ -9,8 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -93,10 +92,8 @@ public class FinishFrame extends JFrame {
 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
 //                }
                 catch (JAXBException ex) {
-                    Logger.getLogger(FinishFrame.class.getName()).log(Level.SEVERE, null, ex);  
-                } catch (IOException ex) {
                     log.debug(ex.getMessage());
-                } finally {
+                }  finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }

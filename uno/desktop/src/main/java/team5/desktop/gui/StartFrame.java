@@ -9,8 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import javax.swing.*;
@@ -45,7 +44,6 @@ public class StartFrame extends JFrame {
     private void initComponents() {
         //this.setLocationRelativeTo(null);
 
-        
         setPreferredSize(new Dimension(400, 300));
         setLayout(null);
         this.setBounds(200, 10, 710, 790);
@@ -103,14 +101,11 @@ public class StartFrame extends JFrame {
                     //workWithFiles.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } 
-                //catch (IOException ex) {
+                } //catch (IOException ex) {
                 //    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 //} 
                 catch (JAXBException ex) {
-                    Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                  log.debug(ex.getMessage());
+
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -152,13 +147,13 @@ public class StartFrame extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       Logger log = Logger.getLogger(StartFrame.class);
+        Logger log = Logger.getLogger(StartFrame.class);
         try {
             WorkUser workUser = WorkUser.getWork();
             WorkWithFiles workWithFiles = new WorkWithFiles();
             //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
-            
+
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -166,22 +161,19 @@ public class StartFrame extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
             log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-//        catch (IOException ex) {
-//            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        } //        catch (IOException ex) {
+        //            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
+        //        }
         catch (JAXBException ex) {
-            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
+
             log.debug(ex.getMessage());
-        } catch (IOException ex) {
-           log.debug(ex.getMessage());
         }
         //</editor-fold>
 

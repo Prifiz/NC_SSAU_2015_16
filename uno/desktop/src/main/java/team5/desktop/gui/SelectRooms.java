@@ -9,8 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.actions.WorkUser;
 import javax.swing.*;
@@ -104,10 +103,8 @@ public class SelectRooms extends JFrame {
                 //    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 //} 
                 catch (JAXBException ex) {
-                    Logger.getLogger(SelectRooms.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
                     log.debug(ex.getMessage());
-                } finally {
+                }finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }

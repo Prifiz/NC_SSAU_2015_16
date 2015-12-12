@@ -23,6 +23,7 @@
         <privateInformation>
             <name>putin</name>
             <surname>d</surname>
+            <bDay>0012-12-19</bDay>
         </privateInformation>
         <serviceInfo>
             <email>d</email>
@@ -38,26 +39,12 @@
         <privateInformation>
             <name>sasdq</name>
             <surname>d</surname>
+            <bDay>0012-12-19</bDay>
         </privateInformation>
         <serviceInfo>
             <email>d</email>
             <login>d</login>
             <password>d</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
-            <city>hkvc</city>
-            <country>hkvcv</country>
-        </address>
-        <privateInformation>
-            <name>dvjkb</name>
-            <surname>bksv</surname>
-        </privateInformation>
-        <serviceInfo>
-            <email>dfk</email>
-            <login>q</login>
-            <password>123</password>
         </serviceInfo>
     </arrUsers>
 </workUser>

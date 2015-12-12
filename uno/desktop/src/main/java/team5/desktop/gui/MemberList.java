@@ -256,8 +256,6 @@ public class MemberList extends javax.swing.JFrame {
 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
 //                }
                 catch (JAXBException ex) {
-                    Logger.getLogger(MemberList.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
                    log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);

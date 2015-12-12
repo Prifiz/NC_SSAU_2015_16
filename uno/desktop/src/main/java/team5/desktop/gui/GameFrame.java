@@ -12,8 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.Enumeration;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import java.util.NoSuchElementException;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -191,10 +190,8 @@ public class GameFrame extends JFrame {
 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
 //                } 
                 catch (JAXBException ex) {
-                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                   log.debug(ex.getMessage());
-                } finally {
+                    log.debug(ex.getMessage());
+                }  finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }

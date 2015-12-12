@@ -3,8 +3,7 @@ package team5.desktop.actions;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -49,7 +48,7 @@ public class WorkUser implements Serializable {
                     User admin = new Admin();
                     arrUsers.add(admin);
                 }   } catch (UserNotFoundException ex) {
-                Logger.getLogger(WorkUser.class.getName()).log(Level.SEVERE, null, ex);
+               
             }
         }
     }
