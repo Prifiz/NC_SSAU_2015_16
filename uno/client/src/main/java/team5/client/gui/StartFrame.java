@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.desktop.gui;
+package team5.client.gui;
 
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 
-import team5.desktop.actions.WorkWithFiles;
-import team5.desktop.actions.WorkUser;
+import team5.client.actions.WorkWithFiles;
+import team5.client.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.*;
-import team5.desktop.actions.WorkWithFiles;
-import team5.desktop.actions.WorkUser;
+import team5.client.actions.WorkWithFiles;
+import team5.client.actions.WorkUser;
 import javax.swing.*;
 import org.apache.log4j.Logger;
 
@@ -141,7 +141,7 @@ public class StartFrame extends JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        int serverport = 8080;
+        int serverport = 8081;
         String address = "127.0.0.1";
         InputStream in = null;
         OutputStream out = null;

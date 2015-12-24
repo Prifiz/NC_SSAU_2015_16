@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.desktop.gui;
+package team5.client.gui;
 
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
@@ -15,9 +15,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import team5.desktop.actions.WorkWithFiles;
-import team5.desktop.actions.SignIn;
-import team5.desktop.actions.WorkUser;
+import team5.client.actions.WorkWithFiles;
+import team5.client.actions.SignIn;
+import team5.client.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;

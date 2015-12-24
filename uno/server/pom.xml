@@ -8,10 +8,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>team5</groupId>
-    <artifactId>desktop</artifactId>
+    <artifactId>server</artifactId>
     <version>1.0</version> 
     <packaging>jar</packaging>
-    <name>desktop</name>    
+    <name>server</name>    
    
     <build>
         <resources>
@@ -47,7 +47,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib</classpathPrefix>
-                            <mainClass>team5.desktop.uno.Main</mainClass>
+                            <mainClass>team5.desktop.net.server.Server</mainClass>
                         </manifest>
                         
                     </archive>

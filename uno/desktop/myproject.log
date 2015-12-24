@@ -1,3 +1,22 @@
 08:57:59,610 DEBUG main Main:main:84 - User already exist
 11:38:35,572 DEBUG main Main:main:84 - User already exist
 11:39:38,234 DEBUG main Main:main:84 - User already exist
+11:30:23,625 DEBUG main Main:main:84 - User already exist
+05:31:21,953 DEBUG main Main:main:84 - User already exist
+03:50:03,702 DEBUG main Main:main:84 - User already exist
+03:52:06,164 DEBUG main Main:main:84 - User already exist
+03:52:23,572 DEBUG main Main:main:84 - User already exist
+04:01:16,094 DEBUG main Main:main:84 - User already exist
+04:02:25,370 DEBUG main Main:main:84 - User already exist
+04:09:05,466 DEBUG main Main:main:84 - User already exist
+13:19:27,592 DEBUG main Main:main:84 - User already exist
+13:19:35,102 DEBUG AWT-EventQueue-0 Rules:textRule:51 - src\main\resource\textRule.txt (Системе не удается найти указанный путь)
+13:21:42,766 DEBUG main Main:main:84 - User already exist
+13:21:45,471 DEBUG AWT-EventQueue-0 Rules:textRule:51 - \src\main\resource\textRule.txt (Системе не удается найти указанный путь)
+13:29:02,255 DEBUG main Main:main:84 - User already exist
+13:29:04,353 DEBUG AWT-EventQueue-0 Rules:textRule:51 - \main\resource\textRule.txt (Системе не удается найти указанный путь)
+13:32:28,215 DEBUG main Main:main:84 - User already exist
+15:39:19,529 DEBUG main Server:main:25 - Address already in use: JVM_Bind
+15:39:51,178 DEBUG main Server:main:25 - Address already in use: JVM_Bind
+15:42:20,780 DEBUG main Main:main:84 - User already exist
+11:07:22,587 DEBUG main Server:main:25 - Address already in use: JVM_Bind

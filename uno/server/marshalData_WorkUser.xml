@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workUser>
+    <arrUsers>
+        <address>
+            <city>XX</city>
+            <country>Usa</country>
+        </address>
+        <privateInformation>
+            <name>bob4</name>
+            <surname>Clark</surname>
+            <bDay>0012-12-19</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>email@gmail.com</email>
+            <login>sfsdf</login>
+            <password>1234</password>
+        </serviceInfo>
+    </arrUsers>
+</workUser>

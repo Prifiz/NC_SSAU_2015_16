@@ -8,9 +8,13 @@ package team5.desktop.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.util.logging.Level;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import team5.desktop.actions.Registration;
 import team5.desktop.exceptions.*;
 import team5.desktop.actions.WorkWithFiles;
@@ -28,9 +32,11 @@ import org.apache.log4j.Logger;
  *
  * @author Kate_Romanoff
  */
-public class SecondFrame extends JFrame {
+public class RegistrationFrame extends JFrame {
 
-    private Logger log = Logger.getLogger(SecondFrame.class);
+    private InputStream in;
+    private OutputStream out;
+    private Logger log = Logger.getLogger(RegistrationFrame.class);
     private JButton okButton;
     private JButton canselButton;
     private JLabel emailLabel;
@@ -55,7 +61,9 @@ public class SecondFrame extends JFrame {
     /**
      * Creates new form SecondFrame
      */
-    public SecondFrame() {
+    public RegistrationFrame(InputStream in, OutputStream out) {
+        this.in = in;
+        this.out = out;
         initComponents();
     }
 
@@ -204,10 +212,9 @@ public class SecondFrame extends JFrame {
                     //sd.serializableData("serializableData_WorkUser.bin", wu);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-//                catch (IOException ex) {
-//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-//                } 
+                } //                catch (IOException ex) {
+                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                //                } 
                 catch (JAXBException ex) {
                     log.debug(ex.getMessage());
                 } finally {
@@ -229,40 +236,45 @@ public class SecondFrame extends JFrame {
             }
         });
 
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        // SignIn sign = new SignIn();
+        boolean f = false;
+        DataInputStream din = new DataInputStream(in);
+        DataOutputStream dout = new DataOutputStream(out);
         try {
-            // WorkUser wu =WorkUser.getWork();
-            Registration r = new Registration();
-            //if(sign.sign(this.jTextField1.getText(), this.jPasswordField1.getPassword()))
-
-//            if(r.registrationUser(this.jTextField3.getText(), this.jTextField4.getText(), this.jTextField5.getText(), this.jTextField6.getText(), this.jTextField1.getText(), this.jTextField2.getText(), this.jTextField7.getText(), LocalDate.now().toString()))
-//            {
-//            LogIn logIn = new LogIn();
-//            logIn.setVisible(true);
-//            this.setVisible(false);
-//            }
-            if (r.registrationUser(this.nameTextField.getText(), this.surnameTextField.getText(), this.countryTextField.getText(), this.sityTextField.getText(), this.loginTextField.getText(), this.passwordTextField.getText(), this.emailTextField.getText(), "12.05.2010")) {
-                LogIn logIn = new LogIn();
+            dout.writeUTF("Registration");
+            dout.writeUTF(nameTextField.getText());
+            dout.writeUTF(surnameTextField.getText());
+            dout.writeUTF(countryTextField.getText());
+            dout.writeUTF(sityTextField.getText());
+            dout.writeUTF(loginTextField.getText());
+            dout.writeUTF(passwordTextField.getText());
+            dout.writeUTF(emailTextField.getText());
+            dout.writeUTF("12.05.2010");
+            dout.flush();
+            f = din.readBoolean();
+            //Registration r = new Registration();
+            //r.registrationUser(this.nameTextField.getText(), this.surnameTextField.getText(), 
+            //this.countryTextField.getText(), this.sityTextField.getText(), this.loginTextField.getText(), this.passwordTextField.getText(), this.emailTextField.getText(), "12.05.2010")F
+            if (f) {
+                LogIn logIn = new LogIn(in, out);
                 logIn.setVisible(true);
                 this.setVisible(false);
             } else {
                 jMessage.setText("The field is empty. Fill in all the fields.");
             }
-        } catch (UserExistException e) {
+        } catch (IOException e) {
             jMessage.setText("User already created");
             //Надо написать обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
         }
     }
 
     private void canselButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        LogIn logIn = new LogIn();
+        LogIn logIn = new LogIn(in, out);
         logIn.setVisible(true);
         this.setVisible(false);
     }
@@ -270,32 +282,31 @@ public class SecondFrame extends JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        Logger log = Logger.getLogger(SecondFrame.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-           log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-           log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-           log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-           log.debug(ex.getMessage());
-        }
-        //</editor-fold>
+    /*public static void main(String args[]) {
+     Logger log = Logger.getLogger(SecondFrame.class);
+     try {
+     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+     if ("Nimbus".equals(info.getName())) {
+     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+     break;
+     }
+     }
+     } catch (ClassNotFoundException ex) {
+     log.debug(ex.getMessage());
+     } catch (InstantiationException ex) {
+     log.debug(ex.getMessage());
+     } catch (IllegalAccessException ex) {
+     log.debug(ex.getMessage());
+     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+     log.debug(ex.getMessage());
+     }
+     //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SecondFrame().setVisible(true);
-            }
-        });
-    }
-
+     /* Create and display the form */
+    /*java.awt.EventQueue.invokeLater(new Runnable() {
+     public void run() {
+     new SecondFrame().setVisible(true);
+     }
+     });
+     }*/
 }
