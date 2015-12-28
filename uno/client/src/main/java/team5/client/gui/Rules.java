@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import team5.client.actions.WorkWithFiles;
 import team5.client.actions.WorkUser;
 import javax.swing.*;
@@ -42,7 +44,7 @@ public class Rules extends JFrame {
         String text = "";
         String s = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName)));
             while ((s = br.readLine()) != null) {
                 text += s;
             }
@@ -80,7 +82,7 @@ public class Rules extends JFrame {
         ruleTextArea.setLineWrap(true);
 
         //jTextArea1.setText("      Players are dealt 7 cards. The top card of \nthe deck is turned face up and with it the game \nbegins (this card is the beginning of the game \ndeck).\n      The game begins in a clockwise direction.\n      On his turn, each player must put a card in \nthe game deck, and the card must match the \ntop card in the game deck on color or image. \nIf the player does not have a suitable card, \nthen he takes one card from the deck of the \nbank, and if the card is suitable, it could make \na move if he wants to. If a player has taken \nfrom the deck of the bank the right card, but \nshe did not move - he receives no fine. The \nnext player to act in a clockwise direction.\n");
-        ruleTextArea.setText(textRule("textRule.txt"));
+        ruleTextArea.setText(textRule("/textRule.txt"));
         jScrollPane.setViewportView(ruleTextArea);
         add(jScrollPane);
         jScrollPane.setBounds(30, 80, 320, 150);

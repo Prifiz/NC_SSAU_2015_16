@@ -8,41 +8,12 @@
         <privateInformation>
             <name>bob4</name>
             <surname>Clark</surname>
+            <bDay>0012-12-19</bDay>
         </privateInformation>
         <serviceInfo>
             <email>email@gmail.com</email>
             <login>sfsdf</login>
             <password>1234</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
-            <city>d</city>
-            <country>d</country>
-        </address>
-        <privateInformation>
-            <name>putin</name>
-            <surname>d</surname>
-        </privateInformation>
-        <serviceInfo>
-            <email>d</email>
-            <login>sf</login>
-            <password>d</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
-            <city>d</city>
-            <country>d</country>
-        </address>
-        <privateInformation>
-            <name>sasdq</name>
-            <surname>d</surname>
-        </privateInformation>
-        <serviceInfo>
-            <email>d</email>
-            <login>d</login>
-            <password>d</password>
         </serviceInfo>
     </arrUsers>
 </workUser>
