@@ -111,6 +111,7 @@ public class ServerThread extends Thread {
                                 break;
                             case "Room 2":
                                 if ((rooms[1].countGamers() < 4) && (rooms[1].isPlaying()==false)) {
+                                     out.writeUTF("Wait");
                                     rooms[1].addGamer(gamer);
                                     if (rooms[1].countGamers() == 1) {
                                         for (int i = 0; i < 30; i++) {
@@ -146,6 +147,7 @@ public class ServerThread extends Thread {
                                 break;
                             case "Room 3":
                                 if ((rooms[2].countGamers() < 4) && (rooms[2].isPlaying()==false)) {
+                                     out.writeUTF("Wait");
                                     rooms[2].addGamer(gamer);
                                     if (rooms[2].countGamers() == 1) {
                                         for (int i = 0; i < 30; i++) {
@@ -181,6 +183,7 @@ public class ServerThread extends Thread {
                                 break;
                             case "Room 4":
                                 if ((rooms[3].countGamers() < 4) && (rooms[3].isPlaying()==false)) {
+                                     out.writeUTF("Wait");
                                     rooms[3].addGamer(gamer);
                                     if (rooms[3].countGamers() == 1) {
                                         for (int i = 0; i < 30; i++) {
