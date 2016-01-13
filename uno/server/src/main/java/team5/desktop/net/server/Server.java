@@ -8,6 +8,7 @@ package team5.desktop.net.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import org.apache.log4j.Logger;
+import team5.desktop.actions.RoomController;
 import team5.desktop.actions.WorkUser;
 import team5.desktop.exceptions.UserExistException;
 
@@ -18,6 +19,11 @@ import team5.desktop.exceptions.UserExistException;
 public class Server {
 
     public static void main(String[] args) {
+        RoomController [] rooms = new RoomController[4];
+        int [] waitTime = new int [4];
+        for (int i = 0; i < 4; i++) {
+            rooms[i] = new RoomController();
+        }
         Logger log = Logger.getLogger(Server.class);
         WorkUser wu = WorkUser.getWork();
         try {
@@ -42,7 +48,7 @@ public class Server {
         while (true) {
             System.out.println("Waiting...");
             try {
-                ServerThread thread = new ServerThread(s.accept());
+                ServerThread thread = new ServerThread(s.accept(), rooms, waitTime);
                 log.info("Client connected");
                 thread.start();
             } catch (IOException ex) {

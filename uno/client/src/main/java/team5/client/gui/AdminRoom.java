@@ -8,13 +8,9 @@ package team5.client.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.File;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.xml.bind.JAXBException;
-import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,13 +24,17 @@ import team5.client.actions.WorkWithFiles;
  */
 public class AdminRoom extends JFrame {
 
+    private InputStream in;
+    private OutputStream out;
     private Logger log = Logger.getLogger(AdminRoom.class);
     private JButton memberListButton;
     private JButton cardListButton;
     private JButton backButton;
     private JLabel adminLabel;
 
-    public AdminRoom() {
+    public AdminRoom(InputStream in, OutputStream out) {
+        this.in = in;
+        this.out = out;
         initComponents();
     }
 
@@ -55,7 +55,7 @@ public class AdminRoom extends JFrame {
                 memberListButtonActionPerformed(evt);
             }
         });
-        
+
         cardListButton = new JButton();
         cardListButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         cardListButton.setText("Card list");
@@ -99,13 +99,12 @@ public class AdminRoom extends JFrame {
                     //sd.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } 
-                catch (JAXBException ex) {
-                   log.debug(ex.getMessage());
+                } catch (JAXBException ex) {
+                    log.debug(ex.getMessage());
                 }//                catch (IOException ex) {
-//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-                  finally {
+                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                //                }
+                finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }
@@ -130,8 +129,8 @@ public class AdminRoom extends JFrame {
     }
 
     private void memberListButtonActionPerformed(java.awt.event.ActionEvent evt) {
-       
-        MemberList list = new MemberList();
+
+        MemberList list = new MemberList(in, out);
         list.setVisible(true);
         this.setVisible(false);
     }
@@ -145,7 +144,7 @@ public class AdminRoom extends JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        SelectRooms rooms = new SelectRooms();
+        SelectRooms rooms = new SelectRooms(in, out);
         rooms.setVisible(true);
         this.setVisible(false);
     }
@@ -153,7 +152,7 @@ public class AdminRoom extends JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
 
         Logger log = Logger.getLogger(AdminRoom.class);
         try {
@@ -166,11 +165,11 @@ public class AdminRoom extends JFrame {
         } catch (ClassNotFoundException ex) {
             log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-             log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-             log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-             log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -178,5 +177,5 @@ public class AdminRoom extends JFrame {
                 new AdminRoom().setVisible(true);
             }
         });
-    }
+    }*/
 }

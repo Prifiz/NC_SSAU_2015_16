@@ -8,13 +8,9 @@ package team5.client.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.File;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.xml.bind.JAXBException;
-import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,12 +24,16 @@ import team5.client.actions.WorkWithFiles;
  */
 public class FinishFrame extends JFrame {
 
+    private InputStream in;
+    private OutputStream out;
     private Logger log = Logger.getLogger(FinishFrame.class);
     private JButton playAgainButton;
     private JButton backButton;
     private JLabel resultLabel;
 
-    public FinishFrame() {
+    public FinishFrame(InputStream in, OutputStream out) {
+        this.in = in;
+        this.out = out;
         initComponents();
     }
 
@@ -65,9 +65,9 @@ public class FinishFrame extends JFrame {
                 backButtonActionPerformed(evt);
             }
         });
-        
+
         resultLabel = new JLabel();
-       resultLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        resultLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         resultLabel.setText("YOU WIN");
         add(resultLabel);
         resultLabel.setBounds(135, 100, 150, 30);
@@ -87,13 +87,12 @@ public class FinishFrame extends JFrame {
                     //workWithFiles.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-//                catch (IOException ex) {
-//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-//                }
+                } //                catch (IOException ex) {
+                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                //                }
                 catch (JAXBException ex) {
                     log.debug(ex.getMessage());
-                }  finally {
+                } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }
@@ -119,14 +118,14 @@ public class FinishFrame extends JFrame {
 
     private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        GameFrame gameFrame = new GameFrame();
+        GameFrame gameFrame = new GameFrame(in, out);
         gameFrame.setVisible(true);
         this.setVisible(false);
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        SelectRooms rooms = new SelectRooms();
+        SelectRooms rooms = new SelectRooms(in, out);
         rooms.setVisible(true);
         this.setVisible(false);
     }
@@ -134,7 +133,7 @@ public class FinishFrame extends JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
 
         Logger log = Logger.getLogger(FinishFrame.class);
         try {
@@ -145,13 +144,13 @@ public class FinishFrame extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
             log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -159,5 +158,5 @@ public class FinishFrame extends JFrame {
                 new FinishFrame().setVisible(true);
             }
         });
-    }
+    }*/
 }

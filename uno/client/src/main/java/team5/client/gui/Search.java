@@ -7,6 +7,8 @@ package team5.client.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -22,7 +24,8 @@ import team5.client.user.User;
  */
 public class Search extends javax.swing.JFrame {
 
-    
+    private InputStream in;
+    private OutputStream out;
     private String searchRequest;
     private JButton backButton;
     private JButton okButton;
@@ -35,7 +38,9 @@ public class Search extends javax.swing.JFrame {
 
     private JPanel panel;
 
-    public Search() {
+    public Search(InputStream in,OutputStream out) {
+        this.in = in;
+        this.out = out;
         initComponents();
     }
 
@@ -126,7 +131,7 @@ public class Search extends javax.swing.JFrame {
         } catch (UserNotFoundException e) {
             jMessage.setText("Nothing found.");
         }
-         //   finally {
+        //   finally {
         //     this.setVisible(false);
         // }
     }
@@ -142,7 +147,7 @@ public class Search extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
 
         Logger log = Logger.getLogger(Search.class);
         try {
@@ -153,11 +158,11 @@ public class Search extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
-          log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             log.debug(ex.getMessage());
         }
@@ -167,6 +172,6 @@ public class Search extends javax.swing.JFrame {
                 new MemberList().setVisible(true);
             }
         });
-    }
+    }*/
 
 }

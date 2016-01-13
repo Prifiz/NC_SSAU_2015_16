@@ -8,16 +8,15 @@ package team5.client.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.File;
-
-import team5.client.actions.WorkWithFiles;
-import team5.client.actions.WorkUser;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import team5.client.actions.WorkWithFiles;
 import team5.client.actions.WorkUser;
-import javax.swing.*;
 import org.apache.log4j.Logger;
 
 /**
@@ -26,24 +25,27 @@ import org.apache.log4j.Logger;
  */
 public class SelectRooms extends JFrame {
 
+    private InputStream in;
+    private OutputStream out;
     private Logger log = Logger.getLogger(SelectRooms.class);
-     private javax.swing.JButton startButton;
+    private javax.swing.JButton startButton;
     private javax.swing.JButton adminRoomButton;
     private javax.swing.JComboBox jComboBox;
-    private javax.swing.JLabel selectLabel;  
-    
+    private javax.swing.JLabel selectLabel;
+
     /**
      * Creates new form SelectRooms
+     * @param in
+     * @param out
      */
-    public SelectRooms() {
+    public SelectRooms(InputStream in, OutputStream out) {
+        this.in = in;
+        this.out = out;
         initComponents();
     }
 
-    
-    @SuppressWarnings("unchecked")                       
+    @SuppressWarnings("unchecked")
     private void initComponents() {
-
-       
 
         setPreferredSize(new Dimension(400, 300));
         setLayout(null);
@@ -57,7 +59,7 @@ public class SelectRooms extends JFrame {
 
         jComboBox = new JComboBox();
         jComboBox.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Room 1"}));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Room 1", "Room 2", "Room 3", "Room 4"}));
         add(jComboBox);
         jComboBox.setBounds(150, 130, 100, 30);
 
@@ -98,13 +100,12 @@ public class SelectRooms extends JFrame {
                     //sd.serializableData("serializableData_WorkUser.bin", wu);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-                //catch (IOException ex) {
+                } //catch (IOException ex) {
                 //    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 //} 
                 catch (JAXBException ex) {
                     log.debug(ex.getMessage());
-                }finally {
+                } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }
@@ -123,57 +124,77 @@ public class SelectRooms extends JFrame {
             }
         });
 
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminRoom adminRoom = new AdminRoom();
+        AdminRoom adminRoom = new AdminRoom(in, out);
         adminRoom.setVisible(true);
         //MemberList list = new MemberList();
         //list.setVisible(true);
         this.setVisible(false);
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        GameFrame gameFrame = new GameFrame();
-        gameFrame.setVisible(true);
-        this.setVisible(false);
+        DataInputStream din = new DataInputStream(in);
+        DataOutputStream dout = new DataOutputStream(out);
+        try {
+            dout.writeUTF("Select");
+            dout.writeUTF(jComboBox.getSelectedItem().toString());
+            dout.flush();
+            String comand = din.readUTF();
+            switch (comand) {
+                case "Wait":
+                    JOptionPane.showConfirmDialog(null, "Wait for other players", "Waiting...", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                case "Full":
+                    JOptionPane.showConfirmDialog(null, "This room is full. Select other room", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            }
+            boolean f = din.readBoolean();
+            if (f) {
+                GameFrame gameFrame = new GameFrame(in, out);
+                gameFrame.setVisible(true);
+                this.setVisible(false);
+            }
+            else
+            {
+                 JOptionPane.showConfirmDialog(null, "You could't enter this room. Try again", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (IOException ex) {
+            log.debug(ex.getMessage());
+        }
+
     }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        Logger log = Logger.getLogger(SelectRooms.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-           log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-          log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            log.debug(ex.getMessage());
-        }
-        //</editor-fold>
+    /*public static void main(String args[]) {
+     Logger log = Logger.getLogger(SelectRooms.class);
+     try {
+     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+     if ("Nimbus".equals(info.getName())) {
+     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+     break;
+     }
+     }
+     } catch (ClassNotFoundException ex) {
+     log.debug(ex.getMessage());
+     } catch (InstantiationException ex) {
+     log.debug(ex.getMessage());
+     } catch (IllegalAccessException ex) {
+     log.debug(ex.getMessage());
+     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+     log.debug(ex.getMessage());
+     }
+     //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SelectRooms().setVisible(true);
-            }
-        });
-    }
-
-                       
-                  
+     /* Create and display the form */
+    /* java.awt.EventQueue.invokeLater(new Runnable() {
+     public void run() {
+     new SelectRooms().setVisible(true);
+     }
+     });*/
 }

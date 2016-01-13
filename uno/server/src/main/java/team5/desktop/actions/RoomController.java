@@ -15,11 +15,23 @@ public class RoomController {
 
     private TableController table;
     private ArrayList<GamerController> gamers;
+    private boolean playing = false;
 
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    public void setPlaying(boolean playing) {
+        this.playing = playing;
+    }
     public ArrayList<GamerController> getGamers() {
         return gamers;
     }
 
+    public int countGamers()
+    {
+        return gamers.size();
+    }
     public RoomController() {
         table = new TableController();
         gamers = new ArrayList();

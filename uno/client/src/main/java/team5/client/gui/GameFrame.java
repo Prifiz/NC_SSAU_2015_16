@@ -10,10 +10,10 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Enumeration;
 
-import java.util.NoSuchElementException;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -38,6 +38,8 @@ import team5.client.card.Card;
  */
 public class GameFrame extends JFrame {
 
+    private InputStream in;
+    private OutputStream out;
     private Logger log = Logger.getLogger(GameFrame.class);
     private boolean isTakeCard = false;
     private RoomController room;
@@ -58,13 +60,14 @@ public class GameFrame extends JFrame {
     private JPanel pn2;
     private JTabbedPane pane;
 
-    public GameFrame() {
+    public GameFrame(InputStream in, OutputStream out) {
+        this.in = in;
+        this.out = out;
         initComponents();
     }
 
     private void initComponents() {
 
-        
         room = new RoomController();
         gamer1 = new GamerController("Player1");
         room.addGamer(gamer1);
@@ -185,13 +188,12 @@ public class GameFrame extends JFrame {
                     //sd.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-//                catch (IOException ex) {
-//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-//                } 
+                } //                catch (IOException ex) {
+                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                //                } 
                 catch (JAXBException ex) {
                     log.debug(ex.getMessage());
-                }  finally {
+                } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }
@@ -217,7 +219,7 @@ public class GameFrame extends JFrame {
 
     private void exitGameButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        SelectRooms rooms = new SelectRooms();
+        SelectRooms rooms = new SelectRooms(in, out);
         rooms.setVisible(true);
         this.setVisible(false);
     }
@@ -369,7 +371,7 @@ public class GameFrame extends JFrame {
                     boolean endgame = false;
 
                     if (buttonGroup1.getButtonCount() == 0) {
-                        FinishFrame finish = new FinishFrame();
+                        FinishFrame finish = new FinishFrame(in, out);
                         finish.setVisible(true);
                         this.setVisible(false);
                         endgame = true;
@@ -425,7 +427,7 @@ public class GameFrame extends JFrame {
                     buttonGroup2.remove(jr);
                     boolean endgame = false;
                     if (buttonGroup2.getButtonCount() == 0) {
-                        FinishFrame finish = new FinishFrame();
+                        FinishFrame finish = new FinishFrame(in, out);
                         finish.setVisible(true);
                         this.setVisible(false);
                         endgame = true;
@@ -464,7 +466,7 @@ public class GameFrame extends JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
 
         Logger log = Logger.getLogger(GameFrame.class);
         try {
@@ -475,7 +477,7 @@ public class GameFrame extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
             log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
@@ -490,5 +492,5 @@ public class GameFrame extends JFrame {
 
             }
         });
-    }
+    }*/
 }

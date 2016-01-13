@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -29,6 +31,8 @@ import team5.client.user.User;
  */
 public class MemberList extends javax.swing.JFrame {
 
+    private InputStream in;
+    private OutputStream out;
     private Logger log = Logger.getLogger(MemberList.class);
     private Search search;
     private JButton backButton;
@@ -61,7 +65,9 @@ public class MemberList extends javax.swing.JFrame {
 
     private UserTableModel model;
 
-    public MemberList() {
+    public MemberList(InputStream in,OutputStream out) {
+        this.in = in;
+        this.out = out;
         initComponents();
     }
 
@@ -73,7 +79,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        search = new Search();
+        search = new Search(in, out);
         setLayout(null);
         setBounds(200, 10, 710, 790);
         this.setLocationRelativeTo(null);
@@ -251,12 +257,11 @@ public class MemberList extends javax.swing.JFrame {
                     //sd.serializableData("serializableData_WorkUser.bin", wu);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } 
-//                catch (IOException ex) {
-//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-//                }
+                } //                catch (IOException ex) {
+                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                //                }
                 catch (JAXBException ex) {
-                   log.debug(ex.getMessage());
+                    log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -289,7 +294,7 @@ public class MemberList extends javax.swing.JFrame {
                 }
             }
         } catch (UserNotFoundException e) {
-           log.debug(e.getMessage());
+            log.debug(e.getMessage());
         }
 
         jTable1.revalidate();
@@ -304,7 +309,7 @@ public class MemberList extends javax.swing.JFrame {
                 model.setUser((ArrayList<User>) UserSearch.regularSearch(search.getSearchRequest()));
             }
         } catch (UserExistException e) {
-           log.debug(e.getMessage());
+            log.debug(e.getMessage());
         } catch (UserNotFoundException ex) {
             log.debug(ex.getMessage());
         }
@@ -321,7 +326,7 @@ public class MemberList extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminRoom adminRoom = new AdminRoom();
+        AdminRoom adminRoom = new AdminRoom(in, out);
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);
         adminRoom.setVisible(true);
@@ -347,7 +352,7 @@ public class MemberList extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
 
         Logger log = Logger.getLogger(MemberList.class);
         try {
@@ -358,11 +363,11 @@ public class MemberList extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-          log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (InstantiationException ex) {
             log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             log.debug(ex.getMessage());
         }
@@ -372,6 +377,6 @@ public class MemberList extends javax.swing.JFrame {
                 new MemberList().setVisible(true);
             }
         });
-    }
+    }*/
 
 }
