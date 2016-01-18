@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import org.apache.log4j.Logger;
+import team5.client.actions.DataExchange;
 import team5.client.actions.WorkUser;
 import team5.client.actions.WorkWithFiles;
 
@@ -24,16 +25,14 @@ import team5.client.actions.WorkWithFiles;
  */
 public class FinishFrame extends JFrame {
 
-    private InputStream in;
-    private OutputStream out;
+    private DataExchange  dataE;
     private Logger log = Logger.getLogger(FinishFrame.class);
     private JButton playAgainButton;
     private JButton backButton;
     private JLabel resultLabel;
 
-    public FinishFrame(InputStream in, OutputStream out) {
-        this.in = in;
-        this.out = out;
+    public FinishFrame(DataExchange  dataE) {
+        this.dataE = dataE;
         initComponents();
     }
 
@@ -118,14 +117,14 @@ public class FinishFrame extends JFrame {
 
     private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        GameFrame gameFrame = new GameFrame(in, out);
+        GameFrame gameFrame = new GameFrame(dataE);
         gameFrame.setVisible(true);
         this.setVisible(false);
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        SelectRooms rooms = new SelectRooms(in, out);
+        SelectRooms rooms = new SelectRooms(dataE);
         rooms.setVisible(true);
         this.setVisible(false);
     }

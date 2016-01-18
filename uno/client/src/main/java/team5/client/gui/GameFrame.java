@@ -25,6 +25,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
+import team5.client.actions.DataExchange;
 import team5.client.actions.GamerController;
 import team5.client.actions.RoomController;
 import team5.client.actions.TableController;
@@ -38,8 +39,7 @@ import team5.client.card.Card;
  */
 public class GameFrame extends JFrame {
 
-    private InputStream in;
-    private OutputStream out;
+    private DataExchange  dataE;
     private Logger log = Logger.getLogger(GameFrame.class);
     private boolean isTakeCard = false;
     private RoomController room;
@@ -60,9 +60,8 @@ public class GameFrame extends JFrame {
     private JPanel pn2;
     private JTabbedPane pane;
 
-    public GameFrame(InputStream in, OutputStream out) {
-        this.in = in;
-        this.out = out;
+    public GameFrame(DataExchange  dataE) {
+        this.dataE = dataE;
         initComponents();
     }
 
@@ -219,7 +218,7 @@ public class GameFrame extends JFrame {
 
     private void exitGameButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        SelectRooms rooms = new SelectRooms(in, out);
+        SelectRooms rooms = new SelectRooms(dataE);
         rooms.setVisible(true);
         this.setVisible(false);
     }
@@ -371,7 +370,7 @@ public class GameFrame extends JFrame {
                     boolean endgame = false;
 
                     if (buttonGroup1.getButtonCount() == 0) {
-                        FinishFrame finish = new FinishFrame(in, out);
+                        FinishFrame finish = new FinishFrame(dataE);
                         finish.setVisible(true);
                         this.setVisible(false);
                         endgame = true;
@@ -427,7 +426,7 @@ public class GameFrame extends JFrame {
                     buttonGroup2.remove(jr);
                     boolean endgame = false;
                     if (buttonGroup2.getButtonCount() == 0) {
-                        FinishFrame finish = new FinishFrame(in, out);
+                        FinishFrame finish = new FinishFrame(dataE);
                         finish.setVisible(true);
                         this.setVisible(false);
                         endgame = true;

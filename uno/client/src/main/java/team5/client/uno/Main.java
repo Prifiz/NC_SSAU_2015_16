@@ -71,25 +71,6 @@ public class Main {
         });
         // ArrayList<User> users = null;
         // users.add(user1);
-        WorkUser wu = WorkUser.getWork();
-        try {
-            wu.addUser("putin", "d", "d", "d", "sf", "d", "d", "19.12.12");
-            wu.addUser("sasdq", "d", "d", "d", "d", "d", "d", "19.12.12");
-            wu.addUser("f", "d", "d", "d", "sfsdf", "d", "d", "19-12-12");
-            wu.addUser("d", "d", "d", "d", "putin", "d", "d", "19-12-12");
-            //wu.addUser("asda", "d", "d", "d", "d", "d", "d", "19.12.12");
-            wu.addUser("putin", "d", "d", "d", "putin ", "d", "d", "19-12-2333");
-
-        } catch (UserExistException e) {
-            log.debug(e.getMessage());
-        }
-        try {
-            System.out.println("Search: " + UserSearch.regularSearch("(\\d|\\s|\\w)").toString());
-
-        } catch (UserNotFoundException e) {
-            log.debug(e.getMessage());
-        }
-        System.out.println(wu.viewUsers());
         // WorkUser wu =new WorkUser();
         //wu.addUser("Adam", "Smith", "USA","VS",new GregorianCalendar(1995, 12, 12) , "ggg", "1231114", "smi@gmai.com");
         // wu.addUser("bob1", "Clark", "Usa", "XX", "sf", "1234", "email@gmail.com",LocalDate.of(2014, 3, 4));
@@ -108,7 +89,7 @@ public class Main {
         //  char[] ch = new char[]{'1','2','3','4'};
         //String charToString = Character.toString(ch);
         // in.sign("sf",ch);
-        Address a = new Address();
+        //Address a = new Address();
         // System.out.println(a.toString());
 
     }

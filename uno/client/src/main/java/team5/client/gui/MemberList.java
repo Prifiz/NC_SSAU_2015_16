@@ -17,6 +17,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
+import team5.client.actions.DataExchange;
 import team5.client.actions.WorkWithFiles;
 import team5.client.actions.UserTableModel;
 import team5.client.actions.WorkUser;
@@ -31,8 +32,7 @@ import team5.client.user.User;
  */
 public class MemberList extends javax.swing.JFrame {
 
-    private InputStream in;
-    private OutputStream out;
+    private DataExchange  dataE;
     private Logger log = Logger.getLogger(MemberList.class);
     private Search search;
     private JButton backButton;
@@ -65,9 +65,8 @@ public class MemberList extends javax.swing.JFrame {
 
     private UserTableModel model;
 
-    public MemberList(InputStream in,OutputStream out) {
-        this.in = in;
-        this.out = out;
+    public MemberList(DataExchange  dataE) {
+        this.dataE = dataE;
         initComponents();
     }
 
@@ -79,7 +78,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        search = new Search(in, out);
+        search = new Search(dataE);
         setLayout(null);
         setBounds(200, 10, 710, 790);
         this.setLocationRelativeTo(null);
@@ -326,7 +325,7 @@ public class MemberList extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminRoom adminRoom = new AdminRoom(in, out);
+        AdminRoom adminRoom = new AdminRoom(dataE);
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);
         adminRoom.setVisible(true);

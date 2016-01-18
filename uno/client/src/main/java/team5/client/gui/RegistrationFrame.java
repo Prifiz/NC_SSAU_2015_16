@@ -18,6 +18,7 @@ import team5.client.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
+import team5.client.actions.DataExchange;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,8 +31,7 @@ import org.apache.log4j.Logger;
  */
 public class RegistrationFrame extends JFrame {
 
-    private InputStream in;
-    private OutputStream out;
+    private DataExchange dataE;
     private Logger log = Logger.getLogger(RegistrationFrame.class);
     private JButton okButton;
     private JButton canselButton;
@@ -57,9 +57,8 @@ public class RegistrationFrame extends JFrame {
     /**
      * Creates new form SecondFrame
      */
-    public RegistrationFrame(InputStream in, OutputStream out) {
-        this.in = in;
-        this.out = out;
+    public RegistrationFrame(DataExchange dataE) {
+        this.dataE = dataE;
         initComponents();
     }
 
@@ -239,25 +238,22 @@ public class RegistrationFrame extends JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
-        DataInputStream din = new DataInputStream(in);
-        DataOutputStream dout = new DataOutputStream(out);
         try {
-            dout.writeUTF("Registration");
-            dout.writeUTF(nameTextField.getText());
-            dout.writeUTF(surnameTextField.getText());
-            dout.writeUTF(countryTextField.getText());
-            dout.writeUTF(sityTextField.getText());
-            dout.writeUTF(loginTextField.getText());
-            dout.writeUTF(passwordTextField.getText());
-            dout.writeUTF(emailTextField.getText());
-            dout.writeUTF("12.05.2010");
-            dout.flush();
-            f = din.readBoolean();
+            dataE.write("Registration");
+            dataE.write(nameTextField.getText());
+            dataE.write(surnameTextField.getText());
+            dataE.write(countryTextField.getText());
+            dataE.write(sityTextField.getText());
+            dataE.write(loginTextField.getText());
+            dataE.write(passwordTextField.getText());
+            dataE.write(emailTextField.getText());
+            dataE.write("12.05.2010");
+            f = dataE.readBool();
             //Registration r = new Registration();
             //r.registrationUser(this.nameTextField.getText(), this.surnameTextField.getText(), 
             //this.countryTextField.getText(), this.sityTextField.getText(), this.loginTextField.getText(), this.passwordTextField.getText(), this.emailTextField.getText(), "12.05.2010")F
             if (f) {
-                LogIn logIn = new LogIn(in, out);
+                LogIn logIn = new LogIn(dataE);
                 logIn.setVisible(true);
                 this.setVisible(false);
             } else {
@@ -270,7 +266,7 @@ public class RegistrationFrame extends JFrame {
     }
 
     private void canselButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        LogIn logIn = new LogIn(in, out);
+        LogIn logIn = new LogIn(dataE);
         logIn.setVisible(true);
         this.setVisible(false);
     }

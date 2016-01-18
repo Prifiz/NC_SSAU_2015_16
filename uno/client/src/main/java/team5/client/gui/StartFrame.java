@@ -8,10 +8,6 @@ package team5.client.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.File;
-
-import team5.client.actions.WorkWithFiles;
-import team5.client.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
@@ -20,8 +16,8 @@ import java.io.OutputStream;
 import java.net.*;
 import team5.client.actions.WorkWithFiles;
 import team5.client.actions.WorkUser;
-import javax.swing.*;
 import org.apache.log4j.Logger;
+import team5.client.actions.DataExchange;
 
 /**
  *
@@ -148,15 +144,16 @@ public class StartFrame extends JFrame {
         try {
             InetAddress ipaddress = InetAddress.getByName(address);
             Socket socket = new Socket(ipaddress, serverport);
-            log.info("Connect to server");
             in = socket.getInputStream();
             out = socket.getOutputStream();
+            log.info("Connect to server");
         }
         catch(IOException e)
         {
             log.debug(e.getMessage());
         }
-        LogIn log = new LogIn(in,out);
+        DataExchange dataE = new DataExchange(in, out);
+        LogIn log = new LogIn(dataE);
         log.setVisible(true);
         this.setVisible(false);
     }

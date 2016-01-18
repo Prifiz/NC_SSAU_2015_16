@@ -18,6 +18,7 @@ import java.io.OutputStream;
 import team5.client.actions.WorkWithFiles;
 import team5.client.actions.WorkUser;
 import org.apache.log4j.Logger;
+import team5.client.actions.DataExchange;
 
 /**
  *
@@ -25,8 +26,7 @@ import org.apache.log4j.Logger;
  */
 public class SelectRooms extends JFrame {
 
-    private InputStream in;
-    private OutputStream out;
+    private DataExchange dataE;
     private Logger log = Logger.getLogger(SelectRooms.class);
     private javax.swing.JButton startButton;
     private javax.swing.JButton adminRoomButton;
@@ -38,9 +38,8 @@ public class SelectRooms extends JFrame {
      * @param in
      * @param out
      */
-    public SelectRooms(InputStream in, OutputStream out) {
-        this.in = in;
-        this.out = out;
+    public SelectRooms(DataExchange dataE) {
+        this.dataE = dataE;
         initComponents();
     }
 
@@ -130,7 +129,7 @@ public class SelectRooms extends JFrame {
     }// </editor-fold>                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminRoom adminRoom = new AdminRoom(in, out);
+        AdminRoom adminRoom = new AdminRoom(dataE);
         adminRoom.setVisible(true);
         //MemberList list = new MemberList();
         //list.setVisible(true);
@@ -138,13 +137,10 @@ public class SelectRooms extends JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        DataInputStream din = new DataInputStream(in);
-        DataOutputStream dout = new DataOutputStream(out);
         try {
-            dout.writeUTF("Select");
-            dout.writeUTF(jComboBox.getSelectedItem().toString());
-            dout.flush();
-            String comand = din.readUTF();
+            dataE.write("Select");
+            dataE.write(jComboBox.getSelectedItem().toString());
+            String comand = dataE.readString();
             switch (comand) {
                 case "Wait":
                     JOptionPane.showConfirmDialog(null, "Wait for other players", "Waiting...", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -152,9 +148,9 @@ public class SelectRooms extends JFrame {
                 case "Full":
                     JOptionPane.showConfirmDialog(null, "This room is full. Select other room", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
-            boolean f = din.readBoolean();
+            boolean f = dataE.readBool();
             if (f) {
-                GameFrame gameFrame = new GameFrame(in, out);
+                GameFrame gameFrame = new GameFrame(dataE);
                 gameFrame.setVisible(true);
                 this.setVisible(false);
             }

@@ -19,6 +19,7 @@ import team5.client.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
+import team5.client.actions.DataExchange;
 
 /**
  *
@@ -26,8 +27,7 @@ import org.apache.log4j.Logger;
  */
 public class LogIn extends JFrame {
 
-    private InputStream in;
-    private OutputStream out;
+    private DataExchange  dataE;
     private Logger log = Logger.getLogger(LogIn.class);
     private javax.swing.JButton signButton;
     private javax.swing.JButton registrationButton;
@@ -41,9 +41,8 @@ public class LogIn extends JFrame {
     /**
      * Creates new form LogIn
      */
-    public LogIn(InputStream in, OutputStream out) {
-        this.in = in;
-        this.out = out;
+    public LogIn(DataExchange dataE) {
+        this.dataE = dataE;
         initComponents();
     }
 
@@ -160,16 +159,13 @@ public class LogIn extends JFrame {
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        DataInputStream din = new DataInputStream(in);
-        DataOutputStream dout = new DataOutputStream(out);     
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
         boolean f = false;
         try{
-        dout.writeUTF("Login");
-        dout.writeUTF(jTextField.getText());
-        dout.writeUTF(String.valueOf(jPasswordField.getPassword()));
-        dout.flush();
-        f = din.readBoolean();
+        dataE.write("Login");
+        dataE.write(jTextField.getText());
+        dataE.write(String.valueOf(jPasswordField.getPassword()));
+        f = dataE.readBool();
         }
         catch(IOException e)
         {
@@ -179,7 +175,7 @@ public class LogIn extends JFrame {
         // WorkUser wu = WorkUser.getWork();
         //sign.sign(this.jTextField.getText(), this.jPasswordField.getPassword())
         if (f) {
-            SelectRooms rooms = new SelectRooms(in,out);
+            SelectRooms rooms = new SelectRooms(dataE);
             rooms.setVisible(true);
             this.setVisible(false);
         } else {
@@ -188,7 +184,7 @@ public class LogIn extends JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        RegistrationFrame secondFrame = new RegistrationFrame(in,out);
+        RegistrationFrame secondFrame = new RegistrationFrame(dataE);
         secondFrame.setVisible(true);
         this.setVisible(false);
     }

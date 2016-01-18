@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import org.apache.log4j.Logger;
+import team5.client.actions.DataExchange;
 import team5.client.actions.UserTableModel;
 import team5.client.exceptions.UserNotFoundException;
 import team5.client.searches.*;
@@ -24,8 +25,7 @@ import team5.client.user.User;
  */
 public class Search extends javax.swing.JFrame {
 
-    private InputStream in;
-    private OutputStream out;
+    private DataExchange  dataE;
     private String searchRequest;
     private JButton backButton;
     private JButton okButton;
@@ -38,9 +38,8 @@ public class Search extends javax.swing.JFrame {
 
     private JPanel panel;
 
-    public Search(InputStream in,OutputStream out) {
-        this.in = in;
-        this.out = out;
+    public Search(DataExchange  dataE) {
+        this.dataE = dataE;
         initComponents();
     }
 
