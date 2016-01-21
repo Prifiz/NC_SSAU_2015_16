@@ -20,3 +20,15 @@
 15:39:51,178 DEBUG main Server:main:25 - Address already in use: JVM_Bind
 15:42:20,780 DEBUG main Main:main:84 - User already exist
 11:07:22,587 DEBUG main Server:main:25 - Address already in use: JVM_Bind
+11:12:44,214 DEBUG main Main:main:84 - User already exist
+11:12:53,775 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
+11:13:53,175 DEBUG main Main:main:84 - User already exist
+11:13:55,940 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
+22:34:27,703 DEBUG main Main:main:84 - User already exist
+22:34:37,306 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
+22:38:18,607 DEBUG main Main:main:84 - User already exist
+22:38:21,425 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
+18:38:15,872 DEBUG main Main:main:84 - User already exist
+18:18:16,193 DEBUG main Main:main:84 - User already exist
+18:18:20,416 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
+18:19:25,978 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused

@@ -1,0 +1,78 @@
+12:04:18,805  INFO main Server:main:52 - Client connected
+12:10:50,050 DEBUG Thread-0 ServerThread:run:227 - 
+21:58:46,743 DEBUG main Server:main:52 - User already exist
+21:58:46,866 DEBUG main Server:main:59 - Address already in use
+21:59:12,425  INFO main Server:main:52 - Client connected
+21:59:30,452 DEBUG Thread-1 ServerThread:run:230 - Registration User already exist
+22:00:26,681 DEBUG main Server:main:52 - User already exist
+22:00:26,711 DEBUG main Server:main:59 - Address already in use
+22:01:06,914 DEBUG main Server:main:54 - User already exist
+22:01:06,972 DEBUG main Server:main:61 - Address already in use
+22:01:49,235 DEBUG main Server:main:50 - Address already in use
+22:02:41,008 DEBUG main Server:main:50 - Address already in use
+22:03:16,469 DEBUG main Server:main:45 - Address already in use
+22:04:53,653 DEBUG main Server:main:45 - Address already in use
+22:08:04,007 DEBUG main Server:main:45 - Address already in use
+22:09:29,835 DEBUG main Server:main:45 - Address already in use
+22:09:44,642  INFO main Server:main:52 - Client connected
+22:10:25,566 DEBUG Thread-2 ServerThread:run:227 - 
+22:10:37,481 DEBUG main Server:main:45 - Address already in use
+22:12:40,809 DEBUG main Server:main:45 - Address already in use
+22:32:52,811  INFO main Server:main:52 - Client connected
+22:33:21,973 DEBUG Thread-3 ServerThread:run:230 - Registration User already exist
+18:42:48,640  INFO main Server:main:52 - Client connected
+18:42:56,801 DEBUG Thread-0 ServerThread:run:227 - 
+18:17:43,826 DEBUG main Server:main:50 - User already exist
+18:20:33,985  INFO main Server:main:64 - Client connected
+18:21:33,936 DEBUG Thread-1 ServerThread:run:221 - 
+18:22:21,388  INFO main Server:main:64 - Client connected
+18:22:33,831 DEBUG Thread-2 ServerThread:run:224 - Registration User already exist
+18:23:18,607 DEBUG main Server:main:50 - User already exist
+18:23:18,654 DEBUG main Server:main:57 - Address already in use
+18:23:56,684 DEBUG main Server:main:50 - User already exist
+18:23:56,727 DEBUG main Server:main:57 - Address already in use
+18:26:25,076 DEBUG main Server:main:50 - User already exist
+18:26:25,114 DEBUG main Server:main:57 - Address already in use
+18:27:52,290 DEBUG main Server:main:50 - User already exist
+18:27:52,330 DEBUG main Server:main:57 - Address already in use
+18:29:21,721 DEBUG main Server:main:50 - User already exist
+18:29:21,760 DEBUG main Server:main:57 - Address already in use
+18:40:16,650 DEBUG main Server:main:50 - User already exist
+18:40:54,278  INFO main Server:main:64 - Client connected
+18:45:14,136 DEBUG Thread-1 ServerThread:run:221 - 
+18:52:12,933 DEBUG main Server:main:50 - User already exist
+18:52:12,982 DEBUG main Server:main:57 - Address already in use
+19:38:16,423  INFO main Server:main:64 - Client connected
+19:38:52,581 DEBUG Thread-2 ServerThread:run:221 - 
+19:39:12,767  INFO main Server:main:64 - Client connected
+19:39:34,322 DEBUG Thread-3 ServerThread:run:221 - 
+19:40:15,026  INFO main Server:main:64 - Client connected
+19:40:49,657 DEBUG Thread-4 ServerThread:run:221 - 
+19:49:27,014  INFO main Server:main:64 - Client connected
+19:49:36,878 DEBUG Thread-5 ServerThread:run:224 - Registration User already exist
+19:54:29,231  INFO main Server:main:64 - Client connected
+19:54:42,412 DEBUG Thread-6 ServerThread:run:224 - Registration User already exist
+19:55:22,558 DEBUG main Server:main:50 - User already exist
+19:55:22,572 DEBUG main Server:main:57 - Address already in use
+19:55:33,126  INFO main Server:main:64 - Client connected
+19:56:43,677 DEBUG Thread-7 ServerThread:run:221 - 
+19:57:07,508 DEBUG main Server:main:50 - User already exist
+19:57:07,524 DEBUG main Server:main:57 - Address already in use
+19:57:16,765  INFO main Server:main:64 - Client connected
+19:57:25,290 DEBUG Thread-8 ServerThread:run:221 - 
+19:58:08,035  INFO main Server:main:64 - Client connected
+19:58:21,895 DEBUG Thread-9 ServerThread:run:224 - Registration User already exist
+19:59:52,032 DEBUG main Server:main:50 - User already exist
+19:59:52,056 DEBUG main Server:main:57 - Address already in use
+20:00:38,834  INFO main Server:main:64 - Client connected
+20:00:56,095 DEBUG Thread-10 ServerThread:run:221 - 
+20:01:45,928  INFO main Server:main:64 - Client connected
+20:01:53,723 DEBUG Thread-11 ServerThread:run:224 - Registration User already exist
+20:02:13,478 DEBUG main Server:main:50 - User already exist
+20:02:13,493 DEBUG main Server:main:57 - Address already in use
+20:13:04,727 DEBUG main Server:main:50 - User already exist
+20:13:25,605  INFO main Server:main:64 - Client connected
+20:14:00,254 DEBUG Thread-1 ServerThread:run:221 - 
+21:04:14,629 DEBUG main Server:main:50 - User already exist
+21:09:19,454  INFO main Server:main:64 - Client connected
+21:09:48,075 DEBUG Thread-1 ServerThread:run:221 - 

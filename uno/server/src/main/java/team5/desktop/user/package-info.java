@@ -2,7 +2,7 @@
 @XmlJavaTypeAdapters({
     @XmlJavaTypeAdapter(type=LocalDate.class, 
         value=LocalDateAdapter.class),
-   
+ 
 })
 package team5.desktop.user;
  

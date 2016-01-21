@@ -19,7 +19,7 @@ public class MarshalAndUnmarshalTest {
     @Before
     public void setUp() throws Exception {
         workWithFiles = new WorkWithFiles();
-        fileName = "marshalData_WorkUser.xml";
+        fileName = "marshalData_WorkUser_Test.xml";
         
     }
  
@@ -31,7 +31,8 @@ public class MarshalAndUnmarshalTest {
     @Test
     public void testMarshalData() throws Exception {
         WorkUser workUser = WorkUser.getWork();
-        workUser.addUser("bob4", "Clark", "Usa", "XX", "sfsdf", "1234", "email@gmail.com", "19.12.12");
+        workUser.addUser("bob4", "Clark", "Usa", "XX", "sfsdf", "1234", "email@gmail.com", "19.12.2012");
+        workUser.addUser("bob", "Cl", "UCanada", "XxxxX", "sffscsdf", "1ds234", "email1234@gmail.com", "13.07.2002");
         workWithFiles.marshalData(fileName, workUser);
     }
     
@@ -41,7 +42,7 @@ public class MarshalAndUnmarshalTest {
      */
     @Test
     public void testUnmarshalData() throws Exception {
-        WorkUser workUser = (WorkUser) workWithFiles.unmarshalData(fileName);
+        WorkUser workUser = workWithFiles.unmarshalData(fileName);
         System.out.println("print:" + workUser.viewUsers());
     }
  

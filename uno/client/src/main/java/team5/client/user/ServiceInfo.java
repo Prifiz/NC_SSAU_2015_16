@@ -98,7 +98,7 @@ public class ServiceInfo implements Serializable {
     public String toString() {
         StringBuilder builder = new StringBuilder(10);
         builder.append(" ServiceInfo: ").append(login).append(", ").append(password).append(", ")
-                .append(email).append(" ").append(dateOfRegistration).append(" ");
+                .append(email).append(", ").append(dateOfRegistration).append(" ");
         return builder.toString();
     }
 

@@ -13,17 +13,16 @@ package team5.desktop.actions;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.time.LocalDate;
  
-public class LocalDateAdapter 
-    extends XmlAdapter<String, LocalDate>{
+public class LocalDateAdapter  extends XmlAdapter<String, LocalDate>{
  
+
+    @Override
     public LocalDate unmarshal(String v) throws Exception {
-        //return LocalDate.of(year, month, dayOfMonth);
-        System.out.println(v);
-        return WorkUser.getWork().stringToLocalDate(v);
+        return LocalDate.parse(v);
     }
- 
+
+    @Override
     public String marshal(LocalDate v) throws Exception {
-                System.out.println(v.toString());
         return v.toString();
     }
  

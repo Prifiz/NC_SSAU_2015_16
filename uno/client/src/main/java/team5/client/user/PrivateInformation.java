@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import team5.client.actions.LocalDateAdapter;
 
 /**
  *
@@ -41,6 +43,7 @@ public class PrivateInformation implements Serializable {
         return surname;
     }
 
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getbDay() {
         return bDay;
     }
@@ -77,7 +80,7 @@ public class PrivateInformation implements Serializable {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(10);
-        builder.append(" ").append(name).append(", ").append(surname).append(" ")
+        builder.append(" ").append(name).append(", ").append(surname).append(", ")
                 .append(bDay);
         return builder.toString();
     }

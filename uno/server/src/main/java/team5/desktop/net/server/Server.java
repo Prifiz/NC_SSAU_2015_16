@@ -7,9 +7,11 @@ package team5.desktop.net.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.desktop.actions.RoomController;
 import team5.desktop.actions.WorkUser;
+import team5.desktop.actions.WorkWithFiles;
 import team5.desktop.exceptions.UserExistException;
 
 /**
@@ -25,6 +27,16 @@ public class Server {
             rooms[i] = new RoomController();
         }
         Logger log = Logger.getLogger(Server.class);
+        try {
+            WorkUser workUser = WorkUser.getWork();
+            WorkWithFiles workWithFiles = new WorkWithFiles();
+            //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
+            workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
+          
+           
+        } catch (JAXBException ex) {
+            log.debug(ex.getMessage());
+        }
         WorkUser wu = WorkUser.getWork();
         try {
             wu.addUser("putin", "d", "d", "d", "sf", "d", "d", "19.12.12");
