@@ -7,6 +7,8 @@ package team5.client.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -25,12 +27,14 @@ import team5.client.user.User;
  */
 public class SearchFrame extends javax.swing.JFrame {
 
-    private DataExchange  dataE;
+    private DataExchange dataE;
     private String searchRequest;
     private JButton backButton;
     private JButton okButton;
     private JTable table;
     private JLabel jMessage;
+    private JCheckBox searchCheckBox;
+    private boolean isRegular=false;
 
     private JTextField tfsearch;
 //    private JTextField[] fields;
@@ -38,7 +42,7 @@ public class SearchFrame extends javax.swing.JFrame {
 
     private JPanel panel;
 
-    public SearchFrame(DataExchange  dataE) {
+    public SearchFrame(DataExchange dataE) {
         this.dataE = dataE;
         initComponents();
     }
@@ -93,6 +97,15 @@ public class SearchFrame extends javax.swing.JFrame {
             }
         });
 
+        searchCheckBox = new JCheckBox("Использовать регулярные выражения");
+        panel.add(searchCheckBox);
+        searchCheckBox.setBounds(30, 60, 250, 30);
+        searchCheckBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                searchCheckBoxPerformed(e);
+            }
+        });
+
         okButton = new JButton();
         okButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
         okButton.setText("OK");
@@ -117,12 +130,25 @@ public class SearchFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
     }
 
+    private void searchCheckBoxPerformed(ItemEvent evt) {
+        if (isRegular) {
+           isRegular=false; 
+        }else{
+           isRegular=true; 
+        }
+        
+    }
 //    
     private void okButtonActionPerfomed(ActionEvent evt) {
         searchRequest = tfsearch.getText();
         try {
-            Search search=new UserSearch();
-            model.setUser((ArrayList<User>) search.regularSearch(searchRequest));
+            Search search = new UserSearch();
+            if (isRegular) {
+                model.setUser((ArrayList<User>) search.regularSearch(searchRequest));
+            }else{
+                model.setUser((ArrayList<User>) search.substringSearch(searchRequest));
+            }
+            
             table.revalidate();
             table.repaint();
             this.setVisible(false);
@@ -172,5 +198,4 @@ public class SearchFrame extends javax.swing.JFrame {
             }
         });
     }*/
-
 }

@@ -34,7 +34,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private DataExchange  dataE;
     private Logger log = Logger.getLogger(MemberList.class);
-    private SearchFrame search;
+    private SearchFrame searchFrame;
     private JButton backButton;
     private JButton deleteButton;
     private JButton addButton;
@@ -78,7 +78,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        search = new SearchFrame(dataE);
+        searchFrame = new SearchFrame(dataE);
         setLayout(null);
         setBounds(200, 10, 710, 790);
         this.setLocationRelativeTo(null);
@@ -288,9 +288,9 @@ public class MemberList extends javax.swing.JFrame {
         try {
             if ((jTable1.getSelectedRow() >= 0) && (jTable1.getSelectedRow() < WorkUser.getWork().getArrOfUsers().size())) {
                 WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
-                if (search.getSearchRequest() != null) {
-                    Search usearch=new UserSearch();
-                    model.setUser((ArrayList<User>) usearch.regularSearch(search.getSearchRequest()));
+                if (searchFrame.getSearchRequest() != null) {
+                    Search search=new UserSearch();
+                    model.setUser((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
                 }
             }
         } catch (UserNotFoundException e) {
@@ -305,9 +305,9 @@ public class MemberList extends javax.swing.JFrame {
         try {
             WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
                     tfpassword.getText(), tfemail.getText(), tfbday.getText());//остановился тут
-            if (search.getSearchRequest() != null) {
-                Search usearch=new UserSearch();
-                model.setUser((ArrayList<User>) usearch.regularSearch(search.getSearchRequest()));
+            if (searchFrame.getSearchRequest() != null) {
+                Search search=new UserSearch();
+                model.setUser((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
             }
         } catch (UserExistException e) {
             log.debug(e.getMessage());
@@ -333,19 +333,19 @@ public class MemberList extends javax.swing.JFrame {
         adminRoom.setVisible(true);
         this.setVisible(false);
         model.setUser(WorkUser.getWork().getArrOfUsers());
-        search.setSearchRequest(null);
+        searchFrame.setSearchRequest(null);
     }
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        search = new SearchFrame(jTable1, model);
-        search.setVisible(true);
+        searchFrame = new SearchFrame(jTable1, model);
+        searchFrame.setVisible(true);
 
     }
 
     private void clearButtonActionPerformed(ActionEvent evt) {
         model.setUser(WorkUser.getWork().getArrOfUsers());
-        search.setSearchRequest(null);
+        searchFrame.setSearchRequest(null);
         jTable1.revalidate();
         jTable1.repaint();
     }
