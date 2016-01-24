@@ -23,7 +23,7 @@ import team5.client.user.User;
  *
  * @author chanta
  */
-public class Search extends javax.swing.JFrame {
+public class SearchFrame extends javax.swing.JFrame {
 
     private DataExchange  dataE;
     private String searchRequest;
@@ -38,12 +38,12 @@ public class Search extends javax.swing.JFrame {
 
     private JPanel panel;
 
-    public Search(DataExchange  dataE) {
+    public SearchFrame(DataExchange  dataE) {
         this.dataE = dataE;
         initComponents();
     }
 
-    public Search(JTable table, UserTableModel model) {
+    public SearchFrame(JTable table, UserTableModel model) {
         this.table = table;
         //this.fields=fields;
         this.model = model;
@@ -121,8 +121,8 @@ public class Search extends javax.swing.JFrame {
     private void okButtonActionPerfomed(ActionEvent evt) {
         searchRequest = tfsearch.getText();
         try {
-
-            model.setUser((ArrayList<User>) UserSearch.regularSearch(searchRequest));
+            Search search=new UserSearch();
+            model.setUser((ArrayList<User>) search.regularSearch(searchRequest));
             table.revalidate();
             table.repaint();
             this.setVisible(false);
@@ -148,7 +148,7 @@ public class Search extends javax.swing.JFrame {
      */
     /*public static void main(String args[]) {
 
-        Logger log = Logger.getLogger(Search.class);
+        Logger log = Logger.getLogger(SearchFrame.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

@@ -6,11 +6,16 @@
 package team5.desktop.searches;
 
 import java.util.List;
+import team5.desktop.exceptions.UserNotFoundException;
 
 /**
  *
  * @author Dmitry
  */
 public interface Search {
-    public  List regularSearch(String request);//нужен static, но его нельзя засунуть в интерфейс
+
+    public List regularSearch(String request) throws UserNotFoundException;
+
+    public List substringSearch(String request)throws UserNotFoundException;
+    
 }

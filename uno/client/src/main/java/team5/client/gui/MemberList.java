@@ -23,7 +23,7 @@ import team5.client.actions.UserTableModel;
 import team5.client.actions.WorkUser;
 import team5.client.exceptions.UserExistException;
 import team5.client.exceptions.UserNotFoundException;
-import team5.client.searches.UserSearch;
+import team5.client.searches.*;
 import team5.client.user.User;
 
 /**
@@ -34,7 +34,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private DataExchange  dataE;
     private Logger log = Logger.getLogger(MemberList.class);
-    private Search search;
+    private SearchFrame search;
     private JButton backButton;
     private JButton deleteButton;
     private JButton addButton;
@@ -78,7 +78,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        search = new Search(dataE);
+        search = new SearchFrame(dataE);
         setLayout(null);
         setBounds(200, 10, 710, 790);
         this.setLocationRelativeTo(null);
@@ -289,7 +289,8 @@ public class MemberList extends javax.swing.JFrame {
             if ((jTable1.getSelectedRow() >= 0) && (jTable1.getSelectedRow() < WorkUser.getWork().getArrOfUsers().size())) {
                 WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
                 if (search.getSearchRequest() != null) {
-                    model.setUser((ArrayList<User>) UserSearch.regularSearch(search.getSearchRequest()));
+                    Search usearch=new UserSearch();
+                    model.setUser((ArrayList<User>) usearch.regularSearch(search.getSearchRequest()));
                 }
             }
         } catch (UserNotFoundException e) {
@@ -305,7 +306,8 @@ public class MemberList extends javax.swing.JFrame {
             WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
                     tfpassword.getText(), tfemail.getText(), tfbday.getText());//остановился тут
             if (search.getSearchRequest() != null) {
-                model.setUser((ArrayList<User>) UserSearch.regularSearch(search.getSearchRequest()));
+                Search usearch=new UserSearch();
+                model.setUser((ArrayList<User>) usearch.regularSearch(search.getSearchRequest()));
             }
         } catch (UserExistException e) {
             log.debug(e.getMessage());
@@ -336,7 +338,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        search = new Search(jTable1, model);
+        search = new SearchFrame(jTable1, model);
         search.setVisible(true);
 
     }
