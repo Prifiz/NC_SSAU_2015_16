@@ -1,4 +1,3 @@
-
 package team5.client.searches;
 
 import java.util.ArrayList;
@@ -13,13 +12,13 @@ import team5.client.exceptions.CardNotFoundException;
  *
  * @author Dmitry
  */
-public class CardSearch implements Search{  
-    
+public class CardSearch implements Search {
+
     /**
      * Search method for cards on a regular expression
      *
      * @author Dmitry
-     * @param request 
+     * @param request
      * @throws CardNotFoundException
      */
     @Override
@@ -39,7 +38,7 @@ public class CardSearch implements Search{
             if (m.matches()) {
                 resultOfSearch.add(c);
                 continue;
-            }            
+            }
         }
         if (resultOfSearch.isEmpty()) {
             throw new CardNotFoundException();
@@ -52,8 +51,8 @@ public class CardSearch implements Search{
      * Search method for cards on a substring
      *
      * @author Dmitry
-     * @param request 
-     * throws CardNotFoundException
+     * @param request
+     * @throws CardNotFoundException
      */
     @Override
     public List substringSearch(String request)
@@ -70,7 +69,7 @@ public class CardSearch implements Search{
             if (SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
                 resultOfSearch.add(c);
                 continue;
-            }            
+            }
         }
 
         if (resultOfSearch.isEmpty()) {
@@ -78,6 +77,55 @@ public class CardSearch implements Search{
         }
 
         return resultOfSearch;
+    }
+
+    /**
+     * Search method for cards on a fields
+     *
+     * @author Dmitry
+     * @param request
+     * @param field takes values: "icon", "color", "icon_color"
+     * @throws CardNotFoundException
+     */
+    @Override
+    public List fieldSearch(String request, String field)
+            throws CardNotFoundException {
+
+        ArrayList<Card> cards = WorkCard.getWork().getArrOfCards();
+        ArrayList<Card> resultOfSearch = new ArrayList<Card>();
+
+        if ("icon".equals(field) || "Icon".equals(field)) {
+            for (Card c : cards) {
+                if (SearchServices.isStringIncludeSubstring(c.getIcon().toString(), request)) {
+                    resultOfSearch.add(c);
+                }
+            }
+        }
+
+        if ("color".equals(field) || "Color".equals(field)) {
+            for (Card c : cards) {
+                if (SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
+                    resultOfSearch.add(c);
+                }
+            }
+        }
+
+        if ("icon_color".equals(field) || "color_icon".equals(field)
+                || "Icon_color".equals(field) || "Color_icon".equals(field)) {
+            for (Card c : cards) {
+                if (SearchServices.isStringIncludeSubstring(c.getIcon().toString(), request)
+                        && SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
+                    resultOfSearch.add(c);
+                }
+            }
+        }
+
+        if (resultOfSearch.isEmpty()) {
+            throw new CardNotFoundException();
+        }
+
+        return resultOfSearch;
+
     }
 
 }

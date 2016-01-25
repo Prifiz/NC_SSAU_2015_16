@@ -123,3 +123,13 @@
 06:34:25,698 DEBUG main Server:main:50 - User already exist
 06:34:33,691  INFO main Server:main:64 - Client connected
 06:35:06,810 DEBUG Thread-1 ServerThread:run:221 - Connection reset
+23:16:14,119 DEBUG main Server:main:50 - User already exist
+23:23:19,956  INFO main Server:main:64 - Client connected
+23:47:00,812 DEBUG Thread-1 ServerThread:run:221 - Connection reset
+23:56:31,467  INFO main Server:main:64 - Client connected
+23:58:26,438 DEBUG Thread-2 ServerThread:run:221 - Connection reset
+01:02:47,196 DEBUG main Server:main:50 - User already exist
+01:02:47,208 DEBUG main Server:main:57 - Address already in use: JVM_Bind
+01:02:56,685 DEBUG main Server:main:50 - User already exist
+01:03:03,485  INFO main Server:main:64 - Client connected
+01:04:23,205 DEBUG Thread-1 ServerThread:run:221 - Connection reset

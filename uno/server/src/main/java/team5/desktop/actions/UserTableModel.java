@@ -10,7 +10,10 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.event.TableModelListener;
+import team5.desktop.exceptions.NotFoundException;
 import team5.desktop.exceptions.UserNotFoundException;
+import team5.desktop.searches.Search;
+import team5.desktop.searches.UserSearch;
 import team5.desktop.user.User;
 
 /**
@@ -90,6 +93,7 @@ public class UserTableModel extends AbstractTableModel {
         return true;
 
     }
+
     /*@Override
      public Class<?> getColumnClass(int columnIndex)
      {
@@ -118,10 +122,11 @@ public class UserTableModel extends AbstractTableModel {
                 break;
             case 6:
                 try {
-                    if (work.search((String) aValue) == null) {
-                        users.get(rowIndex).getServiceInfo().setLogin((String) aValue);
-                    }
-                } catch (UserNotFoundException e) {
+                    Search search = new UserSearch();
+                    search.fieldSearch((String) aValue, "login").isEmpty();
+                    users.get(rowIndex).getServiceInfo().setLogin((String) aValue);
+
+                } catch (NotFoundException e) {
                     // TODO
                 }
             //нужно написать обработку, когда лoгин не может быть изменен

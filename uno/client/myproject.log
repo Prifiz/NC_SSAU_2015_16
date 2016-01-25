@@ -54,3 +54,7 @@
 06:31:31,341  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 06:32:09,259 DEBUG AWT-EventQueue-0 LogIn:jButton1ActionPerformed:172 - Connection reset
 06:34:33,691  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+23:23:19,956  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+23:56:31,467  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+01:03:03,486  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+01:03:47,993 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:312 - User already exist

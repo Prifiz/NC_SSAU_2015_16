@@ -2,18 +2,18 @@
 <workUser>
     <arrUsers>
         <address>
-            <city>XX</city>
-            <country>Usa</country>
+            <city>1</city>
+            <country>1</country>
         </address>
         <privateInformation>
-            <name>bob4</name>
-            <surname>Clark</surname>
-            <bDay>0012-12-19</bDay>
+            <name>1</name>
+            <surname>1</surname>
+            <bDay>0012-12-12</bDay>
         </privateInformation>
         <serviceInfo>
-            <email>email@gmail.com</email>
-            <login>sfsdf</login>
-            <password>1234</password>
+            <email>1</email>
+            <login>1</login>
+            <password>1</password>
         </serviceInfo>
     </arrUsers>
 </workUser>

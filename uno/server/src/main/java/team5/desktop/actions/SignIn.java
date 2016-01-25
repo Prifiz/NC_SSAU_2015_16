@@ -7,6 +7,8 @@ package team5.desktop.actions;
 
 import team5.desktop.user.User;
 import team5.desktop.exceptions.*;
+import team5.desktop.searches.Search;
+import team5.desktop.searches.UserSearch;
 
 /**
  *
@@ -20,10 +22,12 @@ public class SignIn {
      * @param password
      * @return
      */
+    
+    //На данный момент использований не обнаружено
     public boolean sign(String login, String password) {
         try {
-            WorkUser work = WorkUser.getWork();
-            User user = work.search(login);
+            Search search=new UserSearch();
+            User user = (User)search.fieldSearch(login, "login").get(0);
             String s = "";
             /*for (int i = 0; i < password.length; i++) {
                 s += password[i];

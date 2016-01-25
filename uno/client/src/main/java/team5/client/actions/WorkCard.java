@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import team5.client.card.Card;
 import team5.client.card.NumericCard;
 import team5.client.exceptions.CardNotFoundException;
+import team5.client.exceptions.NotFoundException;
+import team5.client.searches.CardSearch;
+import team5.client.searches.Search;
 
 /**
  *
@@ -43,7 +46,7 @@ public class WorkCard implements Serializable {
     public int getOfCountCards() {
         return arrCards.size();
     }
-    
+
     public ArrayList<Card> getArrOfCards() {
         return arrCards;
     }
@@ -54,30 +57,37 @@ public class WorkCard implements Serializable {
         }
     }
 
-    //вписать метод поиска карт!
     public void deleteCard(Integer icon, String color) throws CardNotFoundException {
-        Card card = this.search(icon, color);
-        if(card!=null)
-        arrCards.remove(card);
+        Search search = new CardSearch();
+//        Card card = this.search(icon, color);
+        Card card;
+//        if (card != null) {
+        try {
+            card=(Card)search.fieldSearch(color, "icon_color").get(0);
+            arrCards.remove(card);
+        } catch (NotFoundException ex) {
+            throw new CardNotFoundException("Delete Card: ");
+        }
     }
-
-    //временая мера для того, чтобы написать метод удаления
-    public Card search(int icon, String color) throws CardNotFoundException {
-        int i = 0;
-        if (arrCards.isEmpty()) {
-            throw new CardNotFoundException("Array of cards is empty");
-        }
-        if ((color == null)) {
-            throw new CardNotFoundException("Uncorrect color");
-        }
-        while ((i < arrCards.size()) && (!arrCards.get(i).getColor().equals(color)) && (arrCards.get(i).getIcon() != icon)) {
-            i++;
-        }
-        if (i < arrCards.size()) {
-            return arrCards.get(i);
-        }
-        throw new CardNotFoundException("Card not found");
-
-    }
-
 }
+
+////временая мера для того, чтобы написать метод удаления
+//public Card search(int icon, String color) throws CardNotFoundException {
+//        int i = 0;
+//        if (arrCards.isEmpty()) {
+//            throw new CardNotFoundException("Array of cards is empty");
+//        }
+//        if ((color == null)) {
+//            throw new CardNotFoundException("Uncorrect color");
+//        }
+//        while ((i < arrCards.size()) && (!arrCards.get(i).getColor().equals(color)) && (arrCards.get(i).getIcon() != icon)) {
+//            i++;
+//        }
+//        if (i < arrCards.size()) {
+//            return arrCards.get(i);
+//        }
+//        throw new CardNotFoundException("Card not found");
+//
+//    }
+
+
