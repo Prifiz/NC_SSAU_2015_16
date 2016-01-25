@@ -9,7 +9,7 @@ package team5.client.exceptions;
  *
  * @author chanta
  */
-public class CardNotFoundException extends Exception {
+public class CardNotFoundException extends NotFoundException {
 
     /**
      * Creates a new instance of <code>CardNotFoundException</code> without

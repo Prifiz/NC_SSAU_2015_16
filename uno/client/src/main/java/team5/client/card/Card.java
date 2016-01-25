@@ -12,19 +12,19 @@ import java.io.Serializable;
  */
 public abstract class Card implements Serializable{
 
-    private int icon;
+    private Integer icon;
     private String color;
 
-    public Card(int icon, String color) {
+    public Card(Integer icon, String color) {
         this.color = color;
         this.icon = icon;
     }
 
-    public int getIcon() {
+    public Integer getIcon() {
         return icon;
     }
 
-    public void setIcon(int icon) {
+    public void setIcon(Integer icon) {
         this.icon = icon;
     }
 

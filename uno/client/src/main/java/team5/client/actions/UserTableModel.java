@@ -21,15 +21,15 @@ public class UserTableModel extends AbstractTableModel {
 
     private final Set<TableModelListener> listeners = new HashSet<TableModelListener>();
     private WorkUser work = WorkUser.getWork();
-    private ArrayList<User> user = work.getArrOfUsers();
+    private ArrayList<User> users = work.getArrOfUsers();
     String[] names = {"Name", "Surname", "BirthDay", "Country", "City", "Email", "Login", "Password"};
 
-    public ArrayList getUser() {
-        return user;
+    public ArrayList getArrayOfUsers() {
+        return users;
     }
 
-    public void setUser(ArrayList<User> user) {
-        this.user = user;
+    public void setArrayOfUsers(ArrayList<User> user) {
+        this.users = user;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class UserTableModel extends AbstractTableModel {
     }
 
     public int getRowCount() {
-        return user.size();
+        return users.size();
     }
 
     public int getColumnCount() {
@@ -59,21 +59,21 @@ public class UserTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return user.get(rowIndex).getPrivateInformation().getName();
+                return users.get(rowIndex).getPrivateInformation().getName();
             case 1:
-                return user.get(rowIndex).getPrivateInformation().getSurname();
+                return users.get(rowIndex).getPrivateInformation().getSurname();
             case 2:
-                return user.get(rowIndex).getPrivateInformation().getbDay();
+                return users.get(rowIndex).getPrivateInformation().getbDay();
             case 3:
-                return user.get(rowIndex).getAddress().getCountry();
+                return users.get(rowIndex).getAddress().getCountry();
             case 4:
-                return user.get(rowIndex).getAddress().getCity();
+                return users.get(rowIndex).getAddress().getCity();
             case 5:
-                return user.get(rowIndex).getServiceInfo().getEmail();
+                return users.get(rowIndex).getServiceInfo().getEmail();
             case 6:
-                return user.get(rowIndex).getServiceInfo().getLogin();
+                return users.get(rowIndex).getServiceInfo().getLogin();
             case 7:
-                String s = user.get(rowIndex).getServiceInfo().getPassword();
+                String s = users.get(rowIndex).getServiceInfo().getPassword();
                 StringBuilder str = new StringBuilder();
                 for (int i = 0; i < s.length(); i++) {
                     str.append('*');
@@ -100,33 +100,33 @@ public class UserTableModel extends AbstractTableModel {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                user.get(rowIndex).getPrivateInformation().setName((String) aValue);
+                users.get(rowIndex).getPrivateInformation().setName((String) aValue);
                 break;
             case 1:
-                user.get(rowIndex).getPrivateInformation().setSurname((String) aValue);
+                users.get(rowIndex).getPrivateInformation().setSurname((String) aValue);
                 break;
             case 2:
-                user.get(rowIndex).getPrivateInformation().setbDay(work.stringToLocalDate((String) aValue));
+                users.get(rowIndex).getPrivateInformation().setbDay(work.stringToLocalDate((String) aValue));
             case 3:
-                user.get(rowIndex).getAddress().setCity((String) aValue);
+                users.get(rowIndex).getAddress().setCity((String) aValue);
                 break;
             case 4:
-                user.get(rowIndex).getAddress().setCountry((String) aValue);
+                users.get(rowIndex).getAddress().setCountry((String) aValue);
                 break;
             case 5:
-                user.get(rowIndex).getServiceInfo().setEmail((String) aValue);
+                users.get(rowIndex).getServiceInfo().setEmail((String) aValue);
                 break;
             case 6:
                 try {
                     if (work.search((String) aValue) == null) {
-                        user.get(rowIndex).getServiceInfo().setLogin((String) aValue);
+                        users.get(rowIndex).getServiceInfo().setLogin((String) aValue);
                     }
                 } catch (UserNotFoundException e) {
                     // TODO
                 }
-            //нужно написать обработку, когда лгин не может быть изменен
+            //нужно написать обработку, когда лoгин не может быть изменен
             case 7:
-                user.get(rowIndex).getServiceInfo().setPassword((String) aValue);
+                users.get(rowIndex).getServiceInfo().setPassword((String) aValue);
                 break;
 
         }

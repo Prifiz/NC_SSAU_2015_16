@@ -136,9 +136,9 @@ public class AdminRoom extends JFrame {
 
     private void cardListButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-//        CardList cardList = new CardList();
-//        cardList.setVisible(true);
-//        this.setVisible(false);
+        CardList cardList = new CardList(dataE);
+        cardList.setVisible(true);
+        this.setVisible(false);
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {

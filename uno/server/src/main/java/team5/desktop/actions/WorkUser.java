@@ -113,27 +113,27 @@ public class WorkUser implements Serializable {
         return LocalDate.of(year, month, day);
     }
 
-    //не работает!
-    public User editUser(String name, String surname, String country, String sity, String login, String password, LocalDate calendar, String email, LocalDate bDay)
-            throws UserNotFoundException {
-        try {
-            User tmp = this.search(login);
-            //if(tmp!=null){     
-            Address address = new Address(country, sity);
-            ServiceInfo serviceInfo = new ServiceInfo(login, password, email);
-            PrivateInformation information = new PrivateInformation(name, surname, bDay);
-            tmp.setPrivateInformation(information);
-            tmp.setAddress(address);
-            tmp.setServiceInfo(serviceInfo);
-            return tmp;
-            //}
-//	else{
-//            return null;
+//    //не работает!
+//    public User editUser(String name, String surname, String country, String sity, String login, String password, LocalDate calendar, String email, LocalDate bDay)
+//            throws UserNotFoundException {
+//        try {
+//            User tmp = this.search(login);
+//            //if(tmp!=null){     
+//            Address address = new Address(country, sity);
+//            ServiceInfo serviceInfo = new ServiceInfo(login, password, email);
+//            PrivateInformation information = new PrivateInformation(name, surname, bDay);
+//            tmp.setPrivateInformation(information);
+//            tmp.setAddress(address);
+//            tmp.setServiceInfo(serviceInfo);
+//            return tmp;
+//            //}
+////	else{
+////            return null;
+////        }
+//        } catch (UserNotFoundException e) {
+//            throw new UserNotFoundException("Edit " + e.getMessage());
 //        }
-        } catch (UserNotFoundException e) {
-            throw new UserNotFoundException("Edit " + e.getMessage());
-        }
-    }
+//    }
 
     //@XmlElement
     public void deleteUser(String login)
@@ -149,7 +149,7 @@ public class WorkUser implements Serializable {
             throw new UserNotFoundException("Delete " + e.getMessage());
         }
     }
-
+    //Сделать через нормальный поиск
     public User search(String login)
             throws UserNotFoundException {
         //try{

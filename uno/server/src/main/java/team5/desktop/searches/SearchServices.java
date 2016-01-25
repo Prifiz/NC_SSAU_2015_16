@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package team5.desktop.searches;
 
 /**
+ * Search method of occurrences of a substring in a string
  *
  * @author Dmitry
+ * @param string
+ * @param subString
  */
 public class SearchServices {
-    
-        //Алгоритм поиска вхождения подстроки через хэш-функцию 
-    public static boolean substringSearchMethod(String string, String subString) {
+
+    //Алгоритм поиска вхождения подстроки через хэш-функцию 
+    public static boolean isStringIncludeSubstring(String string, String subString) {
         if (string.length() < subString.length()) {
             return false;
         }

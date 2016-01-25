@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class NumericCard extends Card implements Serializable{
 
-    public NumericCard(int icon, String color) {
+    public NumericCard(Integer icon, String color) {
         super(icon, color);
     }
 
@@ -27,12 +27,12 @@ public class NumericCard extends Card implements Serializable{
     }
 
     @Override
-    public void setIcon(int icon) {
+    public void setIcon(Integer icon) {
         super.setIcon(icon);
     }
 
     @Override
-    public int getIcon() {
+    public Integer getIcon() {
         return super.getIcon();
     }
 

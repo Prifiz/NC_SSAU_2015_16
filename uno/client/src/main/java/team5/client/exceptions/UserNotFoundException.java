@@ -9,7 +9,7 @@ package team5.client.exceptions;
  *
  * @author Dmitry
  */
-public class UserNotFoundException extends Exception {
+public class UserNotFoundException extends NotFoundException {
 
     public UserNotFoundException() {
 

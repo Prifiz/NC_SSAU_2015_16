@@ -34,7 +34,7 @@ public class SignIn {
             } else {
                 return false;
             }
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             return false;
             //Надо написать обработчик некорректного логина, пароля!!!!!
         }

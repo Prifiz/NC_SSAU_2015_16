@@ -21,8 +21,8 @@ import team5.client.actions.DataExchange;
 import team5.client.actions.WorkWithFiles;
 import team5.client.actions.UserTableModel;
 import team5.client.actions.WorkUser;
+import team5.client.exceptions.NotFoundException;
 import team5.client.exceptions.UserExistException;
-import team5.client.exceptions.UserNotFoundException;
 import team5.client.searches.*;
 import team5.client.user.User;
 
@@ -34,7 +34,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private DataExchange  dataE;
     private Logger log = Logger.getLogger(MemberList.class);
-    private SearchFrame searchFrame;
+    private SearchFrameOfUser searchFrame;
     private JButton backButton;
     private JButton deleteButton;
     private JButton addButton;
@@ -78,7 +78,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        searchFrame = new SearchFrame(dataE);
+        searchFrame = new SearchFrameOfUser(dataE);
         setLayout(null);
         setBounds(200, 10, 710, 790);
         this.setLocationRelativeTo(null);
@@ -282,18 +282,17 @@ public class MemberList extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
-
-    //При запросе поиска и удалении после вывода его результатов почему-то не обновляется таблица сразу.
+   
     private void deleteButtonActionPerfomed(ActionEvent evt) {
         try {
             if ((jTable1.getSelectedRow() >= 0) && (jTable1.getSelectedRow() < WorkUser.getWork().getArrOfUsers().size())) {
                 WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
                 if (searchFrame.getSearchRequest() != null) {
                     Search search=new UserSearch();
-                    model.setUser((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
+                    model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
                 }
             }
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             log.debug(e.getMessage());
         }
 
@@ -307,11 +306,11 @@ public class MemberList extends javax.swing.JFrame {
                     tfpassword.getText(), tfemail.getText(), tfbday.getText());//остановился тут
             if (searchFrame.getSearchRequest() != null) {
                 Search search=new UserSearch();
-                model.setUser((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
+                model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
             }
         } catch (UserExistException e) {
             log.debug(e.getMessage());
-        } catch (UserNotFoundException ex) {
+        } catch (NotFoundException ex) {
             log.debug(ex.getMessage());
         }
         tfname.setText("");
@@ -332,19 +331,19 @@ public class MemberList extends javax.swing.JFrame {
         //rooms.setVisible(true);
         adminRoom.setVisible(true);
         this.setVisible(false);
-        model.setUser(WorkUser.getWork().getArrOfUsers());
+        model.setArrayOfUsers(WorkUser.getWork().getArrOfUsers());
         searchFrame.setSearchRequest(null);
     }
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        searchFrame = new SearchFrame(jTable1, model);
+        searchFrame = new SearchFrameOfUser(jTable1, model);
         searchFrame.setVisible(true);
 
     }
 
     private void clearButtonActionPerformed(ActionEvent evt) {
-        model.setUser(WorkUser.getWork().getArrOfUsers());
+        model.setArrayOfUsers(WorkUser.getWork().getArrOfUsers());
         searchFrame.setSearchRequest(null);
         jTable1.revalidate();
         jTable1.repaint();

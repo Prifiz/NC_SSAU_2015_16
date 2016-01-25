@@ -30,7 +30,7 @@ public class WorkCard implements Serializable {
 
     }
 
-    public Card addCard(int icon, String color) {
+    public Card addCard(Integer icon, String color) {
         Card card = new NumericCard(icon, color);
         arrCards.add(card);
         return card;
@@ -40,18 +40,22 @@ public class WorkCard implements Serializable {
         return arrCards.get(index);
     }
 
-    public int getOfCountCard() {
+    public int getOfCountCards() {
         return arrCards.size();
+    }
+    
+    public ArrayList<Card> getArrOfCards() {
+        return arrCards;
     }
 
     public void addWorkCard(WorkCard card) {
-        for (int i = 0; i < card.getOfCountCard(); i++) {
+        for (int i = 0; i < card.getOfCountCards(); i++) {
             arrCards.add(card.getCardOfIndex(i));
         }
     }
 
     //вписать метод поиска карт!
-    public void deleteUser(int icon, String color) throws CardNotFoundException {
+    public void deleteCard(Integer icon, String color) throws CardNotFoundException {
         Card card = this.search(icon, color);
         if(card!=null)
         arrCards.remove(card);
@@ -61,7 +65,7 @@ public class WorkCard implements Serializable {
     public Card search(int icon, String color) throws CardNotFoundException {
         int i = 0;
         if (arrCards.isEmpty()) {
-            throw new CardNotFoundException("Array of users is empty");
+            throw new CardNotFoundException("Array of cards is empty");
         }
         if ((color == null)) {
             throw new CardNotFoundException("Uncorrect color");

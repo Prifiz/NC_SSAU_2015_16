@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package team5.client.searches;
 
 import java.util.regex.*;
@@ -12,14 +8,20 @@ import team5.client.actions.WorkUser;
 import team5.client.exceptions.UserNotFoundException;
 
 /**
- *
+ * Search of users on a regular expression or a substring
  * @author Dmitry
  */
 //Возможно есть смысл реализовать как Singleton
 public class UserSearch implements Search {
 
-   
     //private  ArrayList<User>  resultOfSearch;
+    /**
+     * Search method for users on a regular expression
+     *
+     * @author Dmitry
+     * @param request 
+     * @throws UserNotFoundException
+     */
     @Override
     public List regularSearch(String request)
             throws UserNotFoundException {
@@ -83,6 +85,13 @@ public class UserSearch implements Search {
         return resultOfSearch;
     }
 
+    /**
+     * Search method for users on a substring
+     *
+     * @author Dmitry
+     * @param request 
+     * @throws UserNotFoundException
+     */
     @Override
     public List substringSearch(String request)
             throws UserNotFoundException {
@@ -91,35 +100,35 @@ public class UserSearch implements Search {
         ArrayList<User> resultOfSearch = new ArrayList<User>();
 
         for (User u : users) {
-            if (SearchServices.substringSearchMethod(u.getAddress().getCity().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getAddress().getCity().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }
-            if (SearchServices.substringSearchMethod(u.getAddress().getCountry().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getAddress().getCountry().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }
-            if (SearchServices.substringSearchMethod(u.getPrivateInformation().getName().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getName().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }
-            if (SearchServices.substringSearchMethod(u.getPrivateInformation().getSurname().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getSurname().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }
-            if (SearchServices.substringSearchMethod(u.getPrivateInformation().getbDay().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getbDay().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }
-            if (SearchServices.substringSearchMethod(u.getServiceInfo().getDateOfRegistration().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getDateOfRegistration().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }
-            if (SearchServices.substringSearchMethod(u.getServiceInfo().getEmail().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getEmail().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }
-            if (SearchServices.substringSearchMethod(u.getServiceInfo().getLogin().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getLogin().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }

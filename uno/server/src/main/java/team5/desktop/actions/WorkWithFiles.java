@@ -89,7 +89,7 @@ public class WorkWithFiles {
     }
     
     /**
-     * This method write cards to text file look as: "Type of cad" "color of card" "int value of card". 
+     * This method write cards to text file look as: "Type of card" "color of card" "int value of card". 
      * @param pack
      * @param out
      * @throws IOException 

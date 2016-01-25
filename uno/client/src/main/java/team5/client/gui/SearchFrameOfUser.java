@@ -17,7 +17,7 @@ import javax.swing.border.TitledBorder;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
 import team5.client.actions.UserTableModel;
-import team5.client.exceptions.UserNotFoundException;
+import team5.client.exceptions.NotFoundException;
 import team5.client.searches.*;
 import team5.client.user.User;
 
@@ -25,7 +25,7 @@ import team5.client.user.User;
  *
  * @author chanta
  */
-public class SearchFrame extends javax.swing.JFrame {
+public class SearchFrameOfUser extends javax.swing.JFrame {
 
     private DataExchange dataE;
     private String searchRequest;
@@ -42,12 +42,12 @@ public class SearchFrame extends javax.swing.JFrame {
 
     private JPanel panel;
 
-    public SearchFrame(DataExchange dataE) {
+    public SearchFrameOfUser(DataExchange dataE) {
         this.dataE = dataE;
         initComponents();
     }
 
-    public SearchFrame(JTable table, UserTableModel model) {
+    public SearchFrameOfUser(JTable table, UserTableModel model) {
         this.table = table;
         //this.fields=fields;
         this.model = model;
@@ -73,10 +73,10 @@ public class SearchFrame extends javax.swing.JFrame {
         setBounds(200, 10, 400, 250);
         this.setLocationRelativeTo(null);
         setLayout(null);
-        setTitle("Search");
+        setTitle("Search users");
 
         panel = new JPanel();
-        panel.setBorder(new TitledBorder("Search"));
+        panel.setBorder(new TitledBorder("Search users"));
         panel.setBounds(10, 10, 360, 170);
         panel.setLayout(null);
 
@@ -97,7 +97,7 @@ public class SearchFrame extends javax.swing.JFrame {
             }
         });
 
-        searchCheckBox = new JCheckBox("Использовать регулярные выражения");
+        searchCheckBox = new JCheckBox("Use regular expressions");
         panel.add(searchCheckBox);
         searchCheckBox.setBounds(30, 60, 250, 30);
         searchCheckBox.addItemListener(new ItemListener() {
@@ -144,16 +144,16 @@ public class SearchFrame extends javax.swing.JFrame {
         try {
             Search search = new UserSearch();
             if (isRegular) {
-                model.setUser((ArrayList<User>) search.regularSearch(searchRequest));
+                model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchRequest));
             }else{
-                model.setUser((ArrayList<User>) search.substringSearch(searchRequest));
+                model.setArrayOfUsers((ArrayList<User>) search.substringSearch(searchRequest));
             }
             
             table.revalidate();
             table.repaint();
             this.setVisible(false);
 
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             jMessage.setText("Nothing found.");
         }
         //   finally {
@@ -174,7 +174,7 @@ public class SearchFrame extends javax.swing.JFrame {
      */
     /*public static void main(String args[]) {
 
-        Logger log = Logger.getLogger(SearchFrame.class);
+        Logger log = Logger.getLogger(SearchFrameOfUser.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
