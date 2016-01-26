@@ -16,6 +16,8 @@ import team5.client.user.ServiceInfo;
 import team5.client.user.User;
 import team5.client.exceptions.*;
 import team5.client.sorted.*;
+import team5.client.searches.Search;
+import team5.client.searches.UserSearch;
 import team5.client.user.admin.Admin;
 
 //@XmlRootElement
@@ -45,11 +47,12 @@ public class WorkUser implements Serializable {
         arrUsers = new ArrayList();
         for (int i = 0; i < arrUsers.size(); i++) {
             try {
-                if (arrUsers.get(i).equals(search(Constants.LOGIN_ADMIN))){
+                Search search=new UserSearch();
+                if (arrUsers.get(i).equals(search.fieldSearch(Constants.LOGIN_ADMIN, "login").get(0))){
                     User admin = new Admin();
                     arrUsers.add(admin);
-                }   } catch (UserNotFoundException ex) {
-               
+                }   } catch (NotFoundException ex) {
+               //TODO
             }
         }
     }
@@ -78,9 +81,10 @@ public class WorkUser implements Serializable {
 //            return null;
 //        }
         try {
-            this.search(login);
+            Search search=new UserSearch();
+            search.fieldSearch(login, "login");
             throw new UserExistException("User already exist");
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             PrivateInformation privateInformation = new PrivateInformation(name, surname, stringToLocalDate(bDay));
             Address address = new Address(country, sity);
             ServiceInfo serviceInfo = new ServiceInfo(login, password, email);
@@ -140,38 +144,39 @@ public class WorkUser implements Serializable {
     public void deleteUser(String login)
             throws UserNotFoundException {
         try {
-            User tmp = this.search(login);
+            Search search=new UserSearch();
+            User tmp = (User)search.fieldSearch(login, "login").get(0);
             //if(tmp!=null)
             arrUsers.remove(tmp);
 //	else
 //            return null;
 //        return null;
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             throw new UserNotFoundException("Delete " + e.getMessage());
         }
     }
-    //Сделать через нормальный поиск
-    public User search(String login)
-            throws UserNotFoundException {
-        //try{
-        int i = 0;
-        if (arrUsers.isEmpty()) {
-            throw new UserNotFoundException("Array of users is empty");
-        }
-        if (login == null) {
-            throw new UserNotFoundException("Uncorrect login");
-        }
-        while ((i < arrUsers.size()) && (!arrUsers.get(i).getServiceInfo().getLogin().equals(login))) {
-            i++;
-        }
-        if (i < arrUsers.size()) {
-
-            return arrUsers.get(i);
-        }
-        throw new UserNotFoundException("User not found");
-        //}
-
-    }
+    
+//    public User search(String login)
+//            throws UserNotFoundException {
+//        //try{
+//        int i = 0;
+//        if (arrUsers.isEmpty()) {
+//            throw new UserNotFoundException("Array of users is empty");
+//        }
+//        if (login == null) {
+//            throw new UserNotFoundException("Uncorrect login");
+//        }
+//        while ((i < arrUsers.size()) && (!arrUsers.get(i).getServiceInfo().getLogin().equals(login))) {
+//            i++;
+//        }
+//        if (i < arrUsers.size()) {
+//
+//            return arrUsers.get(i);
+//        }
+//        throw new UserNotFoundException("User not found");
+//        //}
+//
+//    }
 
     public String viewUsers() {
         StringBuilder builder = new StringBuilder();

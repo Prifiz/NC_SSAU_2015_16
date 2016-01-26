@@ -1,4 +1,3 @@
-
 package team5.desktop.searches;
 
 import java.util.regex.*;
@@ -9,6 +8,7 @@ import team5.desktop.exceptions.UserNotFoundException;
 
 /**
  * Search of users on a regular expression or a substring
+ *
  * @author Dmitry
  */
 //Возможно есть смысл реализовать как Singleton
@@ -19,7 +19,7 @@ public class UserSearch implements Search {
      * Search method for users on a regular expression
      *
      * @author Dmitry
-     * @param request 
+     * @param request
      * @throws UserNotFoundException
      */
     @Override
@@ -89,7 +89,7 @@ public class UserSearch implements Search {
      * Search method for users on a substring
      *
      * @author Dmitry
-     * @param request 
+     * @param request
      * @throws UserNotFoundException
      */
     @Override
@@ -139,6 +139,94 @@ public class UserSearch implements Search {
         }
 
         return resultOfSearch;
+    }
+
+    /**
+     * Search method for cards on a fields
+     *
+     * @author Dmitry
+     * @param request
+     * @param field takes values: "city", "country", "name", "surname", "bDay",
+     * "dateOfRegistration", "email", "login"
+     * @throws CardNotFoundException
+     */
+    @Override
+    public List fieldSearch(String request, String field)
+            throws UserNotFoundException {
+
+        ArrayList<User> users = WorkUser.getWork().getArrOfUsers();
+        ArrayList<User> resultOfSearch = new ArrayList<User>();
+
+        if ("city".equals(field) || "City".equals(field)) {
+            for (User u : users) {
+                if (SearchServices.isStringIncludeSubstring(u.getAddress().getCity().toString(), request)) {
+                    resultOfSearch.add(u);
+                }
+            }
+        }
+
+        if ("country".equals(field) || "Country".equals(field)) {
+            for (User u : users) {
+                if (SearchServices.isStringIncludeSubstring(u.getAddress().getCountry().toString(), request)) {
+                    resultOfSearch.add(u);
+                }
+            }
+        }
+
+        if ("name".equals(field) || "Name".equals(field)) {
+            for (User u : users) {
+                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getName().toString(), request)) {
+                    resultOfSearch.add(u);
+                }
+            }
+        }
+
+        if ("surname".equals(field) || "Surname".equals(field)) {
+            for (User u : users) {
+                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getSurname().toString(), request)) {
+                    resultOfSearch.add(u);
+                }
+            }
+        }
+
+        if ("bDay".equals(field) || "BDay".equals(field)) {
+            for (User u : users) {
+                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getbDay().toString(), request)) {
+                    resultOfSearch.add(u);
+                }
+            }
+        }
+
+        if ("dateOfRegistration".equals(field) || "DateOfRegistration".equals(field)) {
+            for (User u : users) {
+                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getDateOfRegistration().toString(), request)) {
+                    resultOfSearch.add(u);
+                }
+            }
+        }
+
+        if ("email".equals(field) || "Email".equals(field)) {
+            for (User u : users) {
+                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getEmail().toString(), request)) {
+                    resultOfSearch.add(u);
+                }
+            }
+        }
+
+        if ("login".equals(field) || "Login".equals(field)) {
+            for (User u : users) {
+                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getLogin().toString(), request)) {
+                    resultOfSearch.add(u);
+                }
+            }
+        }
+
+        if (resultOfSearch.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+
+        return resultOfSearch;
+
     }
 
 }

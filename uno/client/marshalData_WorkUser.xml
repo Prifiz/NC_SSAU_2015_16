@@ -2,6 +2,7 @@
 <workUser>
     <arrUsers>
         <address>
+<<<<<<< HEAD
             <city>12.12.2012</city>
             <country>Usa</country>
         </address>
@@ -9,11 +10,20 @@
             <name>bob4</name>
             <surname>Clark</surname>
             <bDay>2012-12-12</bDay>
+=======
+            <city>1</city>
+            <country>1</country>
+        </address>
+        <privateInformation>
+            <name>1</name>
+            <surname>1</surname>
+            <bDay>0012-12-12</bDay>
+>>>>>>> 953e870badf0b9d1c8c9ecaab8e00439f456612e
         </privateInformation>
         <serviceInfo>
-            <email>email@gmail.com</email>
-            <login>sfsdf</login>
-            <password>1234</password>
+            <email>1</email>
+            <login>1</login>
+            <password>1</password>
         </serviceInfo>
     </arrUsers>
 </workUser>

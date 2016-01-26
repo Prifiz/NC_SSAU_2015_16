@@ -7,6 +7,8 @@ package team5.client.actions;
 
 import team5.client.user.User;
 import team5.client.exceptions.*;
+import team5.client.searches.Search;
+import team5.client.searches.UserSearch;
 
 /**
  *
@@ -20,10 +22,12 @@ public class SignIn {
      * @param password
      * @return
      */
+    
+    //На данный момент использований не обнаружено
     public boolean sign(String login, String password) {
         try {
-            WorkUser work = WorkUser.getWork();
-            User user = work.search(login);
+            Search search=new UserSearch();
+            User user = (User)search.fieldSearch(login, "login").get(0);
             String s = "";
             /*for (int i = 0; i < password.length; i++) {
                 s += password[i];
@@ -34,7 +38,7 @@ public class SignIn {
             } else {
                 return false;
             }
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             return false;
             //Надо написать обработчик некорректного логина, пароля!!!!!
         }
