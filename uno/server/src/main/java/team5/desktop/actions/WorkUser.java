@@ -9,6 +9,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import org.apache.log4j.Logger;
+import team5.desktop.sorted.SortedByBDay;
+import team5.desktop.sorted.SortedByCity;
+import team5.desktop.sorted.SortedByCountry;
+import team5.desktop.sorted.SortedByDateOfRegistration;
+import team5.desktop.sorted.SortedByEmail;
+import team5.desktop.sorted.SortedByLogin;
+import team5.desktop.sorted.SortedByName;
+import team5.desktop.sorted.SortedBySurname;
 import team5.desktop.exceptions.UserNotFoundException;
 import team5.desktop.user.adress.Address;
 import team5.desktop.user.PrivateInformation;
@@ -179,5 +187,37 @@ public class WorkUser implements Serializable {
         }
         return builder.toString();
     }
+    /**
+     * 
+     * @param sortedBy the parameter that determines the sort order
+     */
+     public void sortedUsers(String sortedBy){
+         if (sortedBy.equals("name")) {
+            arrUsers.sort(new SortedByName());
+         }
+         if (sortedBy.equals("surname")) {
+            arrUsers.sort(new SortedBySurname());
+         }
+         if (sortedBy.equals("country")) {
+            arrUsers.sort(new SortedByCountry());
+         }
+         if (sortedBy.equals("city")) {
+            arrUsers.sort(new SortedByCity());
+         }
+         if (sortedBy.equals("email")) {
+            arrUsers.sort(new SortedByEmail());
+         }
+         if (sortedBy.equals("login")) {
+            arrUsers.sort(new SortedByLogin());
+         }
+         if (sortedBy.equals("bDay")) {
+            arrUsers.sort(new SortedByBDay());
+         }
+         if (sortedBy.equals("dateOfRegistration")) {
+            arrUsers.sort(new SortedByDateOfRegistration());
+         }
+                
+    }
+   
 
 }

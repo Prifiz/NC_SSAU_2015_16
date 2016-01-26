@@ -54,3 +54,11 @@
 06:31:31,341  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 06:32:09,259 DEBUG AWT-EventQueue-0 LogIn:jButton1ActionPerformed:172 - Connection reset
 06:34:33,691  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+21:59:23,338  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+22:04:00,375  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+23:09:33,356  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+23:23:12,709  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+23:26:23,643 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:239 - 
+23:26:35,510 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:239 - 
+23:28:47,788 DEBUG AWT-EventQueue-0 MemberList:deleteButtonActionPerfomed:224 - 
+01:27:40,476  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server

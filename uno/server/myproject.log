@@ -123,3 +123,16 @@
 06:34:25,698 DEBUG main Server:main:50 - User already exist
 06:34:33,691  INFO main Server:main:64 - Client connected
 06:35:06,810 DEBUG Thread-1 ServerThread:run:221 - Connection reset
+21:58:48,943 DEBUG main Server:main:50 - User already exist
+21:59:23,326  INFO main Server:main:64 - Client connected
+22:00:38,657 DEBUG Thread-1 ServerThread:run:221 - 
+22:04:00,371  INFO main Server:main:64 - Client connected
+22:19:08,775 DEBUG Thread-2 ServerThread:run:221 - 
+23:09:33,345  INFO main Server:main:64 - Client connected
+23:16:29,562 DEBUG Thread-3 ServerThread:run:221 - 
+23:23:12,701  INFO main Server:main:64 - Client connected
+23:55:07,339 DEBUG Thread-4 ServerThread:run:221 - 
+01:27:40,473  INFO main Server:main:64 - Client connected
+01:27:58,295 DEBUG Thread-5 ServerThread:run:221 - 
+21:37:57,429 DEBUG main Server:main:50 - User already exist
+21:37:57,518 DEBUG main Server:main:57 - Address already in use

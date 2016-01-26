@@ -31,7 +31,7 @@ public class MarshalAndUnmarshalTest {
     @Test
     public void testMarshalData() throws Exception {
         WorkUser workUser = WorkUser.getWork();
-        workUser.addUser("bob4", "Clark", "Usa", "XX", "sfsdf", "1234", "email@gmail.com", "19.12.12");
+        workUser.addUser("bob4", "Clark", "Usa", "XX", "sfsdf", "1234", "email@gmail.com", "19.12.2012");
         workWithFiles.marshalData(fileName, workUser);
     }
     

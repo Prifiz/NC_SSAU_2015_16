@@ -15,6 +15,7 @@ import team5.client.user.PrivateInformation;
 import team5.client.user.ServiceInfo;
 import team5.client.user.User;
 import team5.client.exceptions.*;
+import team5.client.sorted.*;
 import team5.client.user.admin.Admin;
 
 //@XmlRootElement
@@ -179,5 +180,39 @@ public class WorkUser implements Serializable {
         }
         return builder.toString();
     }
+    
+    /**
+     * 
+     * @param sortedBy the parameter that determines the sort order
+     */
+    
+     public void sortedUsers(String sortedBy){
+         if (sortedBy.equals("name")) {
+            arrUsers.sort(new SortedByName());
+         }
+         if (sortedBy.equals("surname")) {
+            arrUsers.sort(new SortedBySurname());
+         }
+         if (sortedBy.equals("country")) {
+            arrUsers.sort(new SortedByCountry());
+         }
+         if (sortedBy.equals("city")) {
+            arrUsers.sort(new SortedByCity());
+         }
+         if (sortedBy.equals("email")) {
+            arrUsers.sort(new SortedByEmail());
+         }
+         if (sortedBy.equals("login")) {
+            arrUsers.sort(new SortedByLogin());
+         }
+         if (sortedBy.equals("bDay")) {
+            arrUsers.sort(new SortedByBDay());
+         }
+         if (sortedBy.equals("dateOfRegistration")) {
+            arrUsers.sort(new SortedByDateOfRegistration());
+         }
+                
+         
+     }
 
 }

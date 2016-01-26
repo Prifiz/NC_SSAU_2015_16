@@ -2,13 +2,13 @@
 <workUser>
     <arrUsers>
         <address>
-            <city>XX</city>
+            <city>12.12.2012</city>
             <country>Usa</country>
         </address>
         <privateInformation>
             <name>bob4</name>
             <surname>Clark</surname>
-            <bDay>0012-12-19</bDay>
+            <bDay>2012-12-12</bDay>
         </privateInformation>
         <serviceInfo>
             <email>email@gmail.com</email>
