@@ -13,6 +13,14 @@
     <packaging>jar</packaging>
     <name>server</name>    
    
+   <repositories>
+        <repository>
+            <id>library</id>
+            <name>library</name>
+            <url>file:C:\Users\Dmitry\Documents\NetBeansProjects\Git\NC_SSAU_2015_16\uno\library</url>
+        </repository>
+    </repositories> 
+    
     <build>
         <resources>
             <resource>
@@ -47,7 +55,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib</classpathPrefix>
-                            <mainClass>team5.desktop.net.server.Server</mainClass>
+                            <mainClass>team5.server.net.server.Server</mainClass>
                         </manifest>
                         
                     </archive>
@@ -90,6 +98,11 @@
             <artifactId>junit</artifactId>
             <version>4.10</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>library</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

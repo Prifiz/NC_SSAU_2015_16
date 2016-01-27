@@ -17,14 +17,14 @@ import javax.swing.table.TableRowSorter;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
-import team5.client.actions.WorkWithFiles;
+import team5.library.actions.WorkWithFiles;
 import team5.client.actions.UserTableModel;
-import team5.client.actions.WorkUser;
-import team5.client.exceptions.NotFoundException;
-import team5.client.exceptions.UserExistException;
-import team5.client.searches.UserSearch;
-import team5.client.searches.Search;
-import team5.client.user.User;
+import team5.library.actions.WorkUser;
+import team5.library.exceptions.NotFoundException;
+import team5.library.exceptions.UserExistException;
+import team5.library.searches.UserSearch;
+import team5.library.searches.Search;
+import team5.library.user.User;
 
 /**
  *

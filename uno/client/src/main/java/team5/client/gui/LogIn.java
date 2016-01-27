@@ -10,8 +10,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import java.io.IOException;
-import team5.client.actions.WorkWithFiles;
-import team5.client.actions.WorkUser;
+import team5.library.actions.WorkWithFiles;
+import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;

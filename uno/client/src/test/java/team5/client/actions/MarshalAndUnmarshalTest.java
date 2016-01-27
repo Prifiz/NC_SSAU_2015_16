@@ -7,6 +7,8 @@ package team5.client.actions;
 
 import org.junit.Before;
 import org.junit.Test;
+import team5.library.actions.WorkUser;
+import team5.library.actions.WorkWithFiles;
 
 /**
  *

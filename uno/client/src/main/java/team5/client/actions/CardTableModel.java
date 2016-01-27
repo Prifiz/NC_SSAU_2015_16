@@ -10,7 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
-import team5.client.card.Card;
+import team5.library.actions.WorkCard;
+import team5.library.card.Card;
 
 /**
  *

@@ -16,12 +16,12 @@ import javax.swing.border.TitledBorder;
 import org.apache.log4j.Logger;
 import team5.client.actions.CardTableModel;
 import team5.client.actions.DataExchange;
-import team5.client.actions.WorkCard;
-import team5.client.actions.WorkWithFiles;
-import team5.client.card.Card;
-import team5.client.exceptions.NotFoundException;
-import team5.client.searches.CardSearch;
-import team5.client.searches.Search;
+import team5.library.actions.WorkCard;
+import team5.library.actions.WorkWithFiles;
+import team5.library.card.Card;
+import team5.library.exceptions.NotFoundException;
+import team5.library.searches.CardSearch;
+import team5.library.searches.Search;
 
 /**
  *

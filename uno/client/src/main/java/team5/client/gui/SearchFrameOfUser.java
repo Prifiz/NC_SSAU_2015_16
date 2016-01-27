@@ -14,10 +14,10 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import team5.client.actions.DataExchange;
 import team5.client.actions.UserTableModel;
-import team5.client.exceptions.NotFoundException;
-import team5.client.searches.UserSearch;
-import team5.client.searches.Search;
-import team5.client.user.User;
+import team5.library.exceptions.NotFoundException;
+import team5.library.searches.UserSearch;
+import team5.library.searches.Search;
+import team5.library.user.User;
 
 /**
  *

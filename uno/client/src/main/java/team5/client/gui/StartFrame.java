@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.*;
-import team5.client.actions.WorkWithFiles;
-import team5.client.actions.WorkUser;
+import team5.library.actions.WorkWithFiles;
+import team5.library.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
 

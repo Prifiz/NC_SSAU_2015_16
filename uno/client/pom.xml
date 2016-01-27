@@ -11,7 +11,15 @@
     <artifactId>client</artifactId>
     <version>1.0</version> 
     <packaging>jar</packaging>
-    <name>client</name>    
+    <name>client</name>   
+    
+     <repositories>
+        <repository>
+            <id>library</id>
+            <name>library</name>
+            <url>file:C:\Users\Dmitry\Documents\NetBeansProjects\Git\NC_SSAU_2015_16\uno\library</url>
+        </repository>
+    </repositories> 
    
     <build>
         <resources>
@@ -88,6 +96,11 @@
             <artifactId>junit</artifactId>
             <version>4.10</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>library</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

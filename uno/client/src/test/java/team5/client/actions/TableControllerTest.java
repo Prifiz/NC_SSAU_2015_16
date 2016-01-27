@@ -12,8 +12,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import team5.client.card.Card;
-import team5.client.card.NumericCard;
+import team5.library.card.Card;
+import team5.library.card.NumericCard;
 
 /**
  *
