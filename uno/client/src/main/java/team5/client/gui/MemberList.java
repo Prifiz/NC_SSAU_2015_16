@@ -5,6 +5,7 @@
  */
 package team5.client.gui;
 
+import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -15,6 +16,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
@@ -95,6 +98,10 @@ public class MemberList extends javax.swing.JFrame {
         //Таблица и модель
         model = new UserTableModel();
         jTable1 = new JTable(model);
+        //сортировка  по столбцу
+        RowSorter<TableModel> sorter =new TableRowSorter<TableModel>(model);
+        jTable1.setRowSorter(sorter);
+        
         model.addTableModelListener(jTable1);
         jTable1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         //jTable1.setSize(new java.awt.Dimension(500, 400));

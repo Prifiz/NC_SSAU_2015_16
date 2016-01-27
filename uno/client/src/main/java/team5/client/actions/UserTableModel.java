@@ -25,7 +25,7 @@ public class UserTableModel extends AbstractTableModel {
     private final Set<TableModelListener> listeners = new HashSet<TableModelListener>();
     private WorkUser work = WorkUser.getWork();
     private ArrayList<User> users = work.getArrOfUsers();
-    String[] names = {"Name", "Surname", "BirthDay", "Country", "City", "Email", "Login", "Password"};
+    String[] names = {"Name", "Surname", "BirthDay", "Country", "City", "Email", "Login", "Password", "DateOfRegistration"};
 
     public ArrayList getArrayOfUsers() {
         return users;
@@ -51,14 +51,17 @@ public class UserTableModel extends AbstractTableModel {
 
     }
 
+    @Override
     public int getRowCount() {
         return users.size();
     }
 
+    @Override
     public int getColumnCount() {
         return names.length;
     }
 
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
@@ -82,6 +85,8 @@ public class UserTableModel extends AbstractTableModel {
                     str.append('*');
                 }
                 return str.toString();
+            case 8:
+                return users.get(rowIndex).getServiceInfo().getDateOfRegistration();
 
         }
         return null;

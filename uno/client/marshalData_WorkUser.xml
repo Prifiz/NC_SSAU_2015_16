@@ -2,28 +2,114 @@
 <workUser>
     <arrUsers>
         <address>
-<<<<<<< HEAD
-            <city>12.12.2012</city>
-            <country>Usa</country>
+            <city>hbhj</city>
+            <country>hj</country>
         </address>
         <privateInformation>
-            <name>bob4</name>
-            <surname>Clark</surname>
+            <name>dbk</name>
+            <surname>bhj</surname>
             <bDay>2012-12-12</bDay>
-=======
-            <city>1</city>
-            <country>1</country>
-        </address>
-        <privateInformation>
-            <name>1</name>
-            <surname>1</surname>
-            <bDay>0012-12-12</bDay>
->>>>>>> 953e870badf0b9d1c8c9ecaab8e00439f456612e
         </privateInformation>
         <serviceInfo>
-            <email>1</email>
-            <login>1</login>
-            <password>1</password>
+            <email>b</email>
+            <login>jn</login>
+            <password>hj</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>fvdklmc</city>
+            <country>vsdkml</country>
+        </address>
+        <privateInformation>
+            <name>dfl</name>
+            <surname>vdoskl</surname>
+            <bDay>2009-09-13</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>vsdmkl</email>
+            <login>vfdl;</login>
+            <password>dlsv</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>gd</city>
+            <country>gdn</country>
+        </address>
+        <privateInformation>
+            <name>rfhg</name>
+            <surname>ndg</surname>
+            <bDay>1995-08-13</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>fg</email>
+            <login>ndg</login>
+            <password>gdn</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>dg</city>
+            <country>dg</country>
+        </address>
+        <privateInformation>
+            <name>dbg</name>
+            <surname>dg</surname>
+            <bDay>1995-12-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>dg</email>
+            <login>gd</login>
+            <password>gd</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>ds</city>
+            <country>d</country>
+        </address>
+        <privateInformation>
+            <name>fd</name>
+            <surname>fs</surname>
+            <bDay>2012-12-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>gd</email>
+            <login>fs</login>
+            <password>s</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>bh</city>
+            <country>b</country>
+        </address>
+        <privateInformation>
+            <name>kjn</name>
+            <surname>hb</surname>
+            <bDay>0012-12-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>ubh</email>
+            <login>hb</login>
+            <password>h</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>jk</city>
+            <country>jnk</country>
+        </address>
+        <privateInformation>
+            <name>jn</name>
+            <surname>jni</surname>
+            <bDay>0012-12-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>njk</email>
+            <login>jkn</login>
+            <password>jkn</password>
         </serviceInfo>
     </arrUsers>
 </workUser>
