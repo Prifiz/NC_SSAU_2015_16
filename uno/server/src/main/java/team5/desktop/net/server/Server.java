@@ -39,7 +39,8 @@ public class Server {
         }
         WorkUser wu = WorkUser.getWork();
         try {
-            wu.addUser("putin", "d", "d", "d", "sf", "d", "d", "19.12.12");
+            wu.addUser("medved", "f", "sdfd", "sfdd", "fsdsf", "fdd", "fdd", "19.12.12");
+            wu.addUser("putin", "s", "d", "d", "sf", "d", "d", "19.12.12");
             wu.addUser("sasdq", "d", "d", "d", "d", "d", "d", "19.12.12");
             wu.addUser("f", "d", "d", "d", "sfsdf", "d", "d", "19.12.12");
             wu.addUser("d", "d", "d", "d", "putin", "d", "d", "19.12.12");

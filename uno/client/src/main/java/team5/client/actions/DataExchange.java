@@ -33,7 +33,7 @@ public class DataExchange {
     public void write(int command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
-        dout.write(command);
+        dout.writeInt(command);
         dout.flush();
     }
     public void write(boolean command) throws IOException

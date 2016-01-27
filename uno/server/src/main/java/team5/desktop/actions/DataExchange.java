@@ -24,19 +24,19 @@ public class DataExchange {
         this.out = out;
     }
     
-    public void write(String command) throws IOException
+    public void writeString(String command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeUTF(command);
         dout.flush();
     }
-    public void write(int command) throws IOException
+    public void writeInt(int command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
-        dout.write(command);
+        dout.writeInt(command);
         dout.flush();
     }
-    public void write(boolean command) throws IOException
+    public void writeBool(boolean command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeBoolean(command);
@@ -57,6 +57,8 @@ public class DataExchange {
         DataInputStream din = new DataInputStream(in);
         return din.readBoolean();
     }
+
+    
     
     
     

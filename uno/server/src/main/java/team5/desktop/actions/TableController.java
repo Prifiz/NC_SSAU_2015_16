@@ -19,14 +19,23 @@ import team5.desktop.card.Card;
  */
 public class TableController {
 
+    private boolean cardDeal;
     private Logger log = Logger.getLogger(TableController.class);
     private ArrayList<Card> pack;
     private Card lastcard;
-    private int counter_for_random;
+    private int counterForRandom;
 
     public TableController() {
         loadNewPack();
-        counter_for_random = 75;
+        counterForRandom = 75;
+    }
+
+    public boolean isCardDeal() {
+        return cardDeal;
+    }
+
+    public void setCardDeal(boolean isCardDeal) {
+        this.cardDeal = isCardDeal;
     }
 
     public ArrayList<Card> getPack() {
@@ -40,25 +49,23 @@ public class TableController {
     public void setLastCard(Card card) {
         lastcard = card;
     }
-/**
- * This method return true, if card is equivalent to the last card in tabel.
- * Else return false.
- * 
- * @param card
- * @return true/false
- */
+
+    /**
+     * This method return true, if card is equivalent to the last card in tabel.
+     * Else return false.
+     *
+     * @param card
+     * @return true/false
+     */
     public boolean isRightCard(Card card) {
-        if(lastcard!=null)
-        {
-        if ((lastcard.getColor().equals(card.getColor()))||(lastcard.getIcon()==card.getIcon())) {
-            lastcard = card;
-            return true;
+        if (lastcard != null) {
+            if ((lastcard.getColor().equals(card.getColor())) || (lastcard.getIcon() == card.getIcon())) {
+                lastcard = card;
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
-        }
-        }
-        else
-        {
             lastcard = card;
             return true;
         }
@@ -66,10 +73,10 @@ public class TableController {
 
     public Card getCardFromPack() {
         Random random = new Random();
-        int i = random.nextInt(counter_for_random) + 1;
+        int i = random.nextInt(counterForRandom) + 1;
         Card card = pack.get(i);
         pack.remove(i);
-        counter_for_random--;
+        counterForRandom--;
         return card;
     }
 
@@ -83,21 +90,19 @@ public class TableController {
         try {
             pack = WorkWithFiles.readCards(fr);
         } catch (IOException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         }
     }
 
-    public void setNewPack(ArrayList<Card> cards1, ArrayList<Card> cards2)
-    {
+    public void setNewPack(ArrayList<Card> cards1, ArrayList<Card> cards2) {
         loadNewPack();
         for (Card card : cards1) {
             pack.remove(card);
         }
-        for (Card card:cards2)
-        {
+        for (Card card : cards2) {
             pack.remove(card);
         }
         pack.remove(lastcard);
     }
-            
+
 }

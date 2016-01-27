@@ -8,12 +8,8 @@ package team5.client.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import team5.client.actions.WorkWithFiles;
 import team5.client.actions.WorkUser;
 import javax.swing.*;

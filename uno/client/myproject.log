@@ -75,3 +75,6 @@
 22:46:28,252  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 23:56:46,807  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 00:02:20,980  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+13:35:04,984 DEBUG main Main:main:42 - Unable to create an instance of team5.client.user.User
+13:40:26,113  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
+13:49:20,101  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
