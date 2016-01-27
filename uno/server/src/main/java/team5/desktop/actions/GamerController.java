@@ -16,12 +16,37 @@ import team5.desktop.exceptions.CardNotFoundException;
 public class GamerController {
     private ArrayList<Card> handscards;
     private String login;
+    private String act;
+    private int readCount;
+
+    public int getReadCount() {
+        return readCount;
+    }
+
+    public void setReadCount(int readCount) {
+        this.readCount = readCount;
+    }
+
+   
     public GamerController(String login)
     {
         handscards  = new ArrayList();
         this.login = login;
     }
-    
+     public String getAct() {
+        return act;
+    }
+
+    public void setAct(String act) {
+        this.act = act;
+    }
+    public ArrayList<Card> getHandscards() {
+        return handscards;
+    }
+
+    public void setHandscards(ArrayList<Card> handscards) {
+        this.handscards = handscards;
+    }
     public void addCardToHand(Card card)
     {
         handscards.add(card);

@@ -27,7 +27,6 @@ public class FinishFrame extends JFrame {
 
     private DataExchange  dataE;
     private Logger log = Logger.getLogger(FinishFrame.class);
-    private JButton playAgainButton;
     private JButton backButton;
     private JLabel resultLabel;
 
@@ -42,17 +41,6 @@ public class FinishFrame extends JFrame {
         setLayout(null);
         this.setResizable(false);
         setTitle("Finish game");
-
-        playAgainButton = new JButton();
-        playAgainButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        playAgainButton.setText("Play again");
-        add(playAgainButton);
-        playAgainButton.setBounds(120, 150, 150, 30);//310 300 80 30
-        playAgainButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playAgainButtonActionPerformed(evt);
-            }
-        });
 
         backButton = new JButton();
         backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -113,13 +101,6 @@ public class FinishFrame extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
-    }
-
-    private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
-        GameFrame gameFrame = new GameFrame(dataE);
-        gameFrame.setVisible(true);
-        this.setVisible(false);
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
