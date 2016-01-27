@@ -9,16 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
 import team5.client.actions.UserTableModel;
 import team5.client.exceptions.NotFoundException;
-import team5.client.searches.*;
+import team5.client.searches.UserSearch;
+import team5.client.searches.Search;
 import team5.client.user.User;
 
 /**

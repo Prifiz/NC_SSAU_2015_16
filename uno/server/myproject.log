@@ -149,8 +149,27 @@
 01:03:03,485  INFO main Server:main:64 - Client connected
 01:04:23,205 DEBUG Thread-1 ServerThread:run:221 - Connection reset
 >>>>>>> 953e870badf0b9d1c8c9ecaab8e00439f456612e
+<<<<<<< HEAD
 20:39:27,850 DEBUG main Server:main:51 - User already exist
 20:39:56,518  INFO main Server:main:65 - Client connected
 20:42:49,317  INFO main Server:main:65 - Client connected
 20:47:59,728  INFO main Server:main:65 - Client connected
 20:48:10,830  INFO main Server:main:65 - Client connected
+=======
+13:34:51,862 DEBUG main Server:main:50 - User already exist
+13:37:32,147 DEBUG main Server:main:50 - User already exist
+13:37:42,310  INFO main Server:main:64 - Client connected
+13:38:05,239  INFO main Server:main:64 - Client connected
+13:39:38,886 DEBUG Thread-1 ServerThread:game:350 - Connection reset
+13:39:38,887 DEBUG Thread-1 ServerThread:run:228 - Connection reset
+13:40:16,683 DEBUG main Server:main:50 - User already exist
+13:40:26,111  INFO main Server:main:64 - Client connected
+13:40:39,269  INFO main Server:main:64 - Client connected
+13:43:31,591 DEBUG Thread-2 ServerThread:game:350 - Connection reset
+13:43:31,591 DEBUG Thread-2 ServerThread:run:228 - Connection reset
+13:49:08,771 DEBUG main Server:main:50 - User already exist
+13:49:20,097  INFO main Server:main:64 - Client connected
+13:49:32,664  INFO main Server:main:64 - Client connected
+13:52:48,381 DEBUG Thread-1 ServerThread:game:359 - Connection reset
+13:52:48,382 DEBUG Thread-1 ServerThread:run:237 - Connection reset
+>>>>>>> a33f94e94560cfeb6beeed4f546b6747614b7cf4
