@@ -1,5 +1,13 @@
 package team5.client.actions;
 
+import team5.client.sortings.SortedByCountry;
+import team5.client.sortings.SortedByDateOfRegistration;
+import team5.client.sortings.SortedByBDay;
+import team5.client.sortings.SortedByLogin;
+import team5.client.sortings.SortedByEmail;
+import team5.client.sortings.SortedByName;
+import team5.client.sortings.SortedBySurname;
+import team5.client.sortings.SortedByCity;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,7 +23,6 @@ import team5.client.user.PrivateInformation;
 import team5.client.user.ServiceInfo;
 import team5.client.user.User;
 import team5.client.exceptions.*;
-import team5.client.sorted.*;
 import team5.client.searches.Search;
 import team5.client.searches.UserSearch;
 import team5.client.user.admin.Admin;

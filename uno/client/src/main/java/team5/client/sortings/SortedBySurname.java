@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.client.sorted;
+package team5.client.sortings;
 
 import java.util.Comparator;
 import team5.client.user.User;
