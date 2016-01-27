@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.client.sorted;
+package team5.client.sortings;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import team5.client.user.User;
 
@@ -12,12 +13,12 @@ import team5.client.user.User;
  *
  * @author chanta
  */
-public class SortedByCountry implements Comparator<User> {
+public class SortedByDateOfRegistration implements Comparator<User> {
 
     @Override
     public int compare(User o1, User o2) {
-        String str1 = o1.getAddress().getCountry();
-        String str2 = o2.getAddress().getCountry();
+        LocalDate str1 = o1.getServiceInfo().getDateOfRegistration();
+        LocalDate str2 = o2.getServiceInfo().getDateOfRegistration();
 
         return str1.compareTo(str2);
     }

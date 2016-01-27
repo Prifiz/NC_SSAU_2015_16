@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.client.sorted;
+package team5.client.sortings;
 
 import java.util.Comparator;
 import team5.client.user.User;
@@ -12,12 +12,12 @@ import team5.client.user.User;
  *
  * @author chanta
  */
-public class SortedByLogin implements Comparator<User> {
+public class SortedByCity implements Comparator<User> {
 
     @Override
     public int compare(User o1, User o2) {
-        String str1 = o1.getServiceInfo().getLogin();
-        String str2 = o2.getServiceInfo().getLogin();
+        String str1 = o1.getAddress().getCity();
+        String str2 = o2.getAddress().getCity();
 
         return str1.compareTo(str2);
     }
