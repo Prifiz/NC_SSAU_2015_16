@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.server.actions.DataExchange;
 import team5.server.actions.GamerController;
@@ -18,6 +19,9 @@ import team5.server.actions.SignIn;
 import team5.server.actions.TableController;
 import team5.library.card.Card;
 import team5.library.exceptions.UserExistException;
+import team5.library.transmissions.Commands;
+import team5.library.transmissions.WorkWithFiles;
+import team5.server.transmissions.Streams;
 
 /**
  *
@@ -31,6 +35,8 @@ public class ServerThread extends Thread {
     private Logger log = Logger.getLogger(ServerThread.class);
     private Socket clientsocket;
     private DataExchange dataE;
+    private Streams streams;
+    private Commands command;
 
     public ServerThread(Socket socket, RoomController[] r, int[] time) {
         waitTime = time;
@@ -44,10 +50,24 @@ public class ServerThread extends Thread {
         boolean f = true;
         try {
             dataE = new DataExchange(clientsocket.getInputStream(), clientsocket.getOutputStream());
+            streams=new Streams(clientsocket.getInputStream(), clientsocket.getOutputStream());
+           
             String comand = "";
+            
             while (f) {
-                comand = dataE.readString();
-
+                comand = dataE.readString();  
+//                System.out.println("Com "+ comand);
+//                 try{
+//            command=WorkWithFiles.unmarshalData(streams.getInputStream());
+//                 System.out.println("Com "+ comand);   
+//            }catch(JAXBException e){
+//                log.debug("JAXB "+e.getMessage());
+//            }
+//                if (comand=="1") {
+//                    comand=command.getCommand();
+//                }
+//                comand=command.getCommand();
+//                   System.out.println("Com "+ comand);
                 switch (comand) {
                     //
                     //вход в игру
@@ -55,7 +75,10 @@ public class ServerThread extends Thread {
                     case "Login":
                         SignIn sign = new SignIn();
                         String login = dataE.readString();
+                        //String login = command.getUser().getServiceInfo().getLogin();
                         dataE.writeBool(sign.sign(login, dataE.readString()));
+                        //dataE.writeBool(sign.sign(login, command.getUser().getServiceInfo().getPassword()));
+                        //System.out.println("OPOP"+sign.sign(login, command.getUser().getServiceInfo().getPassword()));
                         gamer = new GamerController(login);
                         break;
                     //

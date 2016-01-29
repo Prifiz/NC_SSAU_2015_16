@@ -13,7 +13,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import team5.library.actions.WorkWithFiles;
+import team5.library.transmissions.WorkWithFiles;
 import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
@@ -261,7 +261,7 @@ public class RegistrationFrame extends JFrame {
             }
         } catch (IOException e) {
             jMessage.setText("User already created");
-            //Надо написать обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
+            //TODO Надо написать обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
         }
     }
 

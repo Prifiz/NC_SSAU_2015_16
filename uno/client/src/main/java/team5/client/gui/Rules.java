@@ -15,7 +15,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import team5.library.actions.WorkWithFiles;
+import team5.library.transmissions.WorkWithFiles;
 import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;

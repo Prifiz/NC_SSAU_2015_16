@@ -17,7 +17,7 @@ import javax.swing.table.TableRowSorter;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
-import team5.library.actions.WorkWithFiles;
+import team5.library.transmissions.WorkWithFiles;
 import team5.client.actions.UserTableModel;
 import team5.library.actions.WorkUser;
 import team5.library.exceptions.NotFoundException;
@@ -70,9 +70,13 @@ public class MemberList extends javax.swing.JFrame {
         initComponents();
     }
 
-//    public JTable getJTable(){
-//        return jTable1;
-//    }
+    public JTable getTable(){
+        return jTable1;
+    }
+    
+    public void setTable(JTable table){
+        jTable1=table;
+    }
 //    JTextField[] fields={tfname,tfsurname, tfcity,tfcountry, tfemail, tflogin,tfpassword, tfbday  };
     @SuppressWarnings("unchecked")
 
@@ -341,8 +345,9 @@ public class MemberList extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        searchFrame = new SearchFrameOfUser(jTable1, model);
+        searchFrame = new SearchFrameOfUser(jTable1, model,this);
         searchFrame.setVisible(true);
+        
 
     }
 

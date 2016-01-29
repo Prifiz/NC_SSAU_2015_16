@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
-import team5.library.actions.WorkWithFiles;
+import team5.library.transmissions.WorkWithFiles;
 import team5.library.actions.WorkUser;
 import team5.library.exceptions.*;
 import team5.client.gui.StartFrame;

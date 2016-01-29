@@ -11,7 +11,7 @@ import java.awt.event.WindowListener;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
-import team5.library.actions.WorkWithFiles;
+import team5.library.transmissions.WorkWithFiles;
 import team5.library.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;

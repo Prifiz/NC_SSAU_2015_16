@@ -14,10 +14,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.*;
-import team5.library.actions.WorkWithFiles;
+import team5.library.transmissions.WorkWithFiles;
 import team5.library.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
+import team5.client.transmissions.Streams;
 
 /**
  *
@@ -146,6 +147,7 @@ public class StartFrame extends JFrame {
             Socket socket = new Socket(ipaddress, serverport);
             in = socket.getInputStream();
             out = socket.getOutputStream();
+            Streams streams=new Streams(in, out);
             log.info("Connect to server");
         }
         catch(IOException e)

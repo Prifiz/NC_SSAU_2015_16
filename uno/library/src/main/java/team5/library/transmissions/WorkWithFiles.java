@@ -1,12 +1,14 @@
 
-package team5.library.actions;
+package team5.library.transmissions;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StreamTokenizer;
 import java.io.Writer;
@@ -15,6 +17,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import team5.library.actions.WorkCard;
+import team5.library.actions.WorkUser;
 import team5.library.card.Card;
 import team5.library.card.NumericCard;
 
@@ -83,6 +87,35 @@ public class WorkWithFiles {
         marshaller.marshal(workUser, new File(fileName));
        
     }
+    
+    /**
+     * Method marshalles Commands object and write it to stream
+     * @param outputStream
+     * @param command
+     * @throws JAXBException 
+     */
+    public static void marshalData(OutputStream outputStream, Commands command) throws JAXBException {
+        //TODO пока сделал статик. не решил как лучше
+        JAXBContext context = JAXBContext.newInstance(command.getClass());
+        Marshaller marshaller = context.createMarshaller();
+        //marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(command, outputStream);       
+    }
+    
+    /**
+     * Method unmarshalles Commands object from stream
+     * @param inputStream
+     * @return Commands 
+     * @throws JAXBException 
+     */
+    public static Commands unmarshalData(InputStream inputStream) throws JAXBException {
+         //TODO пока сделал статик. не решил как лучше
+        JAXBContext context = JAXBContext.newInstance(WorkUser.class);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        Commands command = (Commands)unmarshaller.unmarshal(inputStream);
+        return command;
+    }
+    
     
     /**
      * This method write cards to text file look as: "Type of card" "color of card" "int value of card". 

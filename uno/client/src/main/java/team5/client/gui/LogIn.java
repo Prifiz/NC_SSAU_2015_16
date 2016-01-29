@@ -10,12 +10,17 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import java.io.IOException;
-import team5.library.actions.WorkWithFiles;
+import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.*;
 import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
+import team5.client.transmissions.Streams;
+import team5.library.user.PrivateInformation;
+import team5.library.user.ServiceInfo;
+import team5.library.user.User;
 
 /**
  *
@@ -31,7 +36,7 @@ public class LogIn extends JFrame {
     private javax.swing.JLabel loginLabel;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField jPasswordField;
-    private javax.swing.JTextField jTextField;
+    private javax.swing.JTextField jLoginField;
     private javax.swing.JLabel jMessage;
     
     /**
@@ -49,7 +54,7 @@ public class LogIn extends JFrame {
         
         signLabel = new JLabel();
         jPasswordField = new JPasswordField();
-        jTextField = new JTextField();
+        jLoginField = new JTextField();
         signButton = new JButton();
         registrationButton = new JButton();
         loginLabel = new JLabel();
@@ -80,9 +85,9 @@ public class LogIn extends JFrame {
         jMessage.setBounds(70, 180, 300, 30);
         jMessage.setText("");
 
-        jTextField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        add(jTextField);
-        jTextField.setBounds(125, 100, 160, 30);
+        jLoginField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        add(jLoginField);
+        jLoginField.setBounds(125, 100, 160, 30);
         
         add(jPasswordField);
         jPasswordField.setBounds(125, 140, 160, 30);
@@ -158,15 +163,23 @@ public class LogIn extends JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
         boolean f = false;
         try{
+//            Commands command=new Commands("Login");
+//            User usr=new User();
+//            usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
         dataE.write("Login");
-        dataE.write(jTextField.getText());
+        dataE.write(jLoginField.getText());
         dataE.write(String.valueOf(jPasswordField.getPassword()));
+//        command.setUser(usr);
+//        WorkWithFiles.marshalData(Streams.getOutputStream(), command);
         f = dataE.readBool();
         }
         catch(IOException e)
         {
             log.debug(e.getMessage());
         }
+//        catch(JAXBException e){
+//            log.debug(e.getMessage());
+//        }
         //SignIn sign = new SignIn();
         // WorkUser wu = WorkUser.getWork();
         //sign.sign(this.jTextField.getText(), this.jPasswordField.getPassword())

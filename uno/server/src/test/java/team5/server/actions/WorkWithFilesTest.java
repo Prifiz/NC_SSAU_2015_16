@@ -11,7 +11,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import team5.library.actions.WorkWithFiles;
+import team5.library.transmissions.WorkWithFiles;
 import team5.library.card.Card;
 import team5.library.card.NumericCard;
 

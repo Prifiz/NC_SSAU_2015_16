@@ -32,6 +32,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
     private JTable table;
     private JLabel jMessage;
     private JCheckBox searchCheckBox;
+    private MemberList memberList;
     private boolean isRegular=false;
 
     private JTextField tfsearch;
@@ -45,9 +46,10 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         initComponents();
     }
 
-    public SearchFrameOfUser(JTable table, UserTableModel model) {
+    public SearchFrameOfUser(JTable table, UserTableModel model, MemberList memList) {
         this.table = table;
         //this.fields=fields;
+        memberList=memList;
         this.model = model;
         initComponents();
     }
@@ -58,6 +60,10 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         } else {
             return null;
         }
+    }
+    
+    public JTable getTable(){
+        return table;
     }
 
     public void setSearchRequest(String searchRequest) {
@@ -146,9 +152,10 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
             }else{
                 model.setArrayOfUsers((ArrayList<User>) search.substringSearch(searchRequest));
             }
-            
+            //memberList.setTable(table);
             table.revalidate();
             table.repaint();
+            
             this.setVisible(false);
 
         } catch (NotFoundException e) {
