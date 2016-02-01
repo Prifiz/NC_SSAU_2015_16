@@ -173,6 +173,7 @@
 13:52:48,381 DEBUG Thread-1 ServerThread:game:359 - Connection reset
 13:52:48,382 DEBUG Thread-1 ServerThread:run:237 - Connection reset
 >>>>>>> a33f94e94560cfeb6beeed4f546b6747614b7cf4
+<<<<<<< HEAD
 03:12:08,998 DEBUG main Server:main:51 - User already exist
 03:12:21,449  INFO main Server:main:65 - Client connected
 03:13:19,798 DEBUG Thread-1 ServerThread:run:228 - Connection reset
