@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.logging.Level;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -20,11 +21,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
+import team5.client.actions.Counter;
 import team5.client.actions.DataExchange;
+import team5.client.actions.GameThread;
 import team5.library.actions.WorkUser;
 import team5.library.actions.WorkWithFiles;
 import team5.library.card.Card;
@@ -36,7 +42,7 @@ import team5.library.card.NumericCard;
  */
 public class GameFrame extends JFrame {
 
-    private int enabledPane;
+    private Counter enabledPane;
     private int gamerIndex;
     private JPanel panels[];
     private ButtonGroup buttonGroups[];
@@ -55,9 +61,13 @@ public class GameFrame extends JFrame {
     private JLabel uno;
     private JPanel panel;
     private JTabbedPane pane;
+    private JTextArea text;
+    private JScrollPane scroll;
+    GameThread game;
 
     public GameFrame(DataExchange dataE) {
         this.dataE = dataE;
+        enabledPane = new Counter();
         try {
             myLogin = dataE.readString();
             gamerCount = dataE.readInt();
@@ -73,8 +83,10 @@ public class GameFrame extends JFrame {
         }
         panels = new JPanel[gamerCount];
         initComponents();
-        enabledPane = 0;
-        gameOtherUsers();
+        enabledPane.setCount(0);
+        game = new GameThread(enabledPane, gamerIndex, this.dataE, lastCardLabel, gamerCount, text, logins);
+        game.start();
+        //gameOtherUsers();
     }
 
     private void initComponents() {
@@ -91,9 +103,16 @@ public class GameFrame extends JFrame {
         border.setTitle("Last card");
         border.setTitleJustification(2);
         panel.setBorder(border);
-        panel.setBounds(300, 200, 200, 100);
+        panel.setBounds(200, 200, 200, 100);
         panel.setLayout(null);
         add(panel);
+
+        scroll = new JScrollPane();
+        text = new JTextArea();
+        text.setLineWrap(true);
+        scroll.setViewportView(text);
+        add(scroll);
+        scroll.setBounds(450, 200, 300, 120);
 
         pane = new JTabbedPane();
         pane.setBounds(50, 300, 500, 200);
@@ -165,7 +184,7 @@ public class GameFrame extends JFrame {
         endTurnButton.setBounds(650, 470, 100, 30);//310 300 80 30
         endTurnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finishMoveButtonActionPerformed(evt);
+                endTurnButtonActionPerformed(evt);
             }
         });
 
@@ -243,9 +262,8 @@ public class GameFrame extends JFrame {
         // this.setVisible(false);
     }
 
-    private void passButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if (enabledPane == gamerIndex) {
-            pane.setEnabledAt(enabledPane, false);
+    private synchronized void passButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        if (enabledPane.getCount() == gamerIndex) {
             isTakeCard = false;
 
             try {
@@ -253,12 +271,14 @@ public class GameFrame extends JFrame {
             } catch (IOException ex) {
                 log.debug(ex.getMessage());
             }
-            if (enabledPane + 1 < gamerCount) {
-                enabledPane++;
+            text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Pass");
+            if (enabledPane.getCount() + 1 < gamerCount) {
+                enabledPane.inc();
             } else {
-                enabledPane = 0;
+                enabledPane.setCount(0);
             }
-            gameOtherUsers();
+            game.wakeUp();
+            //gameOtherUsers();
         }
         //метод игры остальных игроков
 
@@ -277,7 +297,7 @@ public class GameFrame extends JFrame {
 
     private void takeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        if (enabledPane == gamerIndex) {
+        if (enabledPane.getCount() == gamerIndex) {
             if (!isTakeCard) {
                 pane.setSelectedIndex(gamerIndex);
                 JRadioButton jRadioButton = new JRadioButton();
@@ -299,6 +319,7 @@ public class GameFrame extends JFrame {
                 panels[gamerIndex].revalidate();
                 panels[gamerIndex].repaint();
                 isTakeCard = true;
+                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Take cad");
             } else {
                 JOptionPane.showConfirmDialog(null, "You can't take card more", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
@@ -328,6 +349,7 @@ public class GameFrame extends JFrame {
         for (int j = 0; j < gamerCount; j++) {
             if (logins[j].equals(myLogin)) {
                 pane.setSelectedIndex(gamerIndex);
+                pane.setEnabledAt(gamerIndex, true);
                 //enabledPane = gamerIndex;
                 for (int i = 1; i <= 7; i++) {
                     JRadioButton jRadioButton = new JRadioButton();
@@ -351,6 +373,7 @@ public class GameFrame extends JFrame {
                 }
             } else {
                 for (int i = 1; i <= 7; i++) {
+                    pane.setEnabledAt(j, false);
                     JRadioButton jRadioButton = new JRadioButton();
                     jRadioButton.setText("Card");
                     jRadioButton.setActionCommand("Card");
@@ -365,9 +388,9 @@ public class GameFrame extends JFrame {
         }
     }
 
-    private void finishMoveButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private synchronized void endTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        if (enabledPane == gamerIndex) {
+        if (enabledPane.getCount() == gamerIndex) {
             JRadioButton jr = new JRadioButton();
             if (buttonGroups[gamerIndex].getSelection() != null) {
                 String str = buttonGroups[gamerIndex].getSelection().getActionCommand();
@@ -395,7 +418,7 @@ public class GameFrame extends JFrame {
                         lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                         buttonGroups[gamerIndex].remove(jr);
                         boolean endgame = false;
-
+                        text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                         if (buttonGroups[gamerIndex].getButtonCount() == 0) {
                             FinishFrame finish = new FinishFrame(dataE);
                             finish.setVisible(true);
@@ -408,12 +431,13 @@ public class GameFrame extends JFrame {
                             panels[gamerIndex].repaint();
                             isTakeCard = false;
                         }
-                        if (enabledPane + 1 < gamerCount) {
-                            enabledPane++;
+                        if (enabledPane.getCount() + 1 < gamerCount) {
+                            enabledPane.inc();
                         } else {
-                            enabledPane = 0;
+                            enabledPane.setCount(0);
                         }
-                        gameOtherUsers();
+                        game.wakeUp();
+                        //gameOtherUsers();
 
                     } else {
                         JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -428,7 +452,7 @@ public class GameFrame extends JFrame {
         }
     }
 
-    private void gameOtherUsers() {
+    /*private void gameOtherUsers() {
         if (enabledPane < gamerIndex) {
             for (; enabledPane < gamerIndex; enabledPane++) {
                 pane.setEnabledAt(enabledPane, true);
@@ -520,36 +544,39 @@ public class GameFrame extends JFrame {
             gameOtherUsers();
         }
 
-    }
+    }*/
+
+    /**
+     * @param args the command line arguments
+     */
+    /*public static void main(String args[]) {
+
+        InputStream in = null;
+        OutputStream out = null;
+        DataExchange data = new DataExchange(in, out);
+        Logger log = Logger.getLogger(GameFrame.class);
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            log.debug(ex.getMessage());
+        } catch (InstantiationException ex) {
+            log.debug(ex.getMessage());
+        } catch (IllegalAccessException ex) {
+            log.debug(ex.getMessage());
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            log.debug(ex.getMessage());
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GameFrame(data).setVisible(true);
+
+            }
+        });
+    }*/
 }
-
-/**
- * @param args the command line arguments
- */
-/*public static void main(String args[]) {
-
- Logger log = Logger.getLogger(GameFrame.class);
- try {
- for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
- if ("Nimbus".equals(info.getName())) {
- javax.swing.UIManager.setLookAndFeel(info.getClassName());
- break;
- }
- }
- } catch (ClassNotFoundException ex) {
- log.debug(ex.getMessage());
- } catch (InstantiationException ex) {
- log.debug(ex.getMessage());
- } catch (IllegalAccessException ex) {
- log.debug(ex.getMessage());
- } catch (javax.swing.UnsupportedLookAndFeelException ex) {
- log.debug(ex.getMessage());
- }
-
- java.awt.EventQueue.invokeLater(new Runnable() {
- public void run() {
- new GameFrame().setVisible(true);
-
- }
- });
- }*/
