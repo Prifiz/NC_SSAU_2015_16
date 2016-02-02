@@ -74,6 +74,9 @@ public class TableController {
 
     public Card getCardFromPack() {
         Random random = new Random();
+        if(pack.isEmpty()){
+            loadNewPack();
+        }
         int i = random.nextInt(counterForRandom) + 1;
         Card card = pack.get(i);
         pack.remove(i);
@@ -104,6 +107,12 @@ public class TableController {
             pack.remove(card);
         }
         pack.remove(lastcard);
+    }
+    
+    public void cleanTable(){
+        loadNewPack();
+        counterForRandom = 75;
+        
     }
 
 }

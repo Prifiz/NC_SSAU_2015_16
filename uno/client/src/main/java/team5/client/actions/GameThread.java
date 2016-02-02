@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import org.apache.log4j.Logger;
 import team5.library.card.Card;
 import team5.library.card.NumericCard;
@@ -53,13 +52,17 @@ public class GameThread extends Thread {
                                 break;
                             case "TakeCard":
                                 text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Take cad");
-                                enabledPane.dec();                                
+                                enabledPane.dec();
                                 break;
                             case "END TURN":
                                 Card card = new NumericCard(dataE.readInt(), dataE.readString());
                                 text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                                 lastCardLabel.setText(card.toString());
                                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
+                                boolean win = dataE.readBool();
+                                if (win == true) {
+                                    text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": WIN!!!");
+                                }
                                 break;
                         }
                     } catch (IOException ex) {
@@ -79,13 +82,17 @@ public class GameThread extends Thread {
                                 break;
                             case "TakeCard":
                                 text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Take cad");
-                                enabledPane.dec();                               
+                                enabledPane.dec();
                                 break;
                             case "END TURN":
                                 Card card = new NumericCard(dataE.readInt(), dataE.readString());
                                 text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                                 lastCardLabel.setText(card.toString());
                                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
+                                boolean win = dataE.readBool();
+                                if (win == true) {
+                                    text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": WIN!!!");
+                                }
                                 break;
                         }
                     } catch (IOException ex) {
@@ -124,8 +131,8 @@ public class GameThread extends Thread {
         }
 
     }
-    
-    public synchronized void wakeUp(){
+
+    public synchronized void wakeUp() {
         notifyAll();
     }
 

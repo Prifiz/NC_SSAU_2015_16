@@ -98,13 +98,9 @@ public class StartFrame extends JFrame {
                 try {
                     WorkUser workUser = WorkUser.getWork();
                     WorkWithFiles workWithFiles = new WorkWithFiles();
-                    //workWithFiles.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } //catch (IOException ex) {
-                //    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-                //} 
-                catch (JAXBException ex) {
+                } catch (JAXBException ex) {
 
                 } finally {
                     event.getWindow().setVisible(false);
@@ -129,7 +125,7 @@ public class StartFrame extends JFrame {
 
         pack();
         this.setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }
 
     private void ruleButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Rules rule = new Rules();
@@ -147,17 +143,17 @@ public class StartFrame extends JFrame {
             Socket socket = new Socket(ipaddress, serverport);
             in = socket.getInputStream();
             out = socket.getOutputStream();
-            Streams streams=new Streams(in, out);
+            Streams streams = new Streams(in, out);
             log.info("Connect to server");
-        }
-        catch(IOException e)
-        {
+            DataExchange dataE = new DataExchange(in, out);
+            LogIn log = new LogIn(dataE);
+            log.setVisible(true);
+            this.setVisible(false);
+        } catch (IOException e) {
+            JOptionPane.showConfirmDialog(null, "You didn't connect to server. Please try agane", "Oops", JOptionPane.CLOSED_OPTION);
             log.debug(e.getMessage());
         }
-        DataExchange dataE = new DataExchange(in, out);
-        LogIn log = new LogIn(dataE);
-        log.setVisible(true);
-        this.setVisible(false);
+
     }
 
     /**
@@ -168,7 +164,6 @@ public class StartFrame extends JFrame {
         try {
             WorkUser workUser = WorkUser.getWork();
             WorkWithFiles workWithFiles = new WorkWithFiles();
-            //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
 
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -185,16 +180,10 @@ public class StartFrame extends JFrame {
             log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } //        catch (IOException ex) {
-        //            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
-        //        }
-        catch (JAXBException ex) {
+        } catch (JAXBException ex) {
 
             log.debug(ex.getMessage());
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartFrame().setVisible(true);

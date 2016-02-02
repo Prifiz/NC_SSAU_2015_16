@@ -12,8 +12,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.logging.Level;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,7 +22,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
@@ -212,13 +209,9 @@ public class GameFrame extends JFrame {
                 try {
                     WorkUser workUser = WorkUser.getWork();
                     WorkWithFiles workWithFiles = new WorkWithFiles();
-                    //sd.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } //                catch (IOException ex) {
-                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-                //                } 
-                catch (JAXBException ex) {
+                    throw new UnsupportedOperationException("Not supported yet.");
+                } catch (JAXBException ex) {
                     log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
@@ -259,7 +252,6 @@ public class GameFrame extends JFrame {
 
         Rules rules = new Rules();
         rules.setVisible(true);
-        // this.setVisible(false);
     }
 
     private synchronized void passButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,21 +270,7 @@ public class GameFrame extends JFrame {
                 enabledPane.setCount(0);
             }
             game.wakeUp();
-            //gameOtherUsers();
         }
-        //метод игры остальных игроков
-
-        /*if (pane.isEnabledAt(0)) {
-         pane.setSelectedIndex(1);
-         pane.setEnabledAt(0, false);
-         pane.setEnabledAt(1, true);
-         isTakeCard = false;
-         } else {
-         pane.setSelectedIndex(0);
-         pane.setEnabledAt(1, false);
-         pane.setEnabledAt(0, true);
-         isTakeCard = false;
-         }*/
     }
 
     private void takeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,9 +289,7 @@ public class GameFrame extends JFrame {
                 jRadioButton.setText(card.toString());
                 jRadioButton.setForeground(isCardColor(card.getColor()));//color
                 jRadioButton.setActionCommand(card.toString());
-                //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
                 buttonGroups[gamerIndex].add(jRadioButton);
-                //выравниваем кнопку в центр панели по горизонтали
                 jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
                 panels[gamerIndex].add(jRadioButton);
                 panels[gamerIndex].revalidate();
@@ -321,7 +297,7 @@ public class GameFrame extends JFrame {
                 isTakeCard = true;
                 text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Take cad");
             } else {
-                JOptionPane.showConfirmDialog(null, "You can't take card more", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "You can't take card more", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
@@ -350,11 +326,8 @@ public class GameFrame extends JFrame {
             if (logins[j].equals(myLogin)) {
                 pane.setSelectedIndex(gamerIndex);
                 pane.setEnabledAt(gamerIndex, true);
-                //enabledPane = gamerIndex;
                 for (int i = 1; i <= 7; i++) {
                     JRadioButton jRadioButton = new JRadioButton();
-                    //Card card = table.getCardFromPack();
-                    //gamer1.addCardToHand(card);
                     Card card = null;
                     try {
                         card = new NumericCard(dataE.readInt(), dataE.readString());
@@ -365,9 +338,7 @@ public class GameFrame extends JFrame {
                     jRadioButton.setForeground(isCardColor(card.getColor()));//color
                     jRadioButton.setActionCommand(card.toString());
                     jRadioButton.setSelected(true);
-                    //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
                     buttonGroups[gamerIndex].add(jRadioButton);
-                    //выравниваем кнопку в центр панели по горизонтали
                     jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
                     panels[gamerIndex].add(jRadioButton);
                 }
@@ -378,9 +349,7 @@ public class GameFrame extends JFrame {
                     jRadioButton.setText("Card");
                     jRadioButton.setActionCommand("Card");
                     jRadioButton.setSelected(true);
-                    //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
                     buttonGroups[j].add(jRadioButton);
-                    //выравниваем кнопку в центр панели по горизонтали
                     jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
                     panels[j].add(jRadioButton);
                 }
@@ -399,18 +368,12 @@ public class GameFrame extends JFrame {
                     dataE.write("END TURN");
                     dataE.write(str);
                     card = new NumericCard(dataE.readInt(), dataE.readString());
-
-                    //Card card = gamer1.searchCardInHand(str);
-                    if (dataE.readBool()) {//table.isRightCard(card)
-                        // JRadioButton jr2 = null;
+                    if (dataE.readBool() == true) {
                         Enumeration en = buttonGroups[gamerIndex].getElements();
                         while (en.hasMoreElements()) {
                             jr = (JRadioButton) en.nextElement();
                             if (jr.getText().equals(str)) {
-
                                 break;
-                            } else {
-                                //jr2 = jr;
                             }
                         }
 
@@ -420,6 +383,7 @@ public class GameFrame extends JFrame {
                         boolean endgame = false;
                         text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                         if (buttonGroups[gamerIndex].getButtonCount() == 0) {
+                            dataE.write(true);
                             FinishFrame finish = new FinishFrame(dataE);
                             finish.setVisible(true);
                             this.setVisible(false);
@@ -430,153 +394,25 @@ public class GameFrame extends JFrame {
                             panels[gamerIndex].revalidate();
                             panels[gamerIndex].repaint();
                             isTakeCard = false;
+                            dataE.write(false);
+                            if (enabledPane.getCount() + 1 < gamerCount) {
+                                enabledPane.inc();
+                            } else {
+                                enabledPane.setCount(0);
+                            }
+                            game.wakeUp();
                         }
-                        if (enabledPane.getCount() + 1 < gamerCount) {
-                            enabledPane.inc();
-                        } else {
-                            enabledPane.setCount(0);
-                        }
-                        game.wakeUp();
-                        //gameOtherUsers();
 
                     } else {
-                        JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showConfirmDialog(null, "This card isn't right", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 } catch (IOException ex) {
                     log.debug(ex.getMessage());
                 }
             } else {
-                JOptionPane.showConfirmDialog(null, "You didn't select card", "Wou wou", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "You didn't select card", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
-
-    /*private void gameOtherUsers() {
-        if (enabledPane < gamerIndex) {
-            for (; enabledPane < gamerIndex; enabledPane++) {
-                pane.setEnabledAt(enabledPane, true);
-                pane.setSelectedIndex(enabledPane);
-                try {
-                    //int asd = dataE.readInt();
-                    String command = dataE.readString();
-                    switch (command) {
-                        case "Pass"://надо бы сделать лэйбл, который будет отражать ходы противника.
-                            pane.setEnabledAt(enabledPane, false);
-                            break;
-                        case "TakeCard":
-                            JRadioButton jRadioButton = new JRadioButton();
-                            jRadioButton.setText("Card");
-                            jRadioButton.setActionCommand("Card");
-                            jRadioButton.setSelected(true);
-                            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-                            buttonGroups[enabledPane].add(jRadioButton);
-                            //выравниваем кнопку в центр панели по горизонтали
-                            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-                            panels[enabledPane].add(jRadioButton);
-                            panels[enabledPane].revalidate();
-                            panels[enabledPane].repaint();
-                            enabledPane--;
-                            break;
-                        case "END TURN":
-                            Card card = new NumericCard(dataE.readInt(), dataE.readString());
-                            lastCardLabel.setText(card.toString());
-                            lastCardLabel.setForeground(isCardColor(card.getColor()));//color
-                            Enumeration en = buttonGroups[enabledPane].getElements();
-                            JRadioButton jr = (JRadioButton) en.nextElement();
-                            buttonGroups[enabledPane].remove(jr);
-                            panels[enabledPane].revalidate();
-                            panels[enabledPane].repaint();
-                            pane.setEnabledAt(enabledPane, false);
-                            break;
-                    }
-                } catch (IOException ex) {
-                    log.debug(ex.getMessage());
-                }
-
-            }
-        }
-        pane.setEnabledAt(enabledPane, true);
-        pane.setSelectedIndex(enabledPane);
-        if (enabledPane > gamerIndex) {
-            for (; enabledPane < gamerCount; enabledPane++) {
-                pane.setEnabledAt(enabledPane, true);
-                pane.setSelectedIndex(enabledPane);
-                try {
-                    //int asd = dataE.readInt();
-                    String command = dataE.readString();
-                    switch (command) {
-                        case "Pass"://надо бы сделать лэйбл, который будет отражать ходы противника.
-                            pane.setEnabledAt(enabledPane, false);
-                            break;
-                        case "TakeCard":
-                            JRadioButton jRadioButton = new JRadioButton();
-                            jRadioButton.setText("Card");
-                            jRadioButton.setActionCommand("Card");
-                            jRadioButton.setSelected(true);
-                            //jRadioButton.addActionListener(aL); // монтируем Listener на кнопку
-                            buttonGroups[enabledPane].add(jRadioButton);
-                            //выравниваем кнопку в центр панели по горизонтали
-                            jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-                            panels[enabledPane].add(jRadioButton);
-                            panels[enabledPane].revalidate();
-                            panels[enabledPane].repaint();
-                            enabledPane--;
-                            break;
-                        case "END TURN":
-                            Card card = new NumericCard(dataE.readInt(), dataE.readString());
-                            lastCardLabel.setText(card.toString());
-                            lastCardLabel.setForeground(isCardColor(card.getColor()));//color
-                            Enumeration en = buttonGroups[enabledPane].getElements();
-                            JRadioButton jr = (JRadioButton) en.nextElement();
-                            buttonGroups[enabledPane].remove(jr);
-                            panels[enabledPane].revalidate();
-                            panels[enabledPane].repaint();
-                            pane.setEnabledAt(enabledPane, false);
-                            break;
-                    }
-                } catch (IOException ex) {
-                    log.debug(ex.getMessage());
-                }
-
-            }
-            enabledPane = 0;
-            gameOtherUsers();
-        }
-
-    }*/
-
-    /**
-     * @param args the command line arguments
-     */
-    /*public static void main(String args[]) {
-
-        InputStream in = null;
-        OutputStream out = null;
-        DataExchange data = new DataExchange(in, out);
-        Logger log = Logger.getLogger(GameFrame.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-            log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-            log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            log.debug(ex.getMessage());
-        }
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GameFrame(data).setVisible(true);
-
-            }
-        });
-    }*/
 }
