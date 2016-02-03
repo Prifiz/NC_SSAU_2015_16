@@ -9,7 +9,6 @@ import team5.library.user.adress.Address;
 import team5.library.user.adress.AddressInitializer;
 import team5.library.user.adress.SimpleAddressInitializer;
 import java.io.Serializable;
-import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -27,16 +26,9 @@ public class User implements Serializable {
     private ServiceInfo serviceInfo;
 
     public User() {
-        serviceInfo=new ServiceInfo("","","");//изменил
-//        serviceInfo.setLogin("");
-//        serviceInfo.setPassword("");
-//        serviceInfo.setEmail("");
-        address.setCity("");
-        address.setCountry("");
-        privateInformation=new PrivateInformation("", "", LocalDate.now());//изменил
-//        privateInformation.setName("");
-//        privateInformation.setSurname("");
-//        privateInformation.setbDay(LocalDate.now());
+        serviceInfo=new ServiceInfo();
+        address = new Address();
+        privateInformation=new PrivateInformation();
     }
 
     public User(PrivateInformation privateInformation, Address address, ServiceInfo serviceInfo) {
@@ -78,11 +70,11 @@ public class User implements Serializable {
         if (object == this) {
             return true;
         }
-        if (!(object instanceof User)) {
+        if (object.getClass() != this.getClass()) {
             return false;
         }
         User user = (User) object;
-        if (serviceInfo.getLogin().equals(user.serviceInfo.getLogin())) {
+        if ((serviceInfo!=null)&&(serviceInfo.getLogin().equals(user.serviceInfo.getLogin()))) {
             return true;
         }
         return false;

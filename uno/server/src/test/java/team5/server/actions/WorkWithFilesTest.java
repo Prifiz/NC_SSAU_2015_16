@@ -11,7 +11,7 @@ import java.io.Writer;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 import team5.library.card.Card;
 import team5.library.card.NumericCard;
 
@@ -31,7 +31,7 @@ public class WorkWithFilesTest {
     public void testReadCards() throws Exception {
         System.out.println("readCards");
         Reader in = new FileReader("Cards.txt");
-        ArrayList<Card> pack = WorkWithFiles.readCards(in);;
+        ArrayList<Card> pack = FileHandler.readCards(in);;
         Card result = pack.get(pack.size() - 1);
         Card expResult = new NumericCard(9, "green");
         in.close();

@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.*;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 import team5.library.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
@@ -97,7 +97,7 @@ public class StartFrame extends JFrame {
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
-                    WorkWithFiles workWithFiles = new WorkWithFiles();
+                    FileHandler workWithFiles = new FileHandler();
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 } catch (JAXBException ex) {
@@ -135,7 +135,7 @@ public class StartFrame extends JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         int serverport = 8081;
-        String address = "127.0.0.1";
+        String address = /*"192.168.43.197"*/"127.0.0.1";
         InputStream in = null;
         OutputStream out = null;
         try {
@@ -163,7 +163,7 @@ public class StartFrame extends JFrame {
         Logger log = Logger.getLogger(StartFrame.class);
         try {
             WorkUser workUser = WorkUser.getWork();
-            WorkWithFiles workWithFiles = new WorkWithFiles();
+            FileHandler workWithFiles = new FileHandler();
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
 
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

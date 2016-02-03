@@ -20,7 +20,7 @@ import team5.server.actions.TableController;
 import team5.library.card.Card;
 import team5.library.exceptions.UserExistException;
 import team5.library.transmissions.Commands;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 import team5.server.transmissions.Streams;
 
 /**

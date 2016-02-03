@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import org.apache.log4j.Logger;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 import team5.library.card.Card;
 
 /**
@@ -82,7 +82,7 @@ public class TableController {
             log.debug(ex.getMessage());
         }
         try {
-            pack = WorkWithFiles.readCards(fr);
+            pack = FileHandler.readCards(fr);
         } catch (IOException ex) {
            log.debug(ex.getMessage());
         }

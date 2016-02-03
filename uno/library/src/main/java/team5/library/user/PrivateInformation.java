@@ -30,7 +30,10 @@ public class PrivateInformation implements Serializable {
         this.bDay = bDay;
     }
 
-    private PrivateInformation() {
+    public PrivateInformation() {
+        this.name = "";
+        this.surname = "";
+        this.bDay = LocalDate.now();
     }
     
     
@@ -69,12 +72,15 @@ public class PrivateInformation implements Serializable {
         if (object == this) {
             return true;
         }
-        if (object instanceof PrivateInformation) {
+        if (object.getClass() != this.getClass()) {
             return false;
         }
         PrivateInformation privateInformation = (PrivateInformation) object;
-        return (name.equals(privateInformation.getName())) && (surname.equals(privateInformation.getSurname()))
-                && (bDay.equals(privateInformation.bDay));
+        if ((name!= null)&&(name.equals(privateInformation.getName())) &&(surname!=null)&& (surname.equals(privateInformation.getSurname()))
+                && (bDay!=null)&&(bDay.equals(privateInformation.bDay))){
+            return true;
+        }
+        return false;
     }
 
     @Override

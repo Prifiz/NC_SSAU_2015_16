@@ -8,19 +8,19 @@ package team5.server.actions;
 import org.junit.Before;
 import org.junit.Test;
 import team5.library.actions.WorkUser;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 
 /**
  *
  * @author chanta
  */
 public class MarshalAndUnmarshalTest {
-    private WorkWithFiles workWithFiles;
+    private FileHandler workWithFiles;
     private String fileName;
  
     @Before
     public void setUp() throws Exception {
-        workWithFiles = new WorkWithFiles();
+        workWithFiles = new FileHandler();
         fileName = "marshalData_WorkUser_Test.xml";
         
     }

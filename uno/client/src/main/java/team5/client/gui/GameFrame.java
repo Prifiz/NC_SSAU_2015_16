@@ -29,7 +29,7 @@ import team5.client.actions.Counter;
 import team5.client.actions.DataExchange;
 import team5.client.actions.GameThread;
 import team5.library.actions.WorkUser;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 import team5.library.card.Card;
 import team5.library.card.NumericCard;
 
@@ -209,7 +209,7 @@ public class GameFrame extends JFrame {
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
-                    WorkWithFiles workWithFiles = new WorkWithFiles();
+                    FileHandler workWithFiles = new FileHandler();
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     //throw new UnsupportedOperationException("Not supported yet.");
                 } catch (JAXBException ex) {

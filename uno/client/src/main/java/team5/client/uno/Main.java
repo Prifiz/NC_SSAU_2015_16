@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 import team5.library.actions.WorkUser;
 import team5.library.exceptions.*;
 import team5.client.gui.StartFrame;
@@ -33,7 +33,7 @@ public class Main {
         Logger log = Logger.getLogger(Main.class);
         try {
             WorkUser workUser = WorkUser.getWork();
-            WorkWithFiles workWithFiles = new WorkWithFiles();
+            FileHandler workWithFiles = new FileHandler();
             //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
           
