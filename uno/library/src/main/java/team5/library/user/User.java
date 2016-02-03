@@ -74,8 +74,7 @@ public class User implements Serializable {
             return false;
         }
         User user = (User) object;
-        if (user.serviceInfo.getLogin().equals(serviceInfo.getLogin())){
-        //if (serviceInfo.getLogin().equals(user.serviceInfo.getLogin())) {
+        if ((serviceInfo!=null)&&(serviceInfo.getLogin().equals(user.serviceInfo.getLogin()))) {
             return true;
         }
         return false;

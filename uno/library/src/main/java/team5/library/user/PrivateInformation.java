@@ -76,13 +76,11 @@ public class PrivateInformation implements Serializable {
             return false;
         }
         PrivateInformation privateInformation = (PrivateInformation) object;
-        if((privateInformation.getName().equals(name))&&(privateInformation.getSurname().equals(surname))
-                &&(privateInformation.bDay.equals(bDay))){
+        if ((name!= null)&&(name.equals(privateInformation.getName())) &&(surname!=null)&& (surname.equals(privateInformation.getSurname()))
+                && (bDay!=null)&&(bDay.equals(privateInformation.bDay))){
             return true;
         }
         return false;
-//        return (name.equals(privateInformation.getName())) && (surname.equals(privateInformation.getSurname()))
-//                && (bDay.equals(privateInformation.bDay));
     }
 
     @Override

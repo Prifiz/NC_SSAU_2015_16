@@ -81,10 +81,8 @@ public class ServiceInfo implements Serializable {
             return false;
         }
         ServiceInfo serviceInfo = (ServiceInfo) object;
-        if((serviceInfo.getLogin().equals(login))&&(serviceInfo.getPassword().equals(password))
-                &&(serviceInfo.getDateOfRegistration().equals(dateOfRegistration))&&(serviceInfo.email.equals(email))){
-//        if ((login.equals(serviceInfo.getLogin())) && (password.equals(serviceInfo.getPassword()))
-//                && (dateOfRegistration.equals(serviceInfo.getDateOfRegistration())) && (email.equals(serviceInfo.email))) {
+        if ((login!=null)&&(login.equals(serviceInfo.getLogin())) && (password!=null)&&(password.equals(serviceInfo.getPassword()))
+                &&(dateOfRegistration!=null)&& (dateOfRegistration.equals(serviceInfo.getDateOfRegistration())) && (email!=null)&&(email.equals(serviceInfo.email))) {
             return true;
         }
 
