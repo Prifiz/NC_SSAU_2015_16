@@ -40,10 +40,10 @@ import team5.library.card.NumericCard;
 public class GameFrame extends JFrame {
 
     private Counter enabledPane;
-    private int gamerIndex;
+    private Counter gamerIndex;
     private JPanel panels[];
     private ButtonGroup buttonGroups[];
-    private int gamerCount;
+    private Counter gamerCount;
     private String myLogin;
     private String[] logins;
     private DataExchange dataE;
@@ -67,18 +67,19 @@ public class GameFrame extends JFrame {
         enabledPane = new Counter();
         try {
             myLogin = dataE.readString();
-            gamerCount = dataE.readInt();
-            logins = new String[gamerCount];
-            for (int i = 0; i < gamerCount; i++) {
+            gamerCount = new Counter(dataE.readInt());
+            gamerIndex = new Counter();
+            logins = new String[gamerCount.getCount()];
+            for (int i = 0; i < gamerCount.getCount(); i++) {
                 logins[i] = dataE.readString();
                 if (logins[i].equals(myLogin)) {
-                    gamerIndex = i;
+                    gamerIndex.setCount(i);
                 }
             }
         } catch (IOException ex) {
             log.debug(ex.getMessage());
         }
-        panels = new JPanel[gamerCount];
+        panels = new JPanel[gamerCount.getCount()];
         initComponents();
         enabledPane.setCount(0);
         game = new GameThread(enabledPane, gamerIndex, this.dataE, lastCardLabel, gamerCount, text, logins);
@@ -114,7 +115,7 @@ public class GameFrame extends JFrame {
         pane = new JTabbedPane();
         pane.setBounds(50, 300, 500, 200);
         pane.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        for (int i = 0; i < gamerCount; i++) {
+        for (int i = 0; i < gamerCount.getCount(); i++) {
             panels[i] = new JPanel();
             panels[i].setBackground(Color.LIGHT_GRAY);
             pane.addTab(logins[i], panels[i]);
@@ -125,8 +126,8 @@ public class GameFrame extends JFrame {
         add(pane);
 
         //http://spec-zone.ru/RU/Java/Docs/7/api/javax/swing/ButtonGroup.html
-        buttonGroups = new ButtonGroup[gamerCount];
-        for (int i = 0; i < gamerCount; i++) {
+        buttonGroups = new ButtonGroup[gamerCount.getCount()];
+        for (int i = 0; i < gamerCount.getCount(); i++) {
             buttonGroups[i] = new ButtonGroup();
         }
         firstDistribution();
@@ -210,12 +211,11 @@ public class GameFrame extends JFrame {
                     WorkUser workUser = WorkUser.getWork();
                     WorkWithFiles workWithFiles = new WorkWithFiles();
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
-                    throw new UnsupportedOperationException("Not supported yet.");
+                    //throw new UnsupportedOperationException("Not supported yet.");
                 } catch (JAXBException ex) {
                     log.debug(ex.getMessage());
                 } finally {
-                    event.getWindow().setVisible(false);
-                    System.exit(0);
+                    exit();
                 }
             }
 
@@ -232,20 +232,27 @@ public class GameFrame extends JFrame {
             }
         });
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
     }
 
     private void exitGameButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
-            dataE.write("Exit");
-        } catch (IOException ex) {
-            log.debug(ex.getMessage());
+        exit();
+    }
+
+    private void exit() {
+        if (enabledPane.getCount() == gamerIndex.getCount()) {
+            try {
+                dataE.write("Exit");
+                SelectRooms rooms = new SelectRooms(dataE);
+                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Out of the room");
+                rooms.setVisible(true);
+                this.setVisible(false);
+            } catch (IOException ex) {
+                log.debug(ex.getMessage());
+            }
         }
-        SelectRooms rooms = new SelectRooms(dataE);
-        rooms.setVisible(true);
-        this.setVisible(false);
     }
 
     private void rulesButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +262,7 @@ public class GameFrame extends JFrame {
     }
 
     private synchronized void passButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if (enabledPane.getCount() == gamerIndex) {
+        if (enabledPane.getCount() == gamerIndex.getCount()) {
             isTakeCard = false;
 
             try {
@@ -264,7 +271,7 @@ public class GameFrame extends JFrame {
                 log.debug(ex.getMessage());
             }
             text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Pass");
-            if (enabledPane.getCount() + 1 < gamerCount) {
+            if (enabledPane.getCount() + 1 < gamerCount.getCount()) {
                 enabledPane.inc();
             } else {
                 enabledPane.setCount(0);
@@ -275,9 +282,9 @@ public class GameFrame extends JFrame {
 
     private void takeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        if (enabledPane.getCount() == gamerIndex) {
+        if (enabledPane.getCount() == gamerIndex.getCount()) {
             if (!isTakeCard) {
-                pane.setSelectedIndex(gamerIndex);
+                pane.setSelectedIndex(gamerIndex.getCount());
                 JRadioButton jRadioButton = new JRadioButton();
                 Card card = null;
                 try {
@@ -289,11 +296,11 @@ public class GameFrame extends JFrame {
                 jRadioButton.setText(card.toString());
                 jRadioButton.setForeground(isCardColor(card.getColor()));//color
                 jRadioButton.setActionCommand(card.toString());
-                buttonGroups[gamerIndex].add(jRadioButton);
+                buttonGroups[gamerIndex.getCount()].add(jRadioButton);
                 jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-                panels[gamerIndex].add(jRadioButton);
-                panels[gamerIndex].revalidate();
-                panels[gamerIndex].repaint();
+                panels[gamerIndex.getCount()].add(jRadioButton);
+                panels[gamerIndex.getCount()].revalidate();
+                panels[gamerIndex.getCount()].repaint();
                 isTakeCard = true;
                 text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Take cad");
             } else {
@@ -322,10 +329,10 @@ public class GameFrame extends JFrame {
 
     private void firstDistribution() {
 
-        for (int j = 0; j < gamerCount; j++) {
+        for (int j = 0; j < gamerCount.getCount(); j++) {
             if (logins[j].equals(myLogin)) {
-                pane.setSelectedIndex(gamerIndex);
-                pane.setEnabledAt(gamerIndex, true);
+                pane.setSelectedIndex(gamerIndex.getCount());
+                pane.setEnabledAt(gamerIndex.getCount(), true);
                 for (int i = 1; i <= 7; i++) {
                     JRadioButton jRadioButton = new JRadioButton();
                     Card card = null;
@@ -338,9 +345,9 @@ public class GameFrame extends JFrame {
                     jRadioButton.setForeground(isCardColor(card.getColor()));//color
                     jRadioButton.setActionCommand(card.toString());
                     jRadioButton.setSelected(true);
-                    buttonGroups[gamerIndex].add(jRadioButton);
+                    buttonGroups[gamerIndex.getCount()].add(jRadioButton);
                     jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-                    panels[gamerIndex].add(jRadioButton);
+                    panels[gamerIndex.getCount()].add(jRadioButton);
                 }
             } else {
                 for (int i = 1; i <= 7; i++) {
@@ -359,17 +366,17 @@ public class GameFrame extends JFrame {
 
     private synchronized void endTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        if (enabledPane.getCount() == gamerIndex) {
+        if (enabledPane.getCount() == gamerIndex.getCount()) {
             JRadioButton jr = new JRadioButton();
-            if (buttonGroups[gamerIndex].getSelection() != null) {
-                String str = buttonGroups[gamerIndex].getSelection().getActionCommand();
+            if (buttonGroups[gamerIndex.getCount()].getSelection() != null) {
+                String str = buttonGroups[gamerIndex.getCount()].getSelection().getActionCommand();
                 Card card = null;
                 try {
                     dataE.write("END TURN");
                     dataE.write(str);
                     card = new NumericCard(dataE.readInt(), dataE.readString());
                     if (dataE.readBool() == true) {
-                        Enumeration en = buttonGroups[gamerIndex].getElements();
+                        Enumeration en = buttonGroups[gamerIndex.getCount()].getElements();
                         while (en.hasMoreElements()) {
                             jr = (JRadioButton) en.nextElement();
                             if (jr.getText().equals(str)) {
@@ -379,10 +386,10 @@ public class GameFrame extends JFrame {
 
                         lastCardLabel.setText(str);
                         lastCardLabel.setForeground(isCardColor(card.getColor()));//color
-                        buttonGroups[gamerIndex].remove(jr);
+                        buttonGroups[gamerIndex.getCount()].remove(jr);
                         boolean endgame = false;
                         text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
-                        if (buttonGroups[gamerIndex].getButtonCount() == 0) {
+                        if (buttonGroups[gamerIndex.getCount()].getButtonCount() == 0) {
                             dataE.write(true);
                             FinishFrame finish = new FinishFrame(dataE);
                             finish.setVisible(true);
@@ -390,12 +397,12 @@ public class GameFrame extends JFrame {
                             endgame = true;
                         }
                         if (!endgame) {
-                            panels[gamerIndex].remove(jr);
-                            panels[gamerIndex].revalidate();
-                            panels[gamerIndex].repaint();
+                            panels[gamerIndex.getCount()].remove(jr);
+                            panels[gamerIndex.getCount()].revalidate();
+                            panels[gamerIndex.getCount()].repaint();
                             isTakeCard = false;
                             dataE.write(false);
-                            if (enabledPane.getCount() + 1 < gamerCount) {
+                            if (enabledPane.getCount() + 1 < gamerCount.getCount()) {
                                 enabledPane.inc();
                             } else {
                                 enabledPane.setCount(0);

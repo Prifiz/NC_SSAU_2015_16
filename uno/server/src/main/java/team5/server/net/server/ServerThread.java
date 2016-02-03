@@ -278,7 +278,6 @@ public class ServerThread extends Thread {
                 if (order < rooms[r].getGamerNumber(gamer)) {
                     for (; order < rooms[r].getGamerNumber(gamer); order++) {
                         String command = null;
-
                         while (rooms[r].getGamer(order).getAct() == null) {
                             yield();
                         }
@@ -297,29 +296,31 @@ public class ServerThread extends Thread {
                                 order--;
                                 break;
                             case "END TURN":
-                                //dataE.writeInt(5);
                                 dataE.writeString("END TURN");
                                 dataE.writeInt(table.getLastCard().getIcon());
                                 dataE.writeString(table.getLastCard().getColor());
                                 dataE.writeBool(rooms[r].isFinish());
-                                if (rooms[r].isFinish()==true) {
+                                if (rooms[r].isFinish() == true) {
                                     return;
                                 } else {
                                     break;
                                 }
+                            case "Exit":
+                                dataE.writeString(command);
+                                break;
                         }
                     }
                 }
                 if (order == rooms[r].getGamerNumber(gamer)) {
-                    boolean g = true;
-                    while (g == true) {
+                    boolean game = true;
+                    while (game == true) {
                         String command = null;
                         command = dataE.readString();
                         switch (command) {
                             case "Pass":
                                 rooms[r].getGamer(order).setAct(command);
                                 order++;
-                                g = false;
+                                game = false;
                                 break;
                             case "TakeCard":
                                 card = table.getCardFromPack();
@@ -337,9 +338,9 @@ public class ServerThread extends Thread {
                                     table.setLastCard(card);
                                     rooms[r].getGamer(order).setAct(command);
                                     order++;
-                                    g = false;
+                                    game = false;
                                     boolean win = dataE.readBool();
-                                    if (win==true) {
+                                    if (win == true) {
                                         rooms[r].setFinish(true);
                                         rooms[r].cleanRoom();
                                         return;
@@ -348,6 +349,14 @@ public class ServerThread extends Thread {
                                     dataE.writeBool(table.isRightCard(card));
                                 }
                                 break;
+                            case "Exit":
+                                rooms[r].getGamer(order).setAct(command);
+                                rooms[r].removeGamer(gamer);
+                                if (rooms[r].countGamers() == 0) {
+                                    rooms[r].cleanRoom();
+                                }
+                                game=false;
+                                return;
                         }
                     }
                 }
@@ -372,16 +381,18 @@ public class ServerThread extends Thread {
                                 order--;
                                 break;
                             case "END TURN":
-                                //dataE.writeInt(5);
                                 dataE.writeString("END TURN");
                                 dataE.writeInt(table.getLastCard().getIcon());
                                 dataE.writeString(table.getLastCard().getColor());
                                 dataE.writeBool(rooms[r].isFinish());
-                                if (rooms[r].isFinish()==true) {
+                                if (rooms[r].isFinish() == true) {
                                     return;
                                 } else {
                                     break;
                                 }
+                            case "Exit":
+                                dataE.writeString(command);
+                                break;
                         }
                     }
 

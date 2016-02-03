@@ -20,15 +20,15 @@ import team5.library.card.NumericCard;
 public class GameThread extends Thread {
 
     private Counter enabledPane;
-    private int gamerIndex;
+    private Counter gamerIndex;
     private DataExchange dataE;
     private JLabel lastCardLabel;
-    private int gamerCount;
+    private Counter gamerCount;
     private Logger log;
     private JTextArea text;
     private String[] logins;
 
-    public GameThread(Counter enabledPane, int gamerIndex, DataExchange dataE, JLabel lastCardLabel, int gamerCount, JTextArea text, String[] logins) {
+    public GameThread(Counter enabledPane, Counter gamerIndex, DataExchange dataE, JLabel lastCardLabel, Counter gamerCount, JTextArea text, String[] logins) {
         this.dataE = dataE;
         this.enabledPane = enabledPane;
         this.gamerCount = gamerCount;
@@ -41,13 +41,12 @@ public class GameThread extends Thread {
     @Override
     public synchronized void run() {
         while (true) {
-            if (enabledPane.getCount() < gamerIndex) {
-                for (; enabledPane.getCount() < gamerIndex; enabledPane.inc()) {
+            if (enabledPane.getCount() < gamerIndex.getCount()) {
+                for (; enabledPane.getCount() < gamerIndex.getCount(); enabledPane.inc()) {
                     try {
-                        //int asd = dataE.readInt();
                         String command = dataE.readString();
                         switch (command) {
-                            case "Pass"://надо бы сделать лэйбл, который будет отражать ходы противника.
+                            case "Pass":
                                 text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Pass");
                                 break;
                             case "TakeCard":
@@ -63,6 +62,12 @@ public class GameThread extends Thread {
                                 if (win == true) {
                                     text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": WIN!!!");
                                 }
+                                break;
+                            case "Exit":
+                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Out of the room");
+                                gamerCount.dec();
+                                gamerIndex.dec();
+                                enabledPane.dec();
                                 break;
                         }
                     } catch (IOException ex) {
@@ -71,10 +76,9 @@ public class GameThread extends Thread {
 
                 }
             }
-            if (enabledPane.getCount() > gamerIndex) {
-                for (; enabledPane.getCount() < gamerCount; enabledPane.inc()) {
+            if (enabledPane.getCount() > gamerIndex.getCount()) {
+                for (; enabledPane.getCount() < gamerCount.getCount(); enabledPane.inc()) {
                     try {
-                        //int asd = dataE.readInt();
                         String command = dataE.readString();
                         switch (command) {
                             case "Pass"://надо бы сделать лэйбл, который будет отражать ходы противника.
@@ -93,6 +97,10 @@ public class GameThread extends Thread {
                                 if (win == true) {
                                     text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": WIN!!!");
                                 }
+                                break;
+                            case "Exit":
+                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Out of the room");
+                                gamerCount.dec();
                                 break;
                         }
                     } catch (IOException ex) {
@@ -102,13 +110,11 @@ public class GameThread extends Thread {
                 }
                 enabledPane.setCount(0);
             }
-            //while(enabledPane==gamerIndex){
             try {
                 wait();
             } catch (InterruptedException ex) {
                 log.debug(ex.getMessage());
             }
-            //}
 
         }
 
