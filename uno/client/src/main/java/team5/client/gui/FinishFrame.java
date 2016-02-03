@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.library.actions.WorkUser;
 import team5.library.transmissions.FileHandler;
 
@@ -23,12 +23,12 @@ import team5.library.transmissions.FileHandler;
  */
 public class FinishFrame extends JFrame {
 
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private Logger log = Logger.getLogger(FinishFrame.class);
     private JButton backButton;
     private JLabel resultLabel;
 
-    public FinishFrame(DataExchange dataE) {
+    public FinishFrame(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }

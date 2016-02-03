@@ -1,10 +1,9 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team5.server.actions;
+package team5.client.actions;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -16,28 +15,28 @@ import java.io.OutputStream;
  *
  * @author андрей
  */
-public class DataExchange {
+public class DataExchanger {
     private InputStream in;
     private OutputStream out;
-    public DataExchange(InputStream in, OutputStream out)
+    public DataExchanger(InputStream in, OutputStream out)
     {
         this.in = in;
         this.out = out;
     }
     
-    public void writeString(String command) throws IOException
+    public void write(String command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeUTF(command);
         dout.flush();
     }
-    public void writeInt(int command) throws IOException
+    public void write(int command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeInt(command);
         dout.flush();
     }
-    public void writeBool(boolean command) throws IOException
+    public void write(boolean command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeBoolean(command);
@@ -58,7 +57,6 @@ public class DataExchange {
         DataInputStream din = new DataInputStream(in);
         return din.readBoolean();
     }
-    
     
     
 }

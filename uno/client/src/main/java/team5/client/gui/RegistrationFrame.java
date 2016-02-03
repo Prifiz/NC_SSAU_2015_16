@@ -14,7 +14,7 @@ import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,7 +27,7 @@ import team5.client.actions.DataExchange;
  */
 public class RegistrationFrame extends JFrame {
 
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private Logger log = Logger.getLogger(RegistrationFrame.class);
     private JButton okButton;
     private JButton canselButton;
@@ -53,7 +53,7 @@ public class RegistrationFrame extends JFrame {
     /**
      * Creates new form SecondFrame
      */
-    public RegistrationFrame(DataExchange dataE) {
+    public RegistrationFrame(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }

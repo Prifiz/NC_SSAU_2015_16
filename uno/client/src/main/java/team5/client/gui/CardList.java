@@ -15,7 +15,7 @@ import javax.swing.border.TitledBorder;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.CardTableModel;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.library.actions.WorkCard;
 import team5.library.actions.WorkUser;
 import team5.library.transmissions.FileHandler;
@@ -30,7 +30,7 @@ import team5.library.searches.Search;
  */
 public class CardList extends javax.swing.JFrame {
 
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private Logger log = Logger.getLogger(MemberList.class);
     private SearchFrameOfCard searchFrame;
     private JButton backButton;
@@ -51,7 +51,7 @@ public class CardList extends javax.swing.JFrame {
     
     private CardTableModel model;
     
-     public CardList(DataExchange  dataE) {
+     public CardList(DataExchanger  dataE) {
         this.dataE = dataE;
         initComponents();
     }

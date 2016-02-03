@@ -17,7 +17,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.library.transmissions.FileHandler;
 import team5.client.actions.UserTableModel;
 import team5.library.actions.WorkUser;
@@ -34,7 +34,7 @@ import team5.library.user.User;
  */
 public class MemberList extends javax.swing.JFrame {
 
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private Logger log = Logger.getLogger(MemberList.class);
     private SearchFrameOfUser searchFrame;
     private JButton backButton;
@@ -67,7 +67,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private UserTableModel model;
 
-    public MemberList(DataExchange dataE) {
+    public MemberList(DataExchanger dataE) {
          this.dataE = dataE;
         initComponents();
     }

@@ -14,7 +14,7 @@ import java.io.IOException;
 import team5.library.transmissions.FileHandler;
 import team5.library.actions.WorkUser;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 
 /**
  *
@@ -22,7 +22,7 @@ import team5.client.actions.DataExchange;
  */
 public class SelectRooms extends JFrame {
 
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private Logger log = Logger.getLogger(SelectRooms.class);
     private javax.swing.JButton startButton;
     private javax.swing.JButton adminRoomButton;
@@ -36,7 +36,7 @@ public class SelectRooms extends JFrame {
      * @param in
      * @param out
      */
-    public SelectRooms(DataExchange dataE) {
+    public SelectRooms(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }

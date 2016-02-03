@@ -12,6 +12,9 @@ package team5.client.actions;
 public class Counter {
     private int count;
 
+    public Counter(int i){
+        count = i;
+    }
     public int getCount() {
         return count;
     }

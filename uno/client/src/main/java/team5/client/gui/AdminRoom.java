@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.library.actions.WorkUser;
 import team5.library.transmissions.FileHandler;
 
@@ -23,14 +23,14 @@ import team5.library.transmissions.FileHandler;
  */
 public class AdminRoom extends JFrame {
 
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private Logger log = Logger.getLogger(AdminRoom.class);
     private JButton memberListButton;
     private JButton cardListButton;
     private JButton backButton;
     private JLabel adminLabel;
 
-    public AdminRoom(DataExchange dataE) {
+    public AdminRoom(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }

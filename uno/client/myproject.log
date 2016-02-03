@@ -1,4 +1,19 @@
 <<<<<<< HEAD
+04:21:50,139  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+04:31:48,006  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+04:35:22,516  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+04:52:41,942  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+04:56:01,041  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+04:59:25,675  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+05:01:13,672  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+11:35:27,991  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+11:50:48,517  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+11:51:26,336  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+11:56:09,076  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+12:14:36,106  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+12:15:13,506  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+=======
+<<<<<<< HEAD
 11:44:22,763 DEBUG main Main:main:84 - User already exist
 11:44:24,775 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
 11:58:45,237 DEBUG main Main:main:84 - User already exist
@@ -279,5 +294,9 @@
 00:08:17,902  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
 =======
 >>>>>>> 44b407a8ec237372321dc59bf8341cc52cba0c4a
+<<<<<<< HEAD
 21:47:36,509 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:346 - User already exist
 21:47:50,377 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:346 - User already exist
+=======
+>>>>>>> origin/master
+>>>>>>> e08ae5d274fd2c01a20cfdab311cd0e508303b04
