@@ -139,7 +139,7 @@ public class StartFrame extends JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         int serverport = 8081;
-        String address = "127.0.0.1";
+        String address = /*"192.168.43.197"*/"127.0.0.1";
         InputStream in = null;
         OutputStream out = null;
         try {

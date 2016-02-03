@@ -32,8 +32,11 @@ public class ServiceInfo implements Serializable {
         this.email = email;
     }
 
-    private ServiceInfo() {
+    public ServiceInfo() {
+        this.login="";
+        this.password = "";
         this.dateOfRegistration = LocalDate.now();
+        this.email = "";
     }
     
 
@@ -74,12 +77,14 @@ public class ServiceInfo implements Serializable {
         if (object == this) {
             return true;
         }
-        if (!(object instanceof ServiceInfo)) {
+        if (object.getClass() != this.getClass()) {
             return false;
         }
-        ServiceInfo info = (ServiceInfo) object;
-        if ((login.equals(info.getLogin())) && (password.equals(info.getPassword()))
-                && (dateOfRegistration.equals(info.getDateOfRegistration())) && (email.equals(info.email))) {
+        ServiceInfo serviceInfo = (ServiceInfo) object;
+        if((serviceInfo.getLogin().equals(login))&&(serviceInfo.getPassword().equals(password))
+                &&(serviceInfo.getDateOfRegistration().equals(dateOfRegistration))&&(serviceInfo.email.equals(email))){
+//        if ((login.equals(serviceInfo.getLogin())) && (password.equals(serviceInfo.getPassword()))
+//                && (dateOfRegistration.equals(serviceInfo.getDateOfRegistration())) && (email.equals(serviceInfo.email))) {
             return true;
         }
 

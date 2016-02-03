@@ -7,7 +7,6 @@ package team5.client.actions;
 
 import java.io.FileReader;
 import java.io.Reader;
-import java.io.Writer;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -515,3 +515,31 @@
 04:52:30,762  INFO main Server:main:65 - Client connected
 04:52:59,985  INFO main Server:main:65 - Client connected
 04:53:21,202 DEBUG Thread-2 ServerThread:run:251 - Connection reset by peer: socket write error
+23:35:12,404 DEBUG main Server:main:51 - User already exist
+23:38:18,926  INFO main Server:main:65 - Client connected
+23:39:05,190 DEBUG Thread-1 ServerThread:run:251 - 
+23:40:43,633  INFO main Server:main:65 - Client connected
+23:41:18,471 DEBUG Thread-2 ServerThread:game:373 - Broken pipe
+23:41:18,472 DEBUG Thread-2 ServerThread:run:251 - Connection reset
+23:41:26,158  INFO main Server:main:65 - Client connected
+23:42:26,479 DEBUG Thread-3 ServerThread:run:251 - 
+23:43:27,109  INFO main Server:main:65 - Client connected
+23:43:48,829 DEBUG Thread-4 ServerThread:run:251 - 
+23:44:23,680  INFO main Server:main:65 - Client connected
+23:44:32,936 DEBUG Thread-5 ServerThread:run:251 - 
+23:45:21,256 DEBUG main Server:main:51 - User already exist
+23:45:21,271 DEBUG main Server:main:58 - Address already in use
+23:55:15,244 DEBUG main Server:main:51 - User already exist
+23:55:37,082  INFO main Server:main:65 - Client connected
+23:56:28,790 DEBUG Thread-1 ServerThread:run:251 - 
+23:57:28,775  INFO main Server:main:65 - Client connected
+23:58:03,366 DEBUG Thread-2 ServerThread:game:373 - Broken pipe
+23:58:03,367 DEBUG Thread-2 ServerThread:run:251 - Connection reset
+00:04:49,843 DEBUG main Server:main:51 - User already exist
+00:04:56,402  INFO main Server:main:65 - Client connected
+00:05:42,312 DEBUG Thread-1 ServerThread:run:251 - 
+00:07:29,198  INFO main Server:main:65 - Client connected
+00:08:04,377 DEBUG Thread-2 ServerThread:game:373 - Broken pipe
+00:08:04,378 DEBUG Thread-2 ServerThread:run:251 - Connection reset
+00:08:17,872  INFO main Server:main:65 - Client connected
+00:08:33,162 DEBUG Thread-3 ServerThread:run:251 - 

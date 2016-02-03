@@ -55,11 +55,12 @@ public class Address implements Serializable {
         if (object == this) {
             return true;
         }
-        if (!(object instanceof Address)) {
+        if (object.getClass() != this.getClass()) {
             return false;
         }
         Address address = (Address) object;
-        if ((city.equals(address.getCity())) && (country.equals(address.getCountry()))) {
+        if((address.getCity().equals(city))&&(address.getCountry().equals(country))){
+        //if ((city.equals(address.getCity())) && (country.equals(address.getCountry()))) {
             return true;
         }
         return false;

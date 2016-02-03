@@ -28,6 +28,7 @@ public class SelectRooms extends JFrame {
     private javax.swing.JButton adminRoomButton;
     private javax.swing.JComboBox jComboBox;
     private javax.swing.JLabel selectLabel;
+    private JLabel descriptionLabel;
 
     /**
      * Creates new form SelectRooms
@@ -51,18 +52,18 @@ public class SelectRooms extends JFrame {
         selectLabel.setText("Select Rooms");
         add(selectLabel);
         selectLabel.setBounds(120, 38, 200, 60);
-
+        
         jComboBox = new JComboBox();
         jComboBox.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Room 1", "Room 2", "Room 3", "Room 4"}));
         add(jComboBox);
-        jComboBox.setBounds(150, 130, 100, 30);
+        jComboBox.setBounds(150, 100, 100, 30);
 
         startButton = new JButton();
         startButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         startButton.setText("Start!");
         add(startButton);
-        startButton.setBounds(150, 190, 100, 30);
+        startButton.setBounds(150, 210, 100, 30);
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -138,11 +139,12 @@ public class SelectRooms extends JFrame {
             dataE.write(jComboBox.getSelectedItem().toString());
             String comand = dataE.readString();
             switch (comand) {
-                case "Wait":
+                case "Wait":{
                     JOptionPane.showConfirmDialog(null, "Wait for other players", "Waiting...", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     break;
+                }
                 case "Full":
-                    JOptionPane.showConfirmDialog(null, "This room is full. Select other room", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                   JOptionPane.showConfirmDialog(null, "This room is full. Select other room", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);                 
             }
             boolean f = dataE.readBool();
             if (f) {
@@ -159,34 +161,35 @@ public class SelectRooms extends JFrame {
         }
 
     }
-
+     
     /**
      * @param args the command line arguments
      */
-    /*public static void main(String args[]) {
-     Logger log = Logger.getLogger(SelectRooms.class);
-     try {
-     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-     if ("Nimbus".equals(info.getName())) {
-     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-     break;
-     }
-     }
-     } catch (ClassNotFoundException ex) {
-     log.debug(ex.getMessage());
-     } catch (InstantiationException ex) {
-     log.debug(ex.getMessage());
-     } catch (IllegalAccessException ex) {
-     log.debug(ex.getMessage());
-     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-     log.debug(ex.getMessage());
-     }
-     //</editor-fold>
-
-     /* Create and display the form */
-    /* java.awt.EventQueue.invokeLater(new Runnable() {
-     public void run() {
-     new SelectRooms().setVisible(true);
-     }
-     });*/
+//    public static void main(String args[]) {
+//     Logger log = Logger.getLogger(SelectRooms.class);
+//     try {
+//     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//     if ("Nimbus".equals(info.getName())) {
+//     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//     break;
+//     }
+//     }
+//     } catch (ClassNotFoundException ex) {
+//     log.debug(ex.getMessage());
+//     } catch (InstantiationException ex) {
+//     log.debug(ex.getMessage());
+//     } catch (IllegalAccessException ex) {
+//     log.debug(ex.getMessage());
+//     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//     log.debug(ex.getMessage());
+//     }
+//     //</editor-fold>
+//
+//     /* Create and display the form */
+//     java.awt.EventQueue.invokeLater(new Runnable() {
+//     public void run() {
+//     new SelectRooms().setVisible(true);
+//     }
+//     });
+//    }
 }

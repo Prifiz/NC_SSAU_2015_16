@@ -253,3 +253,26 @@
 04:49:15,003 DEBUG AWT-EventQueue-0 LogIn:jButton1ActionPerformed:180 - 
 04:52:30,763  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
 04:52:59,987  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+17:30:05,740  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+17:34:33,330 DEBUG AWT-EventQueue-0 GameFrame:firstDistribution:340 - Connection reset
+17:36:18,024  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+17:41:34,950 DEBUG AWT-EventQueue-0 GameFrame:finishMoveButtonActionPerformed:423 - Connection reset
+17:41:34,974 DEBUG AWT-EventQueue-0 GameFrame:passButtonActionPerformed:254 - Broken pipe
+17:41:34,976 DEBUG AWT-EventQueue-0 GameFrame:gameOtherUsers:515 - Connection reset
+17:41:34,979 DEBUG AWT-EventQueue-0 GameFrame:takeCardButtonActionPerformed:289 - Broken pipe
+17:41:34,991 DEBUG AWT-EventQueue-0 GameFrame:exitGameButtonActionPerformed:232 - Broken pipe
+17:41:35,205 DEBUG AWT-EventQueue-0 GameFrame:exitGameButtonActionPerformed:232 - Broken pipe
+17:43:54,222  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+17:47:01,813 DEBUG AWT-EventQueue-0 GameFrame:gameOtherUsers:515 - Connection reset
+17:47:56,497 DEBUG AWT-EventQueue-0 GameFrame:finishMoveButtonActionPerformed:423 - Broken pipe
+17:55:12,928  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+23:38:18,963  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+23:40:43,651  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+23:41:26,176  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+23:43:27,128  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+23:44:23,697  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+23:55:37,126  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+23:57:28,833  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+00:04:56,469  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+00:07:29,233  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+00:08:17,902  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
