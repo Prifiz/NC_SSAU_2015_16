@@ -32,6 +32,7 @@ public class SelectRooms extends JFrame {
 
     /**
      * Creates new form SelectRooms
+     *
      * @param in
      * @param out
      */
@@ -52,7 +53,7 @@ public class SelectRooms extends JFrame {
         selectLabel.setText("Select Rooms");
         add(selectLabel);
         selectLabel.setBounds(120, 38, 200, 60);
-        
+
         jComboBox = new JComboBox();
         jComboBox.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Room 1", "Room 2", "Room 3", "Room 4"}));
@@ -139,29 +140,27 @@ public class SelectRooms extends JFrame {
             dataE.write(jComboBox.getSelectedItem().toString());
             String comand = dataE.readString();
             switch (comand) {
-                case "Wait":{
+                case "Wait": {
                     JOptionPane.showConfirmDialog(null, "Wait for other players", "Waiting...", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
                 case "Full":
-                   JOptionPane.showConfirmDialog(null, "This room is full. Select other room", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);                 
+                    JOptionPane.showConfirmDialog(null, "This room is full. Select other room", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
             boolean f = dataE.readBool();
             if (f) {
                 GameFrame gameFrame = new GameFrame(dataE);
                 gameFrame.setVisible(true);
                 this.setVisible(false);
-            }
-            else
-            {
-                 JOptionPane.showConfirmDialog(null, "You could't enter this room. Try again", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showConfirmDialog(null, "You could't enter this room. Try again", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (IOException ex) {
             log.debug(ex.getMessage());
         }
 
     }
-     
+
     /**
      * @param args the command line arguments
      */

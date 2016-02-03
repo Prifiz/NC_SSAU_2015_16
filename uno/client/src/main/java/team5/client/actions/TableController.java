@@ -41,25 +41,23 @@ public class TableController {
     public void setLastCard(Card card) {
         lastcard = card;
     }
-/**
- * This method return true, if card is equivalent to the last card in tabel.
- * Else return false.
- * 
- * @param card
- * @return true/false
- */
+
+    /**
+     * This method return true, if card is equivalent to the last card in tabel.
+     * Else return false.
+     *
+     * @param card
+     * @return true/false
+     */
     public boolean isRightCard(Card card) {
-        if(lastcard!=null)
-        {
-        if ((lastcard.getColor().equals(card.getColor()))||(lastcard.getIcon()==card.getIcon())) {
-            lastcard = card;
-            return true;
+        if (lastcard != null) {
+            if ((lastcard.getColor().equals(card.getColor())) || (lastcard.getIcon() == card.getIcon())) {
+                lastcard = card;
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
-        }
-        }
-        else
-        {
             lastcard = card;
             return true;
         }
@@ -84,21 +82,19 @@ public class TableController {
         try {
             pack = FileHandler.readCards(fr);
         } catch (IOException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         }
     }
 
-    public void setNewPack(ArrayList<Card> cards1, ArrayList<Card> cards2)
-    {
+    public void setNewPack(ArrayList<Card> cards1, ArrayList<Card> cards2) {
         loadNewPack();
         for (Card card : cards1) {
             pack.remove(card);
         }
-        for (Card card:cards2)
-        {
+        for (Card card : cards2) {
             pack.remove(card);
         }
         pack.remove(lastcard);
     }
-            
+
 }

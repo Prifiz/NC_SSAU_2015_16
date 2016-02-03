@@ -15,19 +15,20 @@ import team5.library.transmissions.FileHandler;
  * @author chanta
  */
 public class MarshalAndUnmarshalTest {
+
     private FileHandler workWithFiles;
     private String fileName;
- 
+
     @Before
     public void setUp() throws Exception {
         workWithFiles = new FileHandler();
         fileName = "marshalData_WorkUser_Test.xml";
-        
+
     }
- 
-    
-     /**
+
+    /**
      * Test of marshalData method, of class WorkWithFiles.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -37,9 +38,10 @@ public class MarshalAndUnmarshalTest {
         workUser.addUser("bob", "Cl", "UCanada", "XxxxX", "sffscsdf", "1ds234", "email1234@gmail.com", "13.07.2002");
         workWithFiles.marshalData(fileName, workUser);
     }
-    
+
     /**
      * Test of unmarshalData method, of class WorkWithFiles.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -47,8 +49,5 @@ public class MarshalAndUnmarshalTest {
         WorkUser workUser = workWithFiles.unmarshalData(fileName);
         System.out.println("print:" + workUser.viewUsers());
     }
- 
-   
-}
-    
 
+}

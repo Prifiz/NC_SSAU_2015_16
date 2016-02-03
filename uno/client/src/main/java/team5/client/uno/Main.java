@@ -5,19 +5,11 @@
  */
 package team5.client.uno;
 
-import java.io.File;
-import java.io.IOException;
-
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.library.transmissions.FileHandler;
 import team5.library.actions.WorkUser;
-import team5.library.exceptions.*;
 import team5.client.gui.StartFrame;
-import team5.library.user.adress.Address;
-import team5.library.searches.UserSearch;
-import team5.library.user.User;
-import team5.library.user.admin.Admin;
 
 /**
  *
@@ -28,7 +20,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         Logger log = Logger.getLogger(Main.class);
         try {
@@ -36,8 +28,7 @@ public class Main {
             FileHandler workWithFiles = new FileHandler();
             //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
-          
-           
+
         } catch (JAXBException ex) {
             log.debug(ex.getMessage());
         }
@@ -57,11 +48,11 @@ public class Main {
             log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
+        }
 //        catch (IOException ex) {
 //            Logger.getLogger(StartFrame.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        
+
 //            log.debug(ex.getMessage());
 //        }
         java.awt.EventQueue.invokeLater(new Runnable() {

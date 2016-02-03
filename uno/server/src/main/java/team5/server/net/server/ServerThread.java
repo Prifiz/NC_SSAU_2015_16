@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.server.actions.DataExchange;
 import team5.server.actions.GamerController;
@@ -20,7 +19,6 @@ import team5.server.actions.TableController;
 import team5.library.card.Card;
 import team5.library.exceptions.UserExistException;
 import team5.library.transmissions.Commands;
-import team5.library.transmissions.FileHandler;
 import team5.server.transmissions.Streams;
 
 /**
@@ -302,7 +300,7 @@ public class ServerThread extends Thread {
                                 dataE.writeInt(table.getLastCard().getIcon());
                                 dataE.writeString(table.getLastCard().getColor());
                                 dataE.writeBool(rooms[r].isFinish());
-                                if (rooms[r].isFinish()==true) {
+                                if (rooms[r].isFinish() == true) {
                                     return;
                                 } else {
                                     break;
@@ -339,7 +337,7 @@ public class ServerThread extends Thread {
                                     order++;
                                     g = false;
                                     boolean win = dataE.readBool();
-                                    if (win==true) {
+                                    if (win == true) {
                                         rooms[r].setFinish(true);
                                         rooms[r].cleanRoom();
                                         return;
@@ -377,7 +375,7 @@ public class ServerThread extends Thread {
                                 dataE.writeInt(table.getLastCard().getIcon());
                                 dataE.writeString(table.getLastCard().getColor());
                                 dataE.writeBool(rooms[r].isFinish());
-                                if (rooms[r].isFinish()==true) {
+                                if (rooms[r].isFinish() == true) {
                                     return;
                                 } else {
                                     break;

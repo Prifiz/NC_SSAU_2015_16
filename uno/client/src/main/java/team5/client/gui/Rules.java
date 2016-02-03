@@ -109,14 +109,12 @@ public class Rules extends JFrame {
                     //sd.serializableData("serializableData_WorkUser.bin", wu);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } 
-//                catch (IOException ex) {
-//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-//                } 
+                } //                catch (IOException ex) {
+                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                //                } 
                 catch (JAXBException ex) {
                     log.debug(ex.getMessage());
-                } 
-                 finally {
+                } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }
@@ -142,7 +140,7 @@ public class Rules extends JFrame {
     }// </editor-fold>                        
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-      //  StartFrame start = new StartFrame();
+        //  StartFrame start = new StartFrame();
         //  start.setVisible(true);
         this.setVisible(false);
     }
@@ -151,7 +149,7 @@ public class Rules extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       Logger log = Logger.getLogger(Rules.class);
+        Logger log = Logger.getLogger(Rules.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -164,7 +162,7 @@ public class Rules extends JFrame {
         } catch (InstantiationException ex) {
             log.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-           log.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             log.debug(ex.getMessage());
         }

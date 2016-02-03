@@ -2,18 +2,34 @@
 <workUser>
     <arrUsers>
         <address>
-            <city>XX</city>
-            <country>Usa</country>
+            <city>jhb</city>
+            <country>jhb</country>
         </address>
         <privateInformation>
-            <name>bob4</name>
-            <surname>Clark</surname>
-            <bDay>2012-12-19</bDay>
+            <name>kbhm</name>
+            <surname>jhbm</surname>
+            <bDay>0012-12-12</bDay>
         </privateInformation>
         <serviceInfo>
-            <email>email@gmail.com</email>
-            <login>sfsdf</login>
-            <password>1234</password>
+            <email>bhmn</email>
+            <login>jhbm</login>
+            <password>jhb</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>uyghjb</city>
+            <country>ugyjhb</country>
+        </address>
+        <privateInformation>
+            <name>gyjhbm</name>
+            <surname>gyhjb</surname>
+            <bDay>0012-12-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>gjhb</email>
+            <login>uyghjb</login>
+            <password>uyghjb</password>
         </serviceInfo>
     </arrUsers>
 </workUser>

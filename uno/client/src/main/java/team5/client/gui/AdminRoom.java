@@ -9,8 +9,6 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.xml.bind.JAXBException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,14 +23,14 @@ import team5.library.transmissions.FileHandler;
  */
 public class AdminRoom extends JFrame {
 
-    private DataExchange  dataE;
+    private DataExchange dataE;
     private Logger log = Logger.getLogger(AdminRoom.class);
     private JButton memberListButton;
     private JButton cardListButton;
     private JButton backButton;
     private JLabel adminLabel;
 
-    public AdminRoom(DataExchange  dataE) {
+    public AdminRoom(DataExchange dataE) {
         this.dataE = dataE;
         initComponents();
     }
@@ -153,28 +151,28 @@ public class AdminRoom extends JFrame {
      */
     /*public static void main(String args[]) {
 
-        Logger log = Logger.getLogger(AdminRoom.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-            log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-            log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            log.debug(ex.getMessage());
-        }
+     Logger log = Logger.getLogger(AdminRoom.class);
+     try {
+     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+     if ("Nimbus".equals(info.getName())) {
+     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+     break;
+     }
+     }
+     } catch (ClassNotFoundException ex) {
+     log.debug(ex.getMessage());
+     } catch (InstantiationException ex) {
+     log.debug(ex.getMessage());
+     } catch (IllegalAccessException ex) {
+     log.debug(ex.getMessage());
+     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+     log.debug(ex.getMessage());
+     }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminRoom().setVisible(true);
-            }
-        });
-    }*/
+     java.awt.EventQueue.invokeLater(new Runnable() {
+     public void run() {
+     new AdminRoom().setVisible(true);
+     }
+     });
+     }*/
 }

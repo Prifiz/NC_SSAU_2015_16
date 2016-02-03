@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.Comparator;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableModel;
@@ -24,6 +25,7 @@ import team5.library.exceptions.NotFoundException;
 import team5.library.exceptions.UserExistException;
 import team5.library.searches.UserSearch;
 import team5.library.searches.Search;
+import team5.library.sortings.Sorting;
 import team5.library.user.User;
 
 /**
@@ -32,7 +34,7 @@ import team5.library.user.User;
  */
 public class MemberList extends javax.swing.JFrame {
 
-    private DataExchange  dataE;
+    private DataExchange dataE;
     private Logger log = Logger.getLogger(MemberList.class);
     private SearchFrameOfUser searchFrame;
     private JButton backButton;
@@ -65,19 +67,20 @@ public class MemberList extends javax.swing.JFrame {
 
     private UserTableModel model;
 
-    public MemberList(DataExchange  dataE) {
-        this.dataE = dataE;
+    public MemberList(DataExchange dataE) {
+         this.dataE = dataE;
         initComponents();
     }
 
-    public JTable getTable(){
+    public JTable getTable() {
         return jTable1;
     }
-    
-    public void setTable(JTable table){
-        jTable1=table;
+
+    public void setTable(JTable table) {
+        jTable1 = table;
     }
 //    JTextField[] fields={tfname,tfsurname, tfcity,tfcountry, tfemail, tflogin,tfpassword, tfbday  };
+
     @SuppressWarnings("unchecked")
 
     private void initComponents() {
@@ -99,10 +102,18 @@ public class MemberList extends javax.swing.JFrame {
         //Таблица и модель
         model = new UserTableModel();
         jTable1 = new JTable(model);
+
         //сортировка  по столбцу
-        RowSorter<TableModel> sorter =new TableRowSorter<TableModel>(model);
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
+        sorter.setSortable(7, false);
+        sorter.setComparator(0, new Comparator<String>() {
+                    @Override
+                    public int compare( String str1, String str2) {
+                        return str1.compareTo(str2);
+                    }
+                });
         jTable1.setRowSorter(sorter);
-        
+
         model.addTableModelListener(jTable1);
         jTable1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         //jTable1.setSize(new java.awt.Dimension(500, 400));
@@ -114,6 +125,7 @@ public class MemberList extends javax.swing.JFrame {
         panel.add(backButton);
         backButton.setBounds(500, 220, 150, 30);//310 300 80 30
         backButton.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
@@ -125,6 +137,7 @@ public class MemberList extends javax.swing.JFrame {
         panel.add(searchButton);
         searchButton.setBounds(200, 190, 150, 30);//310 300 80 30
         searchButton.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
@@ -136,6 +149,7 @@ public class MemberList extends javax.swing.JFrame {
         panel.add(cleanButton);
         cleanButton.setBounds(200, 230, 150, 30);//310 300 80 30
         cleanButton.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
             }
@@ -147,6 +161,7 @@ public class MemberList extends javax.swing.JFrame {
         panel.add(addButton);
         addButton.setBounds(20, 190, 150, 30);
         addButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 addButtonActionPerfomed(e);
             }
@@ -158,6 +173,7 @@ public class MemberList extends javax.swing.JFrame {
         panel.add(deleteButton);
         deleteButton.setBounds(20, 230, 150, 30);
         deleteButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 deleteButtonActionPerfomed(e);
             }
@@ -251,12 +267,15 @@ public class MemberList extends javax.swing.JFrame {
 
         addWindowListener(new WindowListener() {
 
+            @Override
             public void windowActivated(WindowEvent event) {
             }
 
+            @Override
             public void windowClosed(WindowEvent event) {
             }
 
+            @Override
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
@@ -275,28 +294,32 @@ public class MemberList extends javax.swing.JFrame {
                 }
             }
 
+            @Override
             public void windowDeactivated(WindowEvent event) {
             }
 
+            @Override
             public void windowDeiconified(WindowEvent event) {
             }
 
+            @Override
             public void windowIconified(WindowEvent event) {
             }
 
+            @Override
             public void windowOpened(WindowEvent event) {
             }
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
-   
+
     private void deleteButtonActionPerfomed(ActionEvent evt) {
         try {
             if ((jTable1.getSelectedRow() >= 0) && (jTable1.getSelectedRow() < WorkUser.getWork().getArrOfUsers().size())) {
                 WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
                 if (searchFrame.getSearchRequest() != null) {
-                    Search search=new UserSearch();
+                    Search search = new UserSearch();
                     model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
                 }
             }
@@ -313,7 +336,7 @@ public class MemberList extends javax.swing.JFrame {
             WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
                     tfpassword.getText(), tfemail.getText(), tfbday.getText());//остановился тут
             if (searchFrame.getSearchRequest() != null) {
-                Search search=new UserSearch();
+                Search search = new UserSearch();
                 model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
             }
         } catch (UserExistException e) {
@@ -345,9 +368,8 @@ public class MemberList extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        searchFrame = new SearchFrameOfUser(jTable1, model,this);
+        searchFrame = new SearchFrameOfUser(jTable1, model, this);
         searchFrame.setVisible(true);
-        
 
     }
 
@@ -361,7 +383,7 @@ public class MemberList extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   /* public static void main(String args[]) {
+    /*public static void main(String args[]) {
 
         Logger log = Logger.getLogger(MemberList.class);
         try {
@@ -387,5 +409,4 @@ public class MemberList extends javax.swing.JFrame {
             }
         });
     }*/
-
 }

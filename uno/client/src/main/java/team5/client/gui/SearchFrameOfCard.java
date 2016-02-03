@@ -1,4 +1,3 @@
-
 package team5.client.gui;
 
 import java.awt.event.ActionEvent;
@@ -24,9 +23,7 @@ import team5.library.searches.Search;
  *
  * @author Dmitry
  */
-public class SearchFrameOfCard extends javax.swing.JFrame{
-    
-   
+public class SearchFrameOfCard extends javax.swing.JFrame {
 
     private DataExchange dataE;
     private String searchRequest;
@@ -35,7 +32,7 @@ public class SearchFrameOfCard extends javax.swing.JFrame{
     private JTable table;
     private JLabel jMessage;
     private JCheckBox searchCheckBox;
-    private boolean isRegular=false;
+    private boolean isRegular = false;
 
     private JTextField tfsearch;
 //    private JTextField[] fields;
@@ -133,23 +130,24 @@ public class SearchFrameOfCard extends javax.swing.JFrame{
 
     private void searchCheckBoxPerformed(ItemEvent evt) {
         if (isRegular) {
-           isRegular=false; 
-        }else{
-           isRegular=true; 
+            isRegular = false;
+        } else {
+            isRegular = true;
         }
-        
+
     }
 //    
+
     private void okButtonActionPerfomed(ActionEvent evt) {
         searchRequest = tfsearch.getText();
         try {
             Search search = new CardSearch();
             if (isRegular) {
                 model.setArrayOfCards((ArrayList<Card>) search.regularSearch(searchRequest));
-            }else{
+            } else {
                 model.setArrayOfCards((ArrayList<Card>) search.substringSearch(searchRequest));
             }
-            
+
             table.revalidate();
             table.repaint();
             this.setVisible(false);
@@ -175,28 +173,28 @@ public class SearchFrameOfCard extends javax.swing.JFrame{
      */
     /*public static void main(String args[]) {
 
-        Logger log = Logger.getLogger(SearchFrameOfUser.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-            log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-            log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            log.debug(ex.getMessage());
-        }
+     Logger log = Logger.getLogger(SearchFrameOfUser.class);
+     try {
+     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+     if ("Nimbus".equals(info.getName())) {
+     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+     break;
+     }
+     }
+     } catch (ClassNotFoundException ex) {
+     log.debug(ex.getMessage());
+     } catch (InstantiationException ex) {
+     log.debug(ex.getMessage());
+     } catch (IllegalAccessException ex) {
+     log.debug(ex.getMessage());
+     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+     log.debug(ex.getMessage());
+     }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MemberList().setVisible(true);
-            }
-        });
-    }*/
+     java.awt.EventQueue.invokeLater(new Runnable() {
+     public void run() {
+     new MemberList().setVisible(true);
+     }
+     });
+     }*/
 }

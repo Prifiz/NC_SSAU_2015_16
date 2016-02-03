@@ -8,19 +8,13 @@ package team5.client.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
 import java.io.IOException;
 import team5.library.transmissions.FileHandler;
-import team5.library.transmissions.*;
 import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
-import team5.client.transmissions.Streams;
-import team5.library.user.PrivateInformation;
-import team5.library.user.ServiceInfo;
-import team5.library.user.User;
 
 /**
  *
@@ -28,7 +22,7 @@ import team5.library.user.User;
  */
 public class LogIn extends JFrame {
 
-    private DataExchange  dataE;
+    private DataExchange dataE;
     private Logger log = Logger.getLogger(LogIn.class);
     private javax.swing.JButton signButton;
     private javax.swing.JButton registrationButton;
@@ -38,7 +32,7 @@ public class LogIn extends JFrame {
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jLoginField;
     private javax.swing.JLabel jMessage;
-    
+
     /**
      * Creates new form LogIn
      */
@@ -47,11 +41,9 @@ public class LogIn extends JFrame {
         initComponents();
     }
 
-    
-    @SuppressWarnings("unchecked")                      
+    @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        
         signLabel = new JLabel();
         jPasswordField = new JPasswordField();
         jLoginField = new JTextField();
@@ -79,7 +71,7 @@ public class LogIn extends JFrame {
         passwordLabel.setText("Password");
         add(passwordLabel);
         passwordLabel.setBounds(40, 140, 100, 30);
-        
+
         jMessage.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         this.add(jMessage);
         jMessage.setBounds(70, 180, 300, 30);
@@ -88,10 +80,9 @@ public class LogIn extends JFrame {
         jLoginField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         add(jLoginField);
         jLoginField.setBounds(125, 100, 160, 30);
-        
+
         add(jPasswordField);
         jPasswordField.setBounds(125, 140, 160, 30);
-        
 
         signButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         signButton.setText("Sign In");
@@ -128,12 +119,11 @@ public class LogIn extends JFrame {
                     //sd.serializableData("serializableData_WorkUser.bin", wu);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } 
-//                catch (IOException ex) {
-//                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-//                } 
+                } //                catch (IOException ex) {
+                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                //                } 
                 catch (JAXBException ex) {
-                     log.debug(ex.getMessage());
+                    log.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -153,28 +143,24 @@ public class LogIn extends JFrame {
             }
         });
 
-        
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
-        try{
+        try {
 //            Commands command=new Commands("Login");
 //            User usr=new User();
 //            usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
-        dataE.write("Login");
-        dataE.write(jLoginField.getText());
-        dataE.write(String.valueOf(jPasswordField.getPassword()));
+            dataE.write("Login");
+            dataE.write(jLoginField.getText());
+            dataE.write(String.valueOf(jPasswordField.getPassword()));
 //        command.setUser(usr);
 //        WorkWithFiles.marshalData(Streams.getOutputStream(), command);
-        f = dataE.readBool();
-        }
-        catch(IOException e)
-        {
+            f = dataE.readBool();
+        } catch (IOException e) {
             log.debug(e.getMessage());
         }
 //        catch(JAXBException e){
@@ -201,35 +187,30 @@ public class LogIn extends JFrame {
     /**
      * @param args the command line arguments
      */
-   /* public static void main(String args[]) {
-        Logger log = Logger.getLogger(LogIn.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-           log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-           log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            log.debug(ex.getMessage());
-        }
-        //</editor-fold>
+    /* public static void main(String args[]) {
+     Logger log = Logger.getLogger(LogIn.class);
+     try {
+     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+     if ("Nimbus".equals(info.getName())) {
+     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+     break;
+     }
+     }
+     } catch (ClassNotFoundException ex) {
+     log.debug(ex.getMessage());
+     } catch (InstantiationException ex) {
+     log.debug(ex.getMessage());
+     } catch (IllegalAccessException ex) {
+     log.debug(ex.getMessage());
+     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+     log.debug(ex.getMessage());
+     }
+     //</editor-fold>
 
-        /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LogIn(new InputStream(), new OutputStream()).setVisible(true);
-            }
-        });*/
-    }
-
-                     
-   
-                    
-
+     /* Create and display the form */
+    /*java.awt.EventQueue.invokeLater(new Runnable() {
+     public void run() {
+     new LogIn(new InputStream(), new OutputStream()).setVisible(true);
+     }
+     });*/
+}

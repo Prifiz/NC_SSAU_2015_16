@@ -33,7 +33,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
     private JLabel jMessage;
     private JCheckBox searchCheckBox;
     private MemberList memberList;
-    private boolean isRegular=false;
+    private boolean isRegular = false;
 
     private JTextField tfsearch;
 //    private JTextField[] fields;
@@ -49,7 +49,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
     public SearchFrameOfUser(JTable table, UserTableModel model, MemberList memList) {
         this.table = table;
         //this.fields=fields;
-        memberList=memList;
+        memberList = memList;
         this.model = model;
         initComponents();
     }
@@ -61,8 +61,8 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
             return null;
         }
     }
-    
-    public JTable getTable(){
+
+    public JTable getTable() {
         return table;
     }
 
@@ -136,26 +136,27 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
 
     private void searchCheckBoxPerformed(ItemEvent evt) {
         if (isRegular) {
-           isRegular=false; 
-        }else{
-           isRegular=true; 
+            isRegular = false;
+        } else {
+            isRegular = true;
         }
-        
+
     }
 //    
+
     private void okButtonActionPerfomed(ActionEvent evt) {
         searchRequest = tfsearch.getText();
         try {
             Search search = new UserSearch();
             if (isRegular) {
                 model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchRequest));
-            }else{
+            } else {
                 model.setArrayOfUsers((ArrayList<User>) search.substringSearch(searchRequest));
             }
             //memberList.setTable(table);
             table.revalidate();
             table.repaint();
-            
+
             this.setVisible(false);
 
         } catch (NotFoundException e) {
@@ -179,28 +180,28 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
      */
     /*public static void main(String args[]) {
 
-        Logger log = Logger.getLogger(SearchFrameOfUser.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-            log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-            log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            log.debug(ex.getMessage());
-        }
+     Logger log = Logger.getLogger(SearchFrameOfUser.class);
+     try {
+     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+     if ("Nimbus".equals(info.getName())) {
+     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+     break;
+     }
+     }
+     } catch (ClassNotFoundException ex) {
+     log.debug(ex.getMessage());
+     } catch (InstantiationException ex) {
+     log.debug(ex.getMessage());
+     } catch (IllegalAccessException ex) {
+     log.debug(ex.getMessage());
+     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+     log.debug(ex.getMessage());
+     }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MemberList().setVisible(true);
-            }
-        });
-    }*/
+     java.awt.EventQueue.invokeLater(new Runnable() {
+     public void run() {
+     new MemberList().setVisible(true);
+     }
+     });
+     }*/
 }

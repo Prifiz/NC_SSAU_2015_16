@@ -279,3 +279,5 @@
 00:08:17,902  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
 =======
 >>>>>>> 44b407a8ec237372321dc59bf8341cc52cba0c4a
+21:47:36,509 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:346 - User already exist
+21:47:50,377 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:346 - User already exist
