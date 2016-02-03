@@ -17,7 +17,7 @@ import java.net.*;
 import team5.library.transmissions.FileHandler;
 import team5.library.actions.WorkUser;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.client.transmissions.Streams;
 
 /**
@@ -145,7 +145,7 @@ public class StartFrame extends JFrame {
             out = socket.getOutputStream();
             Streams streams = new Streams(in, out);
             log.info("Connect to server");
-            DataExchange dataE = new DataExchange(in, out);
+            DataExchanger dataE = new DataExchanger(in, out);
             LogIn log = new LogIn(dataE);
             log.setVisible(true);
             this.setVisible(false);

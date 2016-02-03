@@ -16,7 +16,7 @@ import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.client.transmissions.Streams;
 import team5.library.user.PrivateInformation;
 import team5.library.user.ServiceInfo;
@@ -28,7 +28,7 @@ import team5.library.user.User;
  */
 public class LogIn extends JFrame {
 
-    private DataExchange  dataE;
+    private DataExchanger  dataE;
     private Logger log = Logger.getLogger(LogIn.class);
     private javax.swing.JButton signButton;
     private javax.swing.JButton registrationButton;
@@ -42,7 +42,7 @@ public class LogIn extends JFrame {
     /**
      * Creates new form LogIn
      */
-    public LogIn(DataExchange dataE) {
+    public LogIn(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }

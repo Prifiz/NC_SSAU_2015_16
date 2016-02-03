@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
-import team5.server.actions.DataExchange;
+import team5.server.actions.DataExchanger;
 import team5.server.actions.GamerController;
 import team5.server.actions.Registration;
 import team5.server.actions.RoomController;
@@ -34,7 +34,7 @@ public class ServerThread extends Thread {
     private RoomController[] rooms;
     private Logger log = Logger.getLogger(ServerThread.class);
     private Socket clientsocket;
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private Streams streams;
     private Commands command;
 
@@ -49,7 +49,7 @@ public class ServerThread extends Thread {
         dataE = null;
         boolean f = true;
         try {
-            dataE = new DataExchange(clientsocket.getInputStream(), clientsocket.getOutputStream());
+            dataE = new DataExchanger(clientsocket.getInputStream(), clientsocket.getOutputStream());
             streams = new Streams(clientsocket.getInputStream(), clientsocket.getOutputStream());
 
             String comand = "";

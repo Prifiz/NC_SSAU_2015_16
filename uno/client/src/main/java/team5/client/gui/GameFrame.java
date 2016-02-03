@@ -26,7 +26,7 @@ import javax.swing.border.TitledBorder;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.Counter;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.client.actions.GameThread;
 import team5.library.actions.WorkUser;
 import team5.library.transmissions.FileHandler;
@@ -39,14 +39,14 @@ import team5.library.card.NumericCard;
  */
 public class GameFrame extends JFrame {
 
-    private Counter enabledPane;
+    private Counter turnIndex;
     private Counter gamerIndex;
     private JPanel panels[];
     private ButtonGroup buttonGroups[];
     private Counter gamerCount;
     private String myLogin;
     private String[] logins;
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private Logger log = Logger.getLogger(GameFrame.class);
     private boolean isTakeCard = false;
     private JButton exitGameButton;
@@ -62,9 +62,9 @@ public class GameFrame extends JFrame {
     private JScrollPane scroll;
     GameThread game;
 
-    public GameFrame(DataExchange dataE) {
+    public GameFrame(DataExchanger dataE) {
         this.dataE = dataE;
-        enabledPane = new Counter();
+        turnIndex = new Counter();
         try {
             myLogin = dataE.readString();
             gamerCount = new Counter(dataE.readInt());
@@ -81,8 +81,8 @@ public class GameFrame extends JFrame {
         }
         panels = new JPanel[gamerCount.getCount()];
         initComponents();
-        enabledPane.setCount(0);
-        game = new GameThread(enabledPane, gamerIndex, this.dataE, lastCardLabel, gamerCount, text, logins);
+        turnIndex.setCount(0);
+        game = new GameThread(turnIndex, gamerIndex, this.dataE, lastCardLabel, gamerCount, text, logins);
         game.start();
         //gameOtherUsers();
     }
@@ -242,11 +242,11 @@ public class GameFrame extends JFrame {
     }
 
     private void exit() {
-        if (enabledPane.getCount() == gamerIndex.getCount()) {
+        if (turnIndex.getCount() == gamerIndex.getCount()) {
             try {
                 dataE.write("Exit");
                 SelectRooms rooms = new SelectRooms(dataE);
-                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Out of the room");
+                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                 rooms.setVisible(true);
                 this.setVisible(false);
             } catch (IOException ex) {
@@ -262,7 +262,7 @@ public class GameFrame extends JFrame {
     }
 
     private synchronized void passButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        if (enabledPane.getCount() == gamerIndex.getCount()) {
+        if (turnIndex.getCount() == gamerIndex.getCount()) {
             isTakeCard = false;
 
             try {
@@ -270,11 +270,11 @@ public class GameFrame extends JFrame {
             } catch (IOException ex) {
                 log.debug(ex.getMessage());
             }
-            text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Pass");
-            if (enabledPane.getCount() + 1 < gamerCount.getCount()) {
-                enabledPane.inc();
+            text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
+            if (turnIndex.getCount() + 1 < gamerCount.getCount()) {
+                turnIndex.inc();
             } else {
-                enabledPane.setCount(0);
+                turnIndex.setCount(0);
             }
             game.wakeUp();
         }
@@ -282,7 +282,7 @@ public class GameFrame extends JFrame {
 
     private void takeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        if (enabledPane.getCount() == gamerIndex.getCount()) {
+        if (turnIndex.getCount() == gamerIndex.getCount()) {
             if (!isTakeCard) {
                 pane.setSelectedIndex(gamerIndex.getCount());
                 JRadioButton jRadioButton = new JRadioButton();
@@ -302,7 +302,7 @@ public class GameFrame extends JFrame {
                 panels[gamerIndex.getCount()].revalidate();
                 panels[gamerIndex.getCount()].repaint();
                 isTakeCard = true;
-                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Take cad");
+                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take cad");
             } else {
                 JOptionPane.showConfirmDialog(null, "You can't take card more", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
@@ -366,7 +366,7 @@ public class GameFrame extends JFrame {
 
     private synchronized void endTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        if (enabledPane.getCount() == gamerIndex.getCount()) {
+        if (turnIndex.getCount() == gamerIndex.getCount()) {
             JRadioButton jr = new JRadioButton();
             if (buttonGroups[gamerIndex.getCount()].getSelection() != null) {
                 String str = buttonGroups[gamerIndex.getCount()].getSelection().getActionCommand();
@@ -388,7 +388,7 @@ public class GameFrame extends JFrame {
                         lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                         buttonGroups[gamerIndex.getCount()].remove(jr);
                         boolean endgame = false;
-                        text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
+                        text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                         if (buttonGroups[gamerIndex.getCount()].getButtonCount() == 0) {
                             dataE.write(true);
                             FinishFrame finish = new FinishFrame(dataE);
@@ -402,10 +402,10 @@ public class GameFrame extends JFrame {
                             panels[gamerIndex.getCount()].repaint();
                             isTakeCard = false;
                             dataE.write(false);
-                            if (enabledPane.getCount() + 1 < gamerCount.getCount()) {
-                                enabledPane.inc();
+                            if (turnIndex.getCount() + 1 < gamerCount.getCount()) {
+                                turnIndex.inc();
                             } else {
-                                enabledPane.setCount(0);
+                                turnIndex.setCount(0);
                             }
                             game.wakeUp();
                         }

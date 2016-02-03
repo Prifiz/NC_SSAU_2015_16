@@ -14,7 +14,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import team5.client.actions.CardTableModel;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.library.card.Card;
 import team5.library.exceptions.NotFoundException;
 import team5.library.searches.CardSearch;
@@ -28,7 +28,7 @@ public class SearchFrameOfCard extends javax.swing.JFrame{
     
    
 
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private String searchRequest;
     private JButton backButton;
     private JButton okButton;
@@ -43,7 +43,7 @@ public class SearchFrameOfCard extends javax.swing.JFrame{
 
     private JPanel panel;
 
-    public SearchFrameOfCard(DataExchange dataE) {
+    public SearchFrameOfCard(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }

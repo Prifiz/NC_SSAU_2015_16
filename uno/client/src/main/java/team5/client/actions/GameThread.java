@@ -19,18 +19,18 @@ import team5.library.card.NumericCard;
  */
 public class GameThread extends Thread {
 
-    private Counter enabledPane;
+    private Counter turnIndex;
     private Counter gamerIndex;
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private JLabel lastCardLabel;
     private Counter gamerCount;
     private Logger log;
     private JTextArea text;
     private String[] logins;
 
-    public GameThread(Counter enabledPane, Counter gamerIndex, DataExchange dataE, JLabel lastCardLabel, Counter gamerCount, JTextArea text, String[] logins) {
+    public GameThread(Counter enabledPane, Counter gamerIndex, DataExchanger dataE, JLabel lastCardLabel, Counter gamerCount, JTextArea text, String[] logins) {
         this.dataE = dataE;
-        this.enabledPane = enabledPane;
+        this.turnIndex = enabledPane;
         this.gamerCount = gamerCount;
         this.gamerIndex = gamerIndex;
         this.lastCardLabel = lastCardLabel;
@@ -41,33 +41,33 @@ public class GameThread extends Thread {
     @Override
     public synchronized void run() {
         while (true) {
-            if (enabledPane.getCount() < gamerIndex.getCount()) {
-                for (; enabledPane.getCount() < gamerIndex.getCount(); enabledPane.inc()) {
+            if (turnIndex.getCount() < gamerIndex.getCount()) {
+                for (; turnIndex.getCount() < gamerIndex.getCount(); turnIndex.inc()) {
                     try {
                         String command = dataE.readString();
                         switch (command) {
                             case "Pass":
-                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Pass");
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
                                 break;
                             case "TakeCard":
-                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Take cad");
-                                enabledPane.dec();
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take cad");
+                                turnIndex.dec();
                                 break;
                             case "END TURN":
                                 Card card = new NumericCard(dataE.readInt(), dataE.readString());
-                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                                 lastCardLabel.setText(card.toString());
                                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                                 boolean win = dataE.readBool();
                                 if (win == true) {
-                                    text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": WIN!!!");
+                                    text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": WIN!!!");
                                 }
                                 break;
                             case "Exit":
-                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Out of the room");
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                                 gamerCount.dec();
                                 gamerIndex.dec();
-                                enabledPane.dec();
+                                turnIndex.dec();
                                 break;
                         }
                     } catch (IOException ex) {
@@ -76,30 +76,30 @@ public class GameThread extends Thread {
 
                 }
             }
-            if (enabledPane.getCount() > gamerIndex.getCount()) {
-                for (; enabledPane.getCount() < gamerCount.getCount(); enabledPane.inc()) {
+            if (turnIndex.getCount() > gamerIndex.getCount()) {
+                for (; turnIndex.getCount() < gamerCount.getCount(); turnIndex.inc()) {
                     try {
                         String command = dataE.readString();
                         switch (command) {
                             case "Pass"://надо бы сделать лэйбл, который будет отражать ходы противника.
-                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Pass");
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
                                 break;
                             case "TakeCard":
-                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Take cad");
-                                enabledPane.dec();
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take cad");
+                                turnIndex.dec();
                                 break;
                             case "END TURN":
                                 Card card = new NumericCard(dataE.readInt(), dataE.readString());
-                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                                 lastCardLabel.setText(card.toString());
                                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                                 boolean win = dataE.readBool();
                                 if (win == true) {
-                                    text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": WIN!!!");
+                                    text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": WIN!!!");
                                 }
                                 break;
                             case "Exit":
-                                text.setText(text.getText() + "\n" + logins[enabledPane.getCount()] + ": Out of the room");
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                                 gamerCount.dec();
                                 break;
                         }
@@ -108,7 +108,7 @@ public class GameThread extends Thread {
                     }
 
                 }
-                enabledPane.setCount(0);
+                turnIndex.setCount(0);
             }
             try {
                 wait();

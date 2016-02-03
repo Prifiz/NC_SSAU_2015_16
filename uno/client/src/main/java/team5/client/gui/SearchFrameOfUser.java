@@ -12,7 +12,7 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import team5.client.actions.DataExchange;
+import team5.client.actions.DataExchanger;
 import team5.client.actions.UserTableModel;
 import team5.library.exceptions.NotFoundException;
 import team5.library.searches.UserSearch;
@@ -25,7 +25,7 @@ import team5.library.user.User;
  */
 public class SearchFrameOfUser extends javax.swing.JFrame {
 
-    private DataExchange dataE;
+    private DataExchanger dataE;
     private String searchRequest;
     private JButton backButton;
     private JButton okButton;
@@ -41,7 +41,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
 
     private JPanel panel;
 
-    public SearchFrameOfUser(DataExchange dataE) {
+    public SearchFrameOfUser(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }
