@@ -50,12 +50,12 @@ public class ServerThread extends Thread {
         boolean f = true;
         try {
             dataE = new DataExchange(clientsocket.getInputStream(), clientsocket.getOutputStream());
-            streams=new Streams(clientsocket.getInputStream(), clientsocket.getOutputStream());
-           
+            streams = new Streams(clientsocket.getInputStream(), clientsocket.getOutputStream());
+
             String comand = "";
-            
+
             while (f) {
-                comand = dataE.readString();  
+                comand = dataE.readString();
 //                System.out.println("Com "+ comand);
 //                 try{
 //            command=WorkWithFiles.unmarshalData(streams.getInputStream());
@@ -301,7 +301,12 @@ public class ServerThread extends Thread {
                                 dataE.writeString("END TURN");
                                 dataE.writeInt(table.getLastCard().getIcon());
                                 dataE.writeString(table.getLastCard().getColor());
-                                break;
+                                dataE.writeBool(rooms[r].isFinish());
+                                if (rooms[r].isFinish()==true) {
+                                    return;
+                                } else {
+                                    break;
+                                }
                         }
                     }
                 }
@@ -333,6 +338,14 @@ public class ServerThread extends Thread {
                                     rooms[r].getGamer(order).setAct(command);
                                     order++;
                                     g = false;
+                                    boolean win = dataE.readBool();
+                                    if (win==true) {
+                                        rooms[r].setFinish(true);
+                                        rooms[r].cleanRoom();
+                                        return;
+                                    }
+                                } else {
+                                    dataE.writeBool(table.isRightCard(card));
                                 }
                                 break;
                         }
@@ -363,7 +376,12 @@ public class ServerThread extends Thread {
                                 dataE.writeString("END TURN");
                                 dataE.writeInt(table.getLastCard().getIcon());
                                 dataE.writeString(table.getLastCard().getColor());
-                                break;
+                                dataE.writeBool(rooms[r].isFinish());
+                                if (rooms[r].isFinish()==true) {
+                                    return;
+                                } else {
+                                    break;
+                                }
                         }
                     }
 

@@ -20,7 +20,7 @@ public class SortedTest {
     public void setUp() throws Exception {
     }
 
-    @Test
+    /*@Test
     public void testSortedByName() throws UserExistException {
         WorkUser workUser = WorkUser.getWork();
         workUser.addUser("bob4", "Clark", "Usa", "XX", "sfsdf", "1234", "email@gmail.com", "19.12.2012");
@@ -29,7 +29,7 @@ public class SortedTest {
         workUser.sortedUsers("name");
         System.out.println("testSortedByName");
         System.out.println(workUser.viewUsers());
-    }
+    }*/
 
     @Test
     public void testSortedBySurname() throws UserExistException {

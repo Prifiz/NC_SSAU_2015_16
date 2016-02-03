@@ -21,8 +21,8 @@ import team5.library.exceptions.UserExistException;
 public class Server {
 
     public static void main(String[] args) {
-        RoomController [] rooms = new RoomController[4];
-        int [] waitTime = new int [4];
+        RoomController[] rooms = new RoomController[4];
+        int[] waitTime = new int[4];
         for (int i = 0; i < 4; i++) {
             rooms[i] = new RoomController();
         }
@@ -32,20 +32,18 @@ public class Server {
             WorkWithFiles workWithFiles = new WorkWithFiles();
             //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
-          
-           
+
         } catch (JAXBException ex) {
             log.debug(ex.getMessage());
         }
         WorkUser wu = WorkUser.getWork();
         try {
-            wu.addUser("medved", "f", "sdfd", "sfdd", "fsdsf", "fdd", "fdd", "19.12.12");
-            wu.addUser("putin", "s", "d", "d", "sf", "d", "d", "19.12.12");
+            wu.addUser("putin", "d", "dfkmv", "dfkv", "ldkf", "ld", "adsc", "19.12.2333");
+            wu.addUser("medved", "s", "sdfd", "sfdd", "fsdsf", "fdd", "fdd", "19.12.12");
             wu.addUser("sasdq", "d", "d", "d", "d", "d", "d", "19.12.12");
             wu.addUser("f", "d", "d", "d", "sfsdf", "d", "d", "19.12.12");
-            wu.addUser("d", "d", "d", "d", "putin", "d", "d", "19.12.12");
+            wu.addUser("d", "d", "d", "d", "dfgf", "d", "d", "19.12.12");
             //wu.addUser("asda", "d", "d", "d", "d", "d", "d", "19.12.12");
-            wu.addUser("putin", "d", "d", "d", "putin ", "d", "d", "19.12.2333");
 
         } catch (UserExistException e) {
             log.debug(e.getMessage());

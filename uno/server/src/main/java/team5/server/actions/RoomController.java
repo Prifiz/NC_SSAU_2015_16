@@ -16,17 +16,22 @@ public class RoomController {
     private TableController table;
     private ArrayList<GamerController> gamers;
     private boolean playing = false;
+    private boolean finish = false;
     private String command;
-    private int readCount;
 
-    public int getReadCount() {
-        return readCount;
+    public RoomController() {
+        table = new TableController();
+        gamers = new ArrayList();
     }
 
-    public void setReadCount(int readCount) {
-        this.readCount = readCount;
+
+    public boolean isFinish() {
+        return finish;
     }
 
+    public void setFinish(boolean finish) {
+        this.finish = finish;
+    }
     public String getCommand() {
         return command;
     }
@@ -38,43 +43,41 @@ public class RoomController {
     public boolean isPlaying() {
         return playing;
     }
+
     public void setPlaying(boolean playing) {
         this.playing = playing;
     }
-    public GamerController getGamer(String login){
+
+    public GamerController getGamer(String login) {
         GamerController gamer = null;
         for (int i = 0; i < gamers.size(); i++) {
-            if(gamers.get(i).getGamerLogin().equals(login)){
+            if (gamers.get(i).getGamerLogin().equals(login)) {
                 gamer = gamers.get(i);
             }
         }
         return gamer;
     }
-    public GamerController getGamer(int i){
+
+    public GamerController getGamer(int i) {
         return gamers.get(i);
     }
-    public int getGamerNumber(GamerController gamer)
-    {
+
+    public int getGamerNumber(GamerController gamer) {
         int index = 0;
         for (int i = 0; i < gamers.size(); i++) {
-            if(gamers.get(i).getGamerLogin().equals(gamer.getGamerLogin()))
-            {
+            if (gamers.get(i).getGamerLogin().equals(gamer.getGamerLogin())) {
                 index = i;
             }
         }
         return index;
     }
+
     public ArrayList<GamerController> getGamers() {
         return gamers;
     }
 
-    public int countGamers()
-    {
+    public int countGamers() {
         return gamers.size();
-    }
-    public RoomController() {
-        table = new TableController();
-        gamers = new ArrayList();
     }
 
     public void addGamer(GamerController gamer) {
@@ -88,9 +91,17 @@ public class RoomController {
             }
         }
     }
-    public TableController getTableController()
-    {
+
+    public TableController getTableController() {
         return table;
+    }
+
+    public void cleanRoom() {
+        for (int i = 0; i < gamers.size(); i++) {
+            gamers.remove(i);
+        }
+        playing = false;
+        table.cleanTable();
     }
 
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 11:44:22,763 DEBUG main Main:main:84 - User already exist
 11:44:24,775 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
 11:58:45,237 DEBUG main Main:main:84 - User already exist
@@ -276,3 +277,5 @@
 00:04:56,469  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
 00:07:29,233  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
 00:08:17,902  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
+=======
+>>>>>>> 44b407a8ec237372321dc59bf8341cc52cba0c4a
