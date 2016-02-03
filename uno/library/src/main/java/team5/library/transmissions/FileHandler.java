@@ -26,7 +26,7 @@ import team5.library.card.NumericCard;
  *
  * @author chanta
  */
-public class WorkWithFiles {
+public class FileHandler {
 
     /**
      * This method serializes the data WorkUser in the file

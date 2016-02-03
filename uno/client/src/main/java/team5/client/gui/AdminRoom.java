@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
 import team5.library.actions.WorkUser;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 
 /**
  *
@@ -94,7 +94,7 @@ public class AdminRoom extends JFrame {
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
-                    WorkWithFiles workWithFiles = new WorkWithFiles();
+                    FileHandler workWithFiles = new FileHandler();
                     //sd.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 import team5.client.actions.CardTableModel;
 import team5.client.actions.DataExchange;
 import team5.library.actions.WorkCard;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 import team5.library.card.Card;
 import team5.library.exceptions.NotFoundException;
 import team5.library.searches.CardSearch;

@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchange;
 import team5.library.actions.WorkUser;
-import team5.library.transmissions.WorkWithFiles;
+import team5.library.transmissions.FileHandler;
 
 /**
  *
@@ -70,11 +70,11 @@ public class FinishFrame extends JFrame {
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
-                    WorkWithFiles workWithFiles = new WorkWithFiles();
+                    FileHandler workWithFiles = new FileHandler();
                     //workWithFiles.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } //                catch (IOException ex) {
+                } //                catch (IOException ex) { //                catch (IOException ex) {
                 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 //                }
                 catch (JAXBException ex) {
