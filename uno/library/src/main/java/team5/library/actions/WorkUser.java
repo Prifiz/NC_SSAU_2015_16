@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 //import org.apache.log4j.Logger;
 import team5.library.exceptions.UserNotFoundException;
-import team5.library.user.adress.Address;
+import team5.library.user.address.Address;
 import team5.library.user.PrivateInformation;
 import team5.library.user.ServiceInfo;
 import team5.library.user.User;

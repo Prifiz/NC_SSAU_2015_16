@@ -12,7 +12,7 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import team5.client.actions.DataExchange;
+import team5.client.transmissions.DataExchange;
 import team5.client.actions.UserTableModel;
 import team5.library.exceptions.NotFoundException;
 import team5.library.searches.UserSearch;

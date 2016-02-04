@@ -8,7 +8,7 @@ package team5.library.user.admin;
 import team5.library.user.PrivateInformation;
 import team5.library.user.ServiceInfo;
 import team5.library.user.User;
-import team5.library.user.adress.Address;
+import team5.library.user.address.Address;
 import team5.library.constants.Constants;
 
 /**

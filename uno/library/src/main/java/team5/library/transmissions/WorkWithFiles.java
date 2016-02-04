@@ -1,4 +1,3 @@
-
 package team5.library.transmissions;
 
 import java.io.File;
@@ -13,10 +12,15 @@ import java.io.Reader;
 import java.io.StreamTokenizer;
 import java.io.Writer;
 import java.util.ArrayList;
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import org.xml.sax.SAXException;
 import team5.library.actions.WorkCard;
 import team5.library.actions.WorkUser;
 import team5.library.card.Card;
@@ -30,28 +34,29 @@ public class WorkWithFiles {
 
     /**
      * This method serializes the data WorkUser in the file
+     *
      * @param fileName
      * @param data
-     * @throws IOException 
+     * @throws IOException
      */
     public void serializableData(String fileName, Object data) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName));
         if (data instanceof WorkUser) {
             oos.writeObject((WorkUser) data);
-        }
-        //при создание класса работы с картами добавить сериализацию для них
-        else if (data instanceof WorkCard){
-           oos.writeObject((WorkCard)data);
+        } //при создание класса работы с картами добавить сериализацию для них
+        else if (data instanceof WorkCard) {
+            oos.writeObject((WorkCard) data);
         }
         oos.close();
     }
-    
+
     /**
-     * This demethod serializes the data WorkUser file's data in type  WorkUser
+     * This demethod serializes the data WorkUser file's data in type WorkUser
+     *
      * @param fileName
      * @return
      * @throws IOException
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     public WorkUser/* Object*/ deserializableData(String fileName) throws IOException, ClassNotFoundException {
         WorkUser workUser;
@@ -60,68 +65,90 @@ public class WorkWithFiles {
         ois.close();
         return workUser;
     }
-    
+
     /**
-     * This demethod marshales the data WorkUser file's data in type  WorkUser
+     * This demethod marshales the data WorkUser file's data in type WorkUser
+     *
      * @param fileNme
-     * @return workUser 
-     * @throws JAXBException 
+     * @return workUser
+     * @throws JAXBException
      */
     public WorkUser unmarshalData(String fileNme) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(WorkUser.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        WorkUser workUser = (WorkUser)unmarshaller.unmarshal(new File(fileNme));
+        WorkUser workUser = (WorkUser) unmarshaller.unmarshal(new File(fileNme));
         return workUser;
     }
- 
+
     /**
-     * This demethod marshales the data WorkUser file's data in type  WorkUser
+     * This demethod marshales the data WorkUser file's data in type WorkUser
+     *
      * @param fileName
      * @param workUser
-     * @throws JAXBException 
+     * @throws JAXBException
      */
     public void marshalData(String fileName, WorkUser workUser) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(workUser.getClass());
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.marshal(workUser, new File(fileName));
-       
+
     }
-    
+
     /**
      * Method marshalles Commands object and write it to stream
+     *
      * @param outputStream
      * @param command
-     * @throws JAXBException 
+     * @throws JAXBException
      */
-    public static void marshalData(OutputStream outputStream, Commands command) throws JAXBException {
+    public static void marshalData(OutputStream outputStream, Request command) throws JAXBException {
         //TODO пока сделал статик. не решил как лучше
         JAXBContext context = JAXBContext.newInstance(command.getClass());
         Marshaller marshaller = context.createMarshaller();
-        //marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(command, outputStream);       
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(command, new File("marsh.xml"));
+        marshaller.marshal(command, outputStream);
     }
-    
+
     /**
      * Method unmarshalles Commands object from stream
+     *
      * @param inputStream
-     * @return Commands 
-     * @throws JAXBException 
+     * @return Commands
+     * @throws JAXBException
      */
-    public static Commands unmarshalData(InputStream inputStream) throws JAXBException {
-         //TODO пока сделал статик. не решил как лучше
-        JAXBContext context = JAXBContext.newInstance(WorkUser.class);
+    public static Request unmarshalData(InputStream inputStream) throws JAXBException {
+        //TODO пока сделал статик. не решил как лучше
+        JAXBContext context = JAXBContext.newInstance(Request.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Commands command = (Commands)unmarshaller.unmarshal(inputStream);
+//        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+//        File file=new File("requestXmlSchema.xsd");
+//        Schema schema = schemaFactory.newSchema(file);
+//        unmarshaller.setSchema(schema);
+        Request command = (Request) unmarshaller.unmarshal(inputStream);
         return command;
     }
-    
-    
+    //эксперимент
+    public static Request unmarshalData(XMLStreamReader inputStream) throws JAXBException {
+        //TODO пока сделал статик. не решил как лучше
+        JAXBContext context = JAXBContext.newInstance(Request.class);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+//        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+//        File file=new File("requestXmlSchema.xsd");
+//        Schema schema = schemaFactory.newSchema(file);
+//        unmarshaller.setSchema(schema);
+        Request command = (Request) unmarshaller.unmarshal(inputStream);
+        return command;
+    }
+
     /**
-     * This method write cards to text file look as: "Type of card" "color of card" "int value of card". 
+     * This method write cards to text file look as: "Type of card" "color of
+     * card" "int value of card".
+     *
      * @param pack
      * @param out
-     * @throws IOException 
+     * @throws IOException
      */
     public static void writeCards(ArrayList<Card> pack, Writer out) throws IOException {
         for (Card card : pack) {
@@ -129,13 +156,16 @@ public class WorkWithFiles {
         }
         out.flush();
     }
-/**
- * This method read cards from text file and return list of cards.
- * Records in the file should look as: "Type of cad" "color of card" "int value of card". 
- * @param in
- * @return ArrayList<Card>
- * @throws IOException 
- */
+
+    /**
+     * This method read cards from text file and return list of cards. Records
+     * in the file should look as: "Type of cad" "color of card" "int value of
+     * card".
+     *
+     * @param in
+     * @return ArrayList<Card>
+     * @throws IOException
+     */
     public static ArrayList<Card> readCards(Reader in) throws IOException {
         StreamTokenizer st = new StreamTokenizer(in);
         Card card = null;

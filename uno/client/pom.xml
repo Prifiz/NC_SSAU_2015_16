@@ -17,7 +17,7 @@
         <repository>
             <id>library</id>
             <name>library</name>
-            <url>file:C:\Users\Dmitry\Documents\NetBeansProjects\Git\NC_SSAU_2015_16\uno\library</url>
+            <url>file:${project.build.directory}\library</url>
         </repository>
     </repositories> 
    

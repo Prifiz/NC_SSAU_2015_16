@@ -14,7 +14,7 @@ import team5.library.transmissions.WorkWithFiles;
 import team5.library.actions.WorkUser;
 import team5.library.exceptions.*;
 import team5.client.gui.StartFrame;
-import team5.library.user.adress.Address;
+import team5.library.user.address.Address;
 import team5.library.searches.UserSearch;
 import team5.library.user.User;
 import team5.library.user.admin.Admin;

@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import org.apache.log4j.Logger;
 import team5.client.actions.CardTableModel;
-import team5.client.actions.DataExchange;
+import team5.client.transmissions.DataExchange;
 import team5.library.actions.WorkCard;
 import team5.library.transmissions.WorkWithFiles;
 import team5.library.card.Card;

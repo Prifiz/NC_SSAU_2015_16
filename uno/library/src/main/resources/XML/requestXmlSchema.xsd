@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://request.com"
+           xmlns:tns= "http://request.com"
+           elementFormDefault="qualified">
+    
+       
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="address" type="xs:address"/>
+            <xs:element name="privateInformation" type="xs:privateInformation"/>
+            <xs:element name="serviceInfo" type="xs:serviceInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="address">
+        <xs:sequence>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="privateInformation">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="bDay" type="xs:LocalDate"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="serviceInfo">
+        <xs:sequence>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="login" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+     <xs:element name="request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="command" type="xs:string"/>
+                <xs:element name="user" type="xs:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+
+</xs:schema>
+
+ 
+
+ 

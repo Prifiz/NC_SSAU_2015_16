@@ -15,7 +15,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import team5.library.user.*;
 import team5.library.user.admin.Admin;
-import team5.library.user.adress.Address;
+import team5.library.user.address.Address;
 
 /**
  *

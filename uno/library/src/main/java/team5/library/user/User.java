@@ -5,9 +5,9 @@
  */
 package team5.library.user;
 
-import team5.library.user.adress.Address;
-import team5.library.user.adress.AddressInitializer;
-import team5.library.user.adress.SimpleAddressInitializer;
+import team5.library.user.address.Address;
+import team5.library.user.address.AddressInitializer;
+import team5.library.user.address.SimpleAddressInitializer;
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlRootElement;

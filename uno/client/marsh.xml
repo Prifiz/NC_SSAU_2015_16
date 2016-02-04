@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:Request xmlns:ns2="http://request.com">
+    <ns2:command>Login</ns2:command>
+    <ns2:user>
+        <address>
+            <city></city>
+            <country></country>
+        </address>
+        <privateInformation>
+            <name></name>
+            <surname></surname>
+            <bDay>2016-02-05</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>not</email>
+            <login>1</login>
+            <password>1</password>
+        </serviceInfo>
+    </ns2:user>
+</ns2:Request>

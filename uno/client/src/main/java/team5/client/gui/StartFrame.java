@@ -17,7 +17,7 @@ import java.net.*;
 import team5.library.transmissions.WorkWithFiles;
 import team5.library.actions.WorkUser;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.transmissions.DataExchange;
 import team5.client.transmissions.Streams;
 
 /**

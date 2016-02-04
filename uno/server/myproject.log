@@ -515,3 +515,87 @@
 04:52:30,762  INFO main Server:main:65 - Client connected
 04:52:59,985  INFO main Server:main:65 - Client connected
 04:53:21,202 DEBUG Thread-2 ServerThread:run:251 - Connection reset by peer: socket write error
+03:56:27,122 DEBUG main Server:main:51 - User already exist
+03:56:37,969  INFO main Server:main:65 - Client connected
+03:56:51,157 DEBUG Thread-1 ServerThread:run:251 - Connection reset
+03:56:59,891  INFO main Server:main:65 - Client connected
+03:57:04,791 DEBUG Thread-2 ServerThread:run:251 - Connection reset
+04:01:14,423 DEBUG main Server:main:51 - User already exist
+04:01:26,356  INFO main Server:main:65 - Client connected
+04:01:42,046 DEBUG Thread-1 ServerThread:run:65 - JAXB null
+04:03:57,287 DEBUG main Server:main:51 - User already exist
+04:04:04,594  INFO main Server:main:65 - Client connected
+04:04:36,348 DEBUG Thread-1 ServerThread:run:67 - JAXB null
+04:07:13,953 DEBUG main Server:main:51 - User already exist
+04:07:13,976 DEBUG main Server:main:58 - Address already in use: JVM_Bind
+04:07:26,835 DEBUG main Server:main:51 - User already exist
+04:07:35,028  INFO main Server:main:65 - Client connected
+04:08:52,544 DEBUG Thread-1 ServerThread:run:71 - JAXBStream java.net.SocketException: Connection reset
+04:08:59,211  INFO main Server:main:65 - Client connected
+04:09:49,472 DEBUG Thread-2 ServerThread:run:71 - JAXBStream java.net.SocketException: Connection reset
+04:10:37,539 DEBUG main Server:main:51 - User already exist
+04:10:48,004  INFO main Server:main:65 - Client connected
+04:11:32,840 DEBUG Thread-1 ServerThread:run:72 - JAXBStream java.net.SocketException: Connection reset
+16:45:33,215 DEBUG main Server:main:51 - User already exist
+16:45:44,610  INFO main Server:main:65 - Client connected
+16:46:06,902 DEBUG Thread-1 ServerThread:run:69 - JAXB null
+16:50:42,847 DEBUG main Server:main:51 - User already exist
+16:50:50,805  INFO main Server:main:65 - Client connected
+16:50:51,955 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"", local:"Commands"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+17:02:25,683 DEBUG main Server:main:51 - User already exist
+17:02:33,878  INFO main Server:main:65 - Client connected
+17:02:35,334 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"", local:"Commands"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+17:19:22,546 DEBUG main Server:main:51 - User already exist
+17:19:31,590  INFO main Server:main:65 - Client connected
+17:19:32,893 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"", local:"commands"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+17:24:49,796 DEBUG main Server:main:51 - User already exist
+17:24:57,774  INFO main Server:main:65 - Client connected
+17:24:58,805 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"", local:"Commands"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+18:09:28,147 DEBUG main Server:main:51 - User already exist
+18:09:41,758  INFO main Server:main:65 - Client connected
+18:09:42,772 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"", local:"Commands"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+18:59:54,333 DEBUG main Server:main:51 - User already exist
+19:00:02,578  INFO main Server:main:65 - Client connected
+19:00:05,222 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"http://request.com", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+19:14:25,991 DEBUG main Server:main:51 - User already exist
+19:14:26,001 DEBUG main Server:main:58 - Address already in use: JVM_Bind
+19:15:59,537 DEBUG main Server:main:51 - User already exist
+19:16:08,752  INFO main Server:main:65 - Client connected
+19:16:10,242 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+19:17:22,662 DEBUG main Server:main:51 - User already exist
+19:17:31,654  INFO main Server:main:65 - Client connected
+19:17:32,850 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"http://www.example.org/package", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+19:24:51,831 DEBUG main Server:main:51 - User already exist
+19:25:06,630  INFO main Server:main:65 - Client connected
+19:25:07,810 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+19:33:43,298 DEBUG main Server:main:51 - User already exist
+19:33:43,310 DEBUG main Server:main:58 - Address already in use: JVM_Bind
+19:33:48,735 DEBUG main Server:main:51 - User already exist
+19:33:48,746 DEBUG main Server:main:58 - Address already in use: JVM_Bind
+19:35:53,632 DEBUG main Server:main:51 - User already exist
+19:36:04,978  INFO main Server:main:65 - Client connected
+19:36:06,490 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"http://www.example.org/package", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+20:17:21,512 DEBUG main Server:main:51 - User already exist
+20:17:29,286  INFO main Server:main:65 - Client connected
+20:17:31,340 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"http://request.com", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+20:27:34,867 DEBUG main Server:main:51 - User already exist
+20:27:42,685  INFO main Server:main:65 - Client connected
+20:27:43,849 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"http://request.com", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+21:34:23,847 DEBUG main Server:main:51 - User already exist
+21:34:59,646  INFO main Server:main:65 - Client connected
+21:35:02,924 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"http://request.com", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+00:08:41,426 DEBUG main Server:main:51 - User already exist
+00:13:53,369  INFO main Server:main:65 - Client connected
+00:13:56,691 DEBUG Thread-1 ServerThread:run:69 - JAXB unexpected element (uri:"http://request.com", local:"Request"). Expected elements are <{}address>,<{}privateInformation>,<{}serviceInfo>,<{}user>,<{}workUser>
+01:11:04,655 DEBUG main Server:main:51 - User already exist
+01:11:12,548  INFO main Server:main:65 - Client connected
+01:12:31,659 DEBUG Thread-1 ServerThread:run:69 - JAXB null
+01:13:29,350 DEBUG main Server:main:51 - User already exist
+01:13:38,143  INFO main Server:main:65 - Client connected
+01:14:04,732 DEBUG Thread-1 ServerThread:run:69 - JAXB null
+01:17:25,819 DEBUG main Server:main:51 - User already exist
+01:17:36,405  INFO main Server:main:65 - Client connected
+01:17:58,292 DEBUG Thread-1 ServerThread:run:261 - Connection reset
+02:33:43,577 DEBUG main Server:main:51 - User already exist
+02:34:00,614  INFO main Server:main:65 - Client connected
+02:34:16,576 DEBUG Thread-1 ServerThread:run:86 - JAXB null

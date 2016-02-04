@@ -15,8 +15,9 @@ import team5.library.transmissions.*;
 import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
+import javax.xml.stream.XMLStreamException;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.transmissions.DataExchange;
 import team5.client.transmissions.Streams;
 import team5.library.user.PrivateInformation;
 import team5.library.user.ServiceInfo;
@@ -163,23 +164,24 @@ public class LogIn extends JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
         boolean f = false;
         try{
-//            Commands command=new Commands("Login");
-//            User usr=new User();
-//            usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
-        dataE.write("Login");
-        dataE.write(jLoginField.getText());
-        dataE.write(String.valueOf(jPasswordField.getPassword()));
-//        command.setUser(usr);
-//        WorkWithFiles.marshalData(Streams.getOutputStream(), command);
+            Request request=new Request("Login");
+            User usr=new User();
+            usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
+//        dataE.write("Login");
+//        dataE.write(jLoginField.getText());
+//        dataE.write(String.valueOf(jPasswordField.getPassword()));
+        request.setUser(usr);
+        WorkWithFiles.marshalData(Streams.getOutputStream(), request);
         f = dataE.readBool();
+            System.out.println("dataE.readBool()+ "+dataE.readBool());
         }
         catch(IOException e)
         {
             log.debug(e.getMessage());
         }
-//        catch(JAXBException e){
-//            log.debug(e.getMessage());
-//        }
+        catch(JAXBException e){
+            log.debug(e.getMessage());
+        }        
         //SignIn sign = new SignIn();
         // WorkUser wu = WorkUser.getWork();
         //sign.sign(this.jTextField.getText(), this.jPasswordField.getPassword())

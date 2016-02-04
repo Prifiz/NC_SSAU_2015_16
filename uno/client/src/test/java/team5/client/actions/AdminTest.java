@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import team5.library.user.PrivateInformation;
 import team5.library.user.ServiceInfo;
-import team5.library.user.adress.Address;
+import team5.library.user.address.Address;
 //import team5.client.user.PrivateInformation;
 //import team5.client.user.ServiceInfo;
 //import team5.client.user.adress.Address;

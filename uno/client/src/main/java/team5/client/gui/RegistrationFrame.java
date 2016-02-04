@@ -18,7 +18,7 @@ import team5.library.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
-import team5.client.actions.DataExchange;
+import team5.client.transmissions.DataExchange;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

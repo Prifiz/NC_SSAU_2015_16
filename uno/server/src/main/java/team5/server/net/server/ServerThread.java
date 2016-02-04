@@ -10,8 +10,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import javax.xml.bind.JAXBException;
+import javax.xml.stream.XMLStreamException;
 import org.apache.log4j.Logger;
-import team5.server.actions.DataExchange;
+import team5.server.transmissions.DataExchange;
 import team5.server.actions.GamerController;
 import team5.server.actions.Registration;
 import team5.server.actions.RoomController;
@@ -19,9 +20,13 @@ import team5.server.actions.SignIn;
 import team5.server.actions.TableController;
 import team5.library.card.Card;
 import team5.library.exceptions.UserExistException;
-import team5.library.transmissions.Commands;
+import team5.library.transmissions.Request;
 import team5.library.transmissions.WorkWithFiles;
 import team5.server.transmissions.Streams;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 
 /**
  *
@@ -36,7 +41,7 @@ public class ServerThread extends Thread {
     private Socket clientsocket;
     private DataExchange dataE;
     private Streams streams;
-    private Commands command;
+    private Request request;
 
     public ServerThread(Socket socket, RoomController[] r, int[] time) {
         waitTime = time;
@@ -50,19 +55,37 @@ public class ServerThread extends Thread {
         boolean f = true;
         try {
             dataE = new DataExchange(clientsocket.getInputStream(), clientsocket.getOutputStream());
-            streams=new Streams(clientsocket.getInputStream(), clientsocket.getOutputStream());
-           
+            streams = new Streams(clientsocket.getInputStream(), clientsocket.getOutputStream());
+
             String comand = "";
-            
+
             while (f) {
-                comand = dataE.readString();  
+                //comand = dataE.readString();  
 //                System.out.println("Com "+ comand);
-//                 try{
-//            command=WorkWithFiles.unmarshalData(streams.getInputStream());
-//                 System.out.println("Com "+ comand);   
-//            }catch(JAXBException e){
-//                log.debug("JAXB "+e.getMessage());
-//            }
+                try {
+                    System.out.println("Com " + comand);
+                    XMLInputFactory factory = XMLInputFactory.newFactory();
+                    try {//эксперимент
+                        XMLStreamReader streamReader = factory.createXMLStreamReader(streams.getInputStream());
+                        request = WorkWithFiles.unmarshalData(streamReader);
+                        comand = request.getCommand();
+                        System.out.println("Com2 " + comand);
+                    } catch (XMLStreamException e) {
+                        System.out.println(e);
+                    }
+                    String tst;
+                    tst = dataE.readString();
+                    System.out.println(tst);
+                    System.out.println("");
+                    request = WorkWithFiles.unmarshalData(streams.getInputStream());
+
+                    comand = request.getCommand();
+                    System.out.println("Com2 " + comand);
+                } catch (JAXBException e) {
+                    System.out.println("Ошибка JAXB ");
+                    log.debug("JAXB " + e.getMessage());
+                }
+                System.out.println("This is command: " + request.getCommand());
 //                if (comand=="1") {
 //                    comand=command.getCommand();
 //                }
@@ -74,10 +97,10 @@ public class ServerThread extends Thread {
                     //
                     case "Login":
                         SignIn sign = new SignIn();
-                        String login = dataE.readString();
-                        //String login = command.getUser().getServiceInfo().getLogin();
-                        dataE.writeBool(sign.sign(login, dataE.readString()));
-                        //dataE.writeBool(sign.sign(login, command.getUser().getServiceInfo().getPassword()));
+                        //String login = dataE.readString();
+                        String login = request.getUser().getServiceInfo().getLogin();
+                        //dataE.writeBool(sign.sign(login, dataE.readString()));
+                        dataE.writeBool(sign.sign(login, request.getUser().getServiceInfo().getPassword()));
                         //System.out.println("OPOP"+sign.sign(login, command.getUser().getServiceInfo().getPassword()));
                         gamer = new GamerController(login);
                         break;
