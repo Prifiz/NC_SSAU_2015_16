@@ -96,12 +96,15 @@ public class RulesFrame extends JFrame {
 
         addWindowListener(new WindowListener() {
 
+            @Override
             public void windowActivated(WindowEvent event) {
             }
 
+            @Override
             public void windowClosed(WindowEvent event) {
             }
 
+            @Override
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
@@ -120,15 +123,19 @@ public class RulesFrame extends JFrame {
                 }
             }
 
+            @Override
             public void windowDeactivated(WindowEvent event) {
             }
 
+            @Override
             public void windowDeiconified(WindowEvent event) {
             }
 
+            @Override
             public void windowIconified(WindowEvent event) {
             }
 
+            @Override
             public void windowOpened(WindowEvent event) {
             }
         });
@@ -148,7 +155,7 @@ public class RulesFrame extends JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         Logger log = Logger.getLogger(RulesFrame.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -168,12 +175,12 @@ public class RulesFrame extends JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RulesFrame().setVisible(true);
             }
         });
-    }
+    }*/
 
 }

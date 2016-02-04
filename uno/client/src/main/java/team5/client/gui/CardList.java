@@ -89,7 +89,7 @@ public class CardList extends javax.swing.JFrame {
         backButton.setBounds(500, 220, 150, 30);//310 300 80 30
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -165,12 +165,15 @@ public class CardList extends javax.swing.JFrame {
 
         addWindowListener(new WindowListener() {
 
+            @Override
             public void windowActivated(WindowEvent event) {
             }
 
+            @Override
             public void windowClosed(WindowEvent event) {
             }
 //TODO есть ли смысл тут писать аналог как для пользователя?
+            @Override
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
@@ -189,15 +192,19 @@ public class CardList extends javax.swing.JFrame {
                 }
             }
 
+            @Override
             public void windowDeactivated(WindowEvent event) {
             }
 
+            @Override
             public void windowDeiconified(WindowEvent event) {
             }
 
+            @Override
             public void windowIconified(WindowEvent event) {
             }
 
+            @Override
             public void windowOpened(WindowEvent event) {
             }
         });
@@ -239,7 +246,7 @@ public class CardList extends javax.swing.JFrame {
         jTable1.repaint();
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         AdminRoom adminRoom = new AdminRoom(dataE);
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);

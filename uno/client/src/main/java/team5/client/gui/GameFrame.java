@@ -200,12 +200,15 @@ public class GameFrame extends JFrame {
 
         addWindowListener(new WindowListener() {
 
+            @Override
             public void windowActivated(WindowEvent event) {
             }
 
+            @Override
             public void windowClosed(WindowEvent event) {
             }
 
+            @Override
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
@@ -219,15 +222,19 @@ public class GameFrame extends JFrame {
                 }
             }
 
+            @Override
             public void windowDeactivated(WindowEvent event) {
             }
 
+            @Override
             public void windowDeiconified(WindowEvent event) {
             }
 
+            @Override
             public void windowIconified(WindowEvent event) {
             }
 
+            @Override
             public void windowOpened(WindowEvent event) {
             }
         });

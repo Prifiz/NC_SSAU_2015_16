@@ -28,7 +28,6 @@ public class RoomSelectionFrame extends JFrame {
     private javax.swing.JButton adminRoomButton;
     private javax.swing.JComboBox jComboBox;
     private javax.swing.JLabel selectLabel;
-    private JLabel descriptionLabel;
 
     /**
      * Creates new form SelectRooms
@@ -67,7 +66,7 @@ public class RoomSelectionFrame extends JFrame {
         startButton.setBounds(150, 210, 100, 30);
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                startButtonActionPerformed(evt);
             }
         });
 
@@ -78,18 +77,21 @@ public class RoomSelectionFrame extends JFrame {
         adminRoomButton.setBounds(280, 10, 110, 30);
         adminRoomButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                adminRoomButtonActionPerformed(evt);
             }
         });
 
         addWindowListener(new WindowListener() {
 
+            @Override
             public void windowActivated(WindowEvent event) {
             }
 
+            @Override
             public void windowClosed(WindowEvent event) {
             }
 
+            @Override
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
@@ -108,15 +110,19 @@ public class RoomSelectionFrame extends JFrame {
                 }
             }
 
+            @Override
             public void windowDeactivated(WindowEvent event) {
             }
 
+            @Override
             public void windowDeiconified(WindowEvent event) {
             }
 
+            @Override
             public void windowIconified(WindowEvent event) {
             }
 
+            @Override
             public void windowOpened(WindowEvent event) {
             }
         });
@@ -126,7 +132,7 @@ public class RoomSelectionFrame extends JFrame {
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void adminRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
         AdminRoom adminRoom = new AdminRoom(dataE);
         adminRoom.setVisible(true);
         //MemberList list = new MemberList();
@@ -134,7 +140,7 @@ public class RoomSelectionFrame extends JFrame {
         this.setVisible(false);
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             dataE.write("Select");
             dataE.write(jComboBox.getSelectedItem().toString());

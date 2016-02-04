@@ -25,7 +25,6 @@ import team5.library.exceptions.NotFoundException;
 import team5.library.exceptions.UserExistException;
 import team5.library.searches.UserSearch;
 import team5.library.searches.Search;
-import team5.library.sortings.Sorting;
 import team5.library.user.User;
 
 /**
@@ -127,7 +126,7 @@ public class MemberListFrame extends javax.swing.JFrame {
         backButton.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -356,7 +355,7 @@ public class MemberListFrame extends javax.swing.JFrame {
         jTable1.repaint();
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         AdminRoom adminRoom = new AdminRoom(dataE);
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);

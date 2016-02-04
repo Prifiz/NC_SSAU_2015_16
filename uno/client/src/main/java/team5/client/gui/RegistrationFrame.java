@@ -174,7 +174,7 @@ public class RegistrationFrame extends JFrame {
         okButton.setBounds(70, 460, 100, 30);
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                okButtonActionPerformed(evt);
             }
         });
 
@@ -190,12 +190,15 @@ public class RegistrationFrame extends JFrame {
 
         addWindowListener(new WindowListener() {
 
+            @Override
             public void windowActivated(WindowEvent event) {
             }
 
+            @Override
             public void windowClosed(WindowEvent event) {
             }
 
+            @Override
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
@@ -214,15 +217,19 @@ public class RegistrationFrame extends JFrame {
                 }
             }
 
+            @Override
             public void windowDeactivated(WindowEvent event) {
             }
 
+            @Override
             public void windowDeiconified(WindowEvent event) {
             }
 
+            @Override
             public void windowIconified(WindowEvent event) {
             }
 
+            @Override
             public void windowOpened(WindowEvent event) {
             }
         });
@@ -232,7 +239,7 @@ public class RegistrationFrame extends JFrame {
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
         try {
             dataE.write("Registration");

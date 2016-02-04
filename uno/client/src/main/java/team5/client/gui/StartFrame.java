@@ -82,18 +82,21 @@ public class StartFrame extends JFrame {
         enterButton.setBounds(145, 190, 100, 30);
         enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                enterButtonActionPerformed(evt);
             }
         });
 
         addWindowListener(new WindowListener() {
 
+            @Override
             public void windowActivated(WindowEvent event) {
             }
 
+            @Override
             public void windowClosed(WindowEvent event) {
             }
 
+            @Override
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
@@ -108,15 +111,19 @@ public class StartFrame extends JFrame {
                 }
             }
 
+            @Override
             public void windowDeactivated(WindowEvent event) {
             }
 
+            @Override
             public void windowDeiconified(WindowEvent event) {
             }
 
+            @Override
             public void windowIconified(WindowEvent event) {
             }
 
+            @Override
             public void windowOpened(WindowEvent event) {
             }
         });
@@ -133,7 +140,7 @@ public class StartFrame extends JFrame {
         //this.setVisible(false);
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int serverport = 8081;
         String address = /*"192.168.43.197"*/ "127.0.0.1";
         InputStream in = null;

@@ -90,7 +90,7 @@ public class LogInFrame extends JFrame {
         signButton.setBounds(220, 220, 120, 30);
         signButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                signButtonActionPerformed(evt);
             }
         });
 
@@ -99,19 +99,23 @@ public class LogInFrame extends JFrame {
         add(registrationButton);
         registrationButton.setBounds(60, 220, 120, 30);
         registrationButton.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                registrationButtonActionPerformed(evt);
             }
         });
 
         addWindowListener(new WindowListener() {
 
+            @Override
             public void windowActivated(WindowEvent event) {
             }
 
+            @Override
             public void windowClosed(WindowEvent event) {
             }
 
+            @Override
             public void windowClosing(WindowEvent event) {
                 try {
                     WorkUser workUser = WorkUser.getWork();
@@ -130,15 +134,19 @@ public class LogInFrame extends JFrame {
                 }
             }
 
+            @Override
             public void windowDeactivated(WindowEvent event) {
             }
 
+            @Override
             public void windowDeiconified(WindowEvent event) {
             }
 
+            @Override
             public void windowIconified(WindowEvent event) {
             }
 
+            @Override
             public void windowOpened(WindowEvent event) {
             }
         });
@@ -148,7 +156,7 @@ public class LogInFrame extends JFrame {
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
         try {
 //            Commands command=new Commands("Login");
@@ -178,7 +186,7 @@ public class LogInFrame extends JFrame {
         }
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void registrationButtonActionPerformed(java.awt.event.ActionEvent evt) {
         RegistrationFrame secondFrame = new RegistrationFrame(dataE);
         secondFrame.setVisible(true);
         this.setVisible(false);
