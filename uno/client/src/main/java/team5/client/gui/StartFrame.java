@@ -128,7 +128,7 @@ public class StartFrame extends JFrame {
     }
 
     private void ruleButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Rules rule = new Rules();
+        RulesFrame rule = new RulesFrame();
         rule.setVisible(true);
         //this.setVisible(false);
     }
@@ -146,7 +146,7 @@ public class StartFrame extends JFrame {
             Streams streams = new Streams(in, out);
             log.info("Connect to server");
             DataExchanger dataE = new DataExchanger(in, out);
-            LogIn log = new LogIn(dataE);
+            LogInFrame log = new LogInFrame(dataE);
             log.setVisible(true);
             this.setVisible(false);
         } catch (IOException e) {

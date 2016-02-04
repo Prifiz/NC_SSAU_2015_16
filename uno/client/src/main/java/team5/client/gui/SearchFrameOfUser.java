@@ -32,7 +32,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
     private JTable table;
     private JLabel jMessage;
     private JCheckBox searchCheckBox;
-    private MemberList memberList;
+    private MemberListFrame memberList;
     private boolean isRegular = false;
 
     private JTextField tfsearch;
@@ -46,7 +46,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         initComponents();
     }
 
-    public SearchFrameOfUser(JTable table, UserTableModel model, MemberList memList) {
+    public SearchFrameOfUser(JTable table, UserTableModel model, MemberListFrame memList) {
         this.table = table;
         //this.fields=fields;
         memberList = memList;

@@ -564,3 +564,6 @@
 00:08:17,872  INFO main Server:main:65 - Client connected
 00:08:33,162 DEBUG Thread-3 ServerThread:run:251 - 
 >>>>>>> origin/master
+09:19:01,051 DEBUG main Server:main:49 - User already exist
+09:19:03,707  INFO main Server:main:63 - Client connected
+09:19:17,299 DEBUG Thread-1 ServerThread:run:249 - Connection reset

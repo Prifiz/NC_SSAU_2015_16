@@ -20,10 +20,10 @@ import team5.client.actions.DataExchanger;
  *
  * @author андрей
  */
-public class LogIn extends JFrame {
+public class LogInFrame extends JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(LogIn.class);
+    private Logger log = Logger.getLogger(LogInFrame.class);
     private javax.swing.JButton signButton;
     private javax.swing.JButton registrationButton;
     private javax.swing.JLabel signLabel;
@@ -36,7 +36,7 @@ public class LogIn extends JFrame {
     /**
      * Creates new form LogIn
      */
-    public LogIn(DataExchanger dataE) {
+    public LogInFrame(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }
@@ -170,7 +170,7 @@ public class LogIn extends JFrame {
         // WorkUser wu = WorkUser.getWork();
         //sign.sign(this.jTextField.getText(), this.jPasswordField.getPassword())
         if (f) {
-            SelectRooms rooms = new SelectRooms(dataE);
+            RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
             rooms.setVisible(true);
             this.setVisible(false);
         } else {

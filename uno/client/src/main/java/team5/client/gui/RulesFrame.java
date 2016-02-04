@@ -22,9 +22,9 @@ import org.apache.log4j.Logger;
  *
  * @author chanta
  */
-public class Rules extends JFrame {
+public class RulesFrame extends JFrame {
 
-    private Logger log = Logger.getLogger(Rules.class);
+    private Logger log = Logger.getLogger(RulesFrame.class);
     private JButton backButton;
     private JLabel rulesLabel;
     private JScrollPane jScrollPane;
@@ -33,7 +33,7 @@ public class Rules extends JFrame {
     /**
      * Creates new form Rules
      */
-    public Rules() {
+    public RulesFrame() {
         initComponents();
     }
 
@@ -149,7 +149,7 @@ public class Rules extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Logger log = Logger.getLogger(Rules.class);
+        Logger log = Logger.getLogger(RulesFrame.class);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -171,7 +171,7 @@ public class Rules extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rules().setVisible(true);
+                new RulesFrame().setVisible(true);
             }
         });
     }

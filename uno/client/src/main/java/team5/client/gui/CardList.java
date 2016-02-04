@@ -31,7 +31,7 @@ import team5.library.searches.Search;
 public class CardList extends javax.swing.JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(MemberList.class);
+    private Logger log = Logger.getLogger(MemberListFrame.class);
     private SearchFrameOfCard searchFrame;
     private JButton backButton;
     private JButton deleteButton;

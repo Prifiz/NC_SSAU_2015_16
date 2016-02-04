@@ -32,10 +32,10 @@ import team5.library.user.User;
  *
  * @author chanta
  */
-public class MemberList extends javax.swing.JFrame {
+public class MemberListFrame extends javax.swing.JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(MemberList.class);
+    private Logger log = Logger.getLogger(MemberListFrame.class);
     private SearchFrameOfUser searchFrame;
     private JButton backButton;
     private JButton deleteButton;
@@ -67,7 +67,7 @@ public class MemberList extends javax.swing.JFrame {
 
     private UserTableModel model;
 
-    public MemberList(DataExchanger dataE) {
+    public MemberListFrame(DataExchanger dataE) {
          this.dataE = dataE;
         initComponents();
     }

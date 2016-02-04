@@ -249,7 +249,7 @@ public class RegistrationFrame extends JFrame {
             //r.registrationUser(this.nameTextField.getText(), this.surnameTextField.getText(), 
             //this.countryTextField.getText(), this.sityTextField.getText(), this.loginTextField.getText(), this.passwordTextField.getText(), this.emailTextField.getText(), "12.05.2010")F
             if (f) {
-                LogIn logIn = new LogIn(dataE);
+                LogInFrame logIn = new LogInFrame(dataE);
                 logIn.setVisible(true);
                 this.setVisible(false);
             } else {
@@ -262,7 +262,7 @@ public class RegistrationFrame extends JFrame {
     }
 
     private void canselButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        LogIn logIn = new LogIn(dataE);
+        LogInFrame logIn = new LogInFrame(dataE);
         logIn.setVisible(true);
         this.setVisible(false);
     }

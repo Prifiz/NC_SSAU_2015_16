@@ -245,7 +245,7 @@ public class GameFrame extends JFrame {
         if (turnIndex.getCount() == gamerIndex.getCount()) {
             try {
                 dataE.write("Exit");
-                SelectRooms rooms = new SelectRooms(dataE);
+                RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                 rooms.setVisible(true);
                 this.setVisible(false);
@@ -257,7 +257,7 @@ public class GameFrame extends JFrame {
 
     private void rulesButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        Rules rules = new Rules();
+        RulesFrame rules = new RulesFrame();
         rules.setVisible(true);
     }
 

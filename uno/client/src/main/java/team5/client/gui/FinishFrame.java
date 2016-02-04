@@ -103,7 +103,7 @@ public class FinishFrame extends JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        SelectRooms rooms = new SelectRooms(dataE);
+        RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
         rooms.setVisible(true);
         this.setVisible(false);
     }

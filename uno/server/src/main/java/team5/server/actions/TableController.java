@@ -5,9 +5,9 @@
  */
 package team5.server.actions;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 import org.apache.log4j.Logger;
@@ -85,14 +85,10 @@ public class TableController {
     }
 
     public void loadNewPack() {
-        FileReader fr = null;
+        BufferedReader br = null;// BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName)));
         try {
-            fr = new FileReader("Cards.txt");
-        } catch (FileNotFoundException ex) {
-            log.debug(ex.getMessage());
-        }
-        try {
-            pack = FileHandler.readCards(fr);
+            br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/Cards.txt")));
+            pack = FileHandler.readCards(br);
         } catch (IOException ex) {
             log.debug(ex.getMessage());
         }

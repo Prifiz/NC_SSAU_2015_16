@@ -20,10 +20,10 @@ import team5.client.actions.DataExchanger;
  *
  * @author chanta
  */
-public class SelectRooms extends JFrame {
+public class RoomSelectionFrame extends JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(SelectRooms.class);
+    private Logger log = Logger.getLogger(RoomSelectionFrame.class);
     private javax.swing.JButton startButton;
     private javax.swing.JButton adminRoomButton;
     private javax.swing.JComboBox jComboBox;
@@ -36,7 +36,7 @@ public class SelectRooms extends JFrame {
      * @param in
      * @param out
      */
-    public SelectRooms(DataExchanger dataE) {
+    public RoomSelectionFrame(DataExchanger dataE) {
         this.dataE = dataE;
         initComponents();
     }
