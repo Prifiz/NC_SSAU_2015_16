@@ -14,8 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
-import team5.library.actions.WorkUser;
-import team5.library.transmissions.FileHandler;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.transmissions.FileHandler;
 
 /**
  *

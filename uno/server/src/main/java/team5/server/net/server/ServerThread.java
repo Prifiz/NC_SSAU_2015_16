@@ -19,9 +19,8 @@ import team5.server.actions.Registration;
 import team5.server.actions.RoomController;
 import team5.server.actions.SignIn;
 import team5.server.actions.TableController;
-import team5.library.card.Card;
-import team5.library.exceptions.UserExistException;
-import team5.library.transmissions.Commands;
+import team5.datamodel.card.Card;
+import team5.datamodel.exceptions.UserExistException;
 
 /**
  *
@@ -35,7 +34,6 @@ public class ServerThread extends Thread {
     private Logger log = Logger.getLogger(ServerThread.class);
     private Socket clientsocket;
     private DataExchanger dataE;
-    private Commands command;
 
     public ServerThread(Socket socket, RoomController[] r, int[] time) {
         waitTime = time;

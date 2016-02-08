@@ -13,9 +13,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import team5.library.user.*;
-import team5.library.user.admin.Admin;
-import team5.library.user.adress.Address;
+import team5.datamodel.user.*;
+import team5.datamodel.user.admin.Admin;
+import team5.datamodel.user.adress.Address;
 
 /**
  *

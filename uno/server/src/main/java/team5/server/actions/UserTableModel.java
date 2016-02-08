@@ -10,12 +10,12 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.event.TableModelListener;
-import team5.library.actions.WorkUser;
-import team5.library.exceptions.NotFoundException;
-import team5.library.exceptions.UserNotFoundException;
-import team5.library.searches.Search;
-import team5.library.searches.UserSearch;
-import team5.library.user.User;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.exceptions.NotFoundException;
+import team5.datamodel.exceptions.UserNotFoundException;
+import team5.datamodel.searches.Search;
+import team5.datamodel.searches.UserSearch;
+import team5.datamodel.user.User;
 
 /**
  *

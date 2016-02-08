@@ -29,10 +29,10 @@ import team5.client.actions.Counter;
 import team5.client.actions.DataExchanger;
 import team5.client.actions.Flag;
 import team5.client.actions.GameThread;
-import team5.library.actions.WorkUser;
-import team5.library.transmissions.FileHandler;
-import team5.library.card.Card;
-import team5.library.card.NumericCard;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.card.Card;
+import team5.datamodel.card.NumericCard;
 
 /**
  *

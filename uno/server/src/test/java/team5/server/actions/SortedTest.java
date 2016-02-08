@@ -7,8 +7,8 @@ package team5.server.actions;
 
 import org.junit.Before;
 import org.junit.Test;
-import team5.library.actions.WorkUser;
-import team5.library.exceptions.UserExistException;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.exceptions.UserExistException;
 
 /**
  *

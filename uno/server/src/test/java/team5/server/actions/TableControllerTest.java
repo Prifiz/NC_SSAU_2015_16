@@ -11,8 +11,8 @@ import java.io.FileReader;
 import java.io.Reader;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import team5.library.card.Card;
-import team5.library.card.NumericCard;
+import team5.datamodel.card.Card;
+import team5.datamodel.card.NumericCard;
 
 /**
  *

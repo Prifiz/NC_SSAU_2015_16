@@ -5,8 +5,8 @@
  */
 package team5.server.actions;
 
-import team5.library.actions.WorkUser;
-import team5.library.exceptions.*;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.exceptions.*;
 
 /**
  *
