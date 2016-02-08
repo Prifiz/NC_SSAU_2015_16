@@ -19,7 +19,6 @@ import team5.server.actions.TableController;
 import team5.library.card.Card;
 import team5.library.exceptions.UserExistException;
 import team5.library.transmissions.Commands;
-import team5.server.transmissions.Streams;
 
 /**
  *
@@ -33,7 +32,6 @@ public class ServerThread extends Thread {
     private Logger log = Logger.getLogger(ServerThread.class);
     private Socket clientsocket;
     private DataExchanger dataE;
-    private Streams streams;
     private Commands command;
 
     public ServerThread(Socket socket, RoomController[] r, int[] time) {
@@ -48,7 +46,6 @@ public class ServerThread extends Thread {
         boolean f = true;
         try {
             dataE = new DataExchanger(clientsocket.getInputStream(), clientsocket.getOutputStream());
-            streams = new Streams(clientsocket.getInputStream(), clientsocket.getOutputStream());
 
             String comand = "";
 
