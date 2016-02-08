@@ -10,8 +10,8 @@ import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import org.apache.log4j.Logger;
-import team5.library.card.Card;
-import team5.library.card.NumericCard;
+import team5.datamodel.card.Card;
+import team5.datamodel.card.NumericCard;
 
 /**
  *

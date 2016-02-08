@@ -9,8 +9,8 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
-import team5.library.transmissions.FileHandler;
-import team5.library.actions.WorkUser;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
@@ -23,7 +23,7 @@ import team5.client.actions.DataExchanger;
 public class LogInFrame extends JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(LogInFrame.class);
+    private Logger logger = Logger.getLogger(LogInFrame.class);
     private javax.swing.JButton signButton;
     private javax.swing.JButton registrationButton;
     private javax.swing.JLabel signLabel;
@@ -127,7 +127,7 @@ public class LogInFrame extends JFrame {
                 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 //                } 
                 catch (JAXBException ex) {
-                    log.debug(ex.getMessage());
+                    logger.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -164,7 +164,7 @@ public class LogInFrame extends JFrame {
             dataE.write(String.valueOf(jPasswordField.getPassword()));
             f = dataE.readBool();
         } catch (IOException e) {
-            log.debug(e.getMessage());
+            logger.debug(e.getMessage());
         }
 //        catch(JAXBException e){
 //            log.debug(e.getMessage());

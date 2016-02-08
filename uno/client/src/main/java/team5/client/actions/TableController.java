@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import org.apache.log4j.Logger;
-import team5.library.transmissions.FileHandler;
-import team5.library.card.Card;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.card.Card;
 
 /**
  *

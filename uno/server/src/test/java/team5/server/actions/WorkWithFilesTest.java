@@ -10,9 +10,9 @@ import java.io.Reader;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import team5.library.transmissions.FileHandler;
-import team5.library.card.Card;
-import team5.library.card.NumericCard;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.card.Card;
+import team5.datamodel.card.NumericCard;
 
 /**
  *

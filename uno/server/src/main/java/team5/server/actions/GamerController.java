@@ -6,8 +6,8 @@
 package team5.server.actions;
 
 import java.util.ArrayList;
-import team5.library.card.Card;
-import team5.library.exceptions.CardNotFoundException;
+import team5.datamodel.card.Card;
+import team5.datamodel.exceptions.CardNotFoundException;
 
 /**
  *

@@ -15,9 +15,9 @@
    
    <repositories>
         <repository>
-            <id>library</id>
-            <name>library</name>
-            <url>file:${project.build.directory}/library</url>
+            <id>datamodel</id>
+            <name>datamodel</name>
+            <url>file:${project.build.directory}/datamodel</url>
         </repository>
     </repositories> 
     
@@ -106,7 +106,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>library</artifactId>
+            <artifactId>datamodel</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

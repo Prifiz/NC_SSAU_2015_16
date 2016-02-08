@@ -10,9 +10,9 @@ import java.net.ServerSocket;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.server.actions.RoomController;
-import team5.library.actions.WorkUser;
-import team5.library.transmissions.FileHandler;
-import team5.library.exceptions.UserExistException;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.exceptions.UserExistException;
 
 /**
  *
