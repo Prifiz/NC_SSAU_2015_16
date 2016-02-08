@@ -15,12 +15,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class SimpleAddressInitializer implements AddressInitializer, Serializable {
 
+    private static final SimpleAddressInitializer simpleAddressInitializer = new SimpleAddressInitializer();
+
     public SimpleAddressInitializer() {
     }
 
+    @Override
     public Address initDefaultAddress() {
-
         return new Address("", "");
+    }
+
+    public static SimpleAddressInitializer getSimpleAddressInitializer() {
+        return simpleAddressInitializer;
     }
 
 }

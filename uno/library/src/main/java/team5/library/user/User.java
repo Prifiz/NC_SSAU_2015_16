@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
 public class User implements Serializable {
 
     private PrivateInformation privateInformation;
-    AddressInitializer addressInitializer = new SimpleAddressInitializer();
+    final private AddressInitializer addressInitializer = new SimpleAddressInitializer();
     private Address address = addressInitializer.initDefaultAddress();
     private ServiceInfo serviceInfo;
 
