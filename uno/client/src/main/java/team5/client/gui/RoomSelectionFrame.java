@@ -152,6 +152,7 @@ public class RoomSelectionFrame extends JFrame {
                 }
                 case "Full":
                     JOptionPane.showConfirmDialog(null, "This room is full. Select other room", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    break;
             }
             boolean f = dataE.readBool();
             if (f) {

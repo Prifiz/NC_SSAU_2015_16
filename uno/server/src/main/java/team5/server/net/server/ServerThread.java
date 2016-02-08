@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
+import team5.library.actions.WorkUser;
 import team5.server.actions.DataExchanger;
 import team5.server.actions.GamerController;
 import team5.server.actions.Registration;
@@ -19,6 +22,7 @@ import team5.server.actions.TableController;
 import team5.library.card.Card;
 import team5.library.exceptions.UserExistException;
 import team5.library.transmissions.Commands;
+import team5.library.transmissions.FileHandler;
 import team5.server.transmissions.Streams;
 
 /**
@@ -85,6 +89,16 @@ public class ServerThread extends Thread {
                     case "Registration":
                         Registration r = new Registration();
                         dataE.writeBool(r.registrationUser(dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString()));
+                        System.out.println("registration");
+                        try {
+                            WorkUser workUser = WorkUser.getWork();
+                            FileHandler workWithFiles = new FileHandler();
+                            //sd.serializableData("serializableData_WorkUser.bin", wu);
+                            workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
+                        } catch (JAXBException ex) {
+                            java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
                         break;
                     //
                     //выбор комнаты и ожидание игроков
@@ -353,7 +367,7 @@ public class ServerThread extends Thread {
                                 if (rooms[r].countGamers() == 0) {
                                     rooms[r].cleanRoom();
                                 }
-                                game=false;
+                                game = false;
                                 return;
                         }
                     }
