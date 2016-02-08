@@ -32,15 +32,19 @@ public class AdminRoom extends JFrame {
 
     public AdminRoom(DataExchanger dataE) {
         this.dataE = dataE;
+        initStartForm();
         initComponents();
+        initCloseOperation();
     }
 
-    @SuppressWarnings("unchecked")
-    private void initComponents() {
+    private void initStartForm() {
         setPreferredSize(new Dimension(400, 300));
         setLayout(null);
         this.setResizable(false);
         setTitle("Admin room");
+    }
+
+    private void initComponents() {
 
         memberListButton = new JButton();
         memberListButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -81,6 +85,9 @@ public class AdminRoom extends JFrame {
         add(adminLabel);
         adminLabel.setBounds(135, 30, 150, 30);
 
+    }
+
+    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -130,6 +137,7 @@ public class AdminRoom extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
+
     }
 
     private void memberListButtonActionPerformed(java.awt.event.ActionEvent evt) {

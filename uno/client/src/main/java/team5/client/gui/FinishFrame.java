@@ -30,15 +30,20 @@ public class FinishFrame extends JFrame {
 
     public FinishFrame(DataExchanger dataE) {
         this.dataE = dataE;
+        initStartFrame();
         initComponents();
+        initCloseOperation();
     }
 
-    @SuppressWarnings("unchecked")
-    private void initComponents() {
+    private void initStartFrame() {
         setPreferredSize(new Dimension(400, 300));
         setLayout(null);
         this.setResizable(false);
         setTitle("Finish game");
+    }
+
+    @SuppressWarnings("unchecked")
+    private void initComponents() {
 
         backButton = new JButton();
         backButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -57,6 +62,9 @@ public class FinishFrame extends JFrame {
         add(resultLabel);
         resultLabel.setBounds(135, 100, 150, 30);
 
+    }
+
+    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -107,6 +115,7 @@ public class FinishFrame extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
+
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {

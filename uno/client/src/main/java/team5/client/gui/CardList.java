@@ -44,28 +44,31 @@ public class CardList extends javax.swing.JFrame {
 
     private JLabel labicon;
     private JLabel labcolor;
-    
+
     private JScrollPane jScrollPane1;
     private JTable jTable1;
     private JPanel panel;
-    
-    private CardTableModel model;
-    
-     public CardList(DataExchanger  dataE) {
-        this.dataE = dataE;
-        initComponents();
-    }
-        
-     
-     private void initComponents() {
 
+    private CardTableModel model;
+
+    public CardList(DataExchanger dataE) {
+        this.dataE = dataE;
+        initStartFrame();
+        initComponents();
+        initCloseOperation();
+    }
+
+    private void initStartFrame() {
         searchFrame = new SearchFrameOfCard(dataE);
         setLayout(null);
         setBounds(200, 10, 710, 790);
         this.setLocationRelativeTo(null);
-        
+
         this.setResizable(false);
         setTitle("Card list");
+    }
+
+    private void initComponents() {
 
         panel = new JPanel();
         panel.setBorder(new TitledBorder("Add/delete cards"));
@@ -163,6 +166,9 @@ public class CardList extends javax.swing.JFrame {
         add(panel);
         add(jScrollPane1);
 
+    }
+
+    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -173,6 +179,7 @@ public class CardList extends javax.swing.JFrame {
             public void windowClosed(WindowEvent event) {
             }
 //TODO есть ли смысл тут писать аналог как для пользователя?
+
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
@@ -211,14 +218,14 @@ public class CardList extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
-     
-      private void deleteButtonActionPerfomed(ActionEvent evt) {
+
+    private void deleteButtonActionPerfomed(ActionEvent evt) {
         try {
             if ((jTable1.getSelectedRow() >= 0) && (jTable1.getSelectedRow() < WorkCard.getWork().getOfCountCards())) {
                 WorkCard.getWork().deleteCard(WorkCard.getWork().getArrOfCards().get(jTable1.getSelectedRow()).getIcon(),
                         WorkCard.getWork().getArrOfCards().get(jTable1.getSelectedRow()).getColor());
                 if (searchFrame.getSearchRequest() != null) {
-                    Search search=new CardSearch();
+                    Search search = new CardSearch();
                     model.setArrayOfCards((ArrayList<Card>) search.regularSearch(searchFrame.getSearchRequest()));
                 }
             }
@@ -234,7 +241,7 @@ public class CardList extends javax.swing.JFrame {
         try {
             WorkCard.getWork().addCard(Integer.parseInt(tficon.getText()), tfcolor.getText());
             if (searchFrame.getSearchRequest() != null) {
-                Search search=new CardSearch();
+                Search search = new CardSearch();
                 model.setArrayOfCards((ArrayList<Card>) search.regularSearch(searchFrame.getSearchRequest()));
             }
         } catch (NotFoundException ex) {
@@ -270,5 +277,4 @@ public class CardList extends javax.swing.JFrame {
         jTable1.repaint();
     }
 
-    
 }

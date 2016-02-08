@@ -1,2 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workUser/>
+<workUser>
+    <arrUsers>
+        <address>
+            <city>jkn</city>
+            <country>jkn</country>
+        </address>
+        <privateInformation>
+            <name>uhjb</name>
+            <surname>j</surname>
+            <bDay>0012-12-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>hjnk</email>
+            <login>kn</login>
+            <password>jkn</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>hjn</city>
+            <country>ijkijk</country>
+        </address>
+        <privateInformation>
+            <name>hijk</name>
+            <surname>hj</surname>
+            <bDay>0012-12-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>hjn</email>
+            <login>nk</login>
+            <password>ijkn</password>
+        </serviceInfo>
+    </arrUsers>
+</workUser>

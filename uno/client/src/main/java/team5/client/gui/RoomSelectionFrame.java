@@ -37,15 +37,18 @@ public class RoomSelectionFrame extends JFrame {
      */
     public RoomSelectionFrame(DataExchanger dataE) {
         this.dataE = dataE;
+        initStartFrame();
         initComponents();
+        initCloseOperation();
     }
 
-    @SuppressWarnings("unchecked")
-    private void initComponents() {
-
+    private void initStartFrame() {
         setPreferredSize(new Dimension(400, 300));
         setLayout(null);
         this.setResizable(false);
+    }
+
+    private void initComponents() {
 
         selectLabel = new JLabel();
         selectLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -81,6 +84,9 @@ public class RoomSelectionFrame extends JFrame {
             }
         });
 
+    }
+
+    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -130,7 +136,7 @@ public class RoomSelectionFrame extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }
 
     private void adminRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
         AdminRoom adminRoom = new AdminRoom(dataE);

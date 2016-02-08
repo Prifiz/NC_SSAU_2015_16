@@ -5,6 +5,7 @@
  */
 package team5.client.gui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -43,7 +44,9 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
 
     public SearchFrameOfUser(DataExchanger dataE) {
         this.dataE = dataE;
+        initStartFrame();
         initComponents();
+        initCloseOperation();
     }
 
     public SearchFrameOfUser(JTable table, UserTableModel model, MemberListFrame memList) {
@@ -51,7 +54,9 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         //this.fields=fields;
         memberList = memList;
         this.model = model;
+        initStartFrame();
         initComponents();
+        initCloseOperation();
     }
 
     public String getSearchRequest() {
@@ -70,14 +75,15 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         this.searchRequest = searchRequest;
     }
 
-    @SuppressWarnings("unchecked")
+    private void initStartFrame() {
+        setPreferredSize(new Dimension(400, 250));
+        setLayout(null);
+        this.setResizable(false);
+        setTitle("Search users");
+    }
 
     private void initComponents() {
 
-        setBounds(200, 10, 400, 250);
-        this.setLocationRelativeTo(null);
-        setLayout(null);
-        setTitle("Search users");
 
         panel = new JPanel();
         panel.setBorder(new TitledBorder("Search users"));
@@ -127,11 +133,14 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         panel.add(tfsearch);
         tfsearch.setBounds(30, 30, 300, 30);
 
-//        
         add(panel);
-//        
 
+    }
+
+    private void initCloseOperation() {
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        pack();
+        this.setLocationRelativeTo(null);
     }
 
     private void searchCheckBoxPerformed(ItemEvent evt) {
