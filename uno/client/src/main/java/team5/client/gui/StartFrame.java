@@ -18,7 +18,7 @@ import team5.library.transmissions.FileHandler;
 import team5.library.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
-import team5.client.transmissions.Streams;
+import team5.client.net.ClientSocket;
 
 /**
  *
@@ -146,21 +146,25 @@ public class StartFrame extends JFrame {
     }
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        int serverport = 8081;
-        String address = /*"192.168.43.197"*/ "127.0.0.1";
-        InputStream in = null;
-        OutputStream out = null;
+//        int serverport = 8081;
+//        String address = /*"192.168.43.197"*/ "127.0.0.1";
+//        InputStream in = null;
+//        OutputStream out = null;
         try {
-            InetAddress ipaddress = InetAddress.getByName(address);
-            Socket socket = new Socket(ipaddress, serverport);
-            in = socket.getInputStream();
-            out = socket.getOutputStream();
-            Streams streams = new Streams(in, out);
-            log.info("Connect to server");
-            DataExchanger dataE = new DataExchanger(in, out);
-            LogInFrame liginFrame = new LogInFrame(dataE);
-            liginFrame.setVisible(true);
-            this.dispose();
+//            InetAddress ipaddress = InetAddress.getByName(address);
+//            Socket socket = new Socket(ipaddress, serverport);
+//            in = socket.getInputStream();
+//            out = socket.getOutputStream();
+//            Streams streams = new Streams(in, out);
+//            log.info("Connect to server");
+            
+            ClientSocket clientSocket = new ClientSocket();
+            clientSocket.connection();
+            
+            DataExchanger dataE = new DataExchanger(clientSocket.getInputStream(), clientSocket.getOutputStream());//временно остаивил
+            LogInFrame loginFrame = new LogInFrame(dataE);//временно остаивил
+            loginFrame.setVisible(true);
+            this.setVisible(false);
         } catch (IOException e) {
             JOptionPane.showConfirmDialog(null, "You didn't connect to server. Please try agane", "Oops", JOptionPane.CLOSED_OPTION);
             log.debug(e.getMessage());
