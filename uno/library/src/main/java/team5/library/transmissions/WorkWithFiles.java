@@ -10,6 +10,8 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StreamTokenizer;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import javax.xml.XMLConstants;
@@ -98,47 +100,58 @@ public class WorkWithFiles {
     /**
      * Method marshalles Commands object and write it to stream
      *
-     * @param outputStream
-     * @param command
+     * @param writer
+     * @param message
      * @throws JAXBException
      */
-    public static void marshalData(OutputStream outputStream, Request command) throws JAXBException {
+    public static void marshalData(StringWriter writer, Message message) throws JAXBException {
         //TODO пока сделал статик. не решил как лучше
-        JAXBContext context = JAXBContext.newInstance(command.getClass());
+        JAXBContext context = JAXBContext.newInstance(message.getClass());
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(command, new File("marsh.xml"));
-        marshaller.marshal(command, outputStream);
+        marshaller.marshal(message, new File("marsh.xml"));
+         marshaller.marshal(message, writer);
+    }
+    
+     public static StringWriter marshalData( Message request) throws JAXBException {
+        //TODO пока сделал статик. не решил как лучше
+        StringWriter writer=new StringWriter();
+        JAXBContext context = JAXBContext.newInstance(request.getClass());
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(request, new File("marsh.xml"));
+         marshaller.marshal(request, writer);
+         return writer;
     }
 
     /**
      * Method unmarshalles Commands object from stream
      *
-     * @param inputStream
-     * @return Commands
+     * @param reader
+     * @return Request
      * @throws JAXBException
      */
-    public static Request unmarshalData(InputStream inputStream) throws JAXBException {
+    public static Message unmarshalData(StringReader reader) throws JAXBException {
         //TODO пока сделал статик. не решил как лучше
-        JAXBContext context = JAXBContext.newInstance(Request.class);
+        JAXBContext context = JAXBContext.newInstance(Message.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
 //        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 //        File file=new File("requestXmlSchema.xsd");
 //        Schema schema = schemaFactory.newSchema(file);
 //        unmarshaller.setSchema(schema);
-        Request command = (Request) unmarshaller.unmarshal(inputStream);
+        Message command = (Message) unmarshaller.unmarshal(reader);
         return command;
     }
     //эксперимент
-    public static Request unmarshalData(XMLStreamReader inputStream) throws JAXBException {
+    public static Message unmarshalData(XMLStreamReader inputStream) throws JAXBException {
         //TODO пока сделал статик. не решил как лучше
-        JAXBContext context = JAXBContext.newInstance(Request.class);
+        JAXBContext context = JAXBContext.newInstance(Message.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
 //        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 //        File file=new File("requestXmlSchema.xsd");
 //        Schema schema = schemaFactory.newSchema(file);
 //        unmarshaller.setSchema(schema);
-        Request command = (Request) unmarshaller.unmarshal(inputStream);
+        Message command = (Message) unmarshaller.unmarshal(inputStream);
         return command;
     }
 

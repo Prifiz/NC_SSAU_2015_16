@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,6 +10,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
 
 /**
  *
@@ -25,19 +26,26 @@ public class DataExchange {
         this.out = out;
     }
     
-    public void writeString(String command) throws IOException
+    public void write(String command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeUTF(command);
         dout.flush();
     }
-    public void writeInt(int command) throws IOException
+    
+     public void write(StringWriter writer) throws IOException
+    {
+        DataOutputStream dout = new DataOutputStream(out);
+        dout.writeUTF(writer.toString());
+        dout.flush();
+    }
+    public void write(int command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeInt(command);
         dout.flush();
     }
-    public void writeBool(boolean command) throws IOException
+    public void write(boolean command) throws IOException
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeBoolean(command);
@@ -58,7 +66,12 @@ public class DataExchange {
         DataInputStream din = new DataInputStream(in);
         return din.readBoolean();
     }
-    
+    public StringReader readStringReader() throws IOException
+    {
+        DataInputStream din = new DataInputStream(in);
+        String string=din.readUTF();
+        return new StringReader(string);
+    }
     
     
 }

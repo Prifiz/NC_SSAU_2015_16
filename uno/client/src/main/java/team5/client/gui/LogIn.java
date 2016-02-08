@@ -10,6 +10,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import team5.library.transmissions.WorkWithFiles;
 import team5.library.transmissions.*;
 import team5.library.actions.WorkUser;
@@ -164,24 +166,30 @@ public class LogIn extends JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {  
         boolean f = false;
         try{
-            Request request=new Request("Login");
+            Message message=new Message("Login");
             User usr=new User();
             usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
 //        dataE.write("Login");
 //        dataE.write(jLoginField.getText());
 //        dataE.write(String.valueOf(jPasswordField.getPassword()));
-        request.setUser(usr);
-        WorkWithFiles.marshalData(Streams.getOutputStream(), request);
-        f = dataE.readBool();
-            System.out.println("dataE.readBool()+ "+dataE.readBool());
+        message.setUser(usr);
+                //StringWriter writer = new StringWriter();                
+//        WorkWithFiles.marshalData(writer, request);
+//        dataE.write(writer);
+        dataE.write(WorkWithFiles.marshalData( message));
+        Message serverMessage = WorkWithFiles.unmarshalData(dataE.readStringReader());
+        f=serverMessage.getConfirmation();
+        //f = dataE.readBool();
+           // System.out.println("dataE.readBool()+ "+dataE.readBool());
         }
         catch(IOException e)
         {
             log.debug(e.getMessage());
         }
         catch(JAXBException e){
-            log.debug(e.getMessage());
-        }        
+            log.debug("<Бред: "+e.getMessage());
+        }    
+        
         //SignIn sign = new SignIn();
         // WorkUser wu = WorkUser.getWork();
         //sign.sign(this.jTextField.getText(), this.jPasswordField.getPassword())

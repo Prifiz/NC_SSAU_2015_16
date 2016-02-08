@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:Message xmlns:ns2="http://request.com">
+    <ns2:command></ns2:command>
+    <ns2:confirmation>true</ns2:confirmation>
+</ns2:Message>

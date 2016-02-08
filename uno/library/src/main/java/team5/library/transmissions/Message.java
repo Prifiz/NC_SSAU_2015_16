@@ -12,18 +12,23 @@ import team5.library.user.User;
  * @author Dmitry
  */
 //@XmlType(namespace = "http://www.example.org/package")
-@XmlRootElement(name = "Request")
+@XmlRootElement(name = "Message")
 
-public class Request implements Serializable {
+public class Message implements Serializable {
 
     private String command = "";
     private User user;
+    private boolean confirmation;
 
-    public Request(String command) {
+    public Message(String command) {
         this.command = command;
     }
+    
+    public Message(boolean confirmation) {
+        this.confirmation = confirmation;
+    }
 
-    public Request() {
+    public Message() {
     }
 
     public void setCommand(String command) {
@@ -41,5 +46,13 @@ public class Request implements Serializable {
 
     public User getUser() {
         return user;
+    }
+    
+     public void setConfirmation(boolean confirmation) {
+        this.confirmation = confirmation;
+    }
+
+    public boolean getConfirmation() {
+        return confirmation;
     }
 }

@@ -20,7 +20,7 @@ import team5.server.actions.SignIn;
 import team5.server.actions.TableController;
 import team5.library.card.Card;
 import team5.library.exceptions.UserExistException;
-import team5.library.transmissions.Request;
+import team5.library.transmissions.Message;
 import team5.library.transmissions.WorkWithFiles;
 import team5.server.transmissions.Streams;
 import javax.xml.stream.XMLInputFactory;
@@ -41,7 +41,7 @@ public class ServerThread extends Thread {
     private Socket clientsocket;
     private DataExchange dataE;
     private Streams streams;
-    private Request request;
+    private Message message;
 
     public ServerThread(Socket socket, RoomController[] r, int[] time) {
         waitTime = time;
@@ -64,43 +64,33 @@ public class ServerThread extends Thread {
 //                System.out.println("Com "+ comand);
                 try {
                     System.out.println("Com " + comand);
-                    XMLInputFactory factory = XMLInputFactory.newFactory();
-                    try {//эксперимент
-                        XMLStreamReader streamReader = factory.createXMLStreamReader(streams.getInputStream());
-                        request = WorkWithFiles.unmarshalData(streamReader);
-                        comand = request.getCommand();
-                        System.out.println("Com2 " + comand);
-                    } catch (XMLStreamException e) {
-                        System.out.println(e);
-                    }
-                    String tst;
-                    tst = dataE.readString();
-                    System.out.println(tst);
-                    System.out.println("");
-                    request = WorkWithFiles.unmarshalData(streams.getInputStream());
+                    
+                    message = WorkWithFiles.unmarshalData(dataE.readStringReader());
 
-                    comand = request.getCommand();
+                    comand = message.getCommand();
                     System.out.println("Com2 " + comand);
                 } catch (JAXBException e) {
                     System.out.println("Ошибка JAXB ");
                     log.debug("JAXB " + e.getMessage());
                 }
-                System.out.println("This is command: " + request.getCommand());
-//                if (comand=="1") {
-//                    comand=command.getCommand();
-//                }
-//                comand=command.getCommand();
-//                   System.out.println("Com "+ comand);
-                switch (comand) {
+                System.out.println("This is command: " + message.getCommand());
+                switch (message.getCommand()) {
                     //
                     //вход в игру
                     //
                     case "Login":
+                        System.out.println("Попали внутрь свича");
                         SignIn sign = new SignIn();
                         //String login = dataE.readString();
-                        String login = request.getUser().getServiceInfo().getLogin();
-                        //dataE.writeBool(sign.sign(login, dataE.readString()));
-                        dataE.writeBool(sign.sign(login, request.getUser().getServiceInfo().getPassword()));
+                        String login = message.getUser().getServiceInfo().getLogin();
+                        //dataE.write(sign.sign(login, dataE.readString()));
+                         Message serverMessage=new Message(sign.sign(login, message.getUser().getServiceInfo().getPassword()));
+                         try{   
+                             dataE.write(WorkWithFiles.marshalData(serverMessage));
+                         }catch(JAXBException e){
+                             log.debug(e.getMessage());
+                         }
+                        //dataE.write(sign.sign(login, message.getUser().getServiceInfo().getPassword()));
                         //System.out.println("OPOP"+sign.sign(login, command.getUser().getServiceInfo().getPassword()));
                         gamer = new GamerController(login);
                         break;
@@ -109,7 +99,7 @@ public class ServerThread extends Thread {
                     //
                     case "Registration":
                         Registration r = new Registration();
-                        dataE.writeBool(r.registrationUser(dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString()));
+                        dataE.write(r.registrationUser(dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString()));
                         break;
                     //
                     //выбор комнаты и ожидание игроков
@@ -119,7 +109,7 @@ public class ServerThread extends Thread {
                         switch (str) {
                             case "Room 1":
                                 if ((rooms[0].countGamers() < 4) && (rooms[0].isPlaying() == false)) {//если кол-во игроков в комнате меньше 4 и игра не начата то идем дальше
-                                    dataE.writeString("Wait");//заставлем ждать
+                                    dataE.write("Wait");//заставлем ждать
                                     rooms[0].addGamer(gamer);//добавляем игрока в комнату(нужно будет очистить комнату после игры)
                                     if (rooms[0].countGamers() == 1) {//если он там один, запускаем таймер(стремный таймер)
                                         for (int i = 0; i < 30; i++) {
@@ -132,11 +122,11 @@ public class ServerThread extends Thread {
                                         }
                                         waitTime[0] = 0;//обнуляем таймер для этой комнаты
                                         if (rooms[0].countGamers() > 1) {//если игроков больше 1
-                                            dataE.writeBool(true);//разрешаем клиенту начать игру
+                                            dataE.write(true);//разрешаем клиенту начать игру
                                             rooms[0].setPlaying(true);//устанавливаем, что в комнате идет игра
                                             game(0, gamer);
                                         } else {
-                                            dataE.writeBool(false);//иначе запрещаем начинать игру в этой комнате
+                                            dataE.write(false);//иначе запрещаем начинать игру в этой комнате
                                         }
                                     } else {
                                         for (int i = waitTime[0]; i < 30; i++) {//если же клиент не первый в этой комнате, запускаем таймер начиная с текущего значение(криво сделано, надо другое решение искать)
@@ -146,19 +136,19 @@ public class ServerThread extends Thread {
                                                 log.debug(ex.getMessage());
                                             }
                                         }
-                                        dataE.writeBool(true);//разрешаем игру
+                                        dataE.write(true);//разрешаем игру
                                         rooms[0].setPlaying(true);//устанавливаем, что в комнате идет игра
                                         game(0, gamer);
                                     }
 
                                 } else {
-                                    dataE.writeString("Full");//если же первый if не выполнился, выводи сообщение
-                                    dataE.writeBool(false);//запрещаем игру
+                                    dataE.write("Full");//если же первый if не выполнился, выводи сообщение
+                                    dataE.write(false);//запрещаем игру
                                 }
                                 break;
                             case "Room 2":
                                 if ((rooms[1].countGamers() < 4) && (rooms[1].isPlaying() == false)) {
-                                    dataE.writeString("Wait");
+                                    dataE.write("Wait");
                                     rooms[1].addGamer(gamer);
                                     if (rooms[1].countGamers() == 1) {
                                         for (int i = 0; i < 30; i++) {
@@ -171,10 +161,10 @@ public class ServerThread extends Thread {
                                         }
                                         waitTime[1] = 0;
                                         if (rooms[1].countGamers() > 1) {
-                                            dataE.writeBool(true);
+                                            dataE.write(true);
                                             rooms[1].setPlaying(true);
                                         } else {
-                                            dataE.writeBool(false);
+                                            dataE.write(false);
                                         }
                                     } else {
                                         for (int i = waitTime[1]; i < 30; i++) {
@@ -184,17 +174,17 @@ public class ServerThread extends Thread {
                                                 log.debug(ex.getMessage());
                                             }
                                         }
-                                        dataE.writeBool(true);
+                                        dataE.write(true);
                                     }
 
                                 } else {
-                                    dataE.writeString("Full");
-                                    dataE.writeBool(false);
+                                    dataE.write("Full");
+                                    dataE.write(false);
                                 }
                                 break;
                             case "Room 3":
                                 if ((rooms[2].countGamers() < 4) && (rooms[2].isPlaying() == false)) {
-                                    dataE.writeString("Wait");
+                                    dataE.write("Wait");
                                     rooms[2].addGamer(gamer);
                                     if (rooms[2].countGamers() == 1) {
                                         for (int i = 0; i < 30; i++) {
@@ -207,10 +197,10 @@ public class ServerThread extends Thread {
                                         }
                                         waitTime[2] = 0;
                                         if (rooms[2].countGamers() > 1) {
-                                            dataE.writeBool(true);
+                                            dataE.write(true);
                                             rooms[2].setPlaying(true);
                                         } else {
-                                            dataE.writeBool(false);
+                                            dataE.write(false);
                                         }
                                     } else {
                                         for (int i = waitTime[2]; i < 30; i++) {
@@ -220,17 +210,17 @@ public class ServerThread extends Thread {
                                                 log.debug(ex.getMessage());
                                             }
                                         }
-                                        dataE.writeBool(true);
+                                        dataE.write(true);
                                     }
 
                                 } else {
-                                    dataE.writeString("Full");
-                                    dataE.writeBool(false);
+                                    dataE.write("Full");
+                                    dataE.write(false);
                                 }
                                 break;
                             case "Room 4":
                                 if ((rooms[3].countGamers() < 4) && (rooms[3].isPlaying() == false)) {
-                                    dataE.writeString("Wait");
+                                    dataE.write("Wait");
                                     rooms[3].addGamer(gamer);
                                     if (rooms[3].countGamers() == 1) {
                                         for (int i = 0; i < 30; i++) {
@@ -243,10 +233,10 @@ public class ServerThread extends Thread {
                                         }
                                         waitTime[3] = 0;
                                         if (rooms[3].countGamers() > 1) {
-                                            dataE.writeBool(true);
+                                            dataE.write(true);
                                             rooms[3].setPlaying(true);
                                         } else {
-                                            dataE.writeBool(false);
+                                            dataE.write(false);
                                         }
                                     } else {
                                         for (int i = waitTime[0]; i < 30; i++) {
@@ -256,12 +246,12 @@ public class ServerThread extends Thread {
                                                 log.debug(ex.getMessage());
                                             }
                                         }
-                                        dataE.writeBool(true);
+                                        dataE.write(true);
                                     }
 
                                 } else {
-                                    dataE.writeString("Full");
-                                    dataE.writeBool(false);
+                                    dataE.write("Full");
+                                    dataE.write(false);
                                 }
                                 break;
 
@@ -280,20 +270,20 @@ public class ServerThread extends Thread {
 
     private void game(int r, GamerController gamer) {
         try {
-            dataE.writeString(gamer.getGamerLogin());
+            dataE.write(gamer.getGamerLogin());
             int k = rooms[r].countGamers();
-            dataE.writeInt(k);
+            dataE.write(k);
             ArrayList<GamerController> gamers = rooms[r].getGamers();
             for (int i = 0; i < gamers.size(); i++) {
-                dataE.writeString(gamers.get(i).getGamerLogin());
+                dataE.write(gamers.get(i).getGamerLogin());
             }
             TableController table = rooms[r].getTableController();
             Card card = null;
             for (int j = 0; j < 7; j++) {
                 card = table.getCardFromPack();
                 rooms[r].getGamer(gamer.getGamerLogin()).addCardToHand(card);
-                dataE.writeInt(card.getIcon());
-                dataE.writeString(card.getColor());
+                dataE.write(card.getIcon());
+                dataE.write(card.getColor());
             }
             boolean f = true;
             while (f) {
@@ -313,17 +303,17 @@ public class ServerThread extends Thread {
                         }
                         switch (command) {
                             case "Pass":
-                                dataE.writeString(command);
+                                dataE.write(command);
                                 break;
                             case "TakeCard":
-                                dataE.writeString(command);
+                                dataE.write(command);
                                 order--;
                                 break;
                             case "END TURN":
-                                //dataE.writeInt(5);
-                                dataE.writeString("END TURN");
-                                dataE.writeInt(table.getLastCard().getIcon());
-                                dataE.writeString(table.getLastCard().getColor());
+                                //dataE.write(5);
+                                dataE.write("END TURN");
+                                dataE.write(table.getLastCard().getIcon());
+                                dataE.write(table.getLastCard().getColor());
                                 break;
                         }
                     }
@@ -342,16 +332,16 @@ public class ServerThread extends Thread {
                             case "TakeCard":
                                 card = table.getCardFromPack();
                                 rooms[r].getGamer(gamer.getGamerLogin()).addCardToHand(card);
-                                dataE.writeInt(card.getIcon());
-                                dataE.writeString(card.getColor());
+                                dataE.write(card.getIcon());
+                                dataE.write(card.getColor());
                                 rooms[r].getGamer(order).setAct(command);
                                 break;
                             case "END TURN":
                                 card = rooms[r].getGamer(gamer.getGamerLogin()).searchCardInHand(dataE.readString());
-                                dataE.writeInt(card.getIcon());
-                                dataE.writeString(card.getColor());
+                                dataE.write(card.getIcon());
+                                dataE.write(card.getColor());
                                 if (table.isRightCard(card)) {
-                                    dataE.writeBool(table.isRightCard(card));
+                                    dataE.write(table.isRightCard(card));
                                     table.setLastCard(card);
                                     rooms[r].getGamer(order).setAct(command);
                                     order++;
@@ -375,17 +365,17 @@ public class ServerThread extends Thread {
                         }
                         switch (command) {
                             case "Pass":
-                                dataE.writeString(command);
+                                dataE.write(command);
                                 break;
                             case "TakeCard":
-                                dataE.writeString(command);
+                                dataE.write(command);
                                 order--;
                                 break;
                             case "END TURN":
-                                //dataE.writeInt(5);
-                                dataE.writeString("END TURN");
-                                dataE.writeInt(table.getLastCard().getIcon());
-                                dataE.writeString(table.getLastCard().getColor());
+                                //dataE.write(5);
+                                dataE.write("END TURN");
+                                dataE.write(table.getLastCard().getIcon());
+                                dataE.write(table.getLastCard().getColor());
                                 break;
                         }
                     }

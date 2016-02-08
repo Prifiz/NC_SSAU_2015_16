@@ -10,6 +10,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
 
 /**
  *
@@ -28,6 +30,13 @@ public class DataExchange {
     {
         DataOutputStream dout = new DataOutputStream(out);
         dout.writeUTF(command);
+        dout.flush();
+    }
+    
+     public void write(StringWriter writer) throws IOException
+    {
+        DataOutputStream dout = new DataOutputStream(out);
+        dout.writeUTF(writer.toString());
         dout.flush();
     }
     public void write(int command) throws IOException
@@ -56,6 +65,12 @@ public class DataExchange {
     {
         DataInputStream din = new DataInputStream(in);
         return din.readBoolean();
+    }
+    public StringReader readStringReader() throws IOException
+    {
+        DataInputStream din = new DataInputStream(in);
+        String string=din.readUTF();
+        return new StringReader(string);
     }
     
     
