@@ -42,6 +42,7 @@ public class ServiceInfo implements Serializable {
 
     public LocalDate getDateOfRegistration() {
         return dateOfRegistration;
+        //TODO дата рождения еще должна быть где то
     }
 
     public String getLogin() {

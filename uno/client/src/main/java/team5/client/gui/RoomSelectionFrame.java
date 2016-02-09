@@ -15,6 +15,7 @@ import team5.datamodel.transmissions.FileHandler;
 import team5.datamodel.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
+import team5.datamodel.transmissions.MessageHandler;
 
 /**
  *
@@ -28,6 +29,7 @@ public class RoomSelectionFrame extends JFrame {
     private javax.swing.JButton adminRoomButton;
     private javax.swing.JComboBox jComboBox;
     private javax.swing.JLabel selectLabel;
+    private MessageHandler messageHandler;
 
     /**
      * Creates new form SelectRooms
@@ -37,6 +39,11 @@ public class RoomSelectionFrame extends JFrame {
      */
     public RoomSelectionFrame(DataExchanger dataE) {
         this.dataE = dataE;
+        initComponents();
+    }
+    
+    public RoomSelectionFrame(MessageHandler messageHandler) {
+        this.messageHandler = messageHandler;
         initComponents();
     }
 
@@ -133,13 +140,13 @@ public class RoomSelectionFrame extends JFrame {
     }// </editor-fold>                        
 
     private void adminRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminRoom adminRoom = new AdminRoom(dataE);
+        AdminRoom adminRoom = new AdminRoom(messageHandler);
         adminRoom.setVisible(true);
         //MemberList list = new MemberList();
         //list.setVisible(true);
         this.setVisible(false);
     }
-
+//TODO Остановился тут.Силы иссякли.
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             dataE.write("Select");

@@ -5,6 +5,7 @@
  */
 package team5.server.actions;
 
+import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 import team5.datamodel.actions.WorkUser;
@@ -34,8 +35,8 @@ public class MarshalAndUnmarshalTest {
     @Test
     public void testMarshalData() throws Exception {
         WorkUser workUser = WorkUser.getWork();
-        workUser.addUser("bob4", "Clark", "Usa", "XX", "1", "1", "email@gmail.com", "19.12.2012");
-        workUser.addUser("bob", "Cl", "UCanada", "XxxxX", "sffscsdf", "1ds234", "email1234@gmail.com", "13.07.2002");
+        workUser.addUser("bob4", "Clark", "Usa", "XX", "1", "1", "email@gmail.com", LocalDate.parse("19.12.2012"));
+        workUser.addUser("bob", "Cl", "UCanada", "XxxxX", "sffscsdf", "1ds234", "email1234@gmail.com", LocalDate.parse("13.07.2002"));
         workWithFiles.marshalData(fileName, workUser);
     }
 
