@@ -567,3 +567,40 @@
 09:19:01,051 DEBUG main Server:main:49 - User already exist
 09:19:03,707  INFO main Server:main:63 - Client connected
 09:19:17,299 DEBUG Thread-1 ServerThread:run:249 - Connection reset
+12:24:14,036 DEBUG main Server:main:49 - User already exist
+12:41:02,505 DEBUG main Server:main:49 - User already exist
+12:42:22,665  INFO main Server:main:63 - Client connected
+12:42:41,831  INFO main Server:main:63 - Client connected
+12:42:59,004  INFO main Server:main:63 - Client connected
+12:46:21,544 DEBUG Thread-2 ServerThread:game:400 - Connection reset
+12:46:21,544 DEBUG Thread-2 ServerThread:run:249 - Connection reset
+12:46:40,609 DEBUG main Server:main:49 - User already exist
+12:47:29,132  INFO main Server:main:63 - Client connected
+12:47:45,349  INFO main Server:main:63 - Client connected
+12:48:00,705  INFO main Server:main:63 - Client connected
+12:49:35,946 DEBUG Thread-2 ServerThread:game:400 - Connection reset
+12:49:35,946 DEBUG Thread-2 ServerThread:run:249 - Connection reset
+12:52:07,976 DEBUG main Server:main:49 - User already exist
+12:53:30,327  INFO main Server:main:63 - Client connected
+12:53:49,050  INFO main Server:main:63 - Client connected
+12:54:06,775  INFO main Server:main:63 - Client connected
+12:59:41,774 DEBUG Thread-2 ServerThread:game:400 - Connection reset
+12:59:41,789 DEBUG Thread-2 ServerThread:run:249 - Connection reset
+13:00:51,151 DEBUG main Server:main:49 - User already exist
+13:01:58,810  INFO main Server:main:63 - Client connected
+13:02:16,231  INFO main Server:main:63 - Client connected
+13:02:29,608  INFO main Server:main:63 - Client connected
+13:06:35,353 DEBUG Thread-2 ServerThread:run:249 - Connection reset
+13:06:42,064 DEBUG Thread-1 ServerThread:run:249 - Connection reset
+13:31:37,631 DEBUG main Server:main:49 - User already exist
+13:31:37,646 DEBUG main Server:main:56 - Address already in use: JVM_Bind
+13:32:00,504  INFO main Server:main:63 - Client connected
+13:32:09,024 DEBUG Thread-4 ServerThread:run:252 - Registration User already exist
+13:32:45,595  INFO main Server:main:63 - Client connected
+13:32:55,294 DEBUG Thread-5 ServerThread:run:252 - Registration User already exist
+13:33:21,826 DEBUG main Server:main:49 - User already exist
+13:35:13,181  INFO main Server:main:63 - Client connected
+13:35:44,076  INFO main Server:main:63 - Client connected
+13:35:57,162  INFO main Server:main:63 - Client connected
+13:42:09,556 DEBUG Thread-3 ServerThread:run:249 - Connection reset
+13:42:10,108 DEBUG Thread-1 ServerThread:run:249 - Connection reset

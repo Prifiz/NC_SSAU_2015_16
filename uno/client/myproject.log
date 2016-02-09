@@ -1,106 +1,16 @@
-<<<<<<< HEAD
-04:21:50,139  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-04:31:48,006  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-04:35:22,516  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-04:52:41,942  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-04:56:01,041  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-04:59:25,675  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-05:01:13,672  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-11:35:27,991  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-11:50:48,517  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-11:51:26,336  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-11:56:09,076  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-12:14:36,106  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-12:15:13,506  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
-=======
-<<<<<<< HEAD
-11:44:22,763 DEBUG main Main:main:84 - User already exist
-11:44:24,775 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
-11:58:45,237 DEBUG main Main:main:84 - User already exist
-11:59:01,823 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:157 - Connection refused
-12:01:11,012 DEBUG main Main:main:84 - User already exist
-12:04:18,803  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
-21:58:54,416 DEBUG main Main:main:84 - User already exist
-21:59:12,172  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
-22:09:12,434 DEBUG main Main:main:84 - User already exist
-22:09:44,636  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
-22:32:52,810  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
-18:41:49,025 DEBUG main Main:main:84 - User already exist
-18:42:27,313 DEBUG main Main:main:84 - User already exist
-18:42:37,247 DEBUG main Main:main:84 - User already exist
-18:42:45,967 DEBUG main Main:main:84 - User already exist
-18:42:48,639  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
-18:20:33,981  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
-18:22:21,388  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
-18:40:54,323  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-19:38:16,426  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-19:39:12,771  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-19:40:15,030  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-19:49:20,925 DEBUG main Main:main:42 - 
-19:49:27,016  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-19:54:24,980 DEBUG main Main:main:42 - 
-19:54:29,233  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-19:55:33,132  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-19:57:16,770  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-19:58:08,039  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:00:38,837  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:01:45,931  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:13:19,664 DEBUG main Main:main:42 - 
-20:13:25,651  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-21:09:19,463  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:19:26,270  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:34:48,641 DEBUG AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:153 - Connection refused: connect
-20:37:26,232  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:49:03,702  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:50:50,021  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:51:23,286  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:51:59,488  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-01:20:39,660  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-01:23:27,883  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-01:25:15,083  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-01:25:46,827  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-01:28:53,060  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-02:12:14,028  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-06:13:54,404  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-06:16:05,004  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-06:19:20,724  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-06:20:42,411  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-06:29:20,476  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-06:30:17,045 DEBUG AWT-EventQueue-0 LogIn:jButton1ActionPerformed:172 - Connection reset
-06:31:31,341  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-06:32:09,259 DEBUG AWT-EventQueue-0 LogIn:jButton1ActionPerformed:172 - Connection reset
-06:34:33,691  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-<<<<<<< HEAD
-21:59:23,338  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-22:04:00,375  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-23:09:33,356  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-23:23:12,709  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-23:26:23,643 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:239 - 
-23:26:35,510 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:239 - 
-23:28:47,788 DEBUG AWT-EventQueue-0 MemberList:deleteButtonActionPerfomed:224 - 
-01:27:40,476  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-=======
 23:23:19,956  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 23:56:31,467  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 01:03:03,486  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 01:03:47,993 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:312 - User already exist
->>>>>>> 953e870badf0b9d1c8c9ecaab8e00439f456612e
 22:01:04,450 DEBUG main StartFrame:main:191 - 
 22:01:13,740  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 22:43:35,729  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 22:46:28,252  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 23:56:46,807  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 00:02:20,980  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-<<<<<<< HEAD
-20:39:56,523  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:42:49,321  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:47:59,733  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-20:48:10,837  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
-=======
 13:35:04,984 DEBUG main Main:main:42 - Unable to create an instance of team5.client.user.User
 13:40:26,113  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 13:49:20,101  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
->>>>>>> a33f94e94560cfeb6beeed4f546b6747614b7cf4
 03:12:21,450  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 03:40:23,226  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:149 - Connect to server
 03:41:49,687 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:322 - 
@@ -292,12 +202,21 @@
 00:04:56,469  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
 00:07:29,233  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
 00:08:17,902  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:151 - Connect to server
-=======
->>>>>>> 44b407a8ec237372321dc59bf8341cc52cba0c4a
-<<<<<<< HEAD
-21:47:36,509 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:346 - User already exist
-21:47:50,377 DEBUG AWT-EventQueue-0 MemberList:addButtonActionPerfomed:346 - User already exist
-=======
->>>>>>> origin/master
->>>>>>> e08ae5d274fd2c01a20cfdab311cd0e508303b04
 09:19:03,707  INFO AWT-EventQueue-0 StartFrame:jButton2ActionPerformed:147 - Connect to server
+12:42:22,743  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+12:42:41,831  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+12:42:59,004  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+12:47:29,179  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+12:47:45,349  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+12:48:00,705  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+12:53:30,373  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+12:53:49,050  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+12:54:06,790  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+13:01:58,826  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+13:02:16,231  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+13:02:29,608  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+13:32:00,456  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+13:32:45,595  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+13:35:13,165  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+13:35:44,076  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server
+13:35:57,162  INFO AWT-EventQueue-0 StartFrame:enterButtonActionPerformed:154 - Connect to server

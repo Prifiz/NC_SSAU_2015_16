@@ -19,16 +19,18 @@ import team5.library.card.NumericCard;
  */
 public class GameThread extends Thread {
 
-    private Counter turnIndex;
-    private Counter gamerIndex;
-    private DataExchanger dataE;
-    private JLabel lastCardLabel;
-    private Counter gamerCount;
+    private final Counter turnIndex;
+    private final Counter gamerIndex;
+    private final DataExchanger dataE;
+    private final JLabel lastCardLabel;
+    private final Counter gamerCount;
     private Logger log;
-    private JTextArea text;
-    private String[] logins;
+    private final JTextArea text;
+    private final String[] logins;
+    private final Flag canExit;
 
-    public GameThread(Counter enabledPane, Counter gamerIndex, DataExchanger dataE, JLabel lastCardLabel, Counter gamerCount, JTextArea text, String[] logins) {
+    public GameThread(Counter enabledPane, Counter gamerIndex, DataExchanger dataE,
+            JLabel lastCardLabel, Counter gamerCount, JTextArea text, String[] logins, Flag canExit) {
         this.dataE = dataE;
         this.turnIndex = enabledPane;
         this.gamerCount = gamerCount;
@@ -36,6 +38,7 @@ public class GameThread extends Thread {
         this.lastCardLabel = lastCardLabel;
         this.text = text;
         this.logins = logins;
+        this.canExit = canExit;
     }
 
     @Override
@@ -61,6 +64,7 @@ public class GameThread extends Thread {
                                 boolean win = dataE.readBool();
                                 if (win == true) {
                                     text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": WIN!!!");
+                                    canExit.setFlag(true);
                                 }
                                 break;
                             case "Exit":
@@ -96,6 +100,7 @@ public class GameThread extends Thread {
                                 boolean win = dataE.readBool();
                                 if (win == true) {
                                     text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": WIN!!!");
+                                    canExit.setFlag(true);
                                 }
                                 break;
                             case "Exit":
@@ -110,10 +115,12 @@ public class GameThread extends Thread {
                 }
                 turnIndex.setCount(0);
             }
-            try {
-                wait();
-            } catch (InterruptedException ex) {
-                log.debug(ex.getMessage());
+            if (turnIndex.getCount() == gamerIndex.getCount()) {
+                try {
+                    wait();
+                } catch (InterruptedException ex) {
+                    log.debug(ex.getMessage());
+                }
             }
 
         }

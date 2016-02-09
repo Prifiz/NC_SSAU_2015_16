@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package team5.client.gui;
-   
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -27,6 +27,7 @@ import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.Counter;
 import team5.client.actions.DataExchanger;
+import team5.client.actions.Flag;
 import team5.client.actions.GameThread;
 import team5.library.actions.WorkUser;
 import team5.library.transmissions.FileHandler;
@@ -39,9 +40,10 @@ import team5.library.card.NumericCard;
  */
 public class GameFrame extends JFrame {
 
+    private Flag canExit;
     private Counter turnIndex;
     private Counter gamerIndex;
-    private JPanel panels[];
+    private final JPanel panels[];
     private ButtonGroup buttonGroups[];
     private Counter gamerCount;
     private String myLogin;
@@ -63,6 +65,7 @@ public class GameFrame extends JFrame {
     GameThread game;
 
     public GameFrame(DataExchanger dataE) {
+        canExit = new Flag(false);
         this.dataE = dataE;
         turnIndex = new Counter();
         try {
@@ -82,7 +85,7 @@ public class GameFrame extends JFrame {
         panels = new JPanel[gamerCount.getCount()];
         initComponents();
         turnIndex.setCount(0);
-        game = new GameThread(turnIndex, gamerIndex, this.dataE, lastCardLabel, gamerCount, text, logins);
+        game = new GameThread(turnIndex, gamerIndex, this.dataE, lastCardLabel, gamerCount, text, logins, canExit);
         game.start();
         //gameOtherUsers();
     }
@@ -249,7 +252,7 @@ public class GameFrame extends JFrame {
     }
 
     private void exit() {
-        if (turnIndex.getCount() == gamerIndex.getCount()) {
+        if ((turnIndex.getCount() == gamerIndex.getCount()) || (canExit.isFlag() == true)) {
             try {
                 dataE.write("Exit");
                 RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
@@ -270,20 +273,24 @@ public class GameFrame extends JFrame {
 
     private synchronized void passButtonActionPerformed(java.awt.event.ActionEvent evt) {
         if (turnIndex.getCount() == gamerIndex.getCount()) {
-            isTakeCard = false;
+            if (isTakeCard) {
+                isTakeCard = false;
 
-            try {
-                dataE.write("Pass");
-            } catch (IOException ex) {
-                log.debug(ex.getMessage());
-            }
-            text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
-            if (turnIndex.getCount() + 1 < gamerCount.getCount()) {
-                turnIndex.inc();
+                try {
+                    dataE.write("Pass");
+                } catch (IOException ex) {
+                    log.debug(ex.getMessage());
+                }
+                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
+                if (turnIndex.getCount() + 1 < gamerCount.getCount()) {
+                    turnIndex.inc();
+                } else {
+                    turnIndex.setCount(0);
+                }
+                game.wakeUp();
             } else {
-                turnIndex.setCount(0);
+                JOptionPane.showConfirmDialog(null, "You didn't take card", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
-            game.wakeUp();
         }
     }
 
