@@ -41,7 +41,7 @@ public class RulesFrame extends JFrame {
 
     private String textRule(String fileName) {
         String text = "";
-        String s = "";
+        String s;
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName)));
             while ((s = br.readLine()) != null) {
