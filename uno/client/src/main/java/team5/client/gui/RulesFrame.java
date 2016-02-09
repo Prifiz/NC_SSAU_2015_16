@@ -153,7 +153,7 @@ public class RulesFrame extends JFrame {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         //  StartFrame start = new StartFrame();
         //  start.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     /**

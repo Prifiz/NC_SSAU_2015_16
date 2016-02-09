@@ -165,28 +165,17 @@ public class LogInFrame extends JFrame {
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
         try {
-//            Commands command=new Commands("Login");
-//            User usr=new User();
-//            usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
             dataE.write("Login");
             dataE.write(jLoginField.getText());
             dataE.write(String.valueOf(jPasswordField.getPassword()));
-//        command.setUser(usr);
-//        WorkWithFiles.marshalData(Streams.getOutputStream(), command);
             f = dataE.readBool();
         } catch (IOException e) {
             log.debug(e.getMessage());
         }
-//        catch(JAXBException e){
-//            log.debug(e.getMessage());
-//        }
-        //SignIn sign = new SignIn();
-        // WorkUser wu = WorkUser.getWork();
-        //sign.sign(this.jTextField.getText(), this.jPasswordField.getPassword())
         if (f) {
             RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
             rooms.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         } else {
             jMessage.setText("Invalid login/password. Try it again.");
         }

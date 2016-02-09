@@ -80,4 +80,20 @@
             <password>123</password>
         </serviceInfo>
     </arrUsers>
+    <arrUsers>
+        <address>
+            <city>das</city>
+            <country>sdas</country>
+        </address>
+        <privateInformation>
+            <name>ada</name>
+            <surname>sda</surname>
+            <bDay>2010-05-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>adasd</email>
+            <login>p</login>
+            <password>s</password>
+        </serviceInfo>
+    </arrUsers>
 </workUser>

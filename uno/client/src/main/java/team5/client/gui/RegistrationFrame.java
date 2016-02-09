@@ -264,7 +264,7 @@ public class RegistrationFrame extends JFrame {
             if (f) {
                 LogInFrame logIn = new LogInFrame(dataE);
                 logIn.setVisible(true);
-                this.setVisible(false);
+                this.dispose();
             } else {
                 jMessage.setText("The field is empty. Fill in all the fields.");
             }
@@ -277,7 +277,7 @@ public class RegistrationFrame extends JFrame {
     private void canselButtonActionPerformed(java.awt.event.ActionEvent evt) {
         LogInFrame logIn = new LogInFrame(dataE);
         logIn.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     /**

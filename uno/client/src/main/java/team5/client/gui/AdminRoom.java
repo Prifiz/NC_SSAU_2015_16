@@ -144,21 +144,21 @@ public class AdminRoom extends JFrame {
 
         MemberListFrame list = new MemberListFrame(dataE);
         list.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void cardListButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
         CardList cardList = new CardList(dataE);
         cardList.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
         RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
         rooms.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     /**

@@ -267,7 +267,7 @@ public class GameFrame extends JFrame {
                 RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                 rooms.setVisible(true);
-                this.setVisible(false);
+                this.dispose();
             } catch (IOException ex) {
                 log.debug(ex.getMessage());
             }

@@ -158,9 +158,9 @@ public class StartFrame extends JFrame {
             Streams streams = new Streams(in, out);
             log.info("Connect to server");
             DataExchanger dataE = new DataExchanger(in, out);
-            LogInFrame log = new LogInFrame(dataE);
-            log.setVisible(true);
-            this.setVisible(false);
+            LogInFrame liginFrame = new LogInFrame(dataE);
+            liginFrame.setVisible(true);
+            this.dispose();
         } catch (IOException e) {
             JOptionPane.showConfirmDialog(null, "You didn't connect to server. Please try agane", "Oops", JOptionPane.CLOSED_OPTION);
             log.debug(e.getMessage());

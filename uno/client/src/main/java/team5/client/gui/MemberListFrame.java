@@ -367,7 +367,7 @@ public class MemberListFrame extends javax.swing.JFrame {
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);
         adminRoom.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
         model.setArrayOfUsers(WorkUser.getWork().getArrOfUsers());
         searchFrame.setSearchRequest(null);
     }

@@ -143,7 +143,7 @@ public class RoomSelectionFrame extends JFrame {
         adminRoom.setVisible(true);
         //MemberList list = new MemberList();
         //list.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +164,7 @@ public class RoomSelectionFrame extends JFrame {
             if (f) {
                 GameFrame gameFrame = new GameFrame(dataE);
                 gameFrame.setVisible(true);
-                this.setVisible(false);
+                this.dispose();
             } else {
                 JOptionPane.showConfirmDialog(null, "You could't enter this room. Try again", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }

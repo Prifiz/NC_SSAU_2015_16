@@ -258,7 +258,7 @@ public class CardList extends javax.swing.JFrame {
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);
         adminRoom.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
         model.setArrayOfCards(WorkCard.getWork().getArrOfCards());
         searchFrame.setSearchRequest(null);
     }

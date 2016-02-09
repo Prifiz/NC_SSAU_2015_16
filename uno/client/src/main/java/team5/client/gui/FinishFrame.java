@@ -122,7 +122,7 @@ public class FinishFrame extends JFrame {
 
         RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
         rooms.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     /**

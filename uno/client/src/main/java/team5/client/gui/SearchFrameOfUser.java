@@ -84,7 +84,6 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
 
     private void initComponents() {
 
-
         panel = new JPanel();
         panel.setBorder(new TitledBorder("Search users"));
         panel.setBounds(10, 10, 360, 170);
@@ -177,10 +176,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
-//        MemberList memberList =new MemberList();
-//        memberList.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 //    
 
