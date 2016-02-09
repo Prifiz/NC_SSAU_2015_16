@@ -5,6 +5,7 @@
  */
 package team5.server.actions;
 
+import java.time.LocalDate;
 import team5.datamodel.actions.WorkUser;
 import team5.datamodel.exceptions.*;
 
@@ -14,7 +15,7 @@ import team5.datamodel.exceptions.*;
  */
 public class Registration {
 
-    public Boolean registrationUser(String name, String surname, String country, String sity, String login, String password, String email, String bDay)
+    public Boolean registrationUser(String name, String surname, String country, String city, String login, String password, String email, LocalDate bDay)
             throws UserExistException {
 //        if(checkOfExistenceOfUser(user))
 //            System.out.println("This user has already been created");
@@ -28,7 +29,7 @@ public class Registration {
                 
                 return false;
             } else {
-                workUser.addUser(name, surname, country, sity, login, password, email, bDay);
+                workUser.addUser(name, surname, country, city, login, password, email, bDay);
                 return true;
             }
         } catch (UserExistException e) {
