@@ -5,6 +5,7 @@
  */
 package team5.client.gui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -67,8 +68,10 @@ public class MemberListFrame extends javax.swing.JFrame {
     private UserTableModel model;
 
     public MemberListFrame(DataExchanger dataE) {
-         this.dataE = dataE;
+        this.dataE = dataE;
+        initStartFrame();
         initComponents();
+        initCloseOperation();
     }
 
     public JTable getTable() {
@@ -78,18 +81,16 @@ public class MemberListFrame extends javax.swing.JFrame {
     public void setTable(JTable table) {
         jTable1 = table;
     }
-//    JTextField[] fields={tfname,tfsurname, tfcity,tfcountry, tfemail, tflogin,tfpassword, tfbday  };
 
-    @SuppressWarnings("unchecked")
-
-    private void initComponents() {
-
+    private void initStartFrame() {
         searchFrame = new SearchFrameOfUser(dataE);
+        setPreferredSize(new Dimension(710, 790));
         setLayout(null);
-        setBounds(200, 10, 710, 790);
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
         setTitle("Member list");
+    }
+
+    private void initComponents() {
 
         panel = new JPanel();
         panel.setBorder(new TitledBorder("Add/delete users"));
@@ -106,11 +107,11 @@ public class MemberListFrame extends javax.swing.JFrame {
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
         sorter.setSortable(7, false);
         sorter.setComparator(0, new Comparator<String>() {
-                    @Override
-                    public int compare( String str1, String str2) {
-                        return str1.compareTo(str2);
-                    }
-                });
+            @Override
+            public int compare(String str1, String str2) {
+                return str1.compareTo(str2);
+            }
+        });
         jTable1.setRowSorter(sorter);
 
         model.addTableModelListener(jTable1);
@@ -264,6 +265,9 @@ public class MemberListFrame extends javax.swing.JFrame {
         add(panel);
         add(jScrollPane1);
 
+    }
+
+    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -311,6 +315,9 @@ public class MemberListFrame extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pack();
+        
+        this.setLocationRelativeTo(null);
     }
 
     private void deleteButtonActionPerfomed(ActionEvent evt) {
@@ -384,28 +391,28 @@ public class MemberListFrame extends javax.swing.JFrame {
      */
     /*public static void main(String args[]) {
 
-        Logger log = Logger.getLogger(MemberList.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-            log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-            log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            log.debug(ex.getMessage());
-        }
+     Logger log = Logger.getLogger(MemberList.class);
+     try {
+     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+     if ("Nimbus".equals(info.getName())) {
+     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+     break;
+     }
+     }
+     } catch (ClassNotFoundException ex) {
+     log.debug(ex.getMessage());
+     } catch (InstantiationException ex) {
+     log.debug(ex.getMessage());
+     } catch (IllegalAccessException ex) {
+     log.debug(ex.getMessage());
+     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+     log.debug(ex.getMessage());
+     }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MemberList().setVisible(true);
-            }
-        });
-    }*/
+     java.awt.EventQueue.invokeLater(new Runnable() {
+     public void run() {
+     new MemberList().setVisible(true);
+     }
+     });
+     }*/
 }

@@ -38,49 +38,50 @@ public class LogInFrame extends JFrame {
      */
     public LogInFrame(DataExchanger dataE) {
         this.dataE = dataE;
+        initStartFrame();
         initComponents();
+        initCloseOperation();
     }
 
-    @SuppressWarnings("unchecked")
-    private void initComponents() {
-
-        signLabel = new JLabel();
-        jPasswordField = new JPasswordField();
-        jLoginField = new JTextField();
-        signButton = new JButton();
-        registrationButton = new JButton();
-        loginLabel = new JLabel();
-        passwordLabel = new JLabel();
-        jMessage = new JLabel();
-
+    private void initStartFrame() {
         setPreferredSize(new Dimension(400, 300));
         setLayout(null);
         this.setResizable(false);
+    }
 
+    private void initComponents() {
+
+        signButton = new JButton();
+        signLabel = new JLabel();
         signLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         signLabel.setText("Sign In");
         add(signLabel);
         signLabel.setBounds(150, 20, 200, 60);
 
+        loginLabel = new JLabel();
         loginLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         loginLabel.setText("Login");
         add(loginLabel);
         loginLabel.setBounds(40, 100, 100, 30);
 
+        passwordLabel = new JLabel();
         passwordLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         passwordLabel.setText("Password");
         add(passwordLabel);
         passwordLabel.setBounds(40, 140, 100, 30);
 
+        jMessage = new JLabel();
         jMessage.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         this.add(jMessage);
         jMessage.setBounds(70, 180, 300, 30);
         jMessage.setText("");
 
+        jLoginField = new JTextField();
         jLoginField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         add(jLoginField);
         jLoginField.setBounds(125, 100, 160, 30);
 
+        jPasswordField = new JPasswordField();
         add(jPasswordField);
         jPasswordField.setBounds(125, 140, 160, 30);
 
@@ -94,6 +95,7 @@ public class LogInFrame extends JFrame {
             }
         });
 
+        registrationButton = new JButton();
         registrationButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         registrationButton.setText("Registration");
         add(registrationButton);
@@ -104,6 +106,10 @@ public class LogInFrame extends JFrame {
                 registrationButtonActionPerformed(evt);
             }
         });
+
+    }// </editor-fold>                        
+
+    private void initCloseOperation() {
 
         addWindowListener(new WindowListener() {
 
@@ -154,7 +160,7 @@ public class LogInFrame extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;

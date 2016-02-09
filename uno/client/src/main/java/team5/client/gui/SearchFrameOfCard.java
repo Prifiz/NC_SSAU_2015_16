@@ -1,5 +1,6 @@
 package team5.client.gui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -42,14 +43,18 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
 
     public SearchFrameOfCard(DataExchanger dataE) {
         this.dataE = dataE;
+        initStartFrame();
         initComponents();
+        initCloseOperation();
     }
 
     public SearchFrameOfCard(JTable table, CardTableModel model) {
         this.table = table;
         //this.fields=fields;
         this.model = model;
+        initStartFrame();
         initComponents();
+        initCloseOperation();
     }
 
     public String getSearchRequest() {
@@ -64,14 +69,14 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
         this.searchRequest = searchRequest;
     }
 
-    @SuppressWarnings("unchecked")
+    private void initStartFrame() {
+        setPreferredSize(new Dimension(400, 250));
+        setLayout(null);
+        this.setResizable(false);
+        setTitle("Search cards");
+    }
 
     private void initComponents() {
-
-        setBounds(200, 10, 400, 250);
-        this.setLocationRelativeTo(null);
-        setLayout(null);
-        setTitle("Search cards");
 
         panel = new JPanel();
         panel.setBorder(new TitledBorder("Search cards"));
@@ -121,11 +126,14 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
         panel.add(tfsearch);
         tfsearch.setBounds(30, 30, 300, 30);
 
-//        
         add(panel);
-//        
 
+    }
+
+    private void initCloseOperation() {
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        pack();
+        this.setLocationRelativeTo(null);
     }
 
     private void searchCheckBoxPerformed(ItemEvent evt) {

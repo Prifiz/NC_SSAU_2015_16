@@ -83,51 +83,24 @@ public class GameFrame extends JFrame {
             log.debug(ex.getMessage());
         }
         panels = new JPanel[gamerCount.getCount()];
+        initStartFrame();
+        initComponentsButton();
         initComponents();
+        initCloseOperation();
         turnIndex.setCount(0);
         game = new GameThread(turnIndex, gamerIndex, this.dataE, lastCardLabel, gamerCount, text, logins, canExit);
         game.start();
         //gameOtherUsers();
     }
 
-    private void initComponents() {
-
+    private void initStartFrame() {
         setPreferredSize(new Dimension(800, 600));
         setLayout(null);
-        //setBounds(200, 10, 710, 790);
         this.setResizable(false);
         setTitle("Game");
+    }
 
-        panel = new JPanel();
-        TitledBorder border = new TitledBorder("");
-        border.setTitleFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        border.setTitle("Last card");
-        border.setTitleJustification(2);
-        panel.setBorder(border);
-        panel.setBounds(200, 200, 200, 100);
-        panel.setLayout(null);
-        add(panel);
-
-        scroll = new JScrollPane();
-        text = new JTextArea();
-        text.setLineWrap(true);
-        scroll.setViewportView(text);
-        add(scroll);
-        scroll.setBounds(450, 200, 300, 120);
-
-        pane = new JTabbedPane();
-        pane.setBounds(50, 300, 500, 200);
-        pane.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        for (int i = 0; i < gamerCount.getCount(); i++) {
-            panels[i] = new JPanel();
-            panels[i].setBackground(Color.LIGHT_GRAY);
-            pane.addTab(logins[i], panels[i]);
-            if (i > 0) {
-                pane.setEnabledAt(i, false);
-            }
-        }
-        add(pane);
-
+    private void initComponentsButton() {
         //http://spec-zone.ru/RU/Java/Docs/7/api/javax/swing/ButtonGroup.html
         buttonGroups = new ButtonGroup[gamerCount.getCount()];
         for (int i = 0; i < gamerCount.getCount(); i++) {
@@ -188,6 +161,39 @@ public class GameFrame extends JFrame {
                 endTurnButtonActionPerformed(evt);
             }
         });
+    }
+
+    private void initComponents() {
+
+        panel = new JPanel();
+        TitledBorder border = new TitledBorder("");
+        border.setTitleFont(new java.awt.Font("Comic Sans MS", 0, 13));
+        border.setTitle("Last card");
+        border.setTitleJustification(2);
+        panel.setBorder(border);
+        panel.setBounds(200, 200, 200, 100);
+        panel.setLayout(null);
+        add(panel);
+
+        scroll = new JScrollPane();
+        text = new JTextArea();
+        text.setLineWrap(true);
+        scroll.setViewportView(text);
+        add(scroll);
+        scroll.setBounds(450, 200, 300, 120);
+
+        pane = new JTabbedPane();
+        pane.setBounds(50, 300, 500, 200);
+        pane.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
+        for (int i = 0; i < gamerCount.getCount(); i++) {
+            panels[i] = new JPanel();
+            panels[i].setBackground(Color.LIGHT_GRAY);
+            pane.addTab(logins[i], panels[i]);
+            if (i > 0) {
+                pane.setEnabledAt(i, false);
+            }
+        }
+        add(pane);
 
         uno = new JLabel();
         uno.setFont(new java.awt.Font("Comic Sans MS", 0, 42)); // NOI18N
@@ -201,6 +207,9 @@ public class GameFrame extends JFrame {
         panel.add(lastCardLabel);
         lastCardLabel.setBounds(10, 40, 170, 30);
 
+    }
+
+    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override

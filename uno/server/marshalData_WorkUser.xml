@@ -32,4 +32,52 @@
             <password>1ds234</password>
         </serviceInfo>
     </arrUsers>
+    <arrUsers>
+        <address>
+            <city>dfkv</city>
+            <country>dfkmv</country>
+        </address>
+        <privateInformation>
+            <name>putin</name>
+            <surname>d</surname>
+            <bDay>2333-12-19</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>adsc</email>
+            <login>ldkf</login>
+            <password>ld</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>sfdd</city>
+            <country>sdfd</country>
+        </address>
+        <privateInformation>
+            <name>medved</name>
+            <surname>s</surname>
+            <bDay>0012-12-19</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>fdd</email>
+            <login>fsdsf</login>
+            <password>fdd</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>kj</city>
+            <country>jn</country>
+        </address>
+        <privateInformation>
+            <name>jk</name>
+            <surname>jk</surname>
+            <bDay>2010-05-12</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>jkn</email>
+            <login>q</login>
+            <password>123</password>
+        </serviceInfo>
+    </arrUsers>
 </workUser>

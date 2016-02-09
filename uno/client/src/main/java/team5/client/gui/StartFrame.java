@@ -36,21 +36,23 @@ public class StartFrame extends JFrame {
      * Creates new form StartFrame
      */
     public StartFrame() {
+        initStartForm();
         initComponents();
+        initCloseOperation();
     }
 
     @SuppressWarnings("unchecked")
 
-    private void initComponents() {
-        //this.setLocationRelativeTo(null);
-
+    private void initStartForm() {
         setPreferredSize(new Dimension(400, 300));
         setLayout(null);
         this.setBounds(200, 10, 710, 790);
         this.setSize(250, 250);
 
         this.setResizable(false);
-        //this.setLocationRelativeTo(null);
+    }
+
+    private void initComponents() {
 
         unoLabel = new JLabel();
         unoLabel.setFont(new java.awt.Font("Comic Sans MS", 3, 36)); // NOI18N
@@ -86,6 +88,9 @@ public class StartFrame extends JFrame {
             }
         });
 
+    }
+
+    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
