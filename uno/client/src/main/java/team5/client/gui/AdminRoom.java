@@ -16,7 +16,6 @@ import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
 import team5.datamodel.actions.WorkUser;
 import team5.datamodel.transmissions.FileHandler;
-import team5.datamodel.transmissions.MessageHandler;
 
 /**
  *
@@ -30,15 +29,9 @@ public class AdminRoom extends JFrame {
     private JButton cardListButton;
     private JButton backButton;
     private JLabel adminLabel;
-    private MessageHandler messageHandler;
 
-//    public AdminRoom(DataExchanger dataE) {
-//        this.dataE = dataE;
-//        initComponents();
-//    }
-    
-    public AdminRoom(MessageHandler messageHandler) {
-        this.messageHandler = messageHandler;
+    public AdminRoom(DataExchanger dataE) {
+        this.dataE = dataE;
         initComponents();
     }
 
@@ -155,7 +148,7 @@ public class AdminRoom extends JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
+        RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
         rooms.setVisible(true);
         this.setVisible(false);
     }

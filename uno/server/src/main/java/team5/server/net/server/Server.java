@@ -7,7 +7,6 @@ package team5.server.net.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.time.LocalDate;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.server.actions.RoomController;
@@ -27,7 +26,7 @@ public class Server {
         for (int i = 0; i < 4; i++) {
             rooms[i] = new RoomController();
         }
-        Logger logger = Logger.getLogger(Server.class);
+        Logger log = Logger.getLogger(Server.class);
         try {
             WorkUser workUser = WorkUser.getWork();
             FileHandler workWithFiles = new FileHandler();
@@ -35,36 +34,36 @@ public class Server {
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
 
         } catch (JAXBException ex) {
-            logger.debug(ex.getMessage());
+            log.debug(ex.getMessage());
         }
         WorkUser wu = WorkUser.getWork();
-//        try {
-////            wu.addUser("putin", "d", "dfkmv", "dfkv", "ldkf", "ld", "adsc", LocalDate.parse("19.12.2333"));
-////            wu.addUser("medved", "s", "sdfd", "sfdd", "fsdsf", "fdd", "fdd", LocalDate.parse("19.12.12"));
-////            wu.addUser("sasdq", "d", "d", "d", "d", "d", "d", LocalDate.parse("19.12.12"));
-////            wu.addUser("f", "d", "d", "d", "sfsdf", "d", "d", LocalDate.parse("19.12.12"));
-////            wu.addUser("d", "d", "d", "d", "dfgf", "d", "d", LocalDate.parse("19.12.12"));
-//            //wu.addUser("asda", "d", "d", "d", "d", "d", "d", "19.12.12");
-//
-//        } catch (UserExistException e) {
-//            logger.debug(e.getMessage());
-//        }
+        try {
+            wu.addUser("putin", "d", "dfkmv", "dfkv", "ldkf", "ld", "adsc", "19.12.2333");
+            wu.addUser("medved", "s", "sdfd", "sfdd", "fsdsf", "fdd", "fdd", "19.12.12");
+            wu.addUser("sasdq", "d", "d", "d", "d", "d", "d", "19.12.12");
+            wu.addUser("f", "d", "d", "d", "sfsdf", "d", "d", "19.12.12");
+            wu.addUser("d", "d", "d", "d", "dfgf", "d", "d", "19.12.12");
+            //wu.addUser("asda", "d", "d", "d", "d", "d", "d", "19.12.12");
+
+        } catch (UserExistException e) {
+            log.debug(e.getMessage());
+        }
 
         ServerSocket s = null;
         try {
             s = new ServerSocket(8081);
         } catch (IOException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         }
 
         while (true) {
             System.out.println("Waiting...");
             try {
                 ServerThread thread = new ServerThread(s.accept(), rooms, waitTime);
-                logger.info("Client connected");
+                log.info("Client connected");
                 thread.start();
             } catch (IOException ex) {
-                logger.debug(ex.getMessage());
+                log.debug(ex.getMessage());
             }
         }
     }

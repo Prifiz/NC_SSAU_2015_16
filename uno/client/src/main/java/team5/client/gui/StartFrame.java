@@ -156,8 +156,8 @@ public class StartFrame extends JFrame {
             ClientSocket clientSocket = new ClientSocket();
             clientSocket.connection();
             
-            //DataExchanger dataE = new DataExchanger(clientSocket.getInputStream(), clientSocket.getOutputStream());//временно остаивил
-            LogInFrame loginFrame = new LogInFrame(clientSocket.getMessageHandler());
+            DataExchanger dataE = new DataExchanger(clientSocket.getInputStream(), clientSocket.getOutputStream());//временно остаивил
+            LogInFrame loginFrame = new LogInFrame(dataE);//временно остаивил
             loginFrame.setVisible(true);
             this.setVisible(false);
         } catch (IOException e) {

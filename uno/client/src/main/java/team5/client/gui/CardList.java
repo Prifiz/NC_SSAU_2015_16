@@ -23,7 +23,6 @@ import team5.datamodel.card.Card;
 import team5.datamodel.exceptions.NotFoundException;
 import team5.datamodel.searches.CardSearch;
 import team5.datamodel.searches.Search;
-import team5.datamodel.transmissions.MessageHandler;
 
 /**
  *
@@ -39,7 +38,6 @@ public class CardList extends javax.swing.JFrame {
     private JButton addButton;
     private JButton searchButton;
     private JButton cleanButton;
-    private MessageHandler messageHandler;
 
     private JTextField tficon;
     private JTextField tfcolor;
@@ -249,7 +247,7 @@ public class CardList extends javax.swing.JFrame {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminRoom adminRoom = new AdminRoom(messageHandler);
+        AdminRoom adminRoom = new AdminRoom(dataE);
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);
         adminRoom.setVisible(true);

@@ -44,7 +44,6 @@ public class MessageHandler {
      * @throws IOException
      */
     public void sendMessage(Message message) throws JAXBException, IOException {
-        writer = new StringWriter();
         JAXBContext context = JAXBContext.newInstance(message.getClass());
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

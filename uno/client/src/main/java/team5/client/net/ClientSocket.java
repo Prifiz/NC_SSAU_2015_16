@@ -11,7 +11,6 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import org.apache.log4j.Logger;
-import team5.datamodel.transmissions.MessageHandler;
 
 /**
  * class includes IP adress, port,in\out streams, etc
@@ -25,7 +24,6 @@ public class ClientSocket {
     private InputStream in;
     private OutputStream out;
     private Logger logger = Logger.getLogger(ClientSocket.class);
-    private MessageHandler messageHandler;
 
     /**
      * Create ClientSocket with default serverport = 8081 and IP address
@@ -59,10 +57,6 @@ public class ClientSocket {
     public OutputStream getOutputStream() {
         return out;
     }
-    
-    public MessageHandler getMessageHandler(){
-        return messageHandler;
-    }
 
     /**
      * Create connection with server
@@ -76,6 +70,5 @@ public class ClientSocket {
         in = socket.getInputStream();
         out = socket.getOutputStream();
         logger.info("Connect to server");
-        messageHandler=new MessageHandler(in, out);
     }
 }

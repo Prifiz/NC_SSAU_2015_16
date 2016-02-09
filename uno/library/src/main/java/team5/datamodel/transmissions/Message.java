@@ -18,7 +18,6 @@ public class Message implements Serializable {
     private String command;
     private User user;
     private boolean confirmation;
-    private String choice;
 
     public Message(String command) {
         this.command = command;
@@ -54,14 +53,5 @@ public class Message implements Serializable {
 
     public boolean getConfirmation() {
         return confirmation;
-    }
-    
-     public void setChoice(String choice) {
-        this.choice = choice;
-    }
-
-    @XmlElement(name = "choice")
-    public String getChoice() {
-        return choice;
     }
 }
