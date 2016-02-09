@@ -106,7 +106,6 @@ public class GameFrame extends JFrame {
         for (int i = 0; i < gamerCount.getCount(); i++) {
             buttonGroups[i] = new ButtonGroup();
         }
-        firstDistribution();
         exitGameButton = new JButton();
         exitGameButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         exitGameButton.setText("Exit game");
@@ -189,12 +188,11 @@ public class GameFrame extends JFrame {
             panels[i] = new JPanel();
             panels[i].setBackground(Color.LIGHT_GRAY);
             pane.addTab(logins[i], panels[i]);
-            if (i > 0) {
-                pane.setEnabledAt(i, false);
-            }
+            pane.setEnabledAt(i, false);
         }
         add(pane);
 
+        firstDistribution();
         uno = new JLabel();
         uno.setFont(new java.awt.Font("Comic Sans MS", 0, 42)); // NOI18N
         uno.setText("UNO");
@@ -371,17 +369,6 @@ public class GameFrame extends JFrame {
                     buttonGroups[gamerIndex.getCount()].add(jRadioButton);
                     jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
                     panels[gamerIndex.getCount()].add(jRadioButton);
-                }
-            } else {
-                for (int i = 1; i <= 7; i++) {
-                    pane.setEnabledAt(j, false);
-                    JRadioButton jRadioButton = new JRadioButton();
-                    jRadioButton.setText("Card");
-                    jRadioButton.setActionCommand("Card");
-                    jRadioButton.setSelected(true);
-                    buttonGroups[j].add(jRadioButton);
-                    jRadioButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-                    panels[j].add(jRadioButton);
                 }
             }
         }

@@ -258,21 +258,28 @@ public class RegistrationFrame extends JFrame {
             dataE.write(emailTextField.getText());
             dataE.write("12.05.2010");
             f = dataE.readBool();
-            //Registration r = new Registration();
-            //r.registrationUser(this.nameTextField.getText(), this.surnameTextField.getText(), 
-            //this.countryTextField.getText(), this.sityTextField.getText(), this.loginTextField.getText(), this.passwordTextField.getText(), this.emailTextField.getText(), "12.05.2010")F
             if (f) {
                 LogInFrame logIn = new LogInFrame(dataE);
                 logIn.setVisible(true);
                 this.dispose();
             } else {
-                jMessage.setText("The field is empty. Fill in all the fields.");
-            }
-        } catch (IOException e) {
+                String str = dataE.readString();
+                switch (str) {
+                    case "Field":
+                        jMessage.setText("The field is empty. Fill in all the fields.");
+                        break;
+                    case "User":
+                        jMessage.setText("User already created");
+                        break;
+                }
+                }
+            }catch (IOException e) {
             jMessage.setText("User already created");
             //TODO Надо написать обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
         }
-    }
+        }
+
+    
 
     private void canselButtonActionPerformed(java.awt.event.ActionEvent evt) {
         LogInFrame logIn = new LogInFrame(dataE);

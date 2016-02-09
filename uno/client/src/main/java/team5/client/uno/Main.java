@@ -22,7 +22,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Logger log = Logger.getLogger(Main.class);
+        Logger logger = Logger.getLogger(Main.class);
         try {
             WorkUser workUser = WorkUser.getWork();
             FileHandler workWithFiles = new FileHandler();
@@ -30,7 +30,7 @@ public class Main {
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
 
         } catch (JAXBException ex) {
-            log.debug(ex.getMessage());
+            logger.debug(ex.getMessage());
         }
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -40,12 +40,12 @@ public class Main {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
+            logger.debug(ex.getMessage());
 
         } catch (InstantiationException ex) {
-            log.debug(ex.getMessage());
+            logger.debug(ex.getMessage());
         } catch (IllegalAccessException ex) {
-            log.debug(ex.getMessage());
+            logger.debug(ex.getMessage());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
