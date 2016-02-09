@@ -15,6 +15,11 @@ import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
+import team5.client.net.ClientSocket;
+import team5.datamodel.transmissions.Message;
+import team5.datamodel.transmissions.MessageHandler;
+import team5.datamodel.user.ServiceInfo;
+import team5.datamodel.user.User;
 
 /**
  *
@@ -32,12 +37,18 @@ public class LogInFrame extends JFrame {
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jLoginField;
     private javax.swing.JLabel jMessage;
+    private MessageHandler messageHandler;
 
     /**
      * Creates new form LogIn
      */
     public LogInFrame(DataExchanger dataE) {
         this.dataE = dataE;
+        initComponents();
+    }
+
+    public LogInFrame(MessageHandler messageHandler) {
+        this.messageHandler = messageHandler;
         initComponents();
     }
 
@@ -159,21 +170,30 @@ public class LogInFrame extends JFrame {
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
         try {
-            dataE.write("Login");
-            dataE.write(jLoginField.getText());
-            dataE.write(String.valueOf(jPasswordField.getPassword()));
-            f = dataE.readBool();
+
+//            dataE.write("Login");
+//            dataE.write(jLoginField.getText());
+//            dataE.write(String.valueOf(jPasswordField.getPassword()));
+//            f = dataE.readBool();
+//        } catch (IOException e) {
+//            logger.debug(e.getMessage());
+//        }
+            Message message = new Message("Login");
+            User usr = new User();
+            usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
+            message.setUser(usr);
+            messageHandler.sendMessage(message);
+//        messageHandler.sendMessage(message);
+//        dataE.write(WorkWithFiles.marshalData( message));
+//        Message serverMessage = WorkWithFiles.unmarshalData(dataE.readStringReader());
+            f = messageHandler.receiveMessage().getConfirmation();
         } catch (IOException e) {
             logger.debug(e.getMessage());
+        } catch (JAXBException e) {
+            logger.debug(e.getMessage());
         }
-//        catch(JAXBException e){
-//            log.debug(e.getMessage());
-//        }
-        //SignIn sign = new SignIn();
-        // WorkUser wu = WorkUser.getWork();
-        //sign.sign(this.jTextField.getText(), this.jPasswordField.getPassword())
         if (f) {
-            RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
+            RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
             rooms.setVisible(true);
             this.setVisible(false);
         } else {
@@ -182,7 +202,7 @@ public class LogInFrame extends JFrame {
     }
 
     private void registrationButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        RegistrationFrame secondFrame = new RegistrationFrame(dataE);
+        RegistrationFrame secondFrame = new RegistrationFrame(messageHandler);//TODO нехорошо как то связывать так фреймы
         secondFrame.setVisible(true);
         this.setVisible(false);
     }
@@ -211,7 +231,7 @@ public class LogInFrame extends JFrame {
      //</editor-fold>
 
      /* Create and display the form */
-    /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
      public void run() {
      new LogIn(new InputStream(), new OutputStream()).setVisible(true);
      }

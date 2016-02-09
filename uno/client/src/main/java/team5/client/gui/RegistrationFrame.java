@@ -9,12 +9,19 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
+import java.time.LocalDate;
 import team5.datamodel.transmissions.FileHandler;
 import team5.datamodel.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
+import team5.datamodel.transmissions.Message;
+import team5.datamodel.transmissions.MessageHandler;
+import team5.datamodel.user.PrivateInformation;
+import team5.datamodel.user.ServiceInfo;
+import team5.datamodel.user.User;
+import team5.datamodel.user.adress.Address;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,7 +35,7 @@ import team5.client.actions.DataExchanger;
 public class RegistrationFrame extends JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(RegistrationFrame.class);
+    private Logger logger = Logger.getLogger(RegistrationFrame.class);
     private JButton okButton;
     private JButton canselButton;
     private JLabel emailLabel;
@@ -44,17 +51,23 @@ public class RegistrationFrame extends JFrame {
     private JTextField nameTextField;
     private JTextField surnameTextField;
     private JTextField countryTextField;
-    private JTextField sityTextField;
+    private JTextField cityTextField;
     private JTextField emailTextField;
     private JLabel jMessage;
-    private JLabel bDayLabel;
-    private JTextField bDayTextField;
+//    private JLabel bDayLabel;
+//    private JTextField bDayTextField; TODO временно убрал поле с датой, непонятно что она должна в себе содержать
+    private MessageHandler messageHandler;
 
     /**
      * Creates new form SecondFrame
      */
     public RegistrationFrame(DataExchanger dataE) {
         this.dataE = dataE;
+        initComponents();
+    }
+
+    public RegistrationFrame(MessageHandler messageHandler) {
+        this.messageHandler = messageHandler;
         initComponents();
     }
 
@@ -72,15 +85,15 @@ public class RegistrationFrame extends JFrame {
         nameTextField = new JTextField();
         surnameTextField = new JTextField();
         countryTextField = new JTextField();
-        sityTextField = new JTextField();
+        cityTextField = new JTextField();
         canselButton = new JButton();
         okButton = new JButton();
         registrationLabel = new JLabel();
         emailLabel = new JLabel();
         emailTextField = new JTextField();
         jMessage = new JLabel();
-        bDayLabel = new JLabel();
-        bDayTextField = new JTextField();
+//        bDayLabel = new JLabel();
+//        bDayTextField = new JTextField();
 
         setPreferredSize(new Dimension(400, 550));
         setLayout(null);
@@ -126,10 +139,10 @@ public class RegistrationFrame extends JFrame {
         add(sityLabel);
         sityLabel.setBounds(40, 340, 100, 30);
 
-        bDayLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        bDayLabel.setText("Birthday");
-        add(bDayLabel);
-        bDayLabel.setBounds(40, 380, 100, 30);
+//        bDayLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+//        bDayLabel.setText("Birthday");
+//        add(bDayLabel);
+//        bDayLabel.setBounds(40, 380, 100, 30);
 
         jMessage.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         add(jMessage);
@@ -160,13 +173,13 @@ public class RegistrationFrame extends JFrame {
         add(countryTextField);
         countryTextField.setBounds(130, 300, 150, 30);
 
-        sityTextField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        add(sityTextField);
-        sityTextField.setBounds(130, 340, 150, 30);
+        cityTextField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        add(cityTextField);
+        cityTextField.setBounds(130, 340, 150, 30);
 
-        bDayTextField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        add(bDayTextField);
-        bDayTextField.setBounds(130, 380, 150, 30);
+//        bDayTextField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+//        add(bDayTextField);
+//        bDayTextField.setBounds(130, 380, 150, 30);
 
         okButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         okButton.setText("OK");
@@ -210,7 +223,7 @@ public class RegistrationFrame extends JFrame {
                 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 //                } 
                 catch (JAXBException ex) {
-                    log.debug(ex.getMessage());
+                    logger.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -242,21 +255,38 @@ public class RegistrationFrame extends JFrame {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
         try {
-            dataE.write("Registration");
-            dataE.write(nameTextField.getText());
-            dataE.write(surnameTextField.getText());
-            dataE.write(countryTextField.getText());
-            dataE.write(sityTextField.getText());
-            dataE.write(loginTextField.getText());
-            dataE.write(passwordTextField.getText());
-            dataE.write(emailTextField.getText());
-            dataE.write("12.05.2010");
-            f = dataE.readBool();
+            Message message = new Message("Registration");
+            User usr = new User();
+            usr.setServiceInfo(new ServiceInfo(loginTextField.getText(), passwordTextField.getText(), emailTextField.getText()));
+            usr.setAddress(new Address(countryTextField.getText(), cityTextField.getText()));
+            usr.setPrivateInformation(new PrivateInformation(nameTextField.getText(), surnameTextField.getText(), LocalDate.now()));
+            message.setUser(usr);
+
+//            dataE.write("Registration");
+//            dataE.write(nameTextField.getText());
+//            dataE.write(surnameTextField.getText());
+//            dataE.write(countryTextField.getText());
+//            dataE.write(cityTextField.getText());
+//            dataE.write(loginTextField.getText());
+//            dataE.write(passwordTextField.getText());
+//            dataE.write(emailTextField.getText());
+//            dataE.write("12.05.2010");
+            try {
+                messageHandler.sendMessage(message);
+            } catch (JAXBException ex) {
+                logger.debug(ex.getMessage());
+            }
+            try {
+                f = messageHandler.receiveMessage().getConfirmation();
+            } catch (JAXBException ex) {
+                logger.debug(ex.getMessage());
+            }
+            //f = dataE.readBool();
             //Registration r = new Registration();
             //r.registrationUser(this.nameTextField.getText(), this.surnameTextField.getText(), 
             //this.countryTextField.getText(), this.sityTextField.getText(), this.loginTextField.getText(), this.passwordTextField.getText(), this.emailTextField.getText(), "12.05.2010")F
             if (f) {
-                LogInFrame logIn = new LogInFrame(dataE);
+                LogInFrame logIn = new LogInFrame(messageHandler);
                 logIn.setVisible(true);
                 this.setVisible(false);
             } else {
@@ -264,12 +294,15 @@ public class RegistrationFrame extends JFrame {
             }
         } catch (IOException e) {
             jMessage.setText("User already created");
-            //TODO Надо написать обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
+            LogInFrame logIn = new LogInFrame(messageHandler);
+            logIn.setVisible(true);
+            this.setVisible(false);
+            //TODO Надо написать НОРМАЛЬНЫЙ обработчик обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
         }
     }
 
     private void canselButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        LogInFrame logIn = new LogInFrame(dataE);
+        LogInFrame logIn = new LogInFrame(messageHandler);
         logIn.setVisible(true);
         this.setVisible(false);
     }
@@ -298,7 +331,7 @@ public class RegistrationFrame extends JFrame {
      //</editor-fold>
 
      /* Create and display the form */
-    /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
      public void run() {
      new SecondFrame().setVisible(true);
      }

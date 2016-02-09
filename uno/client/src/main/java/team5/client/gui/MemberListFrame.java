@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import javax.swing.*;
@@ -25,6 +26,7 @@ import team5.datamodel.exceptions.NotFoundException;
 import team5.datamodel.exceptions.UserExistException;
 import team5.datamodel.searches.UserSearch;
 import team5.datamodel.searches.Search;
+import team5.datamodel.transmissions.MessageHandler;
 import team5.datamodel.user.User;
 
 /**
@@ -65,6 +67,7 @@ public class MemberListFrame extends javax.swing.JFrame {
     private JPanel panel;
 
     private UserTableModel model;
+    private MessageHandler messageHandler;
 
     public MemberListFrame(DataExchanger dataE) {
          this.dataE = dataE;
@@ -333,7 +336,7 @@ public class MemberListFrame extends javax.swing.JFrame {
     private void addButtonActionPerfomed(ActionEvent evt) {
         try {
             WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
-                    tfpassword.getText(), tfemail.getText(), tfbday.getText());//остановился тут
+                    tfpassword.getText(), tfemail.getText(), LocalDate.now());//остановился тут //tfbday.getText() заменил на LocalDate.now()
             if (searchFrame.getSearchRequest() != null) {
                 Search search = new UserSearch();
                 model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
@@ -356,7 +359,7 @@ public class MemberListFrame extends javax.swing.JFrame {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminRoom adminRoom = new AdminRoom(dataE);
+        AdminRoom adminRoom = new AdminRoom(messageHandler);
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);
         adminRoom.setVisible(true);

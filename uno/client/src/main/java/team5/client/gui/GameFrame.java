@@ -32,6 +32,8 @@ import team5.datamodel.actions.WorkUser;
 import team5.datamodel.transmissions.FileHandler;
 import team5.datamodel.card.Card;
 import team5.datamodel.card.NumericCard;
+import team5.datamodel.transmissions.MessageHandler;
+
 
 /**
  *
@@ -60,6 +62,7 @@ public class GameFrame extends JFrame {
     private JTabbedPane pane;
     private JTextArea text;
     private JScrollPane scroll;
+    private MessageHandler messageHandler;
     GameThread game;
 
     public GameFrame(DataExchanger dataE) {
@@ -252,7 +255,7 @@ public class GameFrame extends JFrame {
         if (turnIndex.getCount() == gamerIndex.getCount()) {
             try {
                 dataE.write("Exit");
-                RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
+                RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                 rooms.setVisible(true);
                 this.setVisible(false);
