@@ -15,6 +15,7 @@ import team5.datamodel.transmissions.FileHandler;
 import team5.datamodel.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
+import team5.datamodel.transmissions.Message;
 import team5.datamodel.transmissions.MessageHandler;
 
 /**
@@ -24,7 +25,7 @@ import team5.datamodel.transmissions.MessageHandler;
 public class RoomSelectionFrame extends JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(RoomSelectionFrame.class);
+    private Logger logger = Logger.getLogger(RoomSelectionFrame.class);
     private javax.swing.JButton startButton;
     private javax.swing.JButton adminRoomButton;
     private javax.swing.JComboBox jComboBox;
@@ -41,7 +42,7 @@ public class RoomSelectionFrame extends JFrame {
         this.dataE = dataE;
         initComponents();
     }
-    
+
     public RoomSelectionFrame(MessageHandler messageHandler) {
         this.messageHandler = messageHandler;
         initComponents();
@@ -110,7 +111,7 @@ public class RoomSelectionFrame extends JFrame {
                 //    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 //} 
                 catch (JAXBException ex) {
-                    log.debug(ex.getMessage());
+                    logger.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -147,12 +148,25 @@ public class RoomSelectionFrame extends JFrame {
         this.setVisible(false);
     }
 //TODO Остановился тут.Силы иссякли.
+
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try {
-            dataE.write("Select");
-            dataE.write(jComboBox.getSelectedItem().toString());
-            String comand = dataE.readString();
-            switch (comand) {
+            Message message = new Message("Select");
+            message.setChoice(jComboBox.getSelectedItem().toString());
+            try {
+                messageHandler.sendMessage(message);
+            } catch (JAXBException ex) {
+                logger.debug(ex.getMessage());
+            }
+            //dataE.write("Select");
+            //dataE.write(jComboBox.getSelectedItem().toString());
+            String command = "";
+            try {
+                command = messageHandler.receiveMessage().getCommand();
+            } catch (JAXBException ex) {
+                logger.debug(ex.getMessage());
+            }
+            switch (command) {
                 case "Wait": {
                     JOptionPane.showConfirmDialog(null, "Wait for other players", "Waiting...", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     break;
@@ -160,16 +174,21 @@ public class RoomSelectionFrame extends JFrame {
                 case "Full":
                     JOptionPane.showConfirmDialog(null, "This room is full. Select other room", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
-            boolean f = dataE.readBool();
+            boolean f = false;
+            try {
+                f = messageHandler.receiveMessage().getConfirmation();
+            } catch (JAXBException ex) {
+                logger.debug(ex.getMessage());
+            }
             if (f) {
-                GameFrame gameFrame = new GameFrame(dataE);
+                GameFrame gameFrame = new GameFrame(messageHandler);
                 gameFrame.setVisible(true);
                 this.setVisible(false);
             } else {
                 JOptionPane.showConfirmDialog(null, "You could't enter this room. Try again", "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (IOException ex) {
-            log.debug(ex.getMessage());
+            logger.debug(ex.getMessage());
         }
 
     }

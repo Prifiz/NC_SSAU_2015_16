@@ -9,9 +9,12 @@ import java.awt.Color;
 import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.datamodel.card.Card;
 import team5.datamodel.card.NumericCard;
+import team5.datamodel.transmissions.Message;
+import team5.datamodel.transmissions.MessageHandler;
 
 /**
  *
@@ -19,17 +22,18 @@ import team5.datamodel.card.NumericCard;
  */
 public class GameThread extends Thread {
 
-    private Counter turnIndex;
-    private Counter gamerIndex;
+    private final Counter turnIndex;
+    private final Counter gamerIndex;
     private DataExchanger dataE;
-    private JLabel lastCardLabel;
-    private Counter gamerCount;
-    private Logger log;
-    private JTextArea text;
-    private String[] logins;
+    private final JLabel lastCardLabel;
+    private final Counter gamerCount;
+    private Logger logger;
+    private final JTextArea text;
+    private final String[] logins;
+    private final MessageHandler messageHandler;
 
-    public GameThread(Counter enabledPane, Counter gamerIndex, DataExchanger dataE, JLabel lastCardLabel, Counter gamerCount, JTextArea text, String[] logins) {
-        this.dataE = dataE;
+    public GameThread(Counter enabledPane, Counter gamerIndex, MessageHandler messageHandler, JLabel lastCardLabel, Counter gamerCount, JTextArea text, String[] logins) {
+        this.messageHandler = messageHandler;
         this.turnIndex = enabledPane;
         this.gamerCount = gamerCount;
         this.gamerIndex = gamerIndex;
@@ -44,7 +48,8 @@ public class GameThread extends Thread {
             if (turnIndex.getCount() < gamerIndex.getCount()) {
                 for (; turnIndex.getCount() < gamerIndex.getCount(); turnIndex.inc()) {
                     try {
-                        String command = dataE.readString();
+                        Message message = messageHandler.receiveMessage();;
+                        String command = message.getCommand();
                         switch (command) {
                             case "Pass":
                                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
@@ -54,11 +59,11 @@ public class GameThread extends Thread {
                                 turnIndex.dec();
                                 break;
                             case "END TURN":
-                                Card card = new NumericCard(dataE.readInt(), dataE.readString());
+                                Card card = message.getCard();
                                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                                 lastCardLabel.setText(card.toString());
                                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
-                                boolean win = dataE.readBool();
+                                boolean win = message.getConfirmation();
                                 if (win == true) {
                                     text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": WIN!!!");
                                 }
@@ -71,7 +76,9 @@ public class GameThread extends Thread {
                                 break;
                         }
                     } catch (IOException ex) {
-                        log.debug(ex.getMessage());
+                        logger.debug(ex.getMessage());
+                    } catch (JAXBException ex) {
+                        logger.debug(ex.getMessage());
                     }
 
                 }
@@ -79,9 +86,10 @@ public class GameThread extends Thread {
             if (turnIndex.getCount() > gamerIndex.getCount()) {
                 for (; turnIndex.getCount() < gamerCount.getCount(); turnIndex.inc()) {
                     try {
-                        String command = dataE.readString();
+                        Message message = messageHandler.receiveMessage();;
+                        String command = message.getCommand();
                         switch (command) {
-                            case "Pass"://надо бы сделать лэйбл, который будет отражать ходы противника.
+                            case "Pass":
                                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
                                 break;
                             case "TakeCard":
@@ -89,11 +97,11 @@ public class GameThread extends Thread {
                                 turnIndex.dec();
                                 break;
                             case "END TURN":
-                                Card card = new NumericCard(dataE.readInt(), dataE.readString());
+                                Card card = message.getCard();
                                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
                                 lastCardLabel.setText(card.toString());
                                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
-                                boolean win = dataE.readBool();
+                                boolean win = message.getConfirmation();
                                 if (win == true) {
                                     text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": WIN!!!");
                                 }
@@ -101,10 +109,14 @@ public class GameThread extends Thread {
                             case "Exit":
                                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                                 gamerCount.dec();
+                                gamerIndex.dec();
+                                turnIndex.dec();
                                 break;
                         }
                     } catch (IOException ex) {
-                        log.debug(ex.getMessage());
+                        logger.debug(ex.getMessage());
+                    } catch (JAXBException ex) {
+                        logger.debug(ex.getMessage());
                     }
 
                 }
@@ -113,7 +125,7 @@ public class GameThread extends Thread {
             try {
                 wait();
             } catch (InterruptedException ex) {
-                log.debug(ex.getMessage());
+                logger.debug(ex.getMessage());
             }
 
         }

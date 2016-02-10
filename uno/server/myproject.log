@@ -567,3 +567,8 @@
 09:19:01,051 DEBUG main Server:main:49 - User already exist
 09:19:03,707  INFO main Server:main:63 - Client connected
 09:19:17,299 DEBUG Thread-1 ServerThread:run:249 - Connection reset
+17:15:24,127  INFO main Server:main:64 - Client connected
+17:15:37,732  INFO main Server:main:64 - Client connected
+17:17:15,429 DEBUG Thread-1 ServerThread:game:359 - Connection reset
+17:17:15,433 DEBUG Thread-1 ServerThread:run:65 - Connection reset
+17:17:15,465 DEBUG Thread-1 ServerThread:run:96 - Connection reset by peer: socket write error
