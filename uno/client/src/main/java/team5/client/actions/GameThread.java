@@ -53,7 +53,7 @@ public class GameThread extends Thread {
                                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
                                 break;
                             case "TakeCard":
-                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take cad");
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take card");
                                 turnIndex.dec();
                                 break;
                             case "END TURN":
@@ -89,7 +89,7 @@ public class GameThread extends Thread {
                                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
                                 break;
                             case "TakeCard":
-                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take cad");
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take card");
                                 turnIndex.dec();
                                 break;
                             case "END TURN":

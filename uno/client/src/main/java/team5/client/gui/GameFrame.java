@@ -323,7 +323,7 @@ public class GameFrame extends JFrame {
                 panels[gamerIndex.getCount()].revalidate();
                 panels[gamerIndex.getCount()].repaint();
                 isTakeCard = true;
-                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take cad");
+                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Take card");
             } else {
                 JOptionPane.showConfirmDialog(null, "You can't take card more", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
