@@ -57,7 +57,6 @@ public class ServerThread extends Thread {
 
             while (f) {
 //                comand = dataE.readString();
-                System.out.println("Новый заход");
                 try {
 
                     clientRequest = messageHandler.receiveMessage();
@@ -204,9 +203,8 @@ public class ServerThread extends Thread {
             //dataE.writeString(gamer.getGamerLogin());
             serverResponse = new Message();
             serverResponse.setChoice(gamer.getGamerLogin());
-            int k = rooms[r].countGamers();
             //dataE.writeInt(k);
-            serverResponse.setValue(k);
+            serverResponse.setValue(rooms[r].countGamers());
             messageHandler.sendMessage(serverResponse);
             ArrayList<GamerController> gamers = rooms[r].getGamers();
             for (int i = 0; i < gamers.size(); i++) {

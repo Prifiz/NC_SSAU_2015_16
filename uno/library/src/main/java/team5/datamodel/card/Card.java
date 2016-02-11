@@ -4,28 +4,45 @@
  * and open the template in the editor.
  */
 package team5.datamodel.card;
+
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Пользователь
  */
-public abstract class Card implements Serializable{
+@XmlRootElement
+public abstract class Card implements Serializable {
 
-    private Integer icon;
+    private Integer iconId;
     private String color;
+   // private CardType cardType;
 
-    public Card(Integer icon, String color) {
+//    public Card(Integer iconId, String color, CardType cardType) {
+//        this.color = color;
+//        this.iconId = iconId;
+//        this.cardType = cardType;
+//    }
+    public Card(Integer iconId, String color) {
         this.color = color;
-        this.icon = icon;
+        this.iconId = iconId;
     }
 
-    public Integer getIcon() {
-        return icon;
+    public Card() {
+
     }
 
-    public void setIcon(Integer icon) {
-        this.icon = icon;
+    public Integer getIconId() {
+        return iconId;
+    }
+
+//    public CardType getCardType() {
+//        return cardType;
+//    }
+
+    public void setIconId(Integer iconId) {
+        this.iconId = iconId;
     }
 
     public String getColor() {
@@ -35,5 +52,14 @@ public abstract class Card implements Serializable{
     public void setColor(String color) {
         this.color = color;
     }
+
+//    public void setCardType(CardType cardType) {
+//        this.cardType = cardType;
+//    }
+//TODO не понятно атк вообще можно делать или делать отдельную оболочку?
+//    public enum CardType {
+//        NUMERIC,
+//        SPECIAL;
+//    }
 
 }

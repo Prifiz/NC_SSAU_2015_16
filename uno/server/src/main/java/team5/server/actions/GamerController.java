@@ -89,7 +89,7 @@ public class GamerController {
         String[] str = s.split(" ");
         Card card = null;
         for (Card handscard : handscards) {
-            if ((handscard.getColor().equals(str[0])) && (handscard.getIcon() == Integer.parseInt(str[1]))) {
+            if ((handscard.getColor().equals(str[0])) && (handscard.getIconId() == Integer.parseInt(str[1]))) {
                 card =  handscard;
             }
         }

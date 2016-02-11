@@ -60,7 +60,7 @@ public class GameThread extends Thread {
                                 break;
                             case "END TURN":
                                 Card card = message.getCard();
-                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIconId() + " " + card.getColor());
                                 lastCardLabel.setText(card.toString());
                                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                                 boolean win = message.getConfirmation();
@@ -98,7 +98,7 @@ public class GameThread extends Thread {
                                 break;
                             case "END TURN":
                                 Card card = message.getCard();
-                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
+                                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIconId() + " " + card.getColor());
                                 lastCardLabel.setText(card.toString());
                                 lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                                 boolean win = message.getConfirmation();

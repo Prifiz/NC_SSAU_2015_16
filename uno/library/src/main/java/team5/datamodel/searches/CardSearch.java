@@ -29,7 +29,7 @@ public class CardSearch implements Search {
         Pattern p = Pattern.compile(request);
         Matcher m;
         for (Card c : cards) {
-            m = p.matcher(c.getIcon().toString());
+            m = p.matcher(c.getIconId().toString());
             if (m.matches()) {
                 resultOfSearch.add(c);
                 continue;
@@ -62,7 +62,7 @@ public class CardSearch implements Search {
         ArrayList<Card> resultOfSearch = new ArrayList<Card>();
 
         for (Card c : cards) {
-            if (SearchServices.isStringIncludeSubstring(c.getIcon().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)) {
                 resultOfSearch.add(c);
                 continue;
             }
@@ -84,7 +84,7 @@ public class CardSearch implements Search {
      *
      * @author Dmitry
      * @param request
-     * @param field takes values: "icon", "color", "icon_color"
+     * @param field takes values: "iconId", "color", "iconId_color"
      * @throws CardNotFoundException
      */
     @Override
@@ -94,9 +94,9 @@ public class CardSearch implements Search {
         ArrayList<Card> cards = WorkCard.getWork().getArrOfCards();
         ArrayList<Card> resultOfSearch = new ArrayList<Card>();
 
-        if ("icon".equals(field) || "Icon".equals(field)) {
+        if ("iconId".equals(field) || "IconId".equals(field)) {
             for (Card c : cards) {
-                if (SearchServices.isStringIncludeSubstring(c.getIcon().toString(), request)) {
+                if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)) {
                     resultOfSearch.add(c);
                 }
             }
@@ -110,10 +110,10 @@ public class CardSearch implements Search {
             }
         }
 
-        if ("icon_color".equals(field) || "color_icon".equals(field)
-                || "Icon_color".equals(field) || "Color_icon".equals(field)) {
+        if ("iconId_color".equals(field) || "color_iconId".equals(field)
+                || "IconId_color".equals(field) || "Color_iconId".equals(field)) {
             for (Card c : cards) {
-                if (SearchServices.isStringIncludeSubstring(c.getIcon().toString(), request)
+                if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)
                         && SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
                     resultOfSearch.add(c);
                 }

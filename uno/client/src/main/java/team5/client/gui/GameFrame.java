@@ -79,6 +79,7 @@ public class GameFrame extends JFrame {
                 if (logins[i].equals(myLogin)) {
                     gamerIndex.setCount(i);
                 }
+                System.out.println("Increment "+ i);
             }
         } catch (IOException ex) {
             logger.debug(ex.getMessage());
@@ -413,7 +414,7 @@ public class GameFrame extends JFrame {
                         lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                         buttonGroups[gamerIndex.getCount()].remove(jr);
                         boolean endgame = false;
-                        text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
+                        text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIconId() + " " + card.getColor());
                         if (buttonGroups[gamerIndex.getCount()].getButtonCount() == 0) {
                             messageHandler.sendMessage(new Message(true));
                             FinishFrame finish = new FinishFrame(dataE);

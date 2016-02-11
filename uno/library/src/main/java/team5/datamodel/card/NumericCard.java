@@ -4,16 +4,26 @@
  * and open the template in the editor.
  */
 package team5.datamodel.card;
+
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Пользователь
  */
-public class NumericCard extends Card implements Serializable{
+@XmlRootElement
+public class NumericCard extends Card implements Serializable {
 
-    public NumericCard(Integer icon, String color) {
-        super(icon, color);
+//    public NumericCard(Integer iconId, String color) {
+//        super(iconId, color, CardType.NUMERIC);
+//    }
+    
+    public NumericCard(Integer iconId, String color) {
+        super(iconId, color);
+    }
+
+    public NumericCard() {
     }
 
     @Override
@@ -27,24 +37,24 @@ public class NumericCard extends Card implements Serializable{
     }
 
     @Override
-    public void setIcon(Integer icon) {
-        super.setIcon(icon);
+    public void setIconId(Integer iconId) {
+        super.setIconId(iconId);
     }
 
     @Override
-    public Integer getIcon() {
-        return super.getIcon();
+    public Integer getIconId() {
+        return super.getIconId();
     }
 
     @Override
     public String toString() {
-        return getColor() + " " + getIcon();
+        return getColor() + " " + getIconId();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this.getClass() == obj.getClass()) {
-            if ((((NumericCard) obj).getColor().equals(this.getColor())) && ((NumericCard) obj).getIcon() == this.getIcon()) {
+            if ((((NumericCard) obj).getColor().equals(this.getColor())) && ((NumericCard) obj).getIconId() == this.getIconId()) {
                 return true;
             } else {
                 return false;
@@ -56,7 +66,11 @@ public class NumericCard extends Card implements Serializable{
 
     @Override
     public int hashCode() {
-        return this.getIcon() ^ this.getColor().length();
+        return this.getIconId() ^ this.getColor().length();
     }
 
+//    @Override
+//    public CardType getCardType() {
+//        return super.getCardType();
+//    }
 }
