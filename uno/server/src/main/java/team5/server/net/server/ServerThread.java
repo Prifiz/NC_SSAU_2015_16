@@ -18,6 +18,7 @@ import team5.server.actions.RoomController;
 import team5.server.actions.SignIn;
 import team5.server.actions.TableController;
 import team5.datamodel.card.Card;
+import team5.datamodel.card.NumericCard;
 import team5.datamodel.exceptions.UserExistException;
 import team5.datamodel.transmissions.Message;
 import team5.datamodel.transmissions.MessageHandler;
@@ -290,7 +291,7 @@ public class ServerThread extends Thread {
                                 serverResponse.setConfirmation(table.isRightCard(card));
                                 if (table.isRightCard(card)) {
                                     //dataE.writeBool(table.isRightCard(card));
-                                    
+
                                     table.setLastCard(card);
                                     rooms[r].getGamer(order).setAct(command);
                                     order++;
@@ -301,7 +302,7 @@ public class ServerThread extends Thread {
                                         rooms[r].cleanRoom();
                                         return;
                                     }
-                                } 
+                                }
                                 break;
                             case "Exit":
                                 rooms[r].getGamer(order).setAct(command);
@@ -327,7 +328,7 @@ public class ServerThread extends Thread {
                             rooms[r].getGamer(order).setAct(null);
                             rooms[r].getGamer(order).setReadCount(0);
                         }
-                         switch (command) {
+                        switch (command) {
                             case "Pass":
                                 serverResponse.setCommand(command);
                                 break;

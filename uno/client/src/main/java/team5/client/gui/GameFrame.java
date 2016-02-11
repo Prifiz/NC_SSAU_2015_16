@@ -79,7 +79,6 @@ public class GameFrame extends JFrame {
                 if (logins[i].equals(myLogin)) {
                     gamerIndex.setCount(i);
                 }
-                System.out.println("Increment "+ i);
             }
         } catch (IOException ex) {
             logger.debug(ex.getMessage());

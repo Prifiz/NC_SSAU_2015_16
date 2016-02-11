@@ -22,7 +22,8 @@ public class Message implements Serializable {
     private boolean confirmation;
     private String choice;
     private int value;
-    private NumericCard numericCard;//также можно дописывать любой тип карт
+    @XmlElement
+    private NumericCard numericCard;
     //private CardType cardType;
     // private String cardType;
 

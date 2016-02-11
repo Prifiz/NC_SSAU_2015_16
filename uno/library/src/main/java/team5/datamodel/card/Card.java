@@ -6,18 +6,21 @@
 package team5.datamodel.card;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 /**
  *
  * @author Пользователь
  */
-@XmlRootElement
+@XmlRootElement(name="Card")
+@XmlSeeAlso(NumericCard.class)
 public abstract class Card implements Serializable {
 
     private Integer iconId;
     private String color;
-   // private CardType cardType;
+    // private CardType cardType;
 
 //    public Card(Integer iconId, String color, CardType cardType) {
 //        this.color = color;
@@ -30,9 +33,9 @@ public abstract class Card implements Serializable {
     }
 
     public Card() {
-
     }
 
+    @XmlElement(name = "iconID")
     public Integer getIconId() {
         return iconId;
     }
@@ -40,11 +43,11 @@ public abstract class Card implements Serializable {
 //    public CardType getCardType() {
 //        return cardType;
 //    }
-
     public void setIconId(Integer iconId) {
         this.iconId = iconId;
     }
 
+    @XmlElement(name = "color")
     public String getColor() {
         return color;
     }
@@ -61,5 +64,4 @@ public abstract class Card implements Serializable {
 //        NUMERIC,
 //        SPECIAL;
 //    }
-
 }

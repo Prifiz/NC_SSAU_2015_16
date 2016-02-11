@@ -6,23 +6,24 @@
 package team5.datamodel.card;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 /**
  *
  * @author Пользователь
  */
-@XmlRootElement
+@XmlRootElement(name = "Numeric Card")
 public class NumericCard extends Card implements Serializable {
 
 //    public NumericCard(Integer iconId, String color) {
 //        super(iconId, color, CardType.NUMERIC);
 //    }
-    
+
     public NumericCard(Integer iconId, String color) {
         super(iconId, color);
     }
-
     public NumericCard() {
     }
 
@@ -31,6 +32,7 @@ public class NumericCard extends Card implements Serializable {
         super.setColor(color);
     }
 
+    @XmlElement(name = "color")
     @Override
     public String getColor() {
         return super.getColor();
@@ -41,10 +43,32 @@ public class NumericCard extends Card implements Serializable {
         super.setIconId(iconId);
     }
 
+    @XmlElement(name = "iconID")
     @Override
     public Integer getIconId() {
         return super.getIconId();
     }
+//    @Override
+//    public void setColor(String color) {
+//        this.color = color;
+//    }
+//
+//    @XmlElement(name = "color")
+//    @Override
+//    public String getColor() {
+//        return color;
+//    }
+//
+//    @Override
+//    public void setIconId(Integer iconId) {
+//        this.iconId = iconId;
+//    }
+//
+//    @XmlElement(name = "iconID")
+//    @Override
+//    public Integer getIconId() {
+//        return iconId;
+//    }
 
     @Override
     public String toString() {
