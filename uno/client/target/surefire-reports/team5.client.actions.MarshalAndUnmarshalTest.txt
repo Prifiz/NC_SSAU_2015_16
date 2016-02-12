@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: team5.client.actions.MarshalAndUnmarshalTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.712 sec <<< FAILURE!
-testMarshalData(team5.client.actions.MarshalAndUnmarshalTest)  Time elapsed: 0.148 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.531 sec <<< FAILURE!
+testMarshalData(team5.client.actions.MarshalAndUnmarshalTest)  Time elapsed: 0.125 sec  <<< ERROR!
 java.time.format.DateTimeParseException: Text '19.12.2012' could not be parsed at index 0
 	at java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:1947)
 	at java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1849)

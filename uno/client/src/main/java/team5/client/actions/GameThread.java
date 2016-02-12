@@ -12,7 +12,6 @@ import javax.swing.JTextArea;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.datamodel.card.Card;
-import team5.datamodel.card.NumericCard;
 import team5.datamodel.transmissions.Message;
 import team5.datamodel.transmissions.MessageHandler;
 

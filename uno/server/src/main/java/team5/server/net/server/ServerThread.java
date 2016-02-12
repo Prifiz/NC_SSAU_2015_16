@@ -265,7 +265,7 @@ public class ServerThread extends Thread {
                 if (order == rooms[r].getGamerNumber(gamer)) {
                     boolean game = true;
                     while (game == true) {
-                        String command = null;
+                        String command = "";
                         //command = dataE.readString();
                         clientRequest = messageHandler.receiveMessage();
                         command = clientRequest.getCommand();
@@ -281,6 +281,7 @@ public class ServerThread extends Thread {
                                 //dataE.writeInt(card.getIcon());
                                 //dataE.writeString(card.getColor());
                                 serverResponse.setCard(card);
+                                messageHandler.sendMessage(serverResponse);
                                 rooms[r].getGamer(order).setAct(command);
                                 break;
                             case "END TURN":
@@ -289,6 +290,7 @@ public class ServerThread extends Thread {
                                 //dataE.writeString(card.getColor());
                                 serverResponse.setCard(card);
                                 serverResponse.setConfirmation(table.isRightCard(card));
+                                messageHandler.sendMessage(serverResponse);
                                 if (table.isRightCard(card)) {
                                     //dataE.writeBool(table.isRightCard(card));
 
@@ -296,7 +298,7 @@ public class ServerThread extends Thread {
                                     rooms[r].getGamer(order).setAct(command);
                                     order++;
                                     game = false;
-                                    boolean win = clientRequest.getConfirmation();
+                                    boolean win = messageHandler.receiveMessage().getConfirmation();
                                     if (win == true) {
                                         rooms[r].setFinish(true);
                                         rooms[r].cleanRoom();
@@ -313,7 +315,7 @@ public class ServerThread extends Thread {
                                 game = false;
                                 return;
                         }
-                        messageHandler.sendMessage(serverResponse);
+                        
                     }
                 }
                 if (order > rooms[r].getGamerNumber(gamer)) {
