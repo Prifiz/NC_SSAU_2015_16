@@ -5,10 +5,10 @@
  */
 package team5.server.actions;
 
-import team5.library.user.User;
-import team5.library.exceptions.*;
-import team5.library.searches.Search;
-import team5.library.searches.UserSearch;
+import team5.datamodel.user.User;
+import team5.datamodel.exceptions.*;
+import team5.datamodel.searches.Search;
+import team5.datamodel.searches.UserSearch;
 
 /**
  *

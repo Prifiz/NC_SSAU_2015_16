@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.*;
-import team5.library.transmissions.FileHandler;
-import team5.library.actions.WorkUser;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
-import team5.client.transmissions.Streams;
+import team5.client.net.ClientSocket;
 
 /**
  *
@@ -26,7 +26,7 @@ import team5.client.transmissions.Streams;
  */
 public class StartFrame extends JFrame {
 
-    private Logger log = Logger.getLogger(StartFrame.class);
+    private Logger logger = Logger.getLogger(StartFrame.class);
     private javax.swing.JButton ruleButton;
     private javax.swing.JButton enterButton;
     private javax.swing.JLabel unoLabel;
@@ -44,6 +44,7 @@ public class StartFrame extends JFrame {
     @SuppressWarnings("unchecked")
 
     private void initStartForm() {
+
         setPreferredSize(new Dimension(400, 300));
         setLayout(null);
         this.setBounds(200, 10, 710, 790);
@@ -91,6 +92,7 @@ public class StartFrame extends JFrame {
     }
 
     private void initCloseOperation() {
+
         addWindowListener(new WindowListener() {
 
             @Override
@@ -146,24 +148,17 @@ public class StartFrame extends JFrame {
     }
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        int serverport = 8081;
-        String address = /*"192.168.43.197"*/ "127.0.0.1";
-        InputStream in = null;
-        OutputStream out = null;
         try {
-            InetAddress ipaddress = InetAddress.getByName(address);
-            Socket socket = new Socket(ipaddress, serverport);
-            in = socket.getInputStream();
-            out = socket.getOutputStream();
-            Streams streams = new Streams(in, out);
-            log.info("Connect to server");
-            DataExchanger dataE = new DataExchanger(in, out);
-            LogInFrame liginFrame = new LogInFrame(dataE);
-            liginFrame.setVisible(true);
+            ClientSocket clientSocket = new ClientSocket();
+            clientSocket.connection();
+
+            //DataExchanger dataE = new DataExchanger(clientSocket.getInputStream(), clientSocket.getOutputStream());//временно остаивил
+            LogInFrame loginFrame = new LogInFrame(clientSocket.getMessageHandler());
+            loginFrame.setVisible(true);
             this.dispose();
         } catch (IOException e) {
             JOptionPane.showConfirmDialog(null, "You didn't connect to server. Please try agane", "Oops", JOptionPane.CLOSED_OPTION);
-            log.debug(e.getMessage());
+            logger.debug(e.getMessage());
         }
 
     }

@@ -11,8 +11,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 import org.apache.log4j.Logger;
-import team5.library.transmissions.FileHandler;
-import team5.library.card.Card;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.card.Card;
 
 /**
  *
@@ -60,7 +60,7 @@ public class TableController {
      */
     public boolean isRightCard(Card card) {
         if (lastcard != null) {
-            if ((lastcard.getColor().equals(card.getColor())) || (lastcard.getIcon() == card.getIcon())) {
+            if ((lastcard.getColor().equals(card.getColor())) || (lastcard.getIconId() == card.getIconId())) {
                 lastcard = card;
                 return true;
             } else {

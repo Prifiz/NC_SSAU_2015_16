@@ -15,10 +15,10 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import team5.client.actions.DataExchanger;
 import team5.client.actions.UserTableModel;
-import team5.library.exceptions.NotFoundException;
-import team5.library.searches.UserSearch;
-import team5.library.searches.Search;
-import team5.library.user.User;
+import team5.datamodel.exceptions.NotFoundException;
+import team5.datamodel.searches.UserSearch;
+import team5.datamodel.searches.Search;
+import team5.datamodel.user.User;
 
 /**
  *
@@ -133,10 +133,10 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         tfsearch.setBounds(30, 30, 300, 30);
 
         add(panel);
-
     }
 
     private void initCloseOperation() {
+
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
@@ -165,7 +165,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
             table.revalidate();
             table.repaint();
 
-            this.setVisible(false);
+            this.setVisible(false);//TODO мб this.dispose(); ?
 
         } catch (NotFoundException e) {
             jMessage.setText("Nothing found.");

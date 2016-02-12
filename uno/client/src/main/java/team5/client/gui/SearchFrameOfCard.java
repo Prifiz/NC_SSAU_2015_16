@@ -15,10 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import team5.client.actions.CardTableModel;
 import team5.client.actions.DataExchanger;
-import team5.library.card.Card;
-import team5.library.exceptions.NotFoundException;
-import team5.library.searches.CardSearch;
-import team5.library.searches.Search;
+import team5.datamodel.card.Card;
+import team5.datamodel.exceptions.NotFoundException;
+import team5.datamodel.searches.CardSearch;
+import team5.datamodel.searches.Search;
 
 /**
  *
@@ -70,10 +70,12 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
     }
 
     private void initStartFrame() {
+
         setPreferredSize(new Dimension(400, 250));
         setLayout(null);
         this.setResizable(false);
         setTitle("Search cards");
+
     }
 
     private void initComponents() {
@@ -126,11 +128,14 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
         panel.add(tfsearch);
         tfsearch.setBounds(30, 30, 300, 30);
 
+//        
         add(panel);
 
     }
 
     private void initCloseOperation() {
+//        
+
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
@@ -158,14 +163,11 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
 
             table.revalidate();
             table.repaint();
-            this.setVisible(false);
+            this.setVisible(false);//TODO мб this.dispose();  ? 
 
         } catch (NotFoundException e) {
             jMessage.setText("Nothing found.");
         }
-        //   finally {
-        //     this.setVisible(false);
-        // }
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {

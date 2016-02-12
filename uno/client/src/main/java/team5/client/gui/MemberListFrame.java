@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import javax.swing.*;
@@ -19,14 +20,15 @@ import javax.swing.table.TableRowSorter;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
-import team5.library.transmissions.FileHandler;
+import team5.datamodel.transmissions.FileHandler;
 import team5.client.actions.UserTableModel;
-import team5.library.actions.WorkUser;
-import team5.library.exceptions.NotFoundException;
-import team5.library.exceptions.UserExistException;
-import team5.library.searches.UserSearch;
-import team5.library.searches.Search;
-import team5.library.user.User;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.exceptions.NotFoundException;
+import team5.datamodel.exceptions.UserExistException;
+import team5.datamodel.searches.UserSearch;
+import team5.datamodel.searches.Search;
+import team5.datamodel.transmissions.MessageHandler;
+import team5.datamodel.user.User;
 
 /**
  *
@@ -66,6 +68,7 @@ public class MemberListFrame extends javax.swing.JFrame {
     private JPanel panel;
 
     private UserTableModel model;
+    private MessageHandler messageHandler;
 
     public MemberListFrame(DataExchanger dataE) {
         this.dataE = dataE;
@@ -83,11 +86,13 @@ public class MemberListFrame extends javax.swing.JFrame {
     }
 
     private void initStartFrame() {
+
         searchFrame = new SearchFrameOfUser(dataE);
         setPreferredSize(new Dimension(710, 790));
         setLayout(null);
         this.setResizable(false);
         setTitle("Member list");
+
     }
 
     private void initComponents() {
@@ -264,10 +269,10 @@ public class MemberListFrame extends javax.swing.JFrame {
         //add(jTable1);
         add(panel);
         add(jScrollPane1);
-
     }
 
     private void initCloseOperation() {
+
         addWindowListener(new WindowListener() {
 
             @Override
@@ -316,7 +321,7 @@ public class MemberListFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -340,7 +345,7 @@ public class MemberListFrame extends javax.swing.JFrame {
     private void addButtonActionPerfomed(ActionEvent evt) {
         try {
             WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
-                    tfpassword.getText(), tfemail.getText(), tfbday.getText());//остановился тут
+                    tfpassword.getText(), tfemail.getText(), LocalDate.now());//остановился тут //tfbday.getText() заменил на LocalDate.now()
             if (searchFrame.getSearchRequest() != null) {
                 Search search = new UserSearch();
                 model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
@@ -363,7 +368,7 @@ public class MemberListFrame extends javax.swing.JFrame {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        AdminRoom adminRoom = new AdminRoom(dataE);
+        AdminRoom adminRoom = new AdminRoom(messageHandler);
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);
         adminRoom.setVisible(true);
@@ -391,28 +396,28 @@ public class MemberListFrame extends javax.swing.JFrame {
      */
     /*public static void main(String args[]) {
 
-     Logger log = Logger.getLogger(MemberList.class);
-     try {
-     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-     if ("Nimbus".equals(info.getName())) {
-     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-     break;
-     }
-     }
-     } catch (ClassNotFoundException ex) {
-     log.debug(ex.getMessage());
-     } catch (InstantiationException ex) {
-     log.debug(ex.getMessage());
-     } catch (IllegalAccessException ex) {
-     log.debug(ex.getMessage());
-     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-     log.debug(ex.getMessage());
-     }
+        Logger log = Logger.getLogger(MemberList.class);
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            log.debug(ex.getMessage());
+        } catch (InstantiationException ex) {
+            log.debug(ex.getMessage());
+        } catch (IllegalAccessException ex) {
+            log.debug(ex.getMessage());
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            log.debug(ex.getMessage());
+        }
 
-     java.awt.EventQueue.invokeLater(new Runnable() {
-     public void run() {
-     new MemberList().setVisible(true);
-     }
-     });
-     }*/
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MemberList().setVisible(true);
+            }
+        });
+    }*/
 }

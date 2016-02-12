@@ -6,8 +6,8 @@
 package team5.server.actions;
 
 import java.util.ArrayList;
-import team5.library.card.Card;
-import team5.library.exceptions.CardNotFoundException;
+import team5.datamodel.card.Card;
+import team5.datamodel.exceptions.CardNotFoundException;
 
 /**
  *
@@ -89,7 +89,7 @@ public class GamerController {
         String[] str = s.split(" ");
         Card card = null;
         for (Card handscard : handscards) {
-            if ((handscard.getColor().equals(str[0])) && (handscard.getIcon() == Integer.parseInt(str[1]))) {
+            if ((handscard.getColor().equals(str[0])) && (handscard.getIconId() == Integer.parseInt(str[1]))) {
                 card =  handscard;
             }
         }

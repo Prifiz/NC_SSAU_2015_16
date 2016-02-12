@@ -5,10 +5,11 @@
  */
 package team5.client.actions;
 
+import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
-import team5.library.actions.WorkUser;
-import team5.library.transmissions.FileHandler;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.transmissions.FileHandler;
 
 /**
  *
@@ -34,7 +35,7 @@ public class MarshalAndUnmarshalTest {
     @Test
     public void testMarshalData() throws Exception {
         WorkUser workUser = WorkUser.getWork();
-        workUser.addUser("bob4", "Clark", "Usa", "XX", "sfsdf", "1234", "email@gmail.com", "19.12.2012");
+        workUser.addUser("bob4", "Clark", "Usa", "XX", "sfsdf", "1234", "email@gmail.com", LocalDate.parse("19.12.2012"));
         workWithFiles.marshalData(fileName, workUser);
     }
 

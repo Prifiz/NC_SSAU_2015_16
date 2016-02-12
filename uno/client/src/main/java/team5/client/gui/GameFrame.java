@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import team5.client.actions.Flag;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -27,12 +28,13 @@ import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.Counter;
 import team5.client.actions.DataExchanger;
-import team5.client.actions.Flag;
 import team5.client.actions.GameThread;
-import team5.library.actions.WorkUser;
-import team5.library.transmissions.FileHandler;
-import team5.library.card.Card;
-import team5.library.card.NumericCard;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.card.Card;
+import team5.datamodel.card.NumericCard;
+import team5.datamodel.transmissions.Message;
+import team5.datamodel.transmissions.MessageHandler;
 
 /**
  *
@@ -49,7 +51,7 @@ public class GameFrame extends JFrame {
     private String myLogin;
     private String[] logins;
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(GameFrame.class);
+    private Logger logger = Logger.getLogger(GameFrame.class);
     private boolean isTakeCard = false;
     private JButton exitGameButton;
     private JButton rulesButton;
@@ -62,50 +64,58 @@ public class GameFrame extends JFrame {
     private JTabbedPane pane;
     private JTextArea text;
     private JScrollPane scroll;
-    GameThread game;
+    private MessageHandler messageHandler;
+    private GameThread game;
 
-    public GameFrame(DataExchanger dataE) {
+    public GameFrame(MessageHandler messageHandler) {
         canExit = new Flag(false);
-        this.dataE = dataE;
+        this.messageHandler = messageHandler;
         turnIndex = new Counter();
         try {
-            myLogin = dataE.readString();
-            gamerCount = new Counter(dataE.readInt());
+            Message message = messageHandler.receiveMessage();
+            myLogin = message.getChoice();
+            gamerCount = new Counter(message.getValue());
             gamerIndex = new Counter();
             logins = new String[gamerCount.getCount()];
             for (int i = 0; i < gamerCount.getCount(); i++) {
-                logins[i] = dataE.readString();
+                logins[i] = messageHandler.receiveMessage().getChoice();
                 if (logins[i].equals(myLogin)) {
                     gamerIndex.setCount(i);
                 }
             }
         } catch (IOException ex) {
-            log.debug(ex.getMessage());
+            logger.debug(ex.getMessage());
+        } catch (JAXBException ex) {
+            logger.debug(ex.getMessage());
         }
         panels = new JPanel[gamerCount.getCount()];
+
         initStartFrame();
         initComponentsButton();
         initComponents();
         initCloseOperation();
         turnIndex.setCount(0);
-        game = new GameThread(turnIndex, gamerIndex, this.dataE, lastCardLabel, gamerCount, text, logins, canExit);
+        game = new GameThread(turnIndex, gamerIndex, this.messageHandler, lastCardLabel, gamerCount, text, logins, canExit);
         game.start();
         //gameOtherUsers();
     }
 
     private void initStartFrame() {
+
         setPreferredSize(new Dimension(800, 600));
         setLayout(null);
+        //setBounds(200, 10, 710, 790);
         this.setResizable(false);
         setTitle("Game");
     }
 
+    //http://spec-zone.ru/RU/Java/Docs/7/api/javax/swing/ButtonGroup.html
     private void initComponentsButton() {
-        //http://spec-zone.ru/RU/Java/Docs/7/api/javax/swing/ButtonGroup.html
         buttonGroups = new ButtonGroup[gamerCount.getCount()];
         for (int i = 0; i < gamerCount.getCount(); i++) {
             buttonGroups[i] = new ButtonGroup();
         }
+        firstDistribution();
         exitGameButton = new JButton();
         exitGameButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         exitGameButton.setText("Exit game");
@@ -163,7 +173,6 @@ public class GameFrame extends JFrame {
     }
 
     private void initComponents() {
-
         panel = new JPanel();
         TitledBorder border = new TitledBorder("");
         border.setTitleFont(new java.awt.Font("Comic Sans MS", 0, 13));
@@ -208,6 +217,7 @@ public class GameFrame extends JFrame {
     }
 
     private void initCloseOperation() {
+
         addWindowListener(new WindowListener() {
 
             @Override
@@ -226,7 +236,7 @@ public class GameFrame extends JFrame {
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     //throw new UnsupportedOperationException("Not supported yet.");
                 } catch (JAXBException ex) {
-                    log.debug(ex.getMessage());
+                    logger.debug(ex.getMessage());
                 } finally {
                     exit();
                 }
@@ -261,14 +271,17 @@ public class GameFrame extends JFrame {
     private void exit() {
         if ((turnIndex.getCount() == gamerIndex.getCount()) || (canExit.isFlag() == true)) {
             try {
-                dataE.write("Exit");
-                RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
+                messageHandler.sendMessage(new Message("Exit"));
+                RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                 rooms.setVisible(true);
                 this.dispose();
             } catch (IOException ex) {
-                log.debug(ex.getMessage());
+                logger.debug(ex.getMessage());
+            } catch (JAXBException ex) {
+                logger.debug(ex.getMessage());
             }
+
         }
     }
 
@@ -286,7 +299,7 @@ public class GameFrame extends JFrame {
                 try {
                     dataE.write("Pass");
                 } catch (IOException ex) {
-                    log.debug(ex.getMessage());
+                    logger.debug(ex.getMessage());
                 }
                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
                 if (turnIndex.getCount() + 1 < gamerCount.getCount()) {
@@ -309,10 +322,12 @@ public class GameFrame extends JFrame {
                 JRadioButton jRadioButton = new JRadioButton();
                 Card card = null;
                 try {
-                    dataE.write("TakeCard");
-                    card = new NumericCard(dataE.readInt(), dataE.readString());
+                    messageHandler.sendMessage(new Message("TakeCard"));
+                    card = messageHandler.receiveMessage().getCard();
                 } catch (IOException ex) {
-                    log.debug(ex.getMessage());
+                    logger.debug(ex.getMessage());
+                } catch (JAXBException ex) {
+                    logger.debug(ex.getMessage());
                 }
                 jRadioButton.setText(card.toString());
                 jRadioButton.setForeground(isCardColor(card.getColor()));//color
@@ -333,17 +348,12 @@ public class GameFrame extends JFrame {
     private Color isCardColor(String color) {
         if ("blue".equals(color)) {
             return Color.BLUE;
+        } else if ("yellow".equals(color)) {
+            return Color.YELLOW;
+        } else if ("green".equals(color)) {
+            return Color.GREEN;
         } else {
-            if ("yellow".equals(color)) {
-                return Color.YELLOW;
-            } else {
-                if ("green".equals(color)) {
-                    return Color.GREEN;
-                } else {
-                    return Color.RED;
-                }
-
-            }
+            return Color.RED;
         }
 
     }
@@ -358,9 +368,11 @@ public class GameFrame extends JFrame {
                     JRadioButton jRadioButton = new JRadioButton();
                     Card card = null;
                     try {
-                        card = new NumericCard(dataE.readInt(), dataE.readString());
+                        card = messageHandler.receiveMessage().getCard();
                     } catch (IOException ex) {
-                        log.debug(ex.getMessage());
+                        logger.debug(ex.getMessage());
+                    } catch (JAXBException ex) {
+                        logger.debug(ex.getMessage());
                     }
                     jRadioButton.setText(card.toString());
                     jRadioButton.setForeground(isCardColor(card.getColor()));//color
@@ -382,10 +394,13 @@ public class GameFrame extends JFrame {
                 String str = buttonGroups[gamerIndex.getCount()].getSelection().getActionCommand();
                 Card card = null;
                 try {
-                    dataE.write("END TURN");
-                    dataE.write(str);
-                    card = new NumericCard(dataE.readInt(), dataE.readString());
-                    if (dataE.readBool() == true) {
+                    Message clientRequest = new Message("END TURN");
+                    clientRequest.setChoice(str);
+                    messageHandler.sendMessage(clientRequest);
+                    //dataE.write(str);
+                    Message serverResponse = messageHandler.receiveMessage();
+                    card = serverResponse.getCard();
+                    if (serverResponse.getConfirmation() == true) {
                         Enumeration en = buttonGroups[gamerIndex.getCount()].getElements();
                         while (en.hasMoreElements()) {
                             jr = (JRadioButton) en.nextElement();
@@ -398,9 +413,9 @@ public class GameFrame extends JFrame {
                         lastCardLabel.setForeground(isCardColor(card.getColor()));//color
                         buttonGroups[gamerIndex.getCount()].remove(jr);
                         boolean endgame = false;
-                        text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIcon() + " " + card.getColor());
+                        text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": End turn " + card.getIconId() + " " + card.getColor());
                         if (buttonGroups[gamerIndex.getCount()].getButtonCount() == 0) {
-                            dataE.write(true);
+                            messageHandler.sendMessage(new Message(true));
                             FinishFrame finish = new FinishFrame(dataE);
                             finish.setVisible(true);
                             this.setVisible(false);
@@ -411,7 +426,7 @@ public class GameFrame extends JFrame {
                             panels[gamerIndex.getCount()].revalidate();
                             panels[gamerIndex.getCount()].repaint();
                             isTakeCard = false;
-                            dataE.write(false);
+                            messageHandler.sendMessage(new Message(false));
                             if (turnIndex.getCount() + 1 < gamerCount.getCount()) {
                                 turnIndex.inc();
                             } else {
@@ -425,7 +440,9 @@ public class GameFrame extends JFrame {
                     }
 
                 } catch (IOException ex) {
-                    log.debug(ex.getMessage());
+                    logger.debug(ex.getMessage());
+                } catch (JAXBException ex) {
+                    logger.debug(ex.getMessage());
                 }
             } else {
                 JOptionPane.showConfirmDialog(null, "You didn't select card", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);

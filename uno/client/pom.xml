@@ -15,9 +15,9 @@
     
     <repositories>
         <repository>
-            <id>library</id>
-            <name>library</name>
-            <url>file:${project.build.directory}/library</url>
+            <id>datamodel</id>
+            <name>datamodel</name>
+            <url>file:${project.build.directory}/datamodel</url>
         </repository>
     </repositories> 
    
@@ -43,23 +43,6 @@
                     <source>1.8</source> 
                     <target>1.8</target> 
                 </configuration> 
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <targetJdk>1.6</targetJdk>
-                    <verbose>true</verbose>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>pmd</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -121,7 +104,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>library</artifactId>
+            <artifactId>datamodel</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
