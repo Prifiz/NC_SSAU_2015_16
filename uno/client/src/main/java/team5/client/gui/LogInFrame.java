@@ -9,12 +9,16 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
-import team5.library.transmissions.FileHandler;
-import team5.library.actions.WorkUser;
+import team5.datamodel.transmissions.FileHandler;
+import team5.datamodel.actions.WorkUser;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
+import team5.datamodel.transmissions.Message;
+import team5.datamodel.transmissions.MessageHandler;
+import team5.datamodel.user.ServiceInfo;
+import team5.datamodel.user.User;
 
 /**
  *
@@ -23,7 +27,7 @@ import team5.client.actions.DataExchanger;
 public class LogInFrame extends JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(LogInFrame.class);
+    private Logger logger = Logger.getLogger(LogInFrame.class);
     private javax.swing.JButton signButton;
     private javax.swing.JButton registrationButton;
     private javax.swing.JLabel signLabel;
@@ -32,12 +36,19 @@ public class LogInFrame extends JFrame {
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jLoginField;
     private javax.swing.JLabel jMessage;
+    private MessageHandler messageHandler;
 
     /**
      * Creates new form LogIn
      */
-    public LogInFrame(DataExchanger dataE) {
-        this.dataE = dataE;
+//    public LogInFrame(DataExchanger dataE) {
+//        this.dataE = dataE;
+//        initStartFrame();
+//        initComponents();
+//        initCloseOperation();
+//    }
+    public LogInFrame(MessageHandler messageHandler) {
+        this.messageHandler = messageHandler;
         initStartFrame();
         initComponents();
         initCloseOperation();
@@ -133,7 +144,7 @@ public class LogInFrame extends JFrame {
                 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
                 //                } 
                 catch (JAXBException ex) {
-                    log.debug(ex.getMessage());
+                    logger.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -165,15 +176,22 @@ public class LogInFrame extends JFrame {
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
         try {
-            dataE.write("Login");
-            dataE.write(jLoginField.getText());
-            dataE.write(String.valueOf(jPasswordField.getPassword()));
-            f = dataE.readBool();
+            Message message = new Message("Login");
+            User usr = new User();
+            usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
+            message.setUser(usr);
+            messageHandler.sendMessage(message);
+//        messageHandler.sendMessage(message);
+//        dataE.write(WorkWithFiles.marshalData( message));
+//        Message serverMessage = WorkWithFiles.unmarshalData(dataE.readStringReader());
+            f = messageHandler.receiveMessage().getConfirmation();
         } catch (IOException e) {
-            log.debug(e.getMessage());
+            logger.debug(e.getMessage());
+        } catch (JAXBException e) {
+            logger.debug(e.getMessage());
         }
         if (f) {
-            RoomSelectionFrame rooms = new RoomSelectionFrame(dataE);
+            RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
             rooms.setVisible(true);
             this.dispose();
         } else {
@@ -182,9 +200,9 @@ public class LogInFrame extends JFrame {
     }
 
     private void registrationButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        RegistrationFrame secondFrame = new RegistrationFrame(dataE);
+        RegistrationFrame secondFrame = new RegistrationFrame(messageHandler);
         secondFrame.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     /**
@@ -211,7 +229,7 @@ public class LogInFrame extends JFrame {
      //</editor-fold>
 
      /* Create and display the form */
-    /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
      public void run() {
      new LogIn(new InputStream(), new OutputStream()).setVisible(true);
      }

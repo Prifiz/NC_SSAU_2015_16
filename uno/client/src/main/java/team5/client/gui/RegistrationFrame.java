@@ -128,7 +128,7 @@ public class RegistrationFrame extends JFrame {
         
         сityLabel = new JLabel();
         сityLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        сityLabel.setText("Sity");
+        сityLabel.setText("City");
         add(сityLabel);
         сityLabel.setBounds(40, 340, 100, 30);
 
