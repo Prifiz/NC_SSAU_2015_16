@@ -118,16 +118,24 @@ public class ServerThread extends Thread {
 
     private void registration() throws UserExistException, IOException {
         Registration r = new Registration();
-        serverResponse = new Message(r.registrationUser(clientRequest.getUser().getPrivateInformation().getName(),
-                clientRequest.getUser().getPrivateInformation().getSurname(),
-                clientRequest.getUser().getAddress().getCountry(),
-                clientRequest.getUser().getAddress().getCity(),
-                clientRequest.getUser().getServiceInfo().getLogin(),
-                clientRequest.getUser().getServiceInfo().getPassword(),
-                clientRequest.getUser().getServiceInfo().getEmail(),
-                clientRequest.getUser().getServiceInfo().getDateOfRegistration()));
-//                        dataE.writeBool(r.registrationUser(dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString(), 
-//                                dataE.readString(), dataE.readString(), dataE.readString(), dataE.readString()));
+        try {
+            boolean d = r.registrationUser(clientRequest.getUser().getPrivateInformation().getName(),
+                    clientRequest.getUser().getPrivateInformation().getSurname(),
+                    clientRequest.getUser().getAddress().getCountry(),
+                    clientRequest.getUser().getAddress().getCity(),
+                    clientRequest.getUser().getServiceInfo().getLogin(),
+                    clientRequest.getUser().getServiceInfo().getPassword(),
+                    clientRequest.getUser().getServiceInfo().getEmail(),
+                    clientRequest.getUser().getServiceInfo().getDateOfRegistration());
+            serverResponse = new Message(d);
+            if (!d) {
+                serverResponse.setChoice("Field");
+            }
+        } catch (UserExistException ex) {
+            logger.debug(ex.getMessage());
+            serverResponse = new Message(false);
+            serverResponse.setChoice("User");
+        }
         try {
             messageHandler.sendMessage(serverResponse);
         } catch (JAXBException e) {

@@ -115,7 +115,7 @@ public class GameFrame extends JFrame {
         for (int i = 0; i < gamerCount.getCount(); i++) {
             buttonGroups[i] = new ButtonGroup();
         }
-        firstDistribution();
+
         exitGameButton = new JButton();
         exitGameButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         exitGameButton.setText("Exit game");
@@ -297,8 +297,10 @@ public class GameFrame extends JFrame {
                 isTakeCard = false;
 
                 try {
-                    dataE.write("Pass");
+                    messageHandler.sendMessage(new Message("Pass"));
                 } catch (IOException ex) {
+                    logger.debug(ex.getMessage());
+                } catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
                 }
                 text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Pass");
