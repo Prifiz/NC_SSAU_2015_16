@@ -44,7 +44,7 @@ public class WorkUser implements Serializable {
         for (int i = 0; i < arrUsers.size(); i++) {
             try {
                 Search search = new UserSearch();
-                if (arrUsers.get(i).equals(search.fieldSearch(Constants.LOGIN_ADMIN, "login").get(0))) {
+                if (arrUsers.get(i).equals(search.searchByField(Constants.LOGIN_ADMIN, "login").get(0))) {
                     User admin = new Admin();
                     arrUsers.add(admin);
                 }
@@ -78,7 +78,7 @@ public class WorkUser implements Serializable {
 //        }
         try {
             Search search = new UserSearch();
-            search.fieldSearch(login, "login");
+            search.searchByField(login, "login");
             throw new UserExistException("User already exist");
         } catch (NotFoundException e) {
             PrivateInformation privateInformation = new PrivateInformation(name, surname, bDay);
@@ -138,7 +138,7 @@ public class WorkUser implements Serializable {
             throws UserNotFoundException {
         try {
             Search search = new UserSearch();
-            User tmp = (User) search.fieldSearch(login, "login").get(0);
+            User tmp = (User) search.searchByField(login, "login").get(0);
             //if(tmp!=null)
             arrUsers.remove(tmp);
 //	else

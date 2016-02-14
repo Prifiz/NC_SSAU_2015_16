@@ -23,7 +23,7 @@ public class UserSearch implements Search {
      * @throws UserNotFoundException
      */
     @Override
-    public List regularSearch(String request)
+    public List searchByRegexp(String request)
             throws UserNotFoundException {
         ArrayList<User> users = WorkUser.getWork().getArrOfUsers();
         ArrayList<User> resultOfSearch = new ArrayList<User>();
@@ -93,7 +93,7 @@ public class UserSearch implements Search {
      * @throws UserNotFoundException
      */
     @Override
-    public List substringSearch(String request)
+    public List searchBySubstring(String request)
             throws UserNotFoundException {
 
         ArrayList<User> users = WorkUser.getWork().getArrOfUsers();
@@ -151,7 +151,7 @@ public class UserSearch implements Search {
      * @throws CardNotFoundException
      */
     @Override
-    public List fieldSearch(String request, String field)
+    public List searchByField(String request, String field)
             throws UserNotFoundException {
 
         ArrayList<User> users = WorkUser.getWork().getArrOfUsers();

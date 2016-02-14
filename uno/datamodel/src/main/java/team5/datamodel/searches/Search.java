@@ -9,10 +9,10 @@ import team5.datamodel.exceptions.NotFoundException;
  */
 public interface Search {
 
-    public List regularSearch(String request) throws NotFoundException;
+    public List searchByRegexp(String request) throws NotFoundException;
 
-    public List substringSearch(String request) throws NotFoundException;
+    public List searchBySubstring(String request) throws NotFoundException;
 
-    public List fieldSearch(String request, String field) throws NotFoundException;
+    public List searchByField(String request, String field) throws NotFoundException;
 
 }

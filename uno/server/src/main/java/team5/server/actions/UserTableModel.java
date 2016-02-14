@@ -124,7 +124,7 @@ public class UserTableModel extends AbstractTableModel {
             case 6:
                 try {
                     Search search = new UserSearch();
-                    search.fieldSearch((String) aValue, "login").isEmpty();
+                    search.searchByField((String) aValue, "login").isEmpty();
                     users.get(rowIndex).getServiceInfo().setLogin((String) aValue);
 
                 } catch (NotFoundException e) {

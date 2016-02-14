@@ -27,7 +27,7 @@ public class SignIn {
     public boolean sign(String login, String password) {
         try {
             Search search=new UserSearch();
-            User user = (User)search.fieldSearch(login, "login").get(0);
+            User user = (User)search.searchByField(login, "login").get(0);
             String s = "";
             /*for (int i = 0; i < password.length; i++) {
                 s += password[i];

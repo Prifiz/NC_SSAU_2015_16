@@ -22,7 +22,7 @@ public class CardSearch implements Search {
      * @throws CardNotFoundException
      */
     @Override
-    public List regularSearch(String request)
+    public List searchByRegexp(String request)
             throws CardNotFoundException {
         ArrayList<Card> cards = WorkCard.getWork().getArrOfCards();
         ArrayList<Card> resultOfSearch = new ArrayList<Card>();
@@ -55,7 +55,7 @@ public class CardSearch implements Search {
      * @throws CardNotFoundException
      */
     @Override
-    public List substringSearch(String request)
+    public List searchBySubstring(String request)
             throws CardNotFoundException {
 
         ArrayList<Card> cards = WorkCard.getWork().getArrOfCards();
@@ -88,7 +88,7 @@ public class CardSearch implements Search {
      * @throws CardNotFoundException
      */
     @Override
-    public List fieldSearch(String request, String field)
+    public List searchByField(String request, String field)
             throws CardNotFoundException {
 
         ArrayList<Card> cards = WorkCard.getWork().getArrOfCards();

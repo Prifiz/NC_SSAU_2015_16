@@ -63,7 +63,7 @@ public class WorkCard implements Serializable {
         Card card;
 //        if (card != null) {
         try {
-            card=(Card)search.fieldSearch(color, "icon_color").get(0);
+            card=(Card)search.searchByField(color, "icon_color").get(0);
             arrCards.remove(card);
         } catch (NotFoundException ex) {
             throw new CardNotFoundException("Delete Card: ");
