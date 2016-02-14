@@ -70,10 +70,12 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
     }
 
     private void initStartFrame() {
+
         setPreferredSize(new Dimension(400, 250));
         setLayout(null);
         this.setResizable(false);
         setTitle("Search cards");
+
     }
 
     private void initComponents() {
@@ -131,6 +133,11 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
     }
 
     private void initCloseOperation() {
+//        
+
+    }
+
+    private void initCloseOperation() {
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
@@ -158,14 +165,11 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
 
             table.revalidate();
             table.repaint();
-            this.setVisible(false);
+            this.setVisible(false);//TODO мб this.dispose();  ? 
 
         } catch (NotFoundException e) {
             jMessage.setText("Nothing found.");
         }
-        //   finally {
-        //     this.setVisible(false);
-        // }
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {

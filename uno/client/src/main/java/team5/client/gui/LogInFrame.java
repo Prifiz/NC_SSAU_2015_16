@@ -15,7 +15,6 @@ import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
-import team5.client.net.ClientSocket;
 import team5.datamodel.transmissions.Message;
 import team5.datamodel.transmissions.MessageHandler;
 import team5.datamodel.user.ServiceInfo;
@@ -42,13 +41,15 @@ public class LogInFrame extends JFrame {
     /**
      * Creates new form LogIn
      */
-    public LogInFrame(DataExchanger dataE) {
-        this.dataE = dataE;
-        initComponents();
-    }
-
+//    public LogInFrame(DataExchanger dataE) {
+//        this.dataE = dataE;
+//        initStartFrame();
+//        initComponents();
+//        initCloseOperation();
+//    }
     public LogInFrame(MessageHandler messageHandler) {
         this.messageHandler = messageHandler;
+        initStartFrame();
         initComponents();
         initCloseOperation();
     }
@@ -175,14 +176,6 @@ public class LogInFrame extends JFrame {
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
         try {
-
-//            dataE.write("Login");
-//            dataE.write(jLoginField.getText());
-//            dataE.write(String.valueOf(jPasswordField.getPassword()));
-//            f = dataE.readBool();
-//        } catch (IOException e) {
-//            logger.debug(e.getMessage());
-//        }
             Message message = new Message("Login");
             User usr = new User();
             usr.setServiceInfo(new ServiceInfo(jLoginField.getText(), String.valueOf(jPasswordField.getPassword()), "not"));
@@ -207,9 +200,9 @@ public class LogInFrame extends JFrame {
     }
 
     private void registrationButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        RegistrationFrame secondFrame = new RegistrationFrame(messageHandler);//TODO нехорошо как то связывать так фреймы
+        RegistrationFrame secondFrame = new RegistrationFrame(messageHandler);
         secondFrame.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }
 
     /**

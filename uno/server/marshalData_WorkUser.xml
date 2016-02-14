@@ -34,114 +34,82 @@
     </arrUsers>
     <arrUsers>
         <address>
-            <city>dfkv</city>
-            <country>dfkmv</country>
+            <city>2</city>
+            <country>2</country>
         </address>
         <privateInformation>
-            <name>putin</name>
-            <surname>d</surname>
-            <bDay>2333-12-19</bDay>
+            <name>2</name>
+            <surname>2</surname>
+            <bDay>2016-02-13</bDay>
         </privateInformation>
         <serviceInfo>
-            <email>adsc</email>
-            <login>ldkf</login>
-            <password>ld</password>
+            <email>2</email>
+            <login>2</login>
+            <password>2</password>
         </serviceInfo>
     </arrUsers>
     <arrUsers>
         <address>
-            <city>sfdd</city>
-            <country>sdfd</country>
-        </address>
-        <privateInformation>
-            <name>medved</name>
-            <surname>s</surname>
-            <bDay>0012-12-19</bDay>
-        </privateInformation>
-        <serviceInfo>
-            <email>fdd</email>
-            <login>fsdsf</login>
-            <password>fdd</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
-            <city>kj</city>
-            <country>jn</country>
-        </address>
-        <privateInformation>
-            <name>jk</name>
-            <surname>jk</surname>
-            <bDay>2010-05-12</bDay>
-        </privateInformation>
-        <serviceInfo>
-            <email>jkn</email>
-            <login>q</login>
-            <password>123</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
-            <city>das</city>
-            <country>sdas</country>
-        </address>
-        <privateInformation>
-            <name>ada</name>
-            <surname>sda</surname>
-            <bDay>2010-05-12</bDay>
-        </privateInformation>
-        <serviceInfo>
-            <email>adasd</email>
-            <login>p</login>
-            <password>s</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
-            <city>sdf</city>
+            <city>fsdfsd</city>
             <country>sdf</country>
         </address>
         <privateInformation>
             <name>dfsd</name>
-            <surname>fsdf</surname>
-            <bDay>2010-05-12</bDay>
+            <surname>sdfsdfdsfsd</surname>
+            <bDay>2016-02-13</bDay>
         </privateInformation>
         <serviceInfo>
-            <email>sdfs</email>
-            <login>a</login>
+            <email>fsdfs</email>
+            <login>p</login>
             <password>d</password>
         </serviceInfo>
     </arrUsers>
     <arrUsers>
         <address>
-            <city>asd</city>
-            <country>dasd</country>
+            <city>sdasd</city>
+            <country>asda</country>
         </address>
         <privateInformation>
-            <name>das</name>
-            <surname>das</surname>
-            <bDay>2010-05-12</bDay>
+            <name>dadas</name>
+            <surname>dasdasd</surname>
+            <bDay>2016-02-13</bDay>
         </privateInformation>
         <serviceInfo>
-            <email>ads</email>
+            <email>sadas</email>
             <login>m</login>
             <password>s</password>
         </serviceInfo>
     </arrUsers>
     <arrUsers>
         <address>
-            <city>sd</city>
-            <country>asd</country>
+            <city>sdas</city>
+            <country>dasda</country>
         </address>
         <privateInformation>
-            <name>dasd</name>
-            <surname>asd</surname>
-            <bDay>2010-05-12</bDay>
+            <name>dasdas</name>
+            <surname>das</surname>
+            <bDay>2016-02-13</bDay>
         </privateInformation>
         <serviceInfo>
-            <email>asdas</email>
-            <login>w</login>
-            <password>q</password>
+            <email>sadas</email>
+            <login>putin</login>
+            <password>d</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>sdfsd</city>
+            <country>sdf</country>
+        </address>
+        <privateInformation>
+            <name>fsdf</name>
+            <surname>sdf</surname>
+            <bDay>2016-02-13</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>sdfsd</email>
+            <login>medved</login>
+            <password>s</password>
         </serviceInfo>
     </arrUsers>
 </workUser>

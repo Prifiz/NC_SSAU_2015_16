@@ -22,7 +22,7 @@ public class CardTableModel extends AbstractTableModel {
     private final Set<TableModelListener> listeners = new HashSet<TableModelListener>();
     private WorkCard work = WorkCard.getWork();
     private ArrayList<Card> cards = work.getArrOfCards();
-    String[] names = {"Icon", "Color"};
+    String[] names = {"IconId", "Color"};
 
     public ArrayList getArrayOfCards() {
         return cards;
@@ -59,7 +59,7 @@ public class CardTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return cards.get(rowIndex).getIcon();
+                return cards.get(rowIndex).getIconId();
             case 1:
                 return cards.get(rowIndex).getColor();
 
@@ -78,7 +78,7 @@ public class CardTableModel extends AbstractTableModel {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                cards.get(rowIndex).setIcon((int) aValue);
+                cards.get(rowIndex).setIconId((int) aValue);
                 break;
             case 1:
                 cards.get(rowIndex).setColor((String) aValue);

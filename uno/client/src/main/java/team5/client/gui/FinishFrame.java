@@ -42,6 +42,7 @@ public class FinishFrame extends JFrame {
         setLayout(null);
         this.setResizable(false);
         setTitle("Finish game");
+
     }
 
     @SuppressWarnings("unchecked")
@@ -63,6 +64,10 @@ public class FinishFrame extends JFrame {
         resultLabel.setText("YOU WIN");
         add(resultLabel);
         resultLabel.setBounds(135, 100, 150, 30);
+
+    }
+
+    private void initCloseOperation() {
 
     }
 

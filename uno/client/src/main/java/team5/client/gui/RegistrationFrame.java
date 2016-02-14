@@ -41,7 +41,7 @@ public class RegistrationFrame extends JFrame {
     private JLabel emailLabel;
     private JLabel nameLabel;
     private JLabel countryLabel;
-    private JLabel sityLabel;
+    private JLabel сityLabel;
     private JLabel surnameLabel;
     private JLabel loginLabel;
     private JLabel passwordLabel;
@@ -61,44 +61,26 @@ public class RegistrationFrame extends JFrame {
     /**
      * Creates new form SecondFrame
      */
-    public RegistrationFrame(DataExchanger dataE) {
-        this.dataE = dataE;
-        initComponents();
-    }
-
+//    public RegistrationFrame(DataExchanger dataE) {
+//        this.dataE = dataE;
+//        initComponents();
+//    }
     public RegistrationFrame(MessageHandler messageHandler) {
         this.messageHandler = messageHandler;
+        initStartFrame();
         initComponents();
         initCloseOperation();
     }
 
-    @SuppressWarnings("unchecked")
-    private void initComponents() {
-
-        nameLabel = new JLabel();
-        countryLabel = new JLabel();
-        sityLabel = new JLabel();
-        surnameLabel = new JLabel();
-        loginLabel = new JLabel();
-        passwordLabel = new JLabel();
-        loginTextField = new JTextField();
-        passwordTextField = new JTextField();
-        nameTextField = new JTextField();
-        surnameTextField = new JTextField();
-        countryTextField = new JTextField();
-        cityTextField = new JTextField();
-        canselButton = new JButton();
-        okButton = new JButton();
-        registrationLabel = new JLabel();
-        emailLabel = new JLabel();
-        emailTextField = new JTextField();
-        jMessage = new JLabel();
+    private void initStartFrame() {
 //        bDayLabel = new JLabel();
 //        bDayTextField = new JTextField();
 
         setPreferredSize(new Dimension(400, 550));
         setLayout(null);
         this.setResizable(false);
+    }
+
     }
 
     private void initComponents() {
@@ -145,17 +127,17 @@ public class RegistrationFrame extends JFrame {
         add(countryLabel);
         countryLabel.setBounds(40, 300, 100, 30);
 
-        sityLabel = new JLabel();
-        sityLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        sityLabel.setText("Sity");
-        add(sityLabel);
-        sityLabel.setBounds(40, 340, 100, 30);
+        сityLabel = new JLabel();
+        сityLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        сityLabel.setText("City");
+        add(сityLabel);
+        сityLabel.setBounds(40, 340, 100, 30);
 
+//         bDayLabel = new JLabel();
 //        bDayLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
 //        bDayLabel.setText("Birthday");
 //        add(bDayLabel);
 //        bDayLabel.setBounds(40, 380, 100, 30);
-
         jMessage = new JLabel();
         jMessage.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         add(jMessage);
@@ -192,14 +174,15 @@ public class RegistrationFrame extends JFrame {
         add(countryTextField);
         countryTextField.setBounds(130, 300, 150, 30);
 
+        cityTextField = new JTextField();
         cityTextField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         add(cityTextField);
         cityTextField.setBounds(130, 340, 150, 30);
 
+//        bDayTextField = new JTextField();
 //        bDayTextField.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
 //        add(bDayTextField);
 //        bDayTextField.setBounds(130, 380, 150, 30);
-
         okButton = new JButton();
         okButton.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         okButton.setText("OK");
@@ -221,7 +204,6 @@ public class RegistrationFrame extends JFrame {
                 canselButtonActionPerformed(evt);
             }
         });
-
     }
 
     private void initCloseOperation() {
@@ -279,62 +261,58 @@ public class RegistrationFrame extends JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
+        Message message = new Message("Registration");
+        User usr = new User();
+        usr.setServiceInfo(new ServiceInfo(loginTextField.getText(), passwordTextField.getText(), emailTextField.getText()));
+        usr.setAddress(new Address(countryTextField.getText(), cityTextField.getText()));
+        usr.setPrivateInformation(new PrivateInformation(nameTextField.getText(), surnameTextField.getText(), LocalDate.now()));
+        message.setUser(usr);
+        Message serverResponse = new Message();//            dataE.write("Registration");
+        //            dataE.write(nameTextField.getText());
+        //            dataE.write(surnameTextField.getText());
+        //            dataE.write(countryTextField.getText());
+        //            dataE.write(cityTextField.getText());
+        //            dataE.write(loginTextField.getText());
+        //            dataE.write(passwordTextField.getText());
+        //            dataE.write(emailTextField.getText());
+        //            dataE.write("12.05.2010");
         try {
-            Message message = new Message("Registration");
-            User usr = new User();
-            usr.setServiceInfo(new ServiceInfo(loginTextField.getText(), passwordTextField.getText(), emailTextField.getText()));
-            usr.setAddress(new Address(countryTextField.getText(), cityTextField.getText()));
-            usr.setPrivateInformation(new PrivateInformation(nameTextField.getText(), surnameTextField.getText(), LocalDate.now()));
-            message.setUser(usr);
-
-//            dataE.write("Registration");
-//            dataE.write(nameTextField.getText());
-//            dataE.write(surnameTextField.getText());
-//            dataE.write(countryTextField.getText());
-//            dataE.write(cityTextField.getText());
-//            dataE.write(loginTextField.getText());
-//            dataE.write(passwordTextField.getText());
-//            dataE.write(emailTextField.getText());
-//            dataE.write("12.05.2010");
-            try {
-                messageHandler.sendMessage(message);
-            } catch (JAXBException ex) {
-                logger.debug(ex.getMessage());
-            }
-            try {
-                f = messageHandler.receiveMessage().getConfirmation();
-            } catch (JAXBException ex) {
-                logger.debug(ex.getMessage());
-            }
-            //f = dataE.readBool();
-            //Registration r = new Registration();
-            //r.registrationUser(this.nameTextField.getText(), this.surnameTextField.getText(), 
-            //this.countryTextField.getText(), this.sityTextField.getText(), this.loginTextField.getText(), this.passwordTextField.getText(), this.emailTextField.getText(), "12.05.2010")F
-            if (f) {
-                LogInFrame logIn = new LogInFrame(messageHandler);
-                logIn.setVisible(true);
-                this.dispose();
-            } else {
-                String str = dataE.readString();
-                switch (str) {
-                    case "Field":
-                        jMessage.setText("The field is empty. Fill in all the fields.");
-                        break;
-                    case "User":
-                        jMessage.setText("User already created");
-                        break;
-                }
-                }
-            }catch (IOException e) {
-            jMessage.setText("User already created");
+            messageHandler.sendMessage(message);
+        } catch (JAXBException ex) {
+            logger.debug(ex.getMessage());
+        } catch (IOException ex) {
+            logger.debug(ex.getMessage());
+        }
+        try {
+            serverResponse = messageHandler.receiveMessage();
+            f = serverResponse.getConfirmation();;
+        } catch (JAXBException ex) {
+            logger.debug(ex.getMessage());
+        } catch (IOException ex) {
+            logger.debug(ex.getMessage());
+        }
+        //f = dataE.readBool();
+        //Registration r = new Registration();
+        //r.registrationUser(this.nameTextField.getText(), this.surnameTextField.getText(), 
+        //this.countryTextField.getText(), this.sityTextField.getText(), this.loginTextField.getText(), this.passwordTextField.getText(), this.emailTextField.getText(), "12.05.2010")F
+        if (f) {
             LogInFrame logIn = new LogInFrame(messageHandler);
             logIn.setVisible(true);
-            this.setVisible(false);
-            //TODO Надо написать НОРМАЛЬНЫЙ обработчик обработчик на случай, если регистрация неудачна(пользователь уже существует или поля заполнены некорректно)
-        }
+            this.dispose();
+        } else {
+            //String str = dataE.readString();
+            String str = serverResponse.getChoice();//TODO внес поправки, используя XML механизм передачи. Не проверял на падения
+            switch (str) {
+                case "Field":
+                    jMessage.setText("The field is empty. Fill in all the fields.");
+                    break;
+                case "User":
+                    jMessage.setText("User already created");
+                    break;
+            }
         }
 
-    
+    }
 
     private void canselButtonActionPerformed(java.awt.event.ActionEvent evt) {
         LogInFrame logIn = new LogInFrame(messageHandler);
@@ -366,7 +344,7 @@ public class RegistrationFrame extends JFrame {
      //</editor-fold>
 
      /* Create and display the form */
- /*java.awt.EventQueue.invokeLater(new Runnable() {
+    /*java.awt.EventQueue.invokeLater(new Runnable() {
      public void run() {
      new SecondFrame().setVisible(true);
      }

@@ -1,1 +1,6 @@
+/client/target/
+/server/target/
+/datamodel/target/
 /desktop/target/
+/client/myproject.log
+/server/myproject.log

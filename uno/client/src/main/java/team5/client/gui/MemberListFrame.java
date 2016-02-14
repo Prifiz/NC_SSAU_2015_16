@@ -86,11 +86,13 @@ public class MemberListFrame extends javax.swing.JFrame {
     }
 
     private void initStartFrame() {
+
         searchFrame = new SearchFrameOfUser(dataE);
         setPreferredSize(new Dimension(710, 790));
         setLayout(null);
         this.setResizable(false);
         setTitle("Member list");
+
     }
 
     private void initComponents() {
@@ -267,6 +269,9 @@ public class MemberListFrame extends javax.swing.JFrame {
         //add(jTable1);
         add(panel);
         add(jScrollPane1);
+    }
+
+    private void initCloseOperation() {
 
     }
 
@@ -319,7 +324,7 @@ public class MemberListFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
-        
+
         this.setLocationRelativeTo(null);
     }
 

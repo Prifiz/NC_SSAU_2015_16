@@ -41,15 +41,26 @@ public class CardList extends javax.swing.JFrame {
     private JButton cleanButton;
     private MessageHandler messageHandler;
 
-    private JTextField tficon;
+    private JTextField tficonId;
     private JTextField tfcolor;
 
-    private JLabel labicon;
+    private JLabel labiconId;
     private JLabel labcolor;
 
     private JScrollPane jScrollPane1;
     private JTable jTable1;
     private JPanel panel;
+
+    private CardTableModel model;
+
+    public CardList(DataExchanger dataE) {
+        this.dataE = dataE;
+        initStartFrame();
+        initComponents();
+        initCloseOperation();
+    }
+
+    private void initStartFrame() {
 
     private CardTableModel model;
 
@@ -143,10 +154,10 @@ public class CardList extends javax.swing.JFrame {
         });
 
         //TextFields
-        tficon = new JTextField();
-        tficon.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        panel.add(tficon);
-        tficon.setBounds(120, 30, 130, 30);
+        tficonId = new JTextField();
+        tficonId.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
+        panel.add(tficonId);
+        tficonId.setBounds(120, 30, 130, 30);
 
         tfcolor = new JTextField();
         tfcolor.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
@@ -154,10 +165,10 @@ public class CardList extends javax.swing.JFrame {
         tfcolor.setBounds(490, 30, 130, 30);
 
         //Labels
-        labicon = new JLabel("Icon");
-        labicon.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
-        labicon.setBounds(20, 30, 90, 30);
-        panel.add(labicon);
+        labiconId = new JLabel("IconId");
+        labiconId.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
+        labiconId.setBounds(20, 30, 90, 30);
+        panel.add(labiconId);
 
         labcolor = new JLabel("Color");
         labcolor.setFont(new java.awt.Font("Comic Sans MS", 0, 13));
@@ -167,6 +178,9 @@ public class CardList extends javax.swing.JFrame {
         //add(jTable1);
         add(panel);
         add(jScrollPane1);
+    }
+
+    private void initCloseOperation() {
 
     }
 
@@ -224,7 +238,7 @@ public class CardList extends javax.swing.JFrame {
     private void deleteButtonActionPerfomed(ActionEvent evt) {
         try {
             if ((jTable1.getSelectedRow() >= 0) && (jTable1.getSelectedRow() < WorkCard.getWork().getOfCountCards())) {
-                WorkCard.getWork().deleteCard(WorkCard.getWork().getArrOfCards().get(jTable1.getSelectedRow()).getIcon(),
+                WorkCard.getWork().deleteCard(WorkCard.getWork().getArrOfCards().get(jTable1.getSelectedRow()).getIconId(),
                         WorkCard.getWork().getArrOfCards().get(jTable1.getSelectedRow()).getColor());
                 if (searchFrame.getSearchRequest() != null) {
                     Search search = new CardSearch();
@@ -241,7 +255,7 @@ public class CardList extends javax.swing.JFrame {
 
     private void addButtonActionPerfomed(ActionEvent evt) {
         try {
-            WorkCard.getWork().addCard(Integer.parseInt(tficon.getText()), tfcolor.getText());
+            WorkCard.getWork().addCard(Integer.parseInt(tficonId.getText()), tfcolor.getText());
             if (searchFrame.getSearchRequest() != null) {
                 Search search = new CardSearch();
                 model.setArrayOfCards((ArrayList<Card>) search.regularSearch(searchFrame.getSearchRequest()));
@@ -249,7 +263,7 @@ public class CardList extends javax.swing.JFrame {
         } catch (NotFoundException ex) {
             log.debug(ex.getMessage());
         }
-        tficon.setText("");
+        tficonId.setText("");
         tfcolor.setText("");
         jTable1.revalidate();
         jTable1.repaint();

@@ -133,6 +133,9 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         tfsearch.setBounds(30, 30, 300, 30);
 
         add(panel);
+    }
+
+    private void initCloseOperation() {
 
     }
 
@@ -165,7 +168,7 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
             table.revalidate();
             table.repaint();
 
-            this.setVisible(false);
+            this.setVisible(false);//TODO мб this.dispose(); ?
 
         } catch (NotFoundException e) {
             jMessage.setText("Nothing found.");

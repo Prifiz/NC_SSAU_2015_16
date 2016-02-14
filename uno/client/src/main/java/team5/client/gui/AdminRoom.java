@@ -36,9 +36,10 @@ public class AdminRoom extends JFrame {
 //        this.dataE = dataE;
 //        initComponents();
 //    }
-    
     public AdminRoom(MessageHandler messageHandler) {
         this.messageHandler = messageHandler;
+        initStartForm();
+        initComponents();
         initComponents();
         initCloseOperation();
     }
@@ -48,6 +49,7 @@ public class AdminRoom extends JFrame {
         setLayout(null);
         this.setResizable(false);
         setTitle("Admin room");
+
     }
 
     private void initComponents() {
@@ -90,6 +92,10 @@ public class AdminRoom extends JFrame {
         adminLabel.setText("Admin room");
         add(adminLabel);
         adminLabel.setBounds(135, 30, 150, 30);
+
+    }
+
+    private void initCloseOperation() {
 
     }
 
