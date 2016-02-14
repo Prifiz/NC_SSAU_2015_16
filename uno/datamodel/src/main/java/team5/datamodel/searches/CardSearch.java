@@ -28,15 +28,15 @@ public class CardSearch implements Search {
         ArrayList<Card> resultOfSearch = new ArrayList<Card>();
         Pattern p = Pattern.compile(request);
         Matcher m;
-        for (Card c : cards) {
-            m = p.matcher(c.getIconId().toString());
+        for (Card card : cards) {
+            m = p.matcher(card.getIconId().toString());
             if (m.matches()) {
-                resultOfSearch.add(c);
+                resultOfSearch.add(card);
                 continue;
             }
-            m = p.matcher(c.getColor().toString());
+            m = p.matcher(card.getColor().toString());
             if (m.matches()) {
-                resultOfSearch.add(c);
+                resultOfSearch.add(card);
                 continue;
             }
         }

@@ -29,45 +29,45 @@ public class UserSearch implements Search {
         ArrayList<User> resultOfSearch = new ArrayList<User>();
         Pattern p = Pattern.compile(request);
         Matcher m;
-        for (User u : users) {
-            m = p.matcher(u.getAddress().getCity().toString());
+        for (User user : users) {
+            m = p.matcher(user.getAddress().getCity().toString());
             if (m.matches()) {
-                resultOfSearch.add(u);
+                resultOfSearch.add(user);
                 continue;
             }
-            m = p.matcher(u.getAddress().getCountry().toString());
+            m = p.matcher(user.getAddress().getCountry().toString());
             if (m.matches()) {
-                resultOfSearch.add(u);
+                resultOfSearch.add(user);
                 continue;
             }
-            m = p.matcher(u.getPrivateInformation().getName().toString());
+            m = p.matcher(user.getPrivateInformation().getName().toString());
             if (m.matches()) {
-                resultOfSearch.add(u);
+                resultOfSearch.add(user);
                 continue;
             }
-            m = p.matcher(u.getPrivateInformation().getSurname().toString());
+            m = p.matcher(user.getPrivateInformation().getSurname().toString());
             if (m.matches()) {
-                resultOfSearch.add(u);
+                resultOfSearch.add(user);
                 continue;
             }
-            m = p.matcher(u.getPrivateInformation().getbDay().toString());
+            m = p.matcher(user.getPrivateInformation().getbDay().toString());
             if (m.matches()) {
-                resultOfSearch.add(u);
+                resultOfSearch.add(user);
                 continue;
             }
-            m = p.matcher(u.getServiceInfo().getDateOfRegistration().toString());
+            m = p.matcher(user.getServiceInfo().getDateOfRegistration().toString());
             if (m.matches()) {
-                resultOfSearch.add(u);
+                resultOfSearch.add(user);
                 continue;
             }
-            m = p.matcher(u.getServiceInfo().getEmail().toString());
+            m = p.matcher(user.getServiceInfo().getEmail().toString());
             if (m.matches()) {
-                resultOfSearch.add(u);
+                resultOfSearch.add(user);
                 continue;
             }
-            m = p.matcher(u.getServiceInfo().getLogin().toString());
+            m = p.matcher(user.getServiceInfo().getLogin().toString());
             if (m.matches()) {
-                resultOfSearch.add(u);
+                resultOfSearch.add(user);
                 continue;
             }
             //Был разговор, что по паролю поиск работать не должен. Пока закомментил
