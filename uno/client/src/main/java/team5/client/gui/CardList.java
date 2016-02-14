@@ -62,16 +62,6 @@ public class CardList extends javax.swing.JFrame {
 
     private void initStartFrame() {
 
-    private CardTableModel model;
-
-    public CardList(DataExchanger dataE) {
-        this.dataE = dataE;
-        initStartFrame();
-        initComponents();
-        initCloseOperation();
-    }
-
-    private void initStartFrame() {
         searchFrame = new SearchFrameOfCard(dataE);
         setLayout(null);
         setBounds(200, 10, 710, 790);
@@ -182,9 +172,6 @@ public class CardList extends javax.swing.JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override

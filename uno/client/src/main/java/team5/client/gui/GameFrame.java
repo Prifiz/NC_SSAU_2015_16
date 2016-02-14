@@ -28,7 +28,6 @@ import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.client.actions.Counter;
 import team5.client.actions.DataExchanger;
-import team5.client.actions.Flag;
 import team5.client.actions.GameThread;
 import team5.datamodel.actions.WorkUser;
 import team5.datamodel.transmissions.FileHandler;
@@ -105,6 +104,7 @@ public class GameFrame extends JFrame {
 
         setPreferredSize(new Dimension(800, 600));
         setLayout(null);
+        //setBounds(200, 10, 710, 790);
         this.setResizable(false);
         setTitle("Game");
     }
@@ -218,9 +218,6 @@ public class GameFrame extends JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override

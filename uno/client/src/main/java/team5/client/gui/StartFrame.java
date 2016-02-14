@@ -92,9 +92,6 @@ public class StartFrame extends JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override

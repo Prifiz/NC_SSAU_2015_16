@@ -87,7 +87,6 @@ public class ServerThread extends Thread {
                     //
                     //выбор комнаты и ожидание игроков
                     //    
-
                     case "Select":
                         //String str = dataE.readString();
                         String str = clientRequest.getChoice();
@@ -98,6 +97,10 @@ public class ServerThread extends Thread {
             }
         } catch (IOException ex) {
             f = false;
+            logger.debug(ex.getMessage());
+        } catch (UserExistException ex) {
+            f = false;
+            logger.debug(ex.getMessage());
         }
     }
 
@@ -381,7 +384,3 @@ public class ServerThread extends Thread {
         }
     }
 }
-            logger.debug(ex.getMessage());
-        } catch (UserExistException ex) {
-            f = false;
-            logger.debug(ex.getMessage());

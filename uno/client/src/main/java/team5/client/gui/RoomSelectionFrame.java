@@ -95,9 +95,6 @@ public class RoomSelectionFrame extends JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -147,7 +144,7 @@ public class RoomSelectionFrame extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
-    }
+    }// </editor-fold>                        
 
     private void adminRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {
         AdminRoom adminRoom = new AdminRoom(messageHandler);

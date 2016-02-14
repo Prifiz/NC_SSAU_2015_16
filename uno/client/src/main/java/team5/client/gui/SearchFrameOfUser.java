@@ -137,9 +137,6 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);

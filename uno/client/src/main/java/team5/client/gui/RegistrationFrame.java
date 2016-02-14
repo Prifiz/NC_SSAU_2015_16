@@ -79,7 +79,6 @@ public class RegistrationFrame extends JFrame {
         setPreferredSize(new Dimension(400, 550));
         setLayout(null);
         this.setResizable(false);
-    }
 
     }
 
@@ -257,7 +256,7 @@ public class RegistrationFrame extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
-    }
+    }// </editor-fold>                        
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {
         boolean f = false;
@@ -317,7 +316,7 @@ public class RegistrationFrame extends JFrame {
     private void canselButtonActionPerformed(java.awt.event.ActionEvent evt) {
         LogInFrame logIn = new LogInFrame(messageHandler);
         logIn.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }
 
     /**

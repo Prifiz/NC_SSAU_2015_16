@@ -128,6 +128,7 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
         panel.add(tfsearch);
         tfsearch.setBounds(30, 30, 300, 30);
 
+//        
         add(panel);
 
     }
@@ -135,9 +136,6 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
     private void initCloseOperation() {
 //        
 
-    }
-
-    private void initCloseOperation() {
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);

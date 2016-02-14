@@ -273,9 +273,6 @@ public class MemberListFrame extends javax.swing.JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -399,28 +396,28 @@ public class MemberListFrame extends javax.swing.JFrame {
      */
     /*public static void main(String args[]) {
 
-     Logger log = Logger.getLogger(MemberList.class);
-     try {
-     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-     if ("Nimbus".equals(info.getName())) {
-     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-     break;
-     }
-     }
-     } catch (ClassNotFoundException ex) {
-     log.debug(ex.getMessage());
-     } catch (InstantiationException ex) {
-     log.debug(ex.getMessage());
-     } catch (IllegalAccessException ex) {
-     log.debug(ex.getMessage());
-     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-     log.debug(ex.getMessage());
-     }
+        Logger log = Logger.getLogger(MemberList.class);
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            log.debug(ex.getMessage());
+        } catch (InstantiationException ex) {
+            log.debug(ex.getMessage());
+        } catch (IllegalAccessException ex) {
+            log.debug(ex.getMessage());
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            log.debug(ex.getMessage());
+        }
 
-     java.awt.EventQueue.invokeLater(new Runnable() {
-     public void run() {
-     new MemberList().setVisible(true);
-     }
-     });
-     }*/
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MemberList().setVisible(true);
+            }
+        });
+    }*/
 }

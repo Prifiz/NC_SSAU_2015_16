@@ -62,7 +62,6 @@ public class RulesFrame extends JFrame {
         setPreferredSize(new Dimension(400, 330));
         setLayout(null);
         this.setResizable(false);
-    }
 
     }
 
@@ -83,7 +82,6 @@ public class RulesFrame extends JFrame {
 
         jScrollPane = new JScrollPane();
 
-        jScrollPane = new JScrollPane();
         //jTextArea1.setText("      Players are dealt 7 cards. The top card of \nthe deck is turned face up and with it the game \nbegins (this card is the beginning of the game \ndeck).\n      The game begins in a clockwise direction.\n      On his turn, each player must put a card in \nthe game deck, and the card must match the \ntop card in the game deck on color or image. \nIf the player does not have a suitable card, \nthen he takes one card from the deck of the \nbank, and if the card is suitable, it could make \na move if he wants to. If a player has taken \nfrom the deck of the bank the right card, but \nshe did not move - he receives no fine. The \nnext player to act in a clockwise direction.\n");
         ruleTextArea.setText(textRule("/textRule.txt"));
         jScrollPane.setViewportView(ruleTextArea);
@@ -105,9 +103,6 @@ public class RulesFrame extends JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -154,10 +149,11 @@ public class RulesFrame extends JFrame {
             }
         });
 
+//       
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
-    }
+    }// </editor-fold>                        
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
@@ -167,24 +163,24 @@ public class RulesFrame extends JFrame {
      * @param args the command line arguments
      */
     /*public static void main(String args[]) {
-     Logger log = Logger.getLogger(RulesFrame.class);
-     try {
-     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-     if ("Nimbus".equals(info.getName())) {
-     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-     break;
-     }
-     }
-     } catch (ClassNotFoundException ex) {
-     log.debug(ex.getMessage());
-     } catch (InstantiationException ex) {
-     log.debug(ex.getMessage());
-     } catch (IllegalAccessException ex) {
-     log.debug(ex.getMessage());
-     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-     log.debug(ex.getMessage());
-     }
-     //</editor-fold>
+        Logger log = Logger.getLogger(RulesFrame.class);
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            log.debug(ex.getMessage());
+        } catch (InstantiationException ex) {
+            log.debug(ex.getMessage());
+        } catch (IllegalAccessException ex) {
+            log.debug(ex.getMessage());
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            log.debug(ex.getMessage());
+        }
+        //</editor-fold>
 
         
         java.awt.EventQueue.invokeLater(new Runnable() {

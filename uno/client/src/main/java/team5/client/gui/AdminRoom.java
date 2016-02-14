@@ -97,9 +97,6 @@ public class AdminRoom extends JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -149,7 +146,6 @@ public class AdminRoom extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
-
     }
 
     private void memberListButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +159,7 @@ public class AdminRoom extends JFrame {
 
         CardList cardList = new CardList(dataE);
         cardList.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {

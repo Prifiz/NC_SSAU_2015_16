@@ -69,9 +69,6 @@ public class FinishFrame extends JFrame {
 
     private void initCloseOperation() {
 
-    }
-
-    private void initCloseOperation() {
         addWindowListener(new WindowListener() {
 
             @Override
@@ -122,7 +119,6 @@ public class FinishFrame extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
-
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
