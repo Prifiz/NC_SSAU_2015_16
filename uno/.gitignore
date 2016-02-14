@@ -4,3 +4,6 @@
 /desktop/target/
 /client/myproject.log
 /server/myproject.log
+/client/nbactions.xml
+/server/nbactions.xml
+/datamodel/nb-configuration.xml
