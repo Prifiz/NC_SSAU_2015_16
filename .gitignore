@@ -1,3 +1,6 @@
-/uno/client/target/
-/uno/server/target/
-/uno/library/target/
+/client/target/
+/server/target/
+/datamodel/target/
+/desktop/target/
+/client/myproject.log
+/server/myproject.log
