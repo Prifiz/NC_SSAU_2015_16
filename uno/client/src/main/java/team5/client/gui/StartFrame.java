@@ -169,7 +169,7 @@ public class StartFrame extends JFrame {
         Logger log = Logger.getLogger(StartFrame.class);
         try {
             WorkUser workUser = WorkUser.getWork();
-            FileHandler workWithFiles = new FileHandler();
+            FileHandler workWithFiles = FileHandler.getFileHandler();
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
 
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

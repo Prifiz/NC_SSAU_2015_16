@@ -23,7 +23,7 @@ public class MarshalAndUnmarshalTest {
 
     @Before
     public void setUp() throws Exception {
-        workWithFiles = new FileHandler();
+        workWithFiles = FileHandler.getFileHandler();
         fileName = "marshalData_WorkUser.xml";
 
     }

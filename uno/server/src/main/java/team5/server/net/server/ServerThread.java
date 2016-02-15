@@ -153,7 +153,7 @@ public class ServerThread extends Thread {
         System.out.println("registration");
         try {
             WorkUser workUser = WorkUser.getWork();
-            FileHandler workWithFiles = new FileHandler();
+            FileHandler workWithFiles = FileHandler.getFileHandler();
             //sd.serializableData("serializableData_WorkUser.bin", wu);
             workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
         } catch (JAXBException ex) {
@@ -437,7 +437,7 @@ public class ServerThread extends Thread {
                 }
                 try {
                     WorkUser workUser = WorkUser.getWork();
-                    FileHandler workWithFiles = new FileHandler();
+                    FileHandler workWithFiles = FileHandler.getFileHandler();
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                 } catch (JAXBException ex) {
                     java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);//TODO мы вроде другой логгер пользуем

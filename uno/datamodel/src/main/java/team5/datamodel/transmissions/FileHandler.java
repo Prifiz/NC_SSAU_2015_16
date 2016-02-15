@@ -27,6 +27,17 @@ import team5.datamodel.card.NumericCard;
  */
 public class FileHandler {
 
+    private static final FileHandler fileHandler = new FileHandler();
+    private File file = null;
+    
+    public static FileHandler getFileHandler(){
+        return fileHandler;
+    }
+    
+    private FileHandler(){
+        
+    }
+
     /**
      * This method serializes the data WorkUser in the file
      *
@@ -53,7 +64,7 @@ public class FileHandler {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public WorkUser/* Object*/ deserializableData(String fileName) throws IOException, ClassNotFoundException {
+    public static WorkUser/* Object*/ deserializableData(String fileName) throws IOException, ClassNotFoundException {
         WorkUser workUser;
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
         workUser = (WorkUser) ois.readObject();
@@ -71,7 +82,12 @@ public class FileHandler {
     public WorkUser unmarshalData(String fileName) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(WorkUser.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        WorkUser workUser = (WorkUser) unmarshaller.unmarshal(new File(fileName));
+        WorkUser workUser = null;
+        if (file == null) {
+            workUser = (WorkUser) unmarshaller.unmarshal(new File(fileName));
+        } else {
+            workUser = (WorkUser) unmarshaller.unmarshal(file);
+        }
         return workUser;
     }
 
@@ -86,7 +102,11 @@ public class FileHandler {
         JAXBContext context = JAXBContext.newInstance(workUser.getClass());
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(workUser, new File(fileName));
+        if (file == null) {
+            marshaller.marshal(workUser, new File(fileName));
+        } else {
+            marshaller.marshal(workUser, file);
+        }
 
     }
 
@@ -130,5 +150,13 @@ public class FileHandler {
             pack.add(card);
         }
         return pack;
+    }
+
+    public  File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 }
