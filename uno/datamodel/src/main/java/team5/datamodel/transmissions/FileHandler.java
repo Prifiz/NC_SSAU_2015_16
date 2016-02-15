@@ -64,14 +64,14 @@ public class FileHandler {
     /**
      * This demethod marshales the data WorkUser file's data in type WorkUser
      *
-     * @param fileNme
+     * @param fileName
      * @return workUser
      * @throws JAXBException
      */
-    public WorkUser unmarshalData(String fileNme) throws JAXBException {
+    public WorkUser unmarshalData(String fileName) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(WorkUser.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        WorkUser workUser = (WorkUser) unmarshaller.unmarshal(new File(fileNme));
+        WorkUser workUser = (WorkUser) unmarshaller.unmarshal(new File(fileName));
         return workUser;
     }
 

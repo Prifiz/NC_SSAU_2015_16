@@ -3,65 +3,33 @@
     <arrUsers>
         <address>
             <city>sdf</city>
-            <country>sdf</country>
+            <country>fsdf</country>
         </address>
         <privateInformation>
-            <name>sdfs</name>
-            <surname>df</surname>
+            <name>dfsd</name>
+            <surname>fsd</surname>
             <bDay>2016-02-15</bDay>
         </privateInformation>
         <serviceInfo>
-            <email>fsdf</email>
+            <email>sdfs</email>
             <login>p</login>
             <password>d</password>
         </serviceInfo>
     </arrUsers>
     <arrUsers>
         <address>
-            <city>asd</city>
-            <country>asdasd</country>
+            <city>fsd</city>
+            <country>dfsd</country>
         </address>
         <privateInformation>
-            <name>bibuu</name>
-            <surname>sadas</surname>
-            <bDay>2016-02-15</bDay>
-        </privateInformation>
-        <serviceInfo>
-            <email>asdas</email>
-            <login>putinka</login>
-            <password>d</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
-            <city>asdasd</city>
-            <country>asdasd</country>
-        </address>
-        <privateInformation>
-            <name>dasda</name>
-            <surname>sdasd</surname>
-            <bDay>2016-02-15</bDay>
-        </privateInformation>
-        <serviceInfo>
-            <email>dsfsdfs</email>
-            <login>medved</login>
-            <password>s</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
-            <city>fsdf</city>
-            <country>sdfsdf</country>
-        </address>
-        <privateInformation>
-            <name>sdfsdfdf</name>
-            <surname>sdfsd</surname>
+            <name>fsdfs</name>
+            <surname>dfs</surname>
             <bDay>2016-02-15</bDay>
         </privateInformation>
         <serviceInfo>
             <email>sdfsd</email>
-            <login>putin</login>
-            <password>d</password>
+            <login>m</login>
+            <password>s</password>
         </serviceInfo>
     </arrUsers>
 </workUser>

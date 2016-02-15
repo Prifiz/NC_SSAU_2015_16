@@ -229,15 +229,12 @@ public class ServerThread extends Thread {
 
     private void game(int roomNumber, GamerController gamer) {
         try {
-            //dataE.writeString(gamer.getGamerLogin());
             serverResponse = new Message();
             serverResponse.setChoice(gamer.getGamerLogin());
-            //dataE.writeInt(k);
             serverResponse.setValue(rooms[roomNumber].countGamers());
             messageHandler.sendMessage(serverResponse);
             ArrayList<GamerController> gamers = rooms[roomNumber].getGamers();
             for (int i = 0; i < gamers.size(); i++) {
-                //dataE.writeString(gamers.get(i).getGamerLogin());
                 serverResponse.setChoice(gamers.get(i).getGamerLogin());
                 messageHandler.sendMessage(serverResponse);
             }
@@ -246,8 +243,6 @@ public class ServerThread extends Thread {
             for (int j = 0; j < 7; j++) {
                 card = table.getCardFromPack();
                 rooms[roomNumber].getGamer(gamer.getGamerLogin()).addCardToHand(card);
-                //dataE.writeInt(card.getIcon());
-                //dataE.writeString(card.getColor());
                 messageHandler.sendMessage(new Message(card));
             }
             boolean f = true;
@@ -294,7 +289,6 @@ public class ServerThread extends Thread {
                     boolean game = true;
                     while (game == true) {
                         String command = "";
-                        //command = dataE.readString();
                         clientRequest = messageHandler.receiveMessage();
                         command = clientRequest.getCommand();
                         switch (command) {
@@ -306,22 +300,16 @@ public class ServerThread extends Thread {
                             case "TakeCard":
                                 card = table.getCardFromPack();
                                 rooms[roomNumber].getGamer(gamer.getGamerLogin()).addCardToHand(card);
-                                //dataE.writeInt(card.getIcon());
-                                //dataE.writeString(card.getColor());
                                 serverResponse.setCard(card);
                                 messageHandler.sendMessage(serverResponse);
                                 rooms[roomNumber].getGamer(order).setAct(command);
                                 break;
                             case "END TURN":
                                 card = rooms[roomNumber].getGamer(gamer.getGamerLogin()).searchCardInHand(clientRequest.getChoice());
-                                //dataE.writeInt(card.getIcon());
-                                //dataE.writeString(card.getColor());
                                 serverResponse.setCard(card);
                                 serverResponse.setConfirmation(table.isRightCard(card));
                                 messageHandler.sendMessage(serverResponse);
                                 if (table.isRightCard(card)) {
-                                    //dataE.writeBool(table.isRightCard(card));
-
                                     table.setLastCard(card);
                                     rooms[roomNumber].getGamer(order).setAct(command);
                                     order++;
