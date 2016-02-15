@@ -110,7 +110,7 @@ public class AdminRoom extends JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
+                    /*WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
                     //sd.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
@@ -119,7 +119,7 @@ public class AdminRoom extends JFrame {
                     log.debug(ex.getMessage());
                 }//                catch (IOException ex) {
                 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-                //                }
+                //               */ }
                 finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -150,7 +150,7 @@ public class AdminRoom extends JFrame {
 
     private void memberListButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        MemberListFrame list = new MemberListFrame(dataE);
+        MemberListFrame list = new MemberListFrame(messageHandler);
         list.setVisible(true);
         this.dispose();
     }

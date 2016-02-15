@@ -105,13 +105,13 @@ public class StartFrame extends JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
+                    /*WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 } catch (JAXBException ex) {
 
-                } finally {
+                */} finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }

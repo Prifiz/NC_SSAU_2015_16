@@ -82,7 +82,7 @@ public class FinishFrame extends JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
+                    /*WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
                     //workWithFiles.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
@@ -92,7 +92,7 @@ public class FinishFrame extends JFrame {
                 //                }
                 catch (JAXBException ex) {
                     log.debug(ex.getMessage());
-                } finally {
+                */} finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }

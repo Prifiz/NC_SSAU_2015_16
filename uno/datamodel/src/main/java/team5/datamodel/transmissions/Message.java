@@ -31,6 +31,9 @@ public class Message implements Serializable {
         this.command = command;
     }
 
+    public Message(User user){
+        this.user = user;
+    }
     public Message(boolean confirmation) {
         this.confirmation = confirmation;
     }

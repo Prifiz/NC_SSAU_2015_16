@@ -231,13 +231,13 @@ public class GameFrame extends JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
+                    /*WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     //throw new UnsupportedOperationException("Not supported yet.");
                 } catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
-                } finally {
+                */} finally {
                     exit();
                 }
             }

@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
 
         Logger logger = Logger.getLogger(Main.class);
-        try {
+        /*try {
             WorkUser workUser = WorkUser.getWork();
             FileHandler workWithFiles = new FileHandler();
             //wu.addWorkUser(sd.deserializableData("serializableData_WorkUser.bin"));
@@ -31,7 +31,7 @@ public class Main {
 
         } catch (JAXBException ex) {
             logger.debug(ex.getMessage());
-        }
+        }*/
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

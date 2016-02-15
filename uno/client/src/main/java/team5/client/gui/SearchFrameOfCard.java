@@ -156,9 +156,9 @@ public class SearchFrameOfCard extends javax.swing.JFrame {
         try {
             Search search = new CardSearch();
             if (isRegular) {
-                model.setArrayOfCards((ArrayList<Card>) search.regularSearch(searchRequest));
+                model.setArrayOfCards((ArrayList<Card>) search.searchByRegexp(searchRequest));
             } else {
-                model.setArrayOfCards((ArrayList<Card>) search.substringSearch(searchRequest));
+                model.setArrayOfCards((ArrayList<Card>) search.searchBySubstring(searchRequest));
             }
 
             table.revalidate();
