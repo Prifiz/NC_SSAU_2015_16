@@ -12,6 +12,7 @@ import javax.xml.bind.JAXBException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
 import team5.datamodel.actions.WorkUser;
@@ -156,10 +157,10 @@ public class AdminRoom extends JFrame {
     }
 
     private void cardListButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
-        CardList cardList = new CardList(dataE);
-        cardList.setVisible(true);
-        this.setVisible(false);
+        JOptionPane.showConfirmDialog(null, "Sorry, this section is under construction ...", "Oops", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        //CardList cardList = new CardList(dataE);
+        //cardList.setVisible(true);
+        //this.setVisible(false);
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
