@@ -71,8 +71,10 @@ public class ServerThread extends Thread {
                     clientRequest = messageHandler.receiveMessage();
                 } catch (IOException ex) {
                     logger.debug(ex.getMessage());
+                    f = false;
                 } catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
+                    f = false;
                 }
                 command = clientRequest.getCommand();
                 switch (command) {
@@ -420,37 +422,13 @@ public class ServerThread extends Thread {
                                 users.get(clientRequest.getValue()).getServiceInfo().setPassword(clientRequest.getChoice());
                                 break;
                         }
-                        /*try {
-                         WorkUser workUser = WorkUser.getWork();
-                         FileHandler workWithFiles = new FileHandler();
-                         //sd.serializableData("serializableData_WorkUser.bin", wu);
-                         workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
-                         } catch (JAXBException ex) {
-                         java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);//TODO мы вроде другой логгер пользуем
-                         }*/
                         break;
                     case "Add":
                         User user = clientRequest.getUser();
                         WorkUser.getWork().addUser(clientRequest.getUser());
-                        /*try {
-                         WorkUser workUser = WorkUser.getWork();
-                         FileHandler workWithFiles = new FileHandler();
-                         //sd.serializableData("serializableData_WorkUser.bin", wu);
-                         workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
-                         } catch (JAXBException ex) {
-                         java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);//TODO мы вроде другой логгер пользуем
-                         }*/
                         break;
                     case "Delete":
                         WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(clientRequest.getValue()).getServiceInfo().getLogin());
-                        /*try {
-                         WorkUser workUser = WorkUser.getWork();
-                         FileHandler workWithFiles = new FileHandler();
-                         //sd.serializableData("serializableData_WorkUser.bin", wu);
-                         workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
-                         } catch (JAXBException ex) {
-                         java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);//TODO мы вроде другой логгер пользуем
-                         }*/
                         break;
                     case "Exit":
                         f = false;
@@ -460,7 +438,6 @@ public class ServerThread extends Thread {
                 try {
                     WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
-                    //sd.serializableData("serializableData_WorkUser.bin", wu);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                 } catch (JAXBException ex) {
                     java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);//TODO мы вроде другой логгер пользуем

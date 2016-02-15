@@ -275,6 +275,7 @@ public class GameFrame extends JFrame {
                 messageHandler.sendMessage(new Message("Exit"));
                 RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
                 rooms.setVisible(true);
+                game.interrupt();
                 this.dispose();
             } catch (IOException ex) {
                 logger.debug(ex.getMessage());
