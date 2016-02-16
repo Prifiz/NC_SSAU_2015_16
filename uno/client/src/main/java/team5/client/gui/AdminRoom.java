@@ -12,6 +12,7 @@ import javax.xml.bind.JAXBException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
 import team5.datamodel.actions.WorkUser;
@@ -110,7 +111,7 @@ public class AdminRoom extends JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
+                    /*WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
                     //sd.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
@@ -119,7 +120,7 @@ public class AdminRoom extends JFrame {
                     log.debug(ex.getMessage());
                 }//                catch (IOException ex) {
                 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-                //                }
+                //               */ }
                 finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -150,16 +151,16 @@ public class AdminRoom extends JFrame {
 
     private void memberListButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        MemberListFrame list = new MemberListFrame(dataE);
+        MemberListFrame list = new MemberListFrame(messageHandler);
         list.setVisible(true);
         this.dispose();
     }
 
     private void cardListButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
-        CardList cardList = new CardList(dataE);
-        cardList.setVisible(true);
-        this.setVisible(false);
+        JOptionPane.showConfirmDialog(null, "Sorry, this section is under construction ...", "Oops", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        //CardList cardList = new CardList(dataE);
+        //cardList.setVisible(true);
+        //this.setVisible(false);
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {

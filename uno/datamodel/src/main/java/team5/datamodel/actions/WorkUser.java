@@ -89,6 +89,10 @@ public class WorkUser implements Serializable {
             return us;
         }
     }
+    
+    public void addUser(User user){
+        arrUsers.add(user);
+    }
 
     public User getUserOfIndex(int index) {
         return arrUsers.get(index);
@@ -184,6 +188,13 @@ public class WorkUser implements Serializable {
      */
     public void sortedUsers(String sortedBy) {
         arrUsers.sort(new Sorting().sortedUsers(sortedBy));
+    }
+    
+    public void cleanUsers(){
+        int size = arrUsers.size();
+        for (int i = 0; i < size; i++) {
+            arrUsers.remove(0);
+        }
     }
 
 }

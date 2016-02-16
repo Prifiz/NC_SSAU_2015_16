@@ -105,13 +105,13 @@ public class StartFrame extends JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
+                    /*WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 } catch (JAXBException ex) {
 
-                } finally {
+                */} finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }
@@ -169,7 +169,7 @@ public class StartFrame extends JFrame {
         Logger log = Logger.getLogger(StartFrame.class);
         try {
             WorkUser workUser = WorkUser.getWork();
-            FileHandler workWithFiles = new FileHandler();
+            FileHandler workWithFiles = FileHandler.getFileHandler();
             workUser.addWorkUser(workWithFiles.unmarshalData("marshalData_WorkUser.xml"));
 
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

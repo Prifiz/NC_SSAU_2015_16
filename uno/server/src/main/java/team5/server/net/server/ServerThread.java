@@ -21,10 +21,15 @@ import team5.server.actions.SignIn;
 import team5.server.actions.TableController;
 import team5.datamodel.card.Card;
 import team5.datamodel.card.NumericCard;
+import team5.datamodel.exceptions.NotFoundException;
 import team5.datamodel.exceptions.UserExistException;
+import team5.datamodel.exceptions.UserNotFoundException;
+import team5.datamodel.searches.Search;
+import team5.datamodel.searches.UserSearch;
 import team5.datamodel.transmissions.FileHandler;
 import team5.datamodel.transmissions.Message;
 import team5.datamodel.transmissions.MessageHandler;
+import team5.datamodel.user.User;
 
 /**
  *
@@ -66,8 +71,10 @@ public class ServerThread extends Thread {
                     clientRequest = messageHandler.receiveMessage();
                 } catch (IOException ex) {
                     logger.debug(ex.getMessage());
+                    f = false;
                 } catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
+                    f = false;
                 }
                 command = clientRequest.getCommand();
                 switch (command) {
@@ -93,6 +100,8 @@ public class ServerThread extends Thread {
                         int roomNumber = Character.digit(str.charAt(5) - 1, 10);
                         selectRoom(roomNumber);
                         break;
+                    case "UserTable":
+                        userTableHandler();
                 }
             }
         } catch (IOException ex) {
@@ -144,7 +153,7 @@ public class ServerThread extends Thread {
         System.out.println("registration");
         try {
             WorkUser workUser = WorkUser.getWork();
-            FileHandler workWithFiles = new FileHandler();
+            FileHandler workWithFiles = FileHandler.getFileHandler();
             //sd.serializableData("serializableData_WorkUser.bin", wu);
             workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
         } catch (JAXBException ex) {
@@ -222,15 +231,12 @@ public class ServerThread extends Thread {
 
     private void game(int roomNumber, GamerController gamer) {
         try {
-            //dataE.writeString(gamer.getGamerLogin());
             serverResponse = new Message();
             serverResponse.setChoice(gamer.getGamerLogin());
-            //dataE.writeInt(k);
             serverResponse.setValue(rooms[roomNumber].countGamers());
             messageHandler.sendMessage(serverResponse);
             ArrayList<GamerController> gamers = rooms[roomNumber].getGamers();
             for (int i = 0; i < gamers.size(); i++) {
-                //dataE.writeString(gamers.get(i).getGamerLogin());
                 serverResponse.setChoice(gamers.get(i).getGamerLogin());
                 messageHandler.sendMessage(serverResponse);
             }
@@ -239,8 +245,6 @@ public class ServerThread extends Thread {
             for (int j = 0; j < 7; j++) {
                 card = table.getCardFromPack();
                 rooms[roomNumber].getGamer(gamer.getGamerLogin()).addCardToHand(card);
-                //dataE.writeInt(card.getIcon());
-                //dataE.writeString(card.getColor());
                 messageHandler.sendMessage(new Message(card));
             }
             boolean f = true;
@@ -287,7 +291,6 @@ public class ServerThread extends Thread {
                     boolean game = true;
                     while (game == true) {
                         String command = "";
-                        //command = dataE.readString();
                         clientRequest = messageHandler.receiveMessage();
                         command = clientRequest.getCommand();
                         switch (command) {
@@ -299,22 +302,16 @@ public class ServerThread extends Thread {
                             case "TakeCard":
                                 card = table.getCardFromPack();
                                 rooms[roomNumber].getGamer(gamer.getGamerLogin()).addCardToHand(card);
-                                //dataE.writeInt(card.getIcon());
-                                //dataE.writeString(card.getColor());
                                 serverResponse.setCard(card);
                                 messageHandler.sendMessage(serverResponse);
                                 rooms[roomNumber].getGamer(order).setAct(command);
                                 break;
                             case "END TURN":
                                 card = rooms[roomNumber].getGamer(gamer.getGamerLogin()).searchCardInHand(clientRequest.getChoice());
-                                //dataE.writeInt(card.getIcon());
-                                //dataE.writeString(card.getColor());
                                 serverResponse.setCard(card);
                                 serverResponse.setConfirmation(table.isRightCard(card));
                                 messageHandler.sendMessage(serverResponse);
                                 if (table.isRightCard(card)) {
-                                    //dataE.writeBool(table.isRightCard(card));
-
                                     table.setLastCard(card);
                                     rooms[roomNumber].getGamer(order).setAct(command);
                                     order++;
@@ -381,6 +378,77 @@ public class ServerThread extends Thread {
             logger.debug(ex.getMessage());
         } catch (JAXBException e) {
             logger.debug(e.getMessage());
+        }
+    }
+
+    private void userTableHandler() {
+        ArrayList<User> users = WorkUser.getWork().getArrOfUsers();
+        try {
+            messageHandler.sendMessage(new Message(users.size()));
+            for (int i = 0; i < users.size(); i++) {
+                messageHandler.sendMessage(new Message(users.get(i)));
+            }
+            boolean f = true;
+            while (f) {
+                clientRequest = messageHandler.receiveMessage();
+                String command = clientRequest.getCommand();
+                switch (command) {
+                    case "SetUserInformation":
+                        clientRequest = messageHandler.receiveMessage();
+                        command = clientRequest.getCommand();
+                        switch (command) {
+                            case "Name":
+
+                                users.get(clientRequest.getValue()).getPrivateInformation().setName(clientRequest.getChoice());
+                                break;
+                            case "Surname":
+                                users.get(clientRequest.getValue()).getPrivateInformation().setSurname(clientRequest.getChoice());
+                                break;
+                            case "bDay":
+                                users.get(clientRequest.getValue()).getPrivateInformation().setbDay(WorkUser.getWork().stringToLocalDate(clientRequest.getChoice()));
+                            case "City":
+                                users.get(clientRequest.getValue()).getAddress().setCity(clientRequest.getChoice());
+                                break;
+                            case "Country":
+                                users.get(clientRequest.getValue()).getAddress().setCountry(clientRequest.getChoice());
+                                break;
+                            case "Email":
+                                users.get(clientRequest.getValue()).getServiceInfo().setEmail(clientRequest.getChoice());
+                                break;
+                            case "Login":
+                                users.get(clientRequest.getValue()).getServiceInfo().setLogin(clientRequest.getChoice());
+                            //нужно написать обработку, когда лoгин не может быть изменен
+                            case "Password":
+                                users.get(clientRequest.getValue()).getServiceInfo().setPassword(clientRequest.getChoice());
+                                break;
+                        }
+                        break;
+                    case "Add":
+                        User user = clientRequest.getUser();
+                        WorkUser.getWork().addUser(clientRequest.getUser());
+                        break;
+                    case "Delete":
+                        WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(clientRequest.getValue()).getServiceInfo().getLogin());
+                        break;
+                    case "Exit":
+                        f = false;
+                        break;
+
+                }
+                try {
+                    WorkUser workUser = WorkUser.getWork();
+                    FileHandler workWithFiles = FileHandler.getFileHandler();
+                    workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
+                } catch (JAXBException ex) {
+                    java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);//TODO мы вроде другой логгер пользуем
+                }
+            }
+        } catch (IOException ex) {
+            logger.debug(ex.getMessage());
+        } catch (JAXBException ex) {
+            logger.debug(ex.getMessage());
+        } catch (UserNotFoundException ex) {
+            logger.debug(ex.getMessage());
         }
     }
 }

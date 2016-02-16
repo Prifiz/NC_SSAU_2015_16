@@ -231,12 +231,13 @@ public class GameFrame extends JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
-                    FileHandler workWithFiles = new FileHandler();
-                    workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
-                    //throw new UnsupportedOperationException("Not supported yet.");
-                } catch (JAXBException ex) {
-                    logger.debug(ex.getMessage());
+                    /*WorkUser workUser = WorkUser.getWork();
+                     FileHandler workWithFiles = new FileHandler();
+                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
+                     //throw new UnsupportedOperationException("Not supported yet.");
+                     } catch (JAXBException ex) {
+                     logger.debug(ex.getMessage());
+                     */
                 } finally {
                     exit();
                 }
@@ -273,8 +274,8 @@ public class GameFrame extends JFrame {
             try {
                 messageHandler.sendMessage(new Message("Exit"));
                 RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
-                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Out of the room");
                 rooms.setVisible(true);
+                game.interrupt();
                 this.dispose();
             } catch (IOException ex) {
                 logger.debug(ex.getMessage());
@@ -282,6 +283,8 @@ public class GameFrame extends JFrame {
                 logger.debug(ex.getMessage());
             }
 
+        } else {
+            JOptionPane.showConfirmDialog(null, "It's not your turn", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -313,6 +316,8 @@ public class GameFrame extends JFrame {
             } else {
                 JOptionPane.showConfirmDialog(null, "You didn't take card", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
+        } else {
+            JOptionPane.showConfirmDialog(null, "It's not your turn", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -344,6 +349,8 @@ public class GameFrame extends JFrame {
             } else {
                 JOptionPane.showConfirmDialog(null, "You can't take card more", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
+        } else {
+            JOptionPane.showConfirmDialog(null, "It's not your turn", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -449,6 +456,8 @@ public class GameFrame extends JFrame {
             } else {
                 JOptionPane.showConfirmDialog(null, "You didn't select card", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
+        } else {
+            JOptionPane.showConfirmDialog(null, "It's not your turn", "Wou wou", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,8 +28,12 @@ import team5.datamodel.exceptions.NotFoundException;
 import team5.datamodel.exceptions.UserExistException;
 import team5.datamodel.searches.UserSearch;
 import team5.datamodel.searches.Search;
+import team5.datamodel.transmissions.Message;
 import team5.datamodel.transmissions.MessageHandler;
+import team5.datamodel.user.PrivateInformation;
+import team5.datamodel.user.ServiceInfo;
 import team5.datamodel.user.User;
+import team5.datamodel.user.adress.Address;
 
 /**
  *
@@ -37,7 +42,7 @@ import team5.datamodel.user.User;
 public class MemberListFrame extends javax.swing.JFrame {
 
     private DataExchanger dataE;
-    private Logger log = Logger.getLogger(MemberListFrame.class);
+    private Logger logger = Logger.getLogger(MemberListFrame.class);
     private SearchFrameOfUser searchFrame;
     private JButton backButton;
     private JButton deleteButton;
@@ -70,8 +75,8 @@ public class MemberListFrame extends javax.swing.JFrame {
     private UserTableModel model;
     private MessageHandler messageHandler;
 
-    public MemberListFrame(DataExchanger dataE) {
-        this.dataE = dataE;
+    public MemberListFrame(MessageHandler messageHandler) {
+        this.messageHandler = messageHandler;
         initStartFrame();
         initComponents();
         initCloseOperation();
@@ -105,7 +110,7 @@ public class MemberListFrame extends javax.swing.JFrame {
         jScrollPane1 = new JScrollPane(jTable1);
         jScrollPane1.setBounds(10, 10, 670, 420);
         //Таблица и модель
-        model = new UserTableModel();
+        model = new UserTableModel(messageHandler);
         jTable1 = new JTable(model);
 
         //сортировка  по столбцу
@@ -286,16 +291,19 @@ public class MemberListFrame extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
-                    FileHandler workWithFiles = new FileHandler();
-                    //sd.serializableData("serializableData_WorkUser.bin", wu);
-                    workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                } //                catch (IOException ex) { //                catch (IOException ex) {
-                //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-                //                }
-                catch (JAXBException ex) {
-                    log.debug(ex.getMessage());
+                    messageHandler.sendMessage(new Message("Exit"));
+                    /*WorkUser workUser = WorkUser.getWork();
+                     FileHandler workWithFiles = new FileHandler();
+                     //sd.serializableData("serializableData_WorkUser.bin", wu);
+                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
+                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                     } //                catch (IOException ex) { //                catch (IOException ex) {
+                     //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
+                     //                }*/
+                } catch (JAXBException ex) {
+                    logger.debug(ex.getMessage());
+                } catch (IOException ex) {
+                    logger.debug(ex.getMessage());
                 } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
@@ -328,6 +336,9 @@ public class MemberListFrame extends javax.swing.JFrame {
     private void deleteButtonActionPerfomed(ActionEvent evt) {
         try {
             if ((jTable1.getSelectedRow() >= 0) && (jTable1.getSelectedRow() < WorkUser.getWork().getArrOfUsers().size())) {
+                Message clientRequest = new Message("Delete");
+                clientRequest.setValue(jTable1.getSelectedRow());
+                messageHandler.sendMessage(clientRequest);
                 WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
                 if (searchFrame.getSearchRequest() != null) {
                     Search search = new UserSearch();
@@ -335,7 +346,11 @@ public class MemberListFrame extends javax.swing.JFrame {
                 }
             }
         } catch (NotFoundException e) {
-            log.debug(e.getMessage());
+            logger.debug(e.getMessage());
+        } catch (JAXBException ex) {
+            logger.debug(ex.getMessage());
+        } catch (IOException ex) {
+            logger.debug(ex.getMessage());
         }
 
         jTable1.revalidate();
@@ -344,16 +359,24 @@ public class MemberListFrame extends javax.swing.JFrame {
 
     private void addButtonActionPerfomed(ActionEvent evt) {
         try {
-            WorkUser.getWork().addUser(tfname.getText(), tfsurname.getText(), tfcountry.getText(), tfcity.getText(), tflogin.getText(),
-                    tfpassword.getText(), tfemail.getText(), LocalDate.now());//остановился тут //tfbday.getText() заменил на LocalDate.now()
+            Message message = new Message("Add");
+            User usr = new User();
+            usr.setServiceInfo(new ServiceInfo(tflogin.getText(), tfpassword.getText(), tfemail.getText()));
+            usr.setAddress(new Address(tfcountry.getText(), tfcity.getText()));
+            usr.setPrivateInformation(new PrivateInformation(tfname.getText(), tfsurname.getText(), LocalDate.now()));
+            message.setUser(usr);
+            messageHandler.sendMessage(message);
+            WorkUser.getWork().addUser(usr);//остановился тут //tfbday.getText() заменил на LocalDate.now()
             if (searchFrame.getSearchRequest() != null) {
                 Search search = new UserSearch();
                 model.setArrayOfUsers((ArrayList<User>) search.searchByRegexp(searchFrame.getSearchRequest()));
             }
-        } catch (UserExistException e) {
-            log.debug(e.getMessage());
+        } catch (JAXBException ex) {
+            logger.debug(ex.getMessage());
+        } catch (IOException ex) {
+            logger.debug(ex.getMessage());
         } catch (NotFoundException ex) {
-            log.debug(ex.getMessage());
+            logger.debug(ex.getMessage());
         }
         tfname.setText("");
         tfsurname.setText("");
@@ -368,6 +391,13 @@ public class MemberListFrame extends javax.swing.JFrame {
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            messageHandler.sendMessage(new Message("Exit"));
+        } catch (JAXBException ex) {
+            logger.debug(ex.getMessage());
+        } catch (IOException ex) {
+            logger.debug(ex.getMessage());
+        }
         AdminRoom adminRoom = new AdminRoom(messageHandler);
         //SelectRooms rooms = new SelectRooms();
         //rooms.setVisible(true);
@@ -396,28 +426,28 @@ public class MemberListFrame extends javax.swing.JFrame {
      */
     /*public static void main(String args[]) {
 
-        Logger log = Logger.getLogger(MemberList.class);
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            log.debug(ex.getMessage());
-        } catch (InstantiationException ex) {
-            log.debug(ex.getMessage());
-        } catch (IllegalAccessException ex) {
-            log.debug(ex.getMessage());
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            log.debug(ex.getMessage());
-        }
+     Logger log = Logger.getLogger(MemberList.class);
+     try {
+     for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+     if ("Nimbus".equals(info.getName())) {
+     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+     break;
+     }
+     }
+     } catch (ClassNotFoundException ex) {
+     log.debug(ex.getMessage());
+     } catch (InstantiationException ex) {
+     log.debug(ex.getMessage());
+     } catch (IllegalAccessException ex) {
+     log.debug(ex.getMessage());
+     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+     log.debug(ex.getMessage());
+     }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MemberList().setVisible(true);
-            }
-        });
-    }*/
+     java.awt.EventQueue.invokeLater(new Runnable() {
+     public void run() {
+     new MemberList().setVisible(true);
+     }
+     });
+     }*/
 }

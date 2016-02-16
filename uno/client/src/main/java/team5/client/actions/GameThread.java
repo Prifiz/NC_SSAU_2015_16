@@ -127,6 +127,7 @@ public class GameThread extends Thread {
                 turnIndex.setCount(0);
             }
             if (turnIndex.getCount() == gamerIndex.getCount()) {
+                text.setText(text.getText() + "\n" + logins[turnIndex.getCount()] + ": Your turn ");
                 try {
                     wait();
                 } catch (InterruptedException ex) {

@@ -186,7 +186,7 @@ public class CardList extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
+                    /*WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
                     //sd.serializableData("serializableData_WorkUser.bin", workUser);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
@@ -195,7 +195,7 @@ public class CardList extends javax.swing.JFrame {
                     log.debug(ex.getMessage());
                 }//                catch (IOException ex) {
                 //                    Logger.getLogger(SecondFrame.class.getName()).log(Level.SEVERE, null, ex);
-                //                }
+                //              */  }
                 finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);

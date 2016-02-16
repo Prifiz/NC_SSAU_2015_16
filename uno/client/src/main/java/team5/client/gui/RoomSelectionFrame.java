@@ -119,7 +119,7 @@ public class RoomSelectionFrame extends JFrame {
             @Override
             public void windowClosing(WindowEvent event) {
                 try {
-                    WorkUser workUser = WorkUser.getWork();
+                    /*WorkUser workUser = WorkUser.getWork();
                     FileHandler workWithFiles = new FileHandler();
                     //sd.serializableData("serializableData_WorkUser.bin", wu);
                     workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
@@ -129,7 +129,7 @@ public class RoomSelectionFrame extends JFrame {
                 //} 
                 catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
-                } finally {
+                */} finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }
@@ -185,7 +185,7 @@ public class RoomSelectionFrame extends JFrame {
             }
             switch (command) {
                 case "Wait": {
-                    JOptionPane.showConfirmDialog(null, "Wait for other players",
+                    JOptionPane.showConfirmDialog(null, "Wait for other players more than 30 seconds",
                             "Waiting...", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
