@@ -8,14 +8,12 @@ package team5.server.net.server;
 import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.time.LocalDate;
 import javax.swing.JFileChooser;
 import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.server.actions.RoomController;
 import team5.datamodel.actions.WorkUser;
 import team5.datamodel.transmissions.FileHandler;
-import team5.datamodel.exceptions.UserExistException;
 
 /**
  *

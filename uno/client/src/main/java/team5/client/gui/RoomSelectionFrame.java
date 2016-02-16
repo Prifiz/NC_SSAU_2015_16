@@ -12,8 +12,6 @@ import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.TimerTask;
-import team5.datamodel.transmissions.FileHandler;
-import team5.datamodel.actions.WorkUser;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
 import team5.datamodel.transmissions.Message;

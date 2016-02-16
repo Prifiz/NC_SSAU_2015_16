@@ -11,10 +11,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import team5.datamodel.user.*;
-import team5.datamodel.user.admin.Admin;
 import team5.datamodel.user.adress.Address;
 
 /**

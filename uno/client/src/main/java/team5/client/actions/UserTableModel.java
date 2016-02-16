@@ -15,7 +15,6 @@ import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.datamodel.actions.WorkUser;
 import team5.datamodel.exceptions.NotFoundException;
-import team5.datamodel.exceptions.UserNotFoundException;
 import team5.datamodel.searches.Search;
 import team5.datamodel.searches.UserSearch;
 import team5.datamodel.transmissions.Message;

@@ -12,7 +12,6 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.event.TableModelListener;
 import team5.datamodel.actions.WorkUser;
 import team5.datamodel.exceptions.NotFoundException;
-import team5.datamodel.exceptions.UserNotFoundException;
 import team5.datamodel.searches.Search;
 import team5.datamodel.searches.UserSearch;
 import team5.datamodel.user.User;

@@ -8,14 +8,11 @@ package team5.client.gui;
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import javax.xml.bind.JAXBException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import org.apache.log4j.Logger;
 import team5.client.actions.DataExchanger;
-import team5.datamodel.actions.WorkUser;
-import team5.datamodel.transmissions.FileHandler;
 import team5.datamodel.transmissions.MessageHandler;
 
 /**

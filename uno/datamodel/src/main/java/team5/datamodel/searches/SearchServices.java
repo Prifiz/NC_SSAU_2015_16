@@ -5,8 +5,6 @@ package team5.datamodel.searches;
  * Search method of occurrences of a substring in a string
  *
  * @author Dmitry
- * @param string
- * @param subString
  */
 public class SearchServices {
 

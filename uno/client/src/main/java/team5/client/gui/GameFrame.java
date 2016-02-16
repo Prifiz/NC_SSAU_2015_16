@@ -29,10 +29,7 @@ import org.apache.log4j.Logger;
 import team5.client.actions.Counter;
 import team5.client.actions.DataExchanger;
 import team5.client.actions.GameThread;
-import team5.datamodel.actions.WorkUser;
-import team5.datamodel.transmissions.FileHandler;
 import team5.datamodel.card.Card;
-import team5.datamodel.card.NumericCard;
 import team5.datamodel.transmissions.Message;
 import team5.datamodel.transmissions.MessageHandler;
 

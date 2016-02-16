@@ -6,7 +6,6 @@ import team5.datamodel.exceptions.UserExistException;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import team5.datamodel.sortings.Sorting;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

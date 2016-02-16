@@ -5,10 +5,7 @@
  */
 package team5.client.uno;
 
-import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
-import team5.datamodel.transmissions.FileHandler;
-import team5.datamodel.actions.WorkUser;
 import team5.client.gui.StartFrame;
 
 /**
