@@ -50,7 +50,7 @@ public class GameThread extends Thread {
             if (turnIndex.getCount() < gamerIndex.getCount()) {
                 for (; turnIndex.getCount() < gamerIndex.getCount(); turnIndex.inc()) {
                     try {
-                        Message message = messageHandler.receiveMessage();;
+                        Message message = messageHandler.receiveMessage();
                         String command = message.getCommand();
                         switch (command) {
                             case "Pass":

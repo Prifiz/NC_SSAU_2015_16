@@ -331,7 +331,7 @@ public class MemberListFrame extends javax.swing.JFrame {
                 WorkUser.getWork().deleteUser(WorkUser.getWork().getArrOfUsers().get(jTable1.getSelectedRow()).getServiceInfo().getLogin());
                 if (searchFrame.getSearchRequest() != null) {
                     Search search = new UserSearch();
-                    model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
+                    model.setArrayOfUsers((ArrayList<User>) search.searchByRegexp(searchFrame.getSearchRequest()));
                 }
             }
         } catch (NotFoundException e) {
@@ -348,7 +348,7 @@ public class MemberListFrame extends javax.swing.JFrame {
                     tfpassword.getText(), tfemail.getText(), LocalDate.now());//остановился тут //tfbday.getText() заменил на LocalDate.now()
             if (searchFrame.getSearchRequest() != null) {
                 Search search = new UserSearch();
-                model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchFrame.getSearchRequest()));
+                model.setArrayOfUsers((ArrayList<User>) search.searchByRegexp(searchFrame.getSearchRequest()));
             }
         } catch (UserExistException e) {
             log.debug(e.getMessage());

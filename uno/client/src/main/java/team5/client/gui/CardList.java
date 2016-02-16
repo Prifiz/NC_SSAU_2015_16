@@ -229,7 +229,7 @@ public class CardList extends javax.swing.JFrame {
                         WorkCard.getWork().getArrOfCards().get(jTable1.getSelectedRow()).getColor());
                 if (searchFrame.getSearchRequest() != null) {
                     Search search = new CardSearch();
-                    model.setArrayOfCards((ArrayList<Card>) search.regularSearch(searchFrame.getSearchRequest()));
+                    model.setArrayOfCards((ArrayList<Card>) search.searchByRegexp(searchFrame.getSearchRequest()));
                 }
             }
         } catch (NotFoundException e) {
@@ -245,7 +245,7 @@ public class CardList extends javax.swing.JFrame {
             WorkCard.getWork().addCard(Integer.parseInt(tficonId.getText()), tfcolor.getText());
             if (searchFrame.getSearchRequest() != null) {
                 Search search = new CardSearch();
-                model.setArrayOfCards((ArrayList<Card>) search.regularSearch(searchFrame.getSearchRequest()));
+                model.setArrayOfCards((ArrayList<Card>) search.searchByRegexp(searchFrame.getSearchRequest()));
             }
         } catch (NotFoundException ex) {
             log.debug(ex.getMessage());

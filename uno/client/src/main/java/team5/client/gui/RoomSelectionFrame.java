@@ -11,6 +11,7 @@ import java.awt.event.WindowListener;
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.util.TimerTask;
 import team5.datamodel.transmissions.FileHandler;
 import team5.datamodel.actions.WorkUser;
 import org.apache.log4j.Logger;
@@ -31,6 +32,7 @@ public class RoomSelectionFrame extends JFrame {
     private javax.swing.JComboBox jComboBox;
     private javax.swing.JLabel selectLabel;
     private MessageHandler messageHandler;
+    private JLabel descriptionLabel;
 
     /**
      * Creates new form SelectRooms
@@ -76,6 +78,7 @@ public class RoomSelectionFrame extends JFrame {
         add(startButton);
         startButton.setBounds(150, 210, 100, 30);
         startButton.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
             }
@@ -87,10 +90,18 @@ public class RoomSelectionFrame extends JFrame {
         add(adminRoomButton);
         adminRoomButton.setBounds(280, 10, 110, 30);
         adminRoomButton.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminRoomButtonActionPerformed(evt);
             }
         });
+
+        descriptionLabel = new JLabel();
+        descriptionLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        //descriptionLabel.setText("Waiting for the other players in 30 seconds...");
+        descriptionLabel.setText("");
+        add(descriptionLabel);
+        descriptionLabel.setBounds(50, 140, 320, 30);
     }
 
     private void initCloseOperation() {
@@ -156,6 +167,7 @@ public class RoomSelectionFrame extends JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try {
+            descriptionLabel.setText("Waiting for the other players (~30 seconds)...");
             Message message = new Message("Select");
             message.setChoice(jComboBox.getSelectedItem().toString());
             try {
@@ -182,6 +194,14 @@ public class RoomSelectionFrame extends JFrame {
                             "Oops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     break;
             }
+
+//            descriptionLabel.setText("Waiting for the other players in 30 seconds...");
+//
+//            timerLabel = new TimerLabel(new java.util.Timer());
+//            timerLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+//            add(timerLabel);
+//            timerLabel.setBounds(175, 170, 50, 30);
+
             boolean f = false;
             try {
                 f = messageHandler.receiveMessage().getConfirmation();
@@ -199,6 +219,36 @@ public class RoomSelectionFrame extends JFrame {
             logger.debug(ex.getMessage());
         }
 
+    }
+
+    public static class TimerLabel extends JLabel {
+
+        public java.util.Timer timer;
+
+        public TimerLabel(java.util.Timer timer) {
+            timer.scheduleAtFixedRate(timerTask, 0, 1000);
+        }
+
+        private final TimerTask timerTask = new TimerTask() {
+            private volatile int time = 30;
+
+            private Runnable refresher = new Runnable() {
+                @Override
+                public void run() {
+                    int t = time;
+                    TimerLabel.this.setText(String.format("%02d:%02d", t / 60, t % 60));
+                }
+            };
+
+            @Override
+            public void run() {
+                time--;
+                SwingUtilities.invokeLater(refresher);
+                if (time == -1) {
+                    time = 0;
+                }
+            }
+        };
     }
 
     /**

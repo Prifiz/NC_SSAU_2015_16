@@ -157,9 +157,9 @@ public class SearchFrameOfUser extends javax.swing.JFrame {
         try {
             Search search = new UserSearch();
             if (isRegular) {
-                model.setArrayOfUsers((ArrayList<User>) search.regularSearch(searchRequest));
+                model.setArrayOfUsers((ArrayList<User>) search.searchByRegexp(searchRequest));
             } else {
-                model.setArrayOfUsers((ArrayList<User>) search.substringSearch(searchRequest));
+                model.setArrayOfUsers((ArrayList<User>) search.searchBySubstring(searchRequest));
             }
             //memberList.setTable(table);
             table.revalidate();
