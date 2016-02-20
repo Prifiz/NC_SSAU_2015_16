@@ -33,7 +33,7 @@ public class ClientSocket {
      */
     public ClientSocket() {
         serverport = 8081;
-        address = /*"192.168.43.197"*/ "127.0.0.1";
+        address =/* "10.60.14.157";//"192.168.43.197";// */"127.0.0.1";
         in = null;
         out = null;
 

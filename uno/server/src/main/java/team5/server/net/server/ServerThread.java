@@ -20,6 +20,7 @@ import team5.server.actions.RoomController;
 import team5.server.actions.SignIn;
 import team5.server.actions.TableController;
 import team5.datamodel.card.Card;
+import team5.datamodel.exceptions.CardNotFoundException;
 import team5.datamodel.exceptions.UserExistException;
 import team5.datamodel.exceptions.UserNotFoundException;
 import team5.datamodel.transmissions.FileHandler;
@@ -305,7 +306,16 @@ public class ServerThread extends Thread {
                             case "END TURN":
                                 card = rooms[roomNumber].getGamer(gamer.getGamerLogin()).searchCardInHand(clientRequest.getChoice());
                                 serverResponse.setCard(card);
-                                serverResponse.setConfirmation(table.isRightCard(card));
+                                if (card != null) {
+                                    serverResponse.setConfirmation(table.isRightCard(card));
+                                    try {
+                                        rooms[roomNumber].getGamer(gamer.getGamerLogin()).pullCardFromHand(card);
+                                    } catch (CardNotFoundException ex) {
+                                        logger.debug(ex.getMessage());
+                                    }
+                                } else {
+                                    serverResponse.setConfirmation(false);
+                                }
                                 messageHandler.sendMessage(serverResponse);
                                 if (table.isRightCard(card)) {
                                     table.setLastCard(card);
