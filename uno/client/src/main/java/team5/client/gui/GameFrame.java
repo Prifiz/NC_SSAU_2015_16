@@ -270,10 +270,6 @@ public class GameFrame extends JFrame {
         if ((turnIndex.getCount() == gamerIndex.getCount()) || (canExit.isFlag() == true)) {
             try {
                 messageHandler.sendMessage(new Message("Exit"));
-                RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
-                rooms.setVisible(true);
-                game.interrupt();
-                this.dispose();
             } catch (IOException ex) {
                 text.setText("\n!!!!!!!\nServer disconnected\n!!!!!!!\n");
                 canExit.setFlag(true);

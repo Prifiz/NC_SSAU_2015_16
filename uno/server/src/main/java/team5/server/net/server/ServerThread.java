@@ -251,7 +251,7 @@ public class ServerThread extends Thread {
                 if (order < rooms[roomNumber].getGamerNumber(gamer)) {
                     for (; order < rooms[roomNumber].getGamerNumber(gamer); order++) {
                         String command = null;
-                        while (rooms[roomNumber].getGamer(order).getAct() == null) {
+                        while ((rooms[roomNumber].getGamer(order).getAct() == null)&&((rooms[roomNumber].getCommand() == null))) {
                             yield();
                         }
                         command = rooms[roomNumber].getGamer(order).getAct();
@@ -259,6 +259,14 @@ public class ServerThread extends Thread {
                         if (rooms[roomNumber].getGamer(order).getReadCount() == rooms[roomNumber].countGamers() - 1) {
                             rooms[roomNumber].getGamer(order).setAct(null);
                             rooms[roomNumber].getGamer(order).setReadCount(0);
+                        }
+                        if (command == null) {
+                            command = rooms[roomNumber].getCommand();
+                            rooms[roomNumber].setReadCount(rooms[roomNumber].getReadCount() + 1);
+                            if (rooms[roomNumber].getReadCount() == rooms[roomNumber].countGamers() - 1) {
+                                rooms[roomNumber].setCommand(null);
+                                rooms[roomNumber].setReadCount(0);
+                            }
                         }
                         switch (command) {
                             case "Pass":
@@ -319,7 +327,7 @@ public class ServerThread extends Thread {
                                 messageHandler.sendMessage(serverResponse);
                                 if (table.isRightCard(card)) {
                                     table.setLastCard(card);
-                                    rooms[roomNumber].getGamer(order).setAct(command);
+                                    rooms[roomNumber].setCommand(command);
                                     order++;
                                     game = false;
                                     boolean win = messageHandler.receiveMessage().getConfirmation();
@@ -331,7 +339,7 @@ public class ServerThread extends Thread {
                                 }
                                 break;
                             case "Exit":
-                                rooms[roomNumber].getGamer(order).setAct(command);
+                                rooms[roomNumber].setCommand(command);
                                 rooms[roomNumber].removeGamer(gamer);
                                 if (rooms[roomNumber].countGamers() == 0) {
                                     rooms[roomNumber].cleanRoom();
@@ -345,7 +353,7 @@ public class ServerThread extends Thread {
                 if (order > rooms[roomNumber].getGamerNumber(gamer)) {
                     for (; order < rooms[roomNumber].countGamers(); order++) {
                         String command = null;
-                        while (rooms[roomNumber].getGamer(order).getAct() == null) {
+                        while ((rooms[roomNumber].getGamer(order).getAct() == null)&&((rooms[roomNumber].getCommand() == null))) {
                             yield();
                         }
                         command = rooms[roomNumber].getGamer(order).getAct();
@@ -353,6 +361,14 @@ public class ServerThread extends Thread {
                         if (rooms[roomNumber].getGamer(order).getReadCount() == rooms[roomNumber].countGamers() - 1) {
                             rooms[roomNumber].getGamer(order).setAct(null);
                             rooms[roomNumber].getGamer(order).setReadCount(0);
+                        }
+                        if (command == null) {
+                            command = rooms[roomNumber].getCommand();
+                            rooms[roomNumber].setReadCount(rooms[roomNumber].getReadCount() + 1);
+                            if (rooms[roomNumber].getReadCount() == rooms[roomNumber].countGamers() - 1) {
+                                rooms[roomNumber].setCommand(null);
+                                rooms[roomNumber].setReadCount(0);
+                            }
                         }
                         switch (command) {
                             case "Pass":
