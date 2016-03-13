@@ -125,7 +125,7 @@ public class RulesFrame extends JFrame {
                     log.debug(ex.getMessage());
                 */} finally {
                     event.getWindow().setVisible(false);
-                    System.exit(0);
+                    dispose();
                 }
             }
 
@@ -147,7 +147,7 @@ public class RulesFrame extends JFrame {
         });
 
 //       
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         pack();
         this.setLocationRelativeTo(null);
     }// </editor-fold>                        
