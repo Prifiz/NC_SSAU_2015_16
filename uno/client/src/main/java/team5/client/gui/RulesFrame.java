@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
  */
 public class RulesFrame extends JFrame {
 
+    private static final RulesFrame rule = new RulesFrame();
     private Logger log = Logger.getLogger(RulesFrame.class);
     private JButton backButton;
     private JLabel rulesLabel;
@@ -29,8 +30,12 @@ public class RulesFrame extends JFrame {
 
     /**
      * Creates new form Rules
+     * @return 
      */
-    public RulesFrame() {
+    public static RulesFrame getRulesFrame() {
+        return rule;
+    }
+    private RulesFrame() {
         initStartFrame();
         initComponents();
         initCloseOperation();

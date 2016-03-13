@@ -287,7 +287,7 @@ public class GameFrame extends JFrame {
 
     private void rulesButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        RulesFrame rules = new RulesFrame();
+        RulesFrame rules = RulesFrame.getRulesFrame();
         rules.setVisible(true);
     }
 
