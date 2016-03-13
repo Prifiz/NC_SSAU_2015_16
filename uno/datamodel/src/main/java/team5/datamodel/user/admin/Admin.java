@@ -15,7 +15,7 @@ import team5.datamodel.constants.Constants;
  *
  * @author chanta
  */
-public class Admin extends User {
+public final class Admin extends User {
 
     public Admin(PrivateInformation privateInformation, Address address, ServiceInfo serviceInfo) {
         super(privateInformation, address, serviceInfo);
