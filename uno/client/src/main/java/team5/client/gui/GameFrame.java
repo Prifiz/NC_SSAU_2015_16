@@ -275,9 +275,16 @@ public class GameFrame extends JFrame {
                 game.interrupt();
                 this.dispose();
             } catch (IOException ex) {
+                text.setText("\n!!!!!!!\nServer disconnected\n!!!!!!!\n");
+                canExit.setFlag(true);
                 logger.debug(ex.getMessage());
             } catch (JAXBException ex) {
                 logger.debug(ex.getMessage());
+            }finally{
+                RoomSelectionFrame rooms = new RoomSelectionFrame(messageHandler);
+                rooms.setVisible(true);
+                game.interrupt();
+                this.dispose();
             }
 
         } else {
@@ -299,6 +306,8 @@ public class GameFrame extends JFrame {
                 try {
                     messageHandler.sendMessage(new Message("Pass"));
                 } catch (IOException ex) {
+                    text.setText("\n!!!!!!!\nServer disconnected\n!!!!!!!\n");
+                    canExit.setFlag(true);
                     logger.debug(ex.getMessage());
                 } catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
@@ -329,6 +338,8 @@ public class GameFrame extends JFrame {
                     messageHandler.sendMessage(new Message("TakeCard"));
                     card = messageHandler.receiveMessage().getCard();
                 } catch (IOException ex) {
+                    text.setText("\n!!!!!!!\nServer disconnected\n!!!!!!!\n");
+                    canExit.setFlag(true);
                     logger.debug(ex.getMessage());
                 } catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
@@ -376,6 +387,8 @@ public class GameFrame extends JFrame {
                     try {
                         card = messageHandler.receiveMessage().getCard();
                     } catch (IOException ex) {
+                        text.setText("\n!!!!!!!\nServer disconnected\n!!!!!!!\n");
+                        canExit.setFlag(true);
                         logger.debug(ex.getMessage());
                     } catch (JAXBException ex) {
                         logger.debug(ex.getMessage());
@@ -446,6 +459,8 @@ public class GameFrame extends JFrame {
                     }
 
                 } catch (IOException ex) {
+                    text.setText("\n!!!!!!!\nServer disconnected\n!!!!!!!\n");
+                    canExit.setFlag(true);
                     logger.debug(ex.getMessage());
                 } catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
