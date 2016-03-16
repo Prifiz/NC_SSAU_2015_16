@@ -7,6 +7,7 @@ package team5.server.actions;
 
 import team5.datamodel.user.User;
 import team5.datamodel.exceptions.*;
+import team5.datamodel.searches.FieldRequest;
 import team5.datamodel.searches.Search;
 import team5.datamodel.searches.UserSearch;
 
@@ -27,7 +28,7 @@ public class SignIn {
     public boolean sign(String login, String password) {
         try {
             Search search=new UserSearch();
-            User user = (User)search.searchByField(login, "login").get(0);
+            User user = (User)search.searchByField(login, FieldRequest.LOGIN).get(0);
             String s = "";
             /*for (int i = 0; i < password.length; i++) {
                 s += password[i];

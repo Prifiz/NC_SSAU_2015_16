@@ -151,13 +151,13 @@ public class UserSearch implements Search {
      * @throws CardNotFoundException
      */
     @Override
-    public List searchByField(String request, String field)
+    public List searchByField(String request, FieldRequest field)
             throws UserNotFoundException {
 
         ArrayList<User> users = WorkUser.getWork().getArrOfUsers();
         ArrayList<User> resultOfSearch = new ArrayList<User>();
 
-        if ("city".equals(field) || "City".equals(field)) {
+        if (field == FieldRequest.CITY) {
             for (User u : users) {
                 if (SearchServices.isStringIncludeSubstring(u.getAddress().getCity().toString(), request)) {
                     resultOfSearch.add(u);
@@ -165,7 +165,7 @@ public class UserSearch implements Search {
             }
         }
 
-        if ("country".equals(field) || "Country".equals(field)) {
+        if (field == FieldRequest.COUNTRY) {
             for (User u : users) {
                 if (SearchServices.isStringIncludeSubstring(u.getAddress().getCountry().toString(), request)) {
                     resultOfSearch.add(u);
@@ -173,7 +173,7 @@ public class UserSearch implements Search {
             }
         }
 
-        if ("name".equals(field) || "Name".equals(field)) {
+        if (field == FieldRequest.NAME) {
             for (User u : users) {
                 if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getName().toString(), request)) {
                     resultOfSearch.add(u);
@@ -181,7 +181,7 @@ public class UserSearch implements Search {
             }
         }
 
-        if ("surname".equals(field) || "Surname".equals(field)) {
+        if (field == FieldRequest.SURNAME) {
             for (User u : users) {
                 if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getSurname().toString(), request)) {
                     resultOfSearch.add(u);
@@ -189,7 +189,7 @@ public class UserSearch implements Search {
             }
         }
 
-        if ("bDay".equals(field) || "BDay".equals(field)) {
+        if (field == FieldRequest.BDAY) {
             for (User u : users) {
                 if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getbDay().toString(), request)) {
                     resultOfSearch.add(u);
@@ -197,7 +197,7 @@ public class UserSearch implements Search {
             }
         }
 
-        if ("dateOfRegistration".equals(field) || "DateOfRegistration".equals(field)) {
+        if (field == FieldRequest.DATE_OF_REGISTRATION) {
             for (User u : users) {
                 if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getDateOfRegistration().toString(), request)) {
                     resultOfSearch.add(u);
@@ -205,7 +205,7 @@ public class UserSearch implements Search {
             }
         }
 
-        if ("email".equals(field) || "Email".equals(field)) {
+        if (field == FieldRequest.EMAIL) {
             for (User u : users) {
                 if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getEmail().toString(), request)) {
                     resultOfSearch.add(u);
@@ -213,7 +213,7 @@ public class UserSearch implements Search {
             }
         }
 
-        if ("login".equals(field) || "Login".equals(field)) {
+        if (field == FieldRequest.LOGIN) {
             for (User u : users) {
                 if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getLogin().toString(), request)) {
                     resultOfSearch.add(u);

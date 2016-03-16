@@ -12,6 +12,7 @@ import team5.datamodel.card.NumericCard;
 import team5.datamodel.exceptions.CardNotFoundException;
 import team5.datamodel.exceptions.NotFoundException;
 import team5.datamodel.searches.CardSearch;
+import team5.datamodel.searches.FieldRequest;
 import team5.datamodel.searches.Search;
 
 /**
@@ -63,7 +64,7 @@ public class WorkCard implements Serializable {
         Card card;
 //        if (card != null) {
         try {
-            card=(Card)search.searchByField(color, "icon_color").get(0);
+            card=(Card)search.searchByField(color,FieldRequest.ICONID_COLOR).get(0);
             arrCards.remove(card);
         } catch (NotFoundException ex) {
             throw new CardNotFoundException("Delete Card: ");

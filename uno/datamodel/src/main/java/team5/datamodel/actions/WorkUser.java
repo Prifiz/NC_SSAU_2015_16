@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 //import org.apache.log4j.Logger;
 import team5.datamodel.exceptions.UserNotFoundException;
+import team5.datamodel.searches.FieldRequest;
 import team5.datamodel.user.adress.Address;
 import team5.datamodel.user.PrivateInformation;
 import team5.datamodel.user.ServiceInfo;
@@ -43,7 +44,7 @@ public class WorkUser implements Serializable {
         for (int i = 0; i < arrUsers.size(); i++) {
             try {
                 Search search = new UserSearch();
-                if (arrUsers.get(i).equals(search.searchByField(Constants.LOGIN_ADMIN, "login").get(0))) {
+                if (arrUsers.get(i).equals(search.searchByField(Constants.LOGIN_ADMIN,FieldRequest.LOGIN).get(0))) {
                     User admin = new Admin();
                     arrUsers.add(admin);
                 }
@@ -77,7 +78,7 @@ public class WorkUser implements Serializable {
 //        }
         try {
             Search search = new UserSearch();
-            search.searchByField(login, "login");
+            search.searchByField(login,FieldRequest.LOGIN);
             throw new UserExistException("User already exist");
         } catch (NotFoundException e) {
             PrivateInformation privateInformation = new PrivateInformation(name, surname, bDay);
@@ -141,7 +142,7 @@ public class WorkUser implements Serializable {
             throws UserNotFoundException {
         try {
             Search search = new UserSearch();
-            User tmp = (User) search.searchByField(login, "login").get(0);
+            User tmp = (User) search.searchByField(login,FieldRequest.LOGIN).get(0);
             //if(tmp!=null)
             arrUsers.remove(tmp);
 //	else

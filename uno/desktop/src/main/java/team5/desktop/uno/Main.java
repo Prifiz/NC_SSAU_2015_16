@@ -83,12 +83,12 @@ public class Main {
         } catch (UserExistException e) {
             log.debug(e.getMessage());
         }
-        try {
-            System.out.println("Search: " + UserSearch.regularSearch("(\\d|\\s|\\w)").toString());
-
-        } catch (UserNotFoundException e) {
-            log.debug(e.getMessage());
-        }
+//        try {
+//            System.out.println("Search: " + UserSearch.regularSearch("(\\d|\\s|\\w)").toString());
+//
+//        } catch (UserNotFoundException e) {
+//            log.debug(e.getMessage());
+//        }
         System.out.println(wu.viewUsers());
         // WorkUser wu =new WorkUser();
         //wu.addUser("Adam", "Smith", "USA","VS",new GregorianCalendar(1995, 12, 12) , "ggg", "1231114", "smi@gmai.com");

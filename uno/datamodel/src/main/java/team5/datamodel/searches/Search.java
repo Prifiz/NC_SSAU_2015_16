@@ -13,6 +13,6 @@ public interface Search {
 
     public List searchBySubstring(String request) throws NotFoundException;
 
-    public List searchByField(String request, String field) throws NotFoundException;
+    public List searchByField(String request, FieldRequest field) throws NotFoundException;
 
 }
