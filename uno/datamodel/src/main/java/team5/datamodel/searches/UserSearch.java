@@ -158,65 +158,65 @@ public class UserSearch implements Search {
         ArrayList<User> resultOfSearch = new ArrayList<User>();
 
         if (field == FieldRequest.CITY) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getAddress().getCity().toString(), request)) {
-                    resultOfSearch.add(u);
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getAddress().getCity().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
         if (field == FieldRequest.COUNTRY) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getAddress().getCountry().toString(), request)) {
-                    resultOfSearch.add(u);
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getAddress().getCountry().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
         if (field == FieldRequest.NAME) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getName().toString(), request)) {
-                    resultOfSearch.add(u);
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getPrivateInformation().getName().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
         if (field == FieldRequest.SURNAME) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getSurname().toString(), request)) {
-                    resultOfSearch.add(u);
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getPrivateInformation().getSurname().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
         if (field == FieldRequest.BDAY) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getbDay().toString(), request)) {
-                    resultOfSearch.add(u);
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getPrivateInformation().getbDay().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
         if (field == FieldRequest.DATE_OF_REGISTRATION) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getDateOfRegistration().toString(), request)) {
-                    resultOfSearch.add(u);
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getServiceInfo().getDateOfRegistration().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
         if (field == FieldRequest.EMAIL) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getEmail().toString(), request)) {
-                    resultOfSearch.add(u);
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getServiceInfo().getEmail().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
         if (field == FieldRequest.LOGIN) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getLogin().toString(), request)) {
-                    resultOfSearch.add(u);
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getServiceInfo().getLogin().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }

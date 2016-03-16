@@ -61,13 +61,13 @@ public class CardSearch implements Search {
         ArrayList<Card> cards = WorkCard.getWork().getArrOfCards();
         ArrayList<Card> resultOfSearch = new ArrayList<Card>();
 
-        for (Card c : cards) {
-            if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)) {
-                resultOfSearch.add(c);
+        for (Card card : cards) {
+            if (SearchServices.isStringIncludeSubstring(card.getIconId().toString(), request)) {
+                resultOfSearch.add(card);
                 continue;
             }
-            if (SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
-                resultOfSearch.add(c);
+            if (SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+                resultOfSearch.add(card);
                 continue;
             }
         }
@@ -95,26 +95,26 @@ public class CardSearch implements Search {
         ArrayList<Card> resultOfSearch = new ArrayList<Card>();
 
         if (field == FieldRequest.ICONID) {
-            for (Card c : cards) {
-                if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)) {
-                    resultOfSearch.add(c);
+            for (Card card : cards) {
+                if (SearchServices.isStringIncludeSubstring(card.getIconId().toString(), request)) {
+                    resultOfSearch.add(card);
                 }
             }
         }
 
         if (field == FieldRequest.COLOR) {
-            for (Card c : cards) {
-                if (SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
-                    resultOfSearch.add(c);
+            for (Card card : cards) {
+                if (SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+                    resultOfSearch.add(card);
                 }
             }
         }
 
         if (field == FieldRequest.ICONID_COLOR) {
-            for (Card c : cards) {
-                if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)
-                        && SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
-                    resultOfSearch.add(c);
+            for (Card card : cards) {
+                if (SearchServices.isStringIncludeSubstring(card.getIconId().toString(), request)
+                        && SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+                    resultOfSearch.add(card);
                 }
             }
         }
