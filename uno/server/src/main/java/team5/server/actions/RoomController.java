@@ -18,12 +18,20 @@ public class RoomController {
     private boolean playing = false;
     private boolean finish = false;
     private String command;
+    private int readCount;
 
     public RoomController() {
         table = new TableController();
         gamers = new ArrayList();
     }
 
+    public int getReadCount() {
+        return readCount;
+    }
+
+    public void setReadCount(int readCount) {
+        this.readCount = readCount;
+    }
 
     public boolean isFinish() {
         return finish;
@@ -32,6 +40,7 @@ public class RoomController {
     public void setFinish(boolean finish) {
         this.finish = finish;
     }
+
     public String getCommand() {
         return command;
     }

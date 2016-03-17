@@ -12,6 +12,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.event.TableModelListener;
 import team5.datamodel.actions.WorkUser;
 import team5.datamodel.exceptions.NotFoundException;
+import team5.datamodel.searches.FieldRequest;
 import team5.datamodel.searches.Search;
 import team5.datamodel.searches.UserSearch;
 import team5.datamodel.user.User;
@@ -123,7 +124,7 @@ public class UserTableModel extends AbstractTableModel {
             case 6:
                 try {
                     Search search = new UserSearch();
-                    search.searchByField((String) aValue, "login").isEmpty();
+                    search.searchByField((String) aValue, FieldRequest.LOGIN).isEmpty();
                     users.get(rowIndex).getServiceInfo().setLogin((String) aValue);
 
                 } catch (NotFoundException e) {

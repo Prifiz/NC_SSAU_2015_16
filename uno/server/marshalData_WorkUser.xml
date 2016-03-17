@@ -66,34 +66,18 @@
     </arrUsers>
     <arrUsers>
         <address>
-            <city>sdf</city>
-            <country>sdfsdf</country>
-        </address>
-        <privateInformation>
-            <name>bibu</name>
-            <surname>sdf</surname>
-            <bDay>2016-02-15</bDay>
-        </privateInformation>
-        <serviceInfo>
-            <email>sdfs</email>
-            <login>putin</login>
-            <password>d</password>
-        </serviceInfo>
-    </arrUsers>
-    <arrUsers>
-        <address>
             <city>dasd</city>
             <country>asdasd</country>
         </address>
         <privateInformation>
-            <name>biba</name>
+            <name>bibu</name>
             <surname>asdas</surname>
             <bDay>2016-02-15</bDay>
         </privateInformation>
         <serviceInfo>
             <email>asd</email>
             <login>asd</login>
-            <password>asd</password>
+            <password>**</password>
         </serviceInfo>
     </arrUsers>
     <arrUsers>
@@ -158,6 +142,22 @@
             <email>kjbj</email>
             <login>bob4</login>
             <password>123</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>fsad</city>
+            <country>sdafsad</country>
+        </address>
+        <privateInformation>
+            <name>dsafasdf</name>
+            <surname>dsaf</surname>
+            <bDay>2016-02-16</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>sdfsadf</email>
+            <login>medvedev</login>
+            <password>s</password>
         </serviceInfo>
     </arrUsers>
 </workUser>

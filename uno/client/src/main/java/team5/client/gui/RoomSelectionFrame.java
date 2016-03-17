@@ -183,7 +183,7 @@ public class RoomSelectionFrame extends JFrame {
             }
             switch (command) {
                 case "Wait": {
-                    JOptionPane.showConfirmDialog(null, "Wait for other players more than 30 seconds",
+                    JOptionPane.showConfirmDialog(null, "Wait for other players",
                             "Waiting...", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }

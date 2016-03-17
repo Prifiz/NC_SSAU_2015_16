@@ -20,6 +20,7 @@ import team5.server.actions.RoomController;
 import team5.server.actions.SignIn;
 import team5.server.actions.TableController;
 import team5.datamodel.card.Card;
+import team5.datamodel.exceptions.CardNotFoundException;
 import team5.datamodel.exceptions.UserExistException;
 import team5.datamodel.exceptions.UserNotFoundException;
 import team5.datamodel.transmissions.FileHandler;
@@ -158,7 +159,7 @@ public class ServerThread extends Thread {
     }
 
     private void selectRoom(int roomNumber) throws IOException {
-        if ((rooms[roomNumber].countGamers() < 4) && (rooms[roomNumber].isPlaying() == false)) {//если кол-во игроков в комнате меньше 4 и игра не начата то идем дальше
+        if ((rooms[roomNumber].countGamers() < ServerConstants.MAX_NUMBER_OF_PLAYERS) && (rooms[roomNumber].isPlaying() == false)) {//если кол-во игроков в комнате меньше 4 и игра не начата то идем дальше
             //dataE.writeString("Wait");//заставлем ждать
             try {
                 messageHandler.sendMessage(new Message("Wait"));
@@ -167,7 +168,7 @@ public class ServerThread extends Thread {
             }
             rooms[roomNumber].addGamer(gamer);//добавляем игрока в комнату(нужно будет очистить комнату после игры)
             if (rooms[roomNumber].countGamers() == 1) {//если он там один, запускаем таймер(стремный таймер)
-                for (int i = 0; i < 30; i++) {
+                for (int i = 0; i < ServerConstants.WAITING_TIME; i++) {
                     waitTime[roomNumber] = i;
                     try {
                         TimeUnit.SECONDS.sleep(1);
@@ -194,7 +195,7 @@ public class ServerThread extends Thread {
                     }
                 }
             } else {
-                for (int i = waitTime[roomNumber]; i < 30; i++) {//если же клиент не первый в этой комнате, запускаем таймер начиная с текущего значение(криво сделано, надо другое решение искать)
+                for (int i = waitTime[roomNumber]; i < ServerConstants.WAITING_TIME; i++) {//если же клиент не первый в этой комнате, запускаем таймер начиная с текущего значение(криво сделано, надо другое решение искать)
                     try {
                         TimeUnit.SECONDS.sleep(1);
                     } catch (InterruptedException ex) {
@@ -238,7 +239,7 @@ public class ServerThread extends Thread {
             }
             TableController table = rooms[roomNumber].getTableController();
             Card card = null;
-            for (int j = 0; j < 7; j++) {
+            for (int j = 0; j < ServerConstants.START_NUMBER_OF_CARDS; j++) {
                 card = table.getCardFromPack();
                 rooms[roomNumber].getGamer(gamer.getGamerLogin()).addCardToHand(card);
                 messageHandler.sendMessage(new Message(card));
@@ -250,7 +251,7 @@ public class ServerThread extends Thread {
                 if (order < rooms[roomNumber].getGamerNumber(gamer)) {
                     for (; order < rooms[roomNumber].getGamerNumber(gamer); order++) {
                         String command = null;
-                        while (rooms[roomNumber].getGamer(order).getAct() == null) {
+                        while ((rooms[roomNumber].getGamer(order).getAct() == null) && ((rooms[roomNumber].getCommand() == null))) {
                             yield();
                         }
                         command = rooms[roomNumber].getGamer(order).getAct();
@@ -258,6 +259,14 @@ public class ServerThread extends Thread {
                         if (rooms[roomNumber].getGamer(order).getReadCount() == rooms[roomNumber].countGamers() - 1) {
                             rooms[roomNumber].getGamer(order).setAct(null);
                             rooms[roomNumber].getGamer(order).setReadCount(0);
+                        }
+                        if (command == null) {
+                            command = rooms[roomNumber].getCommand();
+                            rooms[roomNumber].setReadCount(rooms[roomNumber].getReadCount() + 1);
+                            if (rooms[roomNumber].getReadCount() == rooms[roomNumber].countGamers() - 1) {
+                                rooms[roomNumber].setCommand(null);
+                                rooms[roomNumber].setReadCount(0);
+                            }
                         }
                         switch (command) {
                             case "Pass":
@@ -305,11 +314,20 @@ public class ServerThread extends Thread {
                             case "END TURN":
                                 card = rooms[roomNumber].getGamer(gamer.getGamerLogin()).searchCardInHand(clientRequest.getChoice());
                                 serverResponse.setCard(card);
-                                serverResponse.setConfirmation(table.isRightCard(card));
+                                if (card != null) {
+                                    serverResponse.setConfirmation(table.isRightCard(card));
+                                    try {
+                                        rooms[roomNumber].getGamer(gamer.getGamerLogin()).pullCardFromHand(card);
+                                    } catch (CardNotFoundException ex) {
+                                        logger.debug(ex.getMessage());
+                                    }
+                                } else {
+                                    serverResponse.setConfirmation(false);
+                                }
                                 messageHandler.sendMessage(serverResponse);
                                 if (table.isRightCard(card)) {
                                     table.setLastCard(card);
-                                    rooms[roomNumber].getGamer(order).setAct(command);
+                                    rooms[roomNumber].setCommand(command);
                                     order++;
                                     game = false;
                                     boolean win = messageHandler.receiveMessage().getConfirmation();
@@ -321,7 +339,7 @@ public class ServerThread extends Thread {
                                 }
                                 break;
                             case "Exit":
-                                rooms[roomNumber].getGamer(order).setAct(command);
+                                rooms[roomNumber].setCommand(command);
                                 rooms[roomNumber].removeGamer(gamer);
                                 if (rooms[roomNumber].countGamers() == 0) {
                                     rooms[roomNumber].cleanRoom();
@@ -335,7 +353,7 @@ public class ServerThread extends Thread {
                 if (order > rooms[roomNumber].getGamerNumber(gamer)) {
                     for (; order < rooms[roomNumber].countGamers(); order++) {
                         String command = null;
-                        while (rooms[roomNumber].getGamer(order).getAct() == null) {
+                        while ((rooms[roomNumber].getGamer(order).getAct() == null) && ((rooms[roomNumber].getCommand() == null))) {
                             yield();
                         }
                         command = rooms[roomNumber].getGamer(order).getAct();
@@ -343,6 +361,14 @@ public class ServerThread extends Thread {
                         if (rooms[roomNumber].getGamer(order).getReadCount() == rooms[roomNumber].countGamers() - 1) {
                             rooms[roomNumber].getGamer(order).setAct(null);
                             rooms[roomNumber].getGamer(order).setReadCount(0);
+                        }
+                        if (command == null) {
+                            command = rooms[roomNumber].getCommand();
+                            rooms[roomNumber].setReadCount(rooms[roomNumber].getReadCount() + 1);
+                            if (rooms[roomNumber].getReadCount() == rooms[roomNumber].countGamers() - 1) {
+                                rooms[roomNumber].setCommand(null);
+                                rooms[roomNumber].setReadCount(0);
+                            }
                         }
                         switch (command) {
                             case "Pass":

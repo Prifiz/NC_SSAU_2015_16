@@ -138,7 +138,7 @@ public class StartFrame extends JFrame {
     }
 
     private void ruleButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        RulesFrame rule = new RulesFrame();
+        RulesFrame rule = RulesFrame.getRulesFrame();
         rule.setVisible(true);
         //this.setVisible(false);
     }

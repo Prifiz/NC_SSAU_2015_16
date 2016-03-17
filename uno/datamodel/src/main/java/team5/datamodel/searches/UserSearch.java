@@ -151,72 +151,72 @@ public class UserSearch implements Search {
      * @throws CardNotFoundException
      */
     @Override
-    public List searchByField(String request, String field)
+    public List searchByField(String request, FieldRequest field)
             throws UserNotFoundException {
 
         ArrayList<User> users = WorkUser.getWork().getArrOfUsers();
         ArrayList<User> resultOfSearch = new ArrayList<User>();
 
-        if ("city".equals(field) || "City".equals(field)) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getAddress().getCity().toString(), request)) {
-                    resultOfSearch.add(u);
+        if (field == FieldRequest.CITY) {
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getAddress().getCity().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
-        if ("country".equals(field) || "Country".equals(field)) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getAddress().getCountry().toString(), request)) {
-                    resultOfSearch.add(u);
+        if (field == FieldRequest.COUNTRY) {
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getAddress().getCountry().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
-        if ("name".equals(field) || "Name".equals(field)) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getName().toString(), request)) {
-                    resultOfSearch.add(u);
+        if (field == FieldRequest.NAME) {
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getPrivateInformation().getName().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
-        if ("surname".equals(field) || "Surname".equals(field)) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getSurname().toString(), request)) {
-                    resultOfSearch.add(u);
+        if (field == FieldRequest.SURNAME) {
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getPrivateInformation().getSurname().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
-        if ("bDay".equals(field) || "BDay".equals(field)) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getbDay().toString(), request)) {
-                    resultOfSearch.add(u);
+        if (field == FieldRequest.BDAY) {
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getPrivateInformation().getbDay().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
-        if ("dateOfRegistration".equals(field) || "DateOfRegistration".equals(field)) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getDateOfRegistration().toString(), request)) {
-                    resultOfSearch.add(u);
+        if (field == FieldRequest.DATE_OF_REGISTRATION) {
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getServiceInfo().getDateOfRegistration().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
-        if ("email".equals(field) || "Email".equals(field)) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getEmail().toString(), request)) {
-                    resultOfSearch.add(u);
+        if (field == FieldRequest.EMAIL) {
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getServiceInfo().getEmail().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }
 
-        if ("login".equals(field) || "Login".equals(field)) {
-            for (User u : users) {
-                if (SearchServices.isStringIncludeSubstring(u.getServiceInfo().getLogin().toString(), request)) {
-                    resultOfSearch.add(u);
+        if (field == FieldRequest.LOGIN) {
+            for (User user : users) {
+                if (SearchServices.isStringIncludeSubstring(user.getServiceInfo().getLogin().toString(), request)) {
+                    resultOfSearch.add(user);
                 }
             }
         }

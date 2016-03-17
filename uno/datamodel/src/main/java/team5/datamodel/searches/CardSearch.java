@@ -61,13 +61,13 @@ public class CardSearch implements Search {
         ArrayList<Card> cards = WorkCard.getWork().getArrOfCards();
         ArrayList<Card> resultOfSearch = new ArrayList<Card>();
 
-        for (Card c : cards) {
-            if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)) {
-                resultOfSearch.add(c);
+        for (Card card : cards) {
+            if (SearchServices.isStringIncludeSubstring(card.getIconId().toString(), request)) {
+                resultOfSearch.add(card);
                 continue;
             }
-            if (SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
-                resultOfSearch.add(c);
+            if (SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+                resultOfSearch.add(card);
                 continue;
             }
         }
@@ -84,38 +84,37 @@ public class CardSearch implements Search {
      *
      * @author Dmitry
      * @param request
-     * @param field takes values: "iconId", "color", "iconId_color"
+     * @param field
      * @throws CardNotFoundException
      */
     @Override
-    public List searchByField(String request, String field)
+    public List searchByField(String request, FieldRequest field)
             throws CardNotFoundException {
 
         ArrayList<Card> cards = WorkCard.getWork().getArrOfCards();
         ArrayList<Card> resultOfSearch = new ArrayList<Card>();
 
-        if ("iconId".equals(field) || "IconId".equals(field)) {
-            for (Card c : cards) {
-                if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)) {
-                    resultOfSearch.add(c);
+        if (field == FieldRequest.ICONID) {
+            for (Card card : cards) {
+                if (SearchServices.isStringIncludeSubstring(card.getIconId().toString(), request)) {
+                    resultOfSearch.add(card);
                 }
             }
         }
 
-        if ("color".equals(field) || "Color".equals(field)) {
-            for (Card c : cards) {
-                if (SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
-                    resultOfSearch.add(c);
+        if (field == FieldRequest.COLOR) {
+            for (Card card : cards) {
+                if (SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+                    resultOfSearch.add(card);
                 }
             }
         }
 
-        if ("iconId_color".equals(field) || "color_iconId".equals(field)
-                || "IconId_color".equals(field) || "Color_iconId".equals(field)) {
-            for (Card c : cards) {
-                if (SearchServices.isStringIncludeSubstring(c.getIconId().toString(), request)
-                        && SearchServices.isStringIncludeSubstring(c.getColor().toString(), request)) {
-                    resultOfSearch.add(c);
+        if (field == FieldRequest.ICONID_COLOR) {
+            for (Card card : cards) {
+                if (SearchServices.isStringIncludeSubstring(card.getIconId().toString(), request)
+                        && SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+                    resultOfSearch.add(card);
                 }
             }
         }

@@ -22,9 +22,9 @@ import team5.datamodel.transmissions.FileHandler;
 public class Server {
 
     public static void main(String[] args) {
-        RoomController[] rooms = new RoomController[4];
-        int[] waitTime = new int[4];
-        for (int i = 0; i < 4; i++) {
+        RoomController[] rooms = new RoomController[ServerConstants.NUMBER_OF_ROOMS];
+        int[] waitTime = new int[ServerConstants.NUMBER_OF_ROOMS];
+        for (int i = 0; i < ServerConstants.NUMBER_OF_ROOMS; i++) {
             rooms[i] = new RoomController();
         }
         Logger logger = Logger.getLogger(Server.class);
@@ -44,7 +44,7 @@ public class Server {
         }
         ServerSocket s = null;
         try {
-            s = new ServerSocket(8081);
+            s = new ServerSocket(ServerConstants.PORT);
         } catch (IOException e) {
             logger.debug(e.getMessage());
         }

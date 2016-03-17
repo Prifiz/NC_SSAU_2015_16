@@ -15,6 +15,7 @@ import javax.xml.bind.JAXBException;
 import org.apache.log4j.Logger;
 import team5.datamodel.actions.WorkUser;
 import team5.datamodel.exceptions.NotFoundException;
+import team5.datamodel.searches.FieldRequest;
 import team5.datamodel.searches.Search;
 import team5.datamodel.searches.UserSearch;
 import team5.datamodel.transmissions.Message;
@@ -177,7 +178,7 @@ public class UserTableModel extends AbstractTableModel {
             case 6:
                 try {
                     Search search = new UserSearch();
-                    search.searchByField((String) aValue, "login").isEmpty();
+                    search.searchByField((String) aValue, FieldRequest.LOGIN).isEmpty();
                     clientRequest.setCommand("Login");
                     clientRequest.setValue(rowIndex);
                     clientRequest.setChoice((String) aValue);

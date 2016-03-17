@@ -79,6 +79,8 @@ public class GameThread extends Thread {
                                 break;
                         }
                     } catch (IOException ex) {
+                        text.setText("\n!!!!!!!\nServer disconnected\n!!!!!!!\n");
+                        canExit.setFlag(true);
                         logger.debug(ex.getMessage());
                     } catch (JAXBException ex) {
                         logger.debug(ex.getMessage());
@@ -118,6 +120,8 @@ public class GameThread extends Thread {
                                 break;
                         }
                     } catch (IOException ex) {
+                        text.setText("\n!!!!!!!\nServer disconnected\n!!!!!!!\n");
+                        canExit.setFlag(true);
                         logger.debug(ex.getMessage());
                     } catch (JAXBException ex) {
                         logger.debug(ex.getMessage());
