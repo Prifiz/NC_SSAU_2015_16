@@ -142,7 +142,7 @@ public class FileHandler {
             String color = st.sval;
             st.nextToken();
             int icon = (int) st.nval;
-            if (type.equals("Numeric")) {
+            if ("Numeric".equals(type)) {
                 card = new NumericCard(icon, color);
             }
             pack.add(card);
