@@ -1,0 +1,30 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25.12.2015, 1:10:20
+    Author     : Dmitry
+*/
+body {
+    background-image: url("background.jpg");
+    background-position: top;
+}
+
+h1 {
+    position: absolute;
+    left: 10%;
+    color: black;
+    font-size: 40pt;
+    font-style: inherit;
+}
+h2 {
+    position: absolute;   
+    color: black;
+    font-size: 80pt;
+    font-style: inherit;
+    top: 110px;
+    left: 10%;
+}
+
