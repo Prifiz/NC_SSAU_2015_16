@@ -6,13 +6,13 @@ package team5.web;
  * and open the template in the editor.
  */
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import team5.datalayer.database.Searcher;
 
 /**
  *
@@ -35,7 +35,8 @@ public class SearchServlet extends HttpServlet {
         HttpSession session = request.getSession();
         DataBaseRequest requestWork = (DataBaseRequest) session.getAttribute("searchRequest");
         if (requestWork != null) {
-            requestWork.setResult("Пока тут пусто");//TODO
+            Searcher searcher=new Searcher();
+            requestWork.setResult(searcher.search(requestWork.getRequest()));//TODO
         }
         session.setAttribute("searchRequest", requestWork);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/result.jsp");

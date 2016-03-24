@@ -5,6 +5,7 @@
  */
 package team5.datalayer.database;
 
+import java.io.FileNotFoundException;
 import org.apache.log4j.Logger;
 
 /**
@@ -18,7 +19,13 @@ public class Creator {
 
     public void createAddresses() {
 
-        dbworker = new DataBaseWorker();
-      //TODO  dbworker.executeQuery(dbworker.createQueryfromScript(CREATE_ADDRESSES.sql));
+        try {
+            dbworker = new DataBaseWorker();
+            dbworker.openConnectionDataBase();
+            dbworker.execute(dbworker.createQueryfromScript("scripts/create/CREATE_ADDRESSES.sql"));
+        } catch (FileNotFoundException ex) {
+            logger.debug(ex.getMessage());
+        }
+        dbworker.closeConnectionDataBase();
     }
 }
