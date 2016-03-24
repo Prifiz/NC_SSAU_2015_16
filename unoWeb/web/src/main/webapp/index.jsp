@@ -12,7 +12,7 @@
         isEmpty1 = arg1.isEmpty();
         if (!isEmpty1) {
              session.setAttribute("searchRequest", new DataBaseRequest(arg1));
-            response.sendRedirect("result.html");
+            response.sendRedirect("SearchServlet");
         }
     }
 %>

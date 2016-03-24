@@ -5,11 +5,18 @@
  */
 package team5.web;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author Dmitry
  */
+@XmlRootElement
 public class DataBaseRequest {
+
+    public DataBaseRequest() {
+    }
 
     private String request;
     private String result;
@@ -18,6 +25,7 @@ public class DataBaseRequest {
         this.result = result;
     }
 
+    @XmlElement(name = "result")
     public String getResult() {
         return result;
     }
@@ -33,4 +41,5 @@ public class DataBaseRequest {
     public DataBaseRequest(String request) {
         this.request = request;
     }
+    
 }

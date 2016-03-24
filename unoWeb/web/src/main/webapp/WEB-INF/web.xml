@@ -10,11 +10,11 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
-        <url-pattern>/result.html</url-pattern>
+        <url-pattern>/SearchServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ResultXmlServlet</servlet-name>
-        <url-pattern>/result.xml</url-pattern>
+        <url-pattern>/ResultXmlServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

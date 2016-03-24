@@ -41,7 +41,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="string">
-                        <a download href="result.xml">XML</a> 
+                        <a download href="ResultXmlServlet">XML</a> 
                     </td>
                 </tr>
             </table> 
