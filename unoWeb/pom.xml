@@ -9,7 +9,8 @@
         <module>datamodel</module>
         <module>datalayer</module>
     <module>web</module>
-  </modules>
+        <module>server</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

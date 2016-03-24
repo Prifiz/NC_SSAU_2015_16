@@ -14,7 +14,8 @@ body {
 
 h1 {
     position: absolute;
-    left: 10%;
+    
+    left: 5%;
     color: black;
     font-size: 40pt;
     font-style: inherit;
@@ -23,8 +24,23 @@ h2 {
     position: absolute;   
     color: black;
     font-size: 80pt;
-    font-style: inherit;
+    font-style: italic;
     top: 110px;
     left: 10%;
+}
+
+form {
+    position: absolute;    
+    top: 110px;
+    left: 10%;
+}
+
+#sendbutton {
+    color: black;
+    background-color: gold;
+    text-shadow: -1px 1px yellow;
+    border: none;
+    font-size: 30pt;
+
 }
 
