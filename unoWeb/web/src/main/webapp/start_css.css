@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01.04.2016, 12:23:01
+    Author     : андрей
+*/
+body {
+    background-image: url("uno_spotlight.jpg");
+    background-size: 100%;
+    background-position: top;
+}
+h1{
+    color:  gold;
+    font-family:  cursive;
+    font-weight:   900;
+    font-size:  70px;
+    margin-left: 130px;
+    margin-top: 160px;
+}
+form {
+    margin-left: 170px;
+    margin-top: 50px;
+    
+}
+
+
