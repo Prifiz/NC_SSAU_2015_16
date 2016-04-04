@@ -91,8 +91,7 @@ public class ServerThread extends Thread {
                     //
                     //выбор комнаты и ожидание игроков
                     //    
-                    case "Select":
-                        //String str = dataE.readString();
+                    case "Rooms":
                         for (int i = 0; i < 4; i++) {
                             serverResponse.setConfirmation(rooms[i].isPlaying());
                             try {
@@ -101,13 +100,10 @@ public class ServerThread extends Thread {
                                 logger.debug(e.getMessage());
                             }
                         }
-                        try {
+                        break;
+                    case "Select":
+                        //String str = dataE.readString();
 
-                            clientRequest = messageHandler.receiveMessage();
-                        } catch (JAXBException ex) {
-                            logger.debug(ex.getMessage());
-                            f = false;
-                        }
                         String str = clientRequest.getChoice();
                         int roomNumber = Character.digit(str.charAt(5) - 1, 10);
                         selectRoom(roomNumber);

@@ -188,12 +188,12 @@ public class UserTableModel extends AbstractTableModel {
                     // TODO
                 }
             //нужно написать обработку, когда лoгин не может быть изменен
-            case 7:
+            /*case 7:
                 clientRequest.setCommand("Password");
                 clientRequest.setValue(rowIndex);
                 clientRequest.setChoice((String) aValue);
                 users.get(rowIndex).getServiceInfo().setPassword((String) aValue);
-                break;
+                break;*/
 
         }
         try {

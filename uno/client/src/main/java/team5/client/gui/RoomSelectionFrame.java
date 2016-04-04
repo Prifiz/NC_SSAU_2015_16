@@ -43,7 +43,7 @@ public class RoomSelectionFrame extends JFrame {
 //    }
     public RoomSelectionFrame(MessageHandler messageHandler) {
         this.messageHandler = messageHandler;
-        Message message = new Message("Select");
+        Message message = new Message("Rooms");
         boolean[] rooms = new boolean[4];
         try {
             messageHandler.sendMessage(message);
@@ -187,7 +187,7 @@ public class RoomSelectionFrame extends JFrame {
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             descriptionLabel.setText("Waiting for the other players (~30 seconds)...");
-            Message message = new Message();
+            Message message = new Message("Select");
             message.setChoice(jComboBox.getSelectedItem().toString());
             try {
                 messageHandler.sendMessage(message);
