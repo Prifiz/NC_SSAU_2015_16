@@ -26,10 +26,7 @@
             <resource>
                 <directory>${basedir}\src\main\resources\</directory>
                 <includes>
-                    <include>Cards.txt</include>
                     <include>log4j.properties</include>
-                    <include>marshalData_WorkUser.xml</include>
-                    <include>serializableData_WorkUser.bin</include>
                     <include>textRule.txt</include>
                 </includes>
             </resource>
