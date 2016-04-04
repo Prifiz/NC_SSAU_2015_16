@@ -1,0 +1,181 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03.04.2016, 16:07:15
+    Author     : chanta
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100.01%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+    color: black;
+    background: #999999;
+}
+#header { /* Header Formatting */
+    background-color: #cccccc;
+    background-image: url("uno_spotlight.jpg");
+    height: 8em;
+}
+
+#header_wrapper {
+    margin: 0 auto;
+    width: 60em;
+    text-align: left;
+}
+
+#container-shadows {
+    width: 60em; /* 960px */
+    background-color: #666666;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+#container {
+    width: 59.5em;  /* 952px */
+    height: inherit;
+    background-color: #ffffff;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    /*overflow: ;*/
+}
+
+#content {
+    display:block;
+    float:left;
+    overflow:hidden; 
+    padding:0 0.75em 0 1.5em;
+    width:40.625em;
+    margin:0 0 2em 0;       
+}
+
+#right { /* Right Sidebar Formatting */
+    display:block;
+    float:right;
+    padding:0 0.75em 0 0.5em;
+    width:15.375em;
+    margin: 0;
+    clear: right;
+}
+
+#right .block h2.title {
+    background-color: #FF8100;
+    color:#FFFFFF;
+    font-size:10pt;
+    line-height:1.5;
+    font-weight:bold;
+    margin:1em 0 0;
+    padding:5px;
+    clear:both;
+}
+
+/*body {
+    background-image: url("uno_spotlight.jpg");
+    background-size: 100%;
+    background-position: top;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}*/
+h1{
+    color:  gold;
+    font-family:  "Times New Roman", cursive;
+    font-style: italic;
+    font-weight:   700;
+    font-size:  60px;
+    left: 100px;
+    top: 20px;
+}
+h2{
+    color:  gold;
+    font-family:  cursive;
+    font-style: italic;
+    font-weight:   700;
+    font-size:  30px;
+    left: 30px;
+    top: 10px;
+}
+
+
+button{
+    color: black;
+    background-color: graytext;
+    border: none;
+    font-size: 30pt;
+    text-shadow: -1px 1px yellow;
+
+}
+
+#backButton {
+    top: 20%;
+}
+#rulesButton {
+
+}
+#loginButton {
+    text-align: right;
+    border-top: 1px solid #140ead;
+    margin: 0 0 10px 0;
+}
+div.content {
+    text-align: right;
+    border-top: 1px solid #154ead;
+    margin: 0 0 10px 0;
+}
+
+#content {
+    font-size: 1em;
+    font-family: "Times New Roman", serif; 
+}
+
+#content .title {
+    /*font-family: "Times New Roman", serif;*/ 
+    /*font-family: Tahoma, sans-serif;*/
+    font-size: 2em;
+    color: #776157;
+    line-height: 1.125em;
+    border-bottom: 1px solid #154ead;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+
+
+/*копирайт*/
+
+#footer {
+    clear: both;
+    width: 59.5em;
+    height: 4em;
+    background-color: #cccccc;
+}
+
+div#copyright {
+    text-align: center;
+    font-size: 0.625em;
+    padding: 1em 0;
+}
+
