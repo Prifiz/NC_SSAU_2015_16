@@ -160,4 +160,20 @@
             <password>s</password>
         </serviceInfo>
     </arrUsers>
+    <arrUsers>
+        <address>
+            <city>fsdf</city>
+            <country>sfds</country>
+        </address>
+        <privateInformation>
+            <name>sdfsdf</name>
+            <surname>sdf</surname>
+            <bDay>2016-04-04</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>fdfsdf</email>
+            <login>k</login>
+            <password>l</password>
+        </serviceInfo>
+    </arrUsers>
 </workUser>

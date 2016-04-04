@@ -93,6 +93,21 @@ public class ServerThread extends Thread {
                     //    
                     case "Select":
                         //String str = dataE.readString();
+                        for (int i = 0; i < 4; i++) {
+                            serverResponse.setConfirmation(rooms[i].isPlaying());
+                            try {
+                                messageHandler.sendMessage(serverResponse);
+                            } catch (JAXBException e) {
+                                logger.debug(e.getMessage());
+                            }
+                        }
+                        try {
+
+                            clientRequest = messageHandler.receiveMessage();
+                        } catch (JAXBException ex) {
+                            logger.debug(ex.getMessage());
+                            f = false;
+                        }
                         String str = clientRequest.getChoice();
                         int roomNumber = Character.digit(str.charAt(5) - 1, 10);
                         selectRoom(roomNumber);

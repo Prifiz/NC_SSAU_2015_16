@@ -23,7 +23,6 @@ import team5.datamodel.transmissions.MessageHandler;
  */
 public class RoomSelectionFrame extends JFrame {
 
-    private DataExchanger dataE;
     private Logger logger = Logger.getLogger(RoomSelectionFrame.class);
     private javax.swing.JButton startButton;
     private javax.swing.JButton adminRoomButton;
@@ -44,8 +43,21 @@ public class RoomSelectionFrame extends JFrame {
 //    }
     public RoomSelectionFrame(MessageHandler messageHandler) {
         this.messageHandler = messageHandler;
+        Message message = new Message("Select");
+        boolean[] rooms = new boolean[4];
+        try {
+            messageHandler.sendMessage(message);
+            for (int i = 0; i < 4; i++) {
+                message = messageHandler.receiveMessage();
+                rooms[i] = message.getConfirmation();
+            }
+        } catch (JAXBException ex) {
+            logger.debug(ex.getMessage());
+        } catch (IOException ex) {
+            logger.debug(ex.getMessage());
+        }
         initStartFrame();
-        initComponents();
+        initComponents(rooms);
         initCloseOperation();
     }
 
@@ -56,7 +68,7 @@ public class RoomSelectionFrame extends JFrame {
         this.setResizable(false);
     }
 
-    private void initComponents() {
+    private void initComponents(boolean[] rooms) {
 
         selectLabel = new JLabel();
         selectLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -66,7 +78,15 @@ public class RoomSelectionFrame extends JFrame {
 
         jComboBox = new JComboBox();
         jComboBox.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Room 1", "Room 2", "Room 3", "Room 4"}));
+        String[] s = new String[4];
+        int j = 0;
+        for (int i = 0; i < 4; i++) {
+            if(rooms[i]==false){
+                s[j] = "Room "+(i+1);
+                j++;
+            }
+        }
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel(s));//new String[]{"Room 1", "Room 2", "Room 3", "Room 4"}));
         add(jComboBox);
         jComboBox.setBounds(150, 100, 100, 30);
 
@@ -127,7 +147,8 @@ public class RoomSelectionFrame extends JFrame {
                 //} 
                 catch (JAXBException ex) {
                     logger.debug(ex.getMessage());
-                */} finally {
+                     */
+                } finally {
                     event.getWindow().setVisible(false);
                     System.exit(0);
                 }
@@ -166,15 +187,13 @@ public class RoomSelectionFrame extends JFrame {
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             descriptionLabel.setText("Waiting for the other players (~30 seconds)...");
-            Message message = new Message("Select");
+            Message message = new Message();
             message.setChoice(jComboBox.getSelectedItem().toString());
             try {
                 messageHandler.sendMessage(message);
             } catch (JAXBException ex) {
                 logger.debug(ex.getMessage());
             }
-            //dataE.write("Select");
-            //dataE.write(jComboBox.getSelectedItem().toString());
             String command = "";
             try {
                 command = messageHandler.receiveMessage().getCommand();
@@ -199,7 +218,6 @@ public class RoomSelectionFrame extends JFrame {
 //            timerLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 //            add(timerLabel);
 //            timerLabel.setBounds(175, 170, 50, 30);
-
             boolean f = false;
             try {
                 f = messageHandler.receiveMessage().getConfirmation();
