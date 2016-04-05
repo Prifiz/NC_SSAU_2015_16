@@ -36,6 +36,12 @@ body {
     background-image: url("uno_spotlight.jpg");
     height: 8em;
 }
+#header_wrapper {
+    margin: 0 auto;
+    width: 60em;
+    text-align: left;
+}
+
 /*область в центре*/
 
 #container-shadows {
