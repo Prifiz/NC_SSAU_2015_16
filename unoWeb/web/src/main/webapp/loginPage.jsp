@@ -1,7 +1,7 @@
 <%-- 
-    Document   : templatePage
-    Created on : 03.04.2016, 16:06:01
-    Author     : chanta
+    Document   : loginPage
+    Created on : 07.04.2016, 14:08:03
+    Author     : андрей
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/loginPage.css"/>
         <title>template</title>
     </head>
     <body>
@@ -39,7 +39,11 @@
 
                 <div id="work-zone"> 
                     <div id="container-work-zone">
-                        <!--<input type="button" value="BACKy" name="backyButton" id="backyButton">-->
+                        <form name="signInForm" action="loginPage.jsp">
+                            <input type="text" name="login" placeholder="login" id="loginText">
+                            <input type="text" name="password" placeholder="password" id="passwordText">
+                            <input type="submit" name="signIN" value="Sign in" id="signInButtom">
+                        </form>
                     </div>
                 </div>
 
