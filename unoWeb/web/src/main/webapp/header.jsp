@@ -1,6 +1,6 @@
 <%-- 
-    Document   : templatePage
-    Created on : 03.04.2016, 16:06:01
+    Document   : header
+    Created on : 07.04.2016, 22:27:01
     Author     : chanta
 --%>
 
@@ -38,17 +38,3 @@
                 <div id="work-zone"> 
                     <div id="container-work-zone">
                       
-                       <!--work-zone--> 
-                    </div>
-                </div>
-
-                <input type="button" value="BACK" name="backButton" id="backButton">
-                <div id="footer">
-                    <div id="copyright">2015-2016 &copy; TEAM5</div>
-                </div>
-
-            </div>     <!-- ...container -->
-        </div><!-- ...container-shadows -->
-
-    </body>
-</html>

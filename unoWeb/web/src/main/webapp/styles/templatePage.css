@@ -33,9 +33,11 @@ body {
 }
 #header { /* Header Formatting */
     background-color: #cccccc;
-    background-image: url("uno_spotlight.jpg");
+    /*background-image: url("uno_spotlight.jpg");*/
+    background-image: url("background.jpg");
     height: 8em;
 }
+
 #header_wrapper {
     margin: 0 auto;
     width: 60em;
@@ -45,7 +47,7 @@ body {
 /*область в центре*/
 
 #container-shadows {
-    width: 60em; /* 960px */
+    width: 60em; 
     background-color: #666666;
     text-align:center;
     margin-left: auto;
@@ -54,17 +56,16 @@ body {
 }
 
 #container {
-    width: 59.5em;  /* 952px */
+    width: 59.5em;  
     height: inherit;
     background-color: #ffffff;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
-    /*overflow: ;*/
 }
 
 #work-zone {
-    width: 40em; /* 960px */
+    width: 40em; 
     background-color: #666666;
     text-align:center;
     margin-left: auto;
@@ -73,13 +74,13 @@ body {
 }
 
 #container-work-zone{
-    width: 39.5em;  /* 952px */
+    width: 39.5em;  
     height: 29.5em;
     background-color: #ffffff;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
-    /*overflow: ;*/
+  
 }
 
 
@@ -140,7 +141,7 @@ h1{
     font-style: italic;
     font-weight:   700;
     font-size:  60px;
-    left: 100px;
+    left: 10px;
     top: 20px;
 }
 
@@ -154,6 +155,13 @@ h2{
     top: 10px;
 }
 
+h3 {
+    text-align:center;
+    color: black;
+    font-size: 30pt;
+    font-style: italic;
+   
+}
 
 
 
