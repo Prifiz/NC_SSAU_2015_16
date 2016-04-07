@@ -4,8 +4,8 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 03.04.2016, 16:07:15
-    Author     : chanta
+    Created on : 07.04.2016, 14:19:15
+    Author     : андрей
 */
 
 html, body, div, span, applet, object, iframe,
@@ -33,11 +33,9 @@ body {
 }
 #header { /* Header Formatting */
     background-color: #cccccc;
-    /*background-image: url("uno_spotlight.jpg");*/
-    background-image: url("background.jpg");
+    background-image: url("uno_spotlight.jpg");
     height: 8em;
 }
-
 #header_wrapper {
     margin: 0 auto;
     width: 60em;
@@ -47,7 +45,7 @@ body {
 /*область в центре*/
 
 #container-shadows {
-    width: 60em; 
+    width: 60em; /* 960px */
     background-color: #666666;
     text-align:center;
     margin-left: auto;
@@ -56,17 +54,18 @@ body {
 }
 
 #container {
-    width: 59.5em;  
+    width: 59.5em;  /* 952px */
     height: inherit;
-    background-color:  #ffffff;
+    background-color:  #1D71B8;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
+    /*overflow: ;*/
 }
 
 #work-zone {
-    width: 40em; 
-    background-color:  #666666;
+    width: 40em; /* 960px */
+    background-color:  deepskyblue;/*#666666*/
     text-align:center;
     margin-left: auto;
     margin-right: auto;
@@ -74,14 +73,15 @@ body {
 }
 
 #container-work-zone{
-    width: 39.5em;  
+    width: 39.5em;  /* 952px */
     height: 29.5em;
-    background-color: #ffffff;
+    background-color: deepskyblue;/*#fffff*/
     text-align: left;
     margin-left: auto;
     margin-right: auto;
-  
+    /*overflow: ;*/
 }
+
 
 
 #content {
@@ -141,7 +141,7 @@ h1{
     font-style: italic;
     font-weight:   700;
     font-size:  60px;
-    left: 10px;
+    left: 100px;
     top: 20px;
 }
 
@@ -155,16 +155,25 @@ h2{
     top: 10px;
 }
 
-h3 {
-    text-align:center;
-    color: black;
-    font-size: 30pt;
-    font-style: italic;
-   
+
+#loginText{
+    position: relative;
+    margin:  0 0 10px 0;
+    left:  36%;
+    bottom: -180px;
 }
-
-
-
+#passwordText{
+    position: relative;
+    margin:  0 0 10px 0;
+    left:  8.1%;
+    bottom: -220px;
+}
+#signInButtom{
+    position: relative;
+    margin:  0 0 10px 0;
+    left:  -10.8%;
+    bottom: -270px;
+}
 #backButton {
     position: relative;
     text-align: center;
@@ -199,4 +208,3 @@ div#copyright {
     font-size: 0.625em;
     padding: 1em 0;
 }
-
