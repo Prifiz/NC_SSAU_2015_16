@@ -1,0 +1,209 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12.04.2016, 10:01:12
+    Author     : андрей
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100.01%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+    color: black;
+    background: #999999;
+}
+#header { /* Header Formatting */
+    background-color: #cccccc;
+    /*background-image: url("uno_spotlight.jpg");*/
+    background-image: url("background.jpg");
+    height: 8em;
+}
+
+#header_wrapper {
+    margin: 0 auto;
+    width: 60em;
+    text-align: left;
+}
+
+/*область в центре*/
+
+#container-shadows {
+    width: 60em; 
+    background-color: #666666;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+#container {
+    width: 59.5em;  
+    height: inherit;
+    background-color:  #ffffff;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#work-zone {
+    width: 40em; 
+    background-color:  #666666;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+#container-work-zone{
+    width: 39.5em;  
+    height: 29.5em;
+    background-color: #ffffff;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
+
+
+#content {
+    display:block;
+    float:left;
+    overflow:hidden; 
+    padding:0 0.75em 0 1.5em;
+    width:40.625em;
+    margin:0 0 2em 0;       
+}
+/*регистрация и логин*/ 
+.tile {
+    display: none;
+}
+
+.tile.show {
+    display: block;
+}
+
+.tile li {
+    display: inline-block;
+    padding: -5px 0;
+    margin-right: 5px;
+    float: right;
+}
+
+.tile li a {
+    display: inline-block;
+    color: #1D71B8;
+    text-decoration: none;
+    padding: 2px 7px;
+}
+
+.tile li a:hover {
+    text-decoration: underline;
+}
+
+.tile a.active {
+    background: #B25538;
+    background: #767769;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.tile a.active:hover {
+    text-decoration: none;
+} 
+
+#topmenu .show, .tile {
+    background: white;
+    float: right;
+}
+
+h1{
+    color:  gold;
+    font-family:  "Times New Roman", cursive;
+    font-style: italic;
+    font-weight:   700;
+    font-size:  60px;
+    left: 10px;
+    top: 20px;
+}
+
+h2{
+    color:  gold;
+    font-family:  cursive;
+    font-style: italic;
+    font-weight:   700;
+    font-size:  30px;
+    left: 30px;
+    top: 10px;
+}
+
+h3 {
+    text-align:center;
+    color: black;
+    font-size: 30pt;
+    font-style: italic;
+   
+}
+
+
+
+#backButton {
+    position: relative;
+    text-align: center;
+    border-top: 1px solid #140ead;
+    margin: 0 0 10px 0;
+    left: 47.5%;
+    bottom: 5px;
+}
+
+#rulesButton {
+    position: relative;
+    text-align: center;
+    border-top: 1px solid #140ead;
+    margin: 0 0 10px 0;
+    left: 10%;
+    top: 10%;
+}
+
+
+
+
+/*копирайт*/
+#footer {
+    clear: both;
+    width: 59.5em;
+    height: 4em;
+    background-color: #cccccc;
+}
+
+div#copyright {
+    text-align: center;
+    font-size: 0.625em;
+    padding: 1em 0;
+}
+room1ID{
+    background-image: url("fon_81.jpg");
+    position: relative;
+    margin:  0 0 10px 0;
+    left:  0%;
+    bottom:  auto;
+    size: B4;
+}
+

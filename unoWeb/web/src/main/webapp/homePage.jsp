@@ -3,7 +3,15 @@
     Created on : 07.04.2016, 22:27:55
     Author     : chanta
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
+        <title>template</title>
+    </head>
+    <body>
 
 <%@ include file="header.jsp" %>
 

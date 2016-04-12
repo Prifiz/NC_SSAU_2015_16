@@ -41,7 +41,7 @@
                     <div id="container-work-zone">
                         <form name="signInForm" action="loginPage.jsp">
                             <input type="text" name="login" placeholder="login" id="loginText">
-                            <input type="text" name="password" placeholder="password" id="passwordText">
+                            <input type="password" name="password" placeholder="password" id="passwordText">
                             <input type="submit" name="signIN" value="Sign in" id="signInButtom">
                         </form>
                     </div>
