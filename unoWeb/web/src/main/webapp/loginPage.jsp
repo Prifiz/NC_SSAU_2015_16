@@ -6,7 +6,7 @@
 
 <%@page import="team5.server.actions.SignIn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
+<%--
     String login = request.getParameter("string");
     String password = request.getParameter("string2");
     SignIn in = new SignIn();
@@ -14,7 +14,7 @@
     if(b){
         
     }
-%>
+--%>
 <!DOCTYPE html>
 <html>
     <head>
