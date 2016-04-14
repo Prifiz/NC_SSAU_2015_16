@@ -28,7 +28,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 body {
     line-height: 1;
     color: black;
-    background: #999999;
+    background: papayawhip;
 }
 #header { /* Header Formatting */
     background-color: #cccccc;
@@ -47,7 +47,7 @@ body {
 
 #container-shadows {
     width: 60em; 
-    background-color: #666666;
+    background-color:  tomato;
     text-align:center;
     margin-left: auto;
     margin-right: auto;
@@ -57,7 +57,7 @@ body {
 #container {
     width: 59.5em;  
     height: inherit;
-    background-color:  #ffffff;
+    background-color: antiquewhite;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -65,7 +65,7 @@ body {
 
 #work-zone {
     width: 40em; 
-    background-color:  #666666;
+    background-color:  antiquewhite;;
     text-align:center;
     margin-left: auto;
     margin-right: auto;
@@ -75,7 +75,7 @@ body {
 #container-work-zone{
     width: 39.5em;  
     height: 29.5em;
-    background-color: #ffffff;
+    background-color: white;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -130,7 +130,7 @@ body {
 } 
 
 #topmenu .show, .tile {
-    background: white;
+    background: antiquewhite;
     float: right;
 }
 
@@ -170,7 +170,7 @@ h3 {
     border-top: 1px solid #140ead;
     margin: 0 0 10px 0;
     left: 47.5%;
-    bottom: 5px;
+    bottom: 2%;
 }
 
 #rulesButton {

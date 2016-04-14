@@ -29,11 +29,12 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 body {
     line-height: 1;
     color: black;
-    background: #999999;
+    background: papayawhip;
 }
 #header { /* Header Formatting */
     background-color: #cccccc;
-    background-image: url("uno_spotlight.jpg");
+    /*background-image: url("uno_spotlight.jpg");*/
+    background-image: url("background.jpg");
     height: 8em;
 }
 #header_wrapper {
@@ -46,7 +47,7 @@ body {
 
 #container-shadows {
     width: 60em; /* 960px */
-    background-color: #666666;
+    background-color:  tomato;
     text-align:center;
     margin-left: auto;
     margin-right: auto;
@@ -56,7 +57,7 @@ body {
 #container {
     width: 59.5em;  /* 952px */
     height: inherit;
-    background-color:  #1D71B8;
+    background-color: antiquewhite;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -65,7 +66,7 @@ body {
 
 #work-zone {
     width: 40em; /* 960px */
-    background-color:  deepskyblue;/*#666666*/
+    background-color:  antiquewhite;/*#666666*/
     text-align:center;
     margin-left: auto;
     margin-right: auto;
@@ -75,7 +76,7 @@ body {
 #container-work-zone{
     width: 39.5em;  /* 952px */
     height: 29.5em;
-    background-color: deepskyblue;/*#fffff*/
+    background-color: white;/*#fffff*/
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -131,7 +132,7 @@ body {
 } 
 
 #topmenu .show, .tile {
-    background: white;
+    background: antiquewhite;
     float: right;
 }
 
@@ -180,7 +181,7 @@ h2{
     border-top: 1px solid #140ead;
     margin: 0 0 10px 0;
     left: 47.5%;
-    bottom: 5px;
+    bottom: 2%;
 }
 
 #rulesButton {
