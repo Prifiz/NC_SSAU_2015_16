@@ -4,7 +4,17 @@
     Author     : андрей
 --%>
 
+<%@page import="team5.server.actions.SignIn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String login = request.getParameter("string");
+    String password = request.getParameter("string2");
+    SignIn in = new SignIn();
+    boolean b = in.sign(login, password);
+    if(b){
+        
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,15 +43,12 @@
 
                 <!--<input type="button" value="BACK" name="backButton" id="backButton">-->
                 <input type="button" value="view rules" name="rulesButton" id="rulesButton">
-                <!--<input type="button" value="login" name="loginButton" id="loginButton">-->
-                <!--<input type="button" value="register" name="registerButton" id="registerButton">-->
-                <!--<input type="button" value="to the home page" name="homeButton" id="homeButton">-->
 
                 <div id="work-zone"> 
                     <div id="container-work-zone">
                         <form name="signInForm" action="loginPage.jsp">
-                            <input type="text" name="login" placeholder="login" id="loginText">
-                            <input type="password" name="password" placeholder="password" id="passwordText">
+                            <input type="text" name="login" placeholder="login" id="loginText" value=${param.string}>
+                            <input type="password" name="password" placeholder="password" id="passwordText" value=${param.string2}>
                             <input type="submit" name="signIN" value="Sign in" id="signInButtom">
                         </form>
                     </div>

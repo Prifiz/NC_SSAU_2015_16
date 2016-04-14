@@ -45,8 +45,22 @@ public class Searcher {
             logger.debug(ex.getMessage());
              return "Пусто";
         }
-        
-        
-
+    }
+    
+    public String searchPassword(String login){
+        dbworker = new DataBaseWorker();
+        this.connection = dbworker.openConnectionDataBase();
+        try {
+            preparedStatement = connection.prepareStatement(""
+                    + "SELECT password"
+                    + "FROM SERVISE_INFO"
+                    + "WHERE login=?");
+            preparedStatement.setString(1, login);
+            result = preparedStatement.executeQuery();
+            return result.getString("password");
+        }catch(SQLException ex){
+            logger.debug(ex.getMessage());
+            return "Пусто";
+        }
     }
 }
