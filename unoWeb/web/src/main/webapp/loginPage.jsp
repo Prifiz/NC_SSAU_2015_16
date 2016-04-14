@@ -33,9 +33,6 @@
 
                 <!--<input type="button" value="BACK" name="backButton" id="backButton">-->
                 <input type="button" value="view rules" name="rulesButton" id="rulesButton">
-                <!--<input type="button" value="login" name="loginButton" id="loginButton">-->
-                <!--<input type="button" value="register" name="registerButton" id="registerButton">-->
-                <!--<input type="button" value="to the home page" name="homeButton" id="homeButton">-->
 
                 <div id="work-zone"> 
                     <div id="container-work-zone">

@@ -10,6 +10,7 @@ import team5.datamodel.exceptions.*;
 import team5.datamodel.searches.FieldRequest;
 import team5.datamodel.searches.Search;
 import team5.datamodel.searches.UserSearch;
+import team5.datalayer.database.Searcher;
 
 /**
  *
@@ -23,26 +24,28 @@ public class SignIn {
      * @param password
      * @return
      */
-    
     //На данный момент использований не обнаружено
     public boolean sign(String login, String password) {
-        try {
-            Search search=new UserSearch();
-            User user = (User)search.searchByField(login, FieldRequest.LOGIN).get(0);
-            String s = "";
+            Searcher searcher = new Searcher();
+            //Search search=new UserSearch();
+            //User user = (User)search.searchByField(login, FieldRequest.LOGIN).get(0);
+            String dbPassword = searcher.searchPassword(login);
             /*for (int i = 0; i < password.length; i++) {
                 s += password[i];
             }*/
-            if (user.getServiceInfo().getPassword().equals(password)) {
-                //открытие фрейма с комнатами
-                return true;
-            } else {
-                return false;
+            boolean b = false;
+            if (!"Пусто".equals(dbPassword)) {
+                if (dbPassword.equals(password)) {
+                    //открытие фрейма с комнатами
+                    b =  true;
+                } else {
+                    b =  false;
+                }
             }
-        } catch (NotFoundException e) {
+            return b;
+        /*catch (NotFoundException e) {
             return false;
             //Надо написать обработчик некорректного логина, пароля!!!!!
-        }
-
+        }*/
     }
 }
