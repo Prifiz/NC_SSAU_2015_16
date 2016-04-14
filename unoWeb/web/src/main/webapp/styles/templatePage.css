@@ -29,7 +29,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 body {
     line-height: 1;
     color: black;
-    background: #999999;
+    background: papayawhip;
 }
 #header { /* Header Formatting */
     background-color: #cccccc;
@@ -48,7 +48,7 @@ body {
 
 #container-shadows {
     width: 60em; 
-    background-color: #666666;
+    background-color: tomato;
     text-align:center;
     margin-left: auto;
     margin-right: auto;
@@ -58,7 +58,7 @@ body {
 #container {
     width: 59.5em;  
     height: inherit;
-    background-color:  #ffffff;
+    background-color: antiquewhite;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -66,7 +66,7 @@ body {
 
 #work-zone {
     width: 40em; 
-    background-color:  #666666;
+    background-color:  antiquewhite;
     text-align:center;
     margin-left: auto;
     margin-right: auto;
@@ -74,13 +74,14 @@ body {
 }
 
 #container-work-zone{
+    position: relative;
     width: 39.5em;  
     height: 29.5em;
-    background-color: #ffffff;
+    background-color: white;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
-  
+
 }
 
 
@@ -131,11 +132,12 @@ body {
 } 
 
 #topmenu .show, .tile {
-    background: white;
+    background: antiquewhite;
     float: right;
 }
 
 h1{
+    position: relative;
     color:  gold;
     font-family:  "Times New Roman", cursive;
     font-style: italic;
@@ -146,13 +148,14 @@ h1{
 }
 
 h2{
+    position: relative;
     color:  gold;
     font-family:  cursive;
     font-style: italic;
     font-weight:   700;
     font-size:  30px;
-    left: 30px;
-    top: 10px;
+    left: 10px;
+    top: 30px;
 }
 
 h3 {
@@ -160,18 +163,29 @@ h3 {
     color: black;
     font-size: 30pt;
     font-style: italic;
-   
+
+}
+
+#return a{
+    padding: -5px 0;
+    position: relative;
+    margin: 0 0 10px 0;
+    text-align: center;
+    /*left: 19.75em;*/  
+    left: 25%;
+    bottom: 70%;
+    /*top:  25em;*/
 }
 
 
-
-#backButton {
+#backButton{
     position: relative;
     text-align: center;
     border-top: 1px solid #140ead;
     margin: 0 0 10px 0;
     left: 47.5%;
-    bottom: 5px;
+    /*top: 0.5cm;*/
+    bottom: 2%;
 }
 
 #rulesButton {
