@@ -8,7 +8,7 @@
     <modules>
         <module>datamodel</module>
         <module>datalayer</module>
-    <module>web</module>
+        <module>web</module>
         <module>server</module>
     </modules>
     <properties>
