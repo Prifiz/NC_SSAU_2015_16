@@ -13,37 +13,39 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
 import team5.datamodel.user.PrivateInformation;
+import team5.datamodel.user.ServiceInfo;
 
 /**
  *
  * @author Дмитрий
  */
-public class PrivateInformationController extends AbstractController<PrivateInformation, String> {
+public class ServiceInfoController extends AbstractController<ServiceInfo, String> {
 
-    public static final String SELECT_ALL = "SELECT * FROM Private_information";
-    public static final String SELECT_BY_LOGIN = "select * from private_information where login=? ";
+    public static final String SELECT_ALL = "SELECT * FROM service_info";
+    public static final String SELECT_BY_LOGIN = "select * from service_info where login=? ";
     public static final String UPDATE_BY_LOGIN = "update private_information "
-            + "set name=?, surname=? where login=? ";
-    public static final String DELETE_BY_LOGIN = "delete from private_information where login=? ";
-    public static final String INSERT_BY_LOGIN = "insert into private_information (login, name, surname) values (?,?,?) ";
+            + "set password=?, data_of_regist=? where login=? ";
+    public static final String DELETE_BY_LOGIN = "delete from service_info where login=? ";
+    public static final String INSERT_BY_LOGIN = "insert into service_info (login, password, data_of_regist) values (?,?,?) ";
 
     private Logger logger;
 
-    public PrivateInformationController(Connection connection) {
+    public ServiceInfoController(Connection connection) {
         super(connection);
     }
 
     @Override
-    public List<PrivateInformation> getAll() {
-        List<PrivateInformation> list = new ArrayList<PrivateInformation>();
+    public List<ServiceInfo> getAll() {
+        List<ServiceInfo> list = new ArrayList<ServiceInfo>();
         PreparedStatement preparedStatement = getPrepareStatement(SELECT_ALL);
         try {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                PrivateInformation privateInformation = new PrivateInformation();
-                privateInformation.setName(resultSet.getString("name"));
-                privateInformation.setSurname(resultSet.getString("surname"));
-                list.add(privateInformation);
+                ServiceInfo serviceInfo = new ServiceInfo();
+                serviceInfo.setLogin(resultSet.getString("login"));
+                serviceInfo.setPassword(resultSet.getString("password"));
+                //FIXME непонятно что делать с датой регистрации.в оригинальном классе сетера на нее нет.
+                list.add(serviceInfo);
             }
         } catch (SQLException ex) {
             logger.debug(ex.getMessage());
@@ -55,17 +57,18 @@ public class PrivateInformationController extends AbstractController<PrivateInfo
     }
 
     @Override
-    public List<PrivateInformation> getEntitiesByField(String login) {
+    public List<ServiceInfo> getEntitiesByField(String login) {
         PreparedStatement preparedStatement = getPrepareStatement(SELECT_BY_LOGIN);
-        List<PrivateInformation> list = new ArrayList<PrivateInformation>();
+        List<ServiceInfo> list = new ArrayList<ServiceInfo>();
         try {
             preparedStatement.setString(1, login);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                PrivateInformation privateInformation = new PrivateInformation();
-                privateInformation.setName(resultSet.getString("name"));
-                privateInformation.setSurname(resultSet.getString("surname"));
-                list.add(privateInformation);
+                ServiceInfo serviceInfo = new ServiceInfo();
+                serviceInfo.setLogin(resultSet.getString("login"));
+                serviceInfo.setPassword(resultSet.getString("password"));
+                //FIXME непонятно что делать с датой регистрации.в оригинальном классе сетера на нее нет.
+                list.add(serviceInfo);
             }
         } catch (SQLException ex) {
             logger.debug(ex.getMessage());
@@ -84,11 +87,11 @@ public class PrivateInformationController extends AbstractController<PrivateInfo
      * @return
      */
     @Override
-    public boolean updateByField(PrivateInformation privateInformation, String login) {
+    public boolean updateByField(ServiceInfo serviceInfo, String login) {
         PreparedStatement preparedStatement = getPrepareStatement(UPDATE_BY_LOGIN);
         try {
-            preparedStatement.setString(1, privateInformation.getName());
-            preparedStatement.setString(2, privateInformation.getSurname());
+            preparedStatement.setString(1, serviceInfo.getPassword());
+            preparedStatement.setString(2, serviceInfo.getDateOfRegistration().toString());
             preparedStatement.setString(3, login);
             preparedStatement.executeUpdate();
             return true;
@@ -118,13 +121,13 @@ public class PrivateInformationController extends AbstractController<PrivateInfo
     }
 
     @Override
-    public boolean insert(PrivateInformation privateInformation, String login) {
+    public boolean insert(ServiceInfo serviceInfo, String login) {
 
         PreparedStatement preparedStatement = getPrepareStatement(INSERT_BY_LOGIN);
         try {
             preparedStatement.setString(1, login);
-            preparedStatement.setString(2, privateInformation.getName());
-            preparedStatement.setString(3, privateInformation.getSurname());
+            preparedStatement.setString(2, serviceInfo.getPassword());
+            preparedStatement.setString(3, serviceInfo.getDateOfRegistration().toString());
             preparedStatement.executeUpdate();
             return true;
 
