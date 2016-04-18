@@ -185,6 +185,12 @@ h3 {
     top: 50%;
 }
 
+#table_result_registration {
+    position: relative;
+    left: 30%;
+    top: 30%;
+}
+
 table.result td,
 table.result th {
     border: 1px solid #AAAAAA;
