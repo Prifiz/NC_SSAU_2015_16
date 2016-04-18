@@ -178,6 +178,23 @@ h3 {
 }
 
 
+/*для авторизации и регистрации*/
+#table_result {
+    position: relative;
+    left: 30%;
+    top: 50%;
+}
+
+table.result td,
+table.result th {
+    border: 1px solid #AAAAAA;
+    padding: 3px;
+}
+table.result tr:hover {
+    background: #fffaf5;
+}
+
+
 #backButton{
     position: relative;
     text-align: center;

@@ -156,7 +156,7 @@ h2{
     top: 10px;
 }
 
-
+/*
 #loginText{
     position: relative;
     margin:  0 0 10px 0;
@@ -174,7 +174,7 @@ h2{
     margin:  0 0 10px 0;
     left:  -10.8%;
     bottom: -270px;
-}
+}*/
 #backButton {
     position: relative;
     text-align: center;
@@ -193,6 +193,14 @@ h2{
     top: 10%;
 }
 
+table.result td,
+table.result th {
+    border: 1px solid #AAAAAA;
+    padding: 3px;
+}
+table.result tr:hover {
+    background: #fffaf5;
+}
 
 
 

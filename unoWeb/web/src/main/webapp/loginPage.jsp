@@ -19,15 +19,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles/loginPage.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
         <title>template</title>
     </head>
     <body>
         <%@ include file="header.jsp" %>
-        <form name="signInForm" action="loginPage.jsp">
-            <input type="text" name="login" placeholder="login" id="loginText" value=${param.string}>
-            <input type="password" name="password" placeholder="password" id="passwordText" value=${param.string2}>
-            <input type="submit" name="signIN" value="Sign in" id="signInButtom">
-        </form>
+        <div id="table_result">
+            <form name="signInForm" action="loginPage.jsp">
+                <table>
+                    <tr>
+                        <td>Login</td>
+                        <td>
+                            <input type="text" name="login" placeholder="login" id="loginText" value=${param.string}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" name="password" placeholder="password" id="passwordText" value=${param.string2}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="signIN" value="Sign in" id="signInButtom">
+                        </td>
+                    </tr>
+                </table>
 
+<!--            <input type="text" name="login" placeholder="login" id="loginText" value=${param.string}>
+    <input type="password" name="password" placeholder="password" id="passwordText" value=${param.string2}>
+    <input type="submit" name="signIN" value="Sign in" id="signInButtom">-->
+            </form>
+
+        </div>
         <%@ include file="footer.jsp" %>
