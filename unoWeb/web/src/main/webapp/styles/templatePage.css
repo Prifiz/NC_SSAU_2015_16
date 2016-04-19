@@ -165,6 +165,13 @@ h3 {
     font-style: italic;
 
 }
+h4 {
+    text-align:center;
+    color: black;
+    font-size: 15pt;
+    font-style: italic;
+
+}
 
 #return a{
     padding: -5px 0;
@@ -181,6 +188,12 @@ h3 {
     position: relative;
     left: 40%;
     top: 5%;
+}
+
+#table_rooms{
+    position: relative;
+    left: 40%;
+    top: 40%;
 }
 
 /*для авторизации и регистрации*/
