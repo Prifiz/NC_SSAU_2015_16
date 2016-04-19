@@ -22,7 +22,7 @@ public class Searcher {
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet result;
-    private String stringResult="";
+    private String stringResult = "";
 
     public String search(String request) {
 
@@ -33,33 +33,37 @@ public class Searcher {
             preparedStatement.setString(1, request);
             result = preparedStatement.executeQuery();
             while (result.next()) {
-                stringResult+=("Номер в выборке #" + result.getRow()
-                        + "\t "+ "| Login:"+result.getString("login")
-                        + "\t" + "| Name:"+result.getString("name")
-                        + "\t" + "| Surname:"+result.getString("surname"));
+                stringResult += ("Номер в выборке #" + result.getRow()
+                        + "\t " + "| Login:" + result.getString("login")
+                        + "\t" + "| Name:" + result.getString("name")
+                        + "\t" + "| Surname:" + result.getString("surname"));
             }
             dbworker.closeConnectionDataBase();
             result.close();
             return stringResult;
         } catch (SQLException ex) {
             logger.debug(ex.getMessage());
-             return "Пусто";
+            return "Пусто";
         }
     }
-    
-    public String searchPassword(String login){
+
+    public String searchPassword(String login) {
         dbworker = new DataBaseWorker();
         this.connection = dbworker.openConnectionDataBase();
         try {
-            preparedStatement = connection.prepareStatement(""
-                    + "SELECT password"
-                    + "FROM SERVISE_INFO"
-                    + "WHERE login=?");
+            preparedStatement = connection.prepareStatement("SELECT password FROM SERVISE_INFO WHERE login=?");
             preparedStatement.setString(1, login);
             result = preparedStatement.executeQuery();
-            return result.getString("password");
-        }catch(SQLException ex){
-            logger.debug(ex.getMessage());
+            String r = null;
+            while (result.next()) {
+                r = result.getString(1);
+                System.out.println(r);
+            }
+            String [] s = r.split("\\s+");
+            return s[0];
+        } catch (Exception ex) {
+            System.out.println(ex.getStackTrace());
+            //logger.debug(ex.getMessage());
             return "Пусто";
         }
     }
