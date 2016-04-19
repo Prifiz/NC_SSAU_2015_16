@@ -10,12 +10,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
-        <title>template</title>
+        <title>registration</title>
     </head>
     <body>
         <%@ include file="header.jsp" %>
         <div id="table_result_registration">
-            <form name="signInForm" action="loginPage.jsp">
+            <form name="registrationForm">
                 <table>
                     <tr>
                         <td>Login</td>

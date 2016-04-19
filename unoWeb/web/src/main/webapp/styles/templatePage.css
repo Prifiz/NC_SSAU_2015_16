@@ -177,6 +177,11 @@ h3 {
     /*top:  25em;*/
 }
 
+#table_result_admin{
+    position: relative;
+    left: 40%;
+    top: 5%;
+}
 
 /*для авторизации и регистрации*/
 #table_result {
