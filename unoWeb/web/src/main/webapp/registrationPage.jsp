@@ -20,56 +20,59 @@
                     <tr>
                         <td>Login</td>
                         <td>
-                            <input type="text" name="login" placeholder="login" id="loginText">                  
+                            <input type="text" name="login" placeholder="login" id="loginText" value=${param.login}>                  
                         </td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>
-                            <input type="text" name="password" placeholder="password" id="passwordText">  
+                            <input type="text" name="password" placeholder="password" id="passwordText" value=${param.password}>  
                         </td>
                     </tr>
                     <tr>
                         <td>Email</td>
-                        <td><input type="text" name="email" placeholder="email" id="emailText">
+                        <td><input type="text" name="email" placeholder="email" id="emailText" value=${param.email}>
                         </td>
                     </tr>
                     <tr>
                         <td>Name</td>
-                        <td><input type="text" name="name" placeholder="name" id="nameText">
+                        <td><input type="text" name="name" placeholder="name" id="nameText" value=${param.name}>
                         </td>
                     </tr>
                     <tr>
                         <td>Surname</td>
-                        <td><input type="text" name="surname" placeholder="surname" id="surnameText">
+                        <td><input type="text" name="surname" placeholder="surname" id="surnameText" value=${param.surname}>
                         </td>
                     </tr>
                     <tr>
                         <td>Country</td>
-                        <td><input type="text" name="country" placeholder="country" id="countryText">
+                        <td><input type="text" name="country" placeholder="country" id="countryText" value=${param.country}>
                         </td>
                     </tr>
                     <tr>
                         <td>City</td>
-                        <td><input type="text" name="city" placeholder="city" id="cityText">
+                        <td><input type="text" name="city" placeholder="city" id="cityText" value=${param.city}>
                         </td>
                     </tr>
                     <tr>
                         <td><input type="submit" name="OK" value="OK" id="okButtom"></td>
-                        <td> <input type="submit" name="cancel" value="Cancel" id="cancelButtom">
+                        <td>
+                            <%
+                                String login = request.getParameter("login");
+                                String password = request.getParameter("password");
+                                String email = request.getParameter("emil");
+                                String name = request.getParameter("name");
+                                String surname = request.getParameter("surname");
+                                String country = request.getParameter("country");
+                                String city = request.getParameter("city");
+                            %>
+                            <form action="homePage.jsp">
+                                <input type="submit" name="cancel" value="Cancel" id="cancelButtom">
+                            </form>
                         </td>
                     </tr>
                 </table>
-                <!--                <form name="signInForm" action="loginPage.jsp">
-                                    <input type="text" name="login" placeholder="login" id="loginText">
-                                    <input type="text" name="password" placeholder="password" id="passwordText">
-                                    <input type="text" name="email" placeholder="email" id="emailText">
-                                    <input type="text" name="name" placeholder="name" id="nameText">
-                                    <input type="text" name="surname" placeholder="surname" id="surnameText">
-                                    <input type="text" name="country" placeholder="country" id="countryText">
-                                    <input type="text" name="city" placeholder="city" id="cityText">
-                                    <input type="submit" name="OK" value="OK" id="okButtom">
-                                    <input type="submit" name="cancel" value="Cancel" id="cancelButtom">-->
+
             </form>
         </div>
         <%@ include file="footer.jsp" %>

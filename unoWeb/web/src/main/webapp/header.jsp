@@ -19,7 +19,7 @@
                 <div id="main" class="tile show">
                     <ul>
                         <li><a href="loginPage.jsp" >login</a></li>
-                        <li><a href="registrationPage.jsp" >registration</a></li>
+                        <li><a href="registrationPage.jsp">registration</a></li>
                     </ul>
                 </div>
                 <!--<div class="content"><a href="//todo ???????? ?????? ?? ???????????" title="registration">registration</a>-->
