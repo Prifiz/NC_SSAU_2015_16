@@ -183,6 +183,23 @@ h4 {
     bottom: 70%;
     /*top:  25em;*/
 }
+#selectLink{
+    position: relative;
+    left: 45%;
+    top: 35%;
+}
+
+#table_users{
+    position: relative;
+    left: 45%;
+    top: 30%;
+}
+
+#table_result_admin{
+    position: relative;
+    left: 50%;
+    top: 50%;
+}
 
 #table_result_admin{
     position: relative;
