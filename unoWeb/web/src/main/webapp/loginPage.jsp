@@ -19,6 +19,25 @@
         <div id="table_result">
             <form name="signInForm" action="loginPage.jsp">
                 <table>
+                    <%
+                        String login = request.getParameter("login");
+                        String password = request.getParameter("password");
+                        System.out.println(login + " " + password);
+                        if ((login != null) && (password != null)) {
+                            SignIn in = new SignIn();
+                            boolean b = in.sign(login, password);
+                            if (b) {
+                                response.sendRedirect("selectRoomPage.jsp");
+                            } else {%>
+                            <tr>
+                                <td></td>
+                                <td id="loginException">
+                                    Incorrect login/password
+                                </td>
+                            </tr>
+                            <%}
+                        }
+                    %>
                     <tr>
                         <td>Login</td>
                         <td>
@@ -34,18 +53,7 @@
                     <tr>
                         <td></td>
                         <td><input type="submit" name="signIN" value="Sign in" id="signInButtom">
-                            <%
-    String login = request.getParameter("login");
-    String password = request.getParameter("password");
-    System.out.println(login+" "+password);
-    if ((login != null) && (password != null)) {
-        SignIn in = new SignIn();
-        boolean b = in.sign(login, password);
-        if (b) {
-            response.sendRedirect("selectRoomPage.jsp");
-        }
-    }
-%>
+
                         </td>
                     </tr>
                 </table>

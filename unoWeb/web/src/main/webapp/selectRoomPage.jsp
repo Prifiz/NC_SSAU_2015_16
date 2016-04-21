@@ -23,7 +23,7 @@
                 <li><a href="___" title="room1">Room 1</a></li>
                 <li><a href="___" title="room2">Room 2</a></li>
                 <li><a href="___" title="room3">Room 3</a></li>
-                <li><a href="___" title="room4">Room 3</a></li>
+                <li><a href="___" title="room4">Room 4</a></li>
             </ul>
            
         </div>
