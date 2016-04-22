@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.apache.log4j.Logger;
-import team5.datalayer.database.Controllers.ServiceInfoController;
 
 /**
  *
@@ -51,19 +50,21 @@ public class Searcher {
     public String searchPassword(String login) {
         dbworker = new DataBaseWorker();
         this.connection = dbworker.openConnectionDataBase();
-//        try {
-//            preparedStatement = connection.prepareStatement(""
-//                    + "SELECT password"
-//                    + "FROM SERVISE_INFO"
-//                    + "WHERE login=?");
-//            preparedStatement.setString(1, login);
-//            result = preparedStatement.executeQuery();
-//            return result.getString("password");
-//        }catch(SQLException ex){
-//            logger.debug(ex.getMessage());
-//            return "Пусто";
-//        }
-        ServiceInfoController serviceInfoController = new ServiceInfoController(connection);
-        return serviceInfoController.getEntitiesByField(login).get(0).getPassword();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT password FROM SERVISE_INFO WHERE login=?");
+            preparedStatement.setString(1, login);
+            result = preparedStatement.executeQuery();
+            String r = null;
+            while (result.next()) {
+                r = result.getString(1);
+                System.out.println(r);
+            }
+            String [] s = r.split("\\s+");
+            return s[0];
+        } catch (Exception ex) {
+            System.out.println(ex.getStackTrace());
+            //logger.debug(ex.getMessage());
+            return "Пусто";
+        }
     }
 }
