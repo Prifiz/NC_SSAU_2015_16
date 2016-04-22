@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE any PUBLIC '-//Hibernate/Hibernate Mapping DTD 3.0//EN' 'null'>
+<any>
+    <hibernate-mapping>
+        <class name="team5.datamodel.user.newmodel.PrivateInformation" table="private_information">
+            <property column="login" name="login" type="java.lang.String"/>
+            <property column="name" name="name" type="java.lang.String"/>
+            <property column="surname" name="surname" type="java.lang.String"/>
+        
+            <one-to-one column="login" name="service_info" />
+            <one-to-one column="login" name="addresses" />
+        </class>
+    </hibernate-mapping>
+</any>

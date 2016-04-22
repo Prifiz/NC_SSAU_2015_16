@@ -75,7 +75,7 @@ public class DataBaseWorker {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/postgres", "postgres", "2536");
+                    "jdbc:postgresql://localhost:5432/postgres", "postgres", "team5sql");
             return connection;
         } catch (SQLException | ClassNotFoundException ex) {
             logger.debug(ex.getMessage());
