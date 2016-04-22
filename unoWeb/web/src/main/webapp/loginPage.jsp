@@ -6,15 +6,18 @@
 
 <%@page import="team5.server.actions.SignIn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--
-    String login = request.getParameter("string");
-    String password = request.getParameter("string2");
-    SignIn in = new SignIn();
-    boolean b = in.sign(login, password);
-    if(b){
-        
-    }
---%>
+<%
+        String login = request.getParameter("string");
+        String password = request.getParameter("string2");
+        SignIn in = new SignIn();
+        boolean b = in.sign(login, password);
+               // System.out.println("JGJGJGJGJGJGJGJGJGJGJGJGJGОПОПОПОПОПОПОПОППО");
+        if (b) {
+            System.out.println("JGJGJGJGJGJGJGJGJGJGJGJGJGОПОПОПОПОПОПОПОППО");
+            response.sendRedirect("selectRoomPage.jsp");
+        }
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
