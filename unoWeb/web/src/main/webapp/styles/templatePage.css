@@ -188,7 +188,43 @@ h4 {
     left: 45%;
     top: 35%;
 }
+#scroll-table {
+  width: 60%;
+  height: 40%;
+  overflow: scroll;
+  table-layout: fixed; 
+  border-color: #140ead;
+  background-color: #fffaf5;
+  border: 1px solid #000; 
+  text-align: center;
+  border-collapse: collapse;
+}
 
+#scroll-table td,
+#scroll-table th {
+    border: 1px solid #AAAAAA;
+    padding: 3px;
+}
+#scroll-table tr:hover {
+    background: #fffaf5;
+}
+#userTable{
+    position: relative;
+    left: 1%;
+    top: 5%;
+}
+
+#userTableSearch{
+    position: relative;
+    left: 1%;
+    top: 20%;
+}
+
+#userTableFunctional{
+    position: relative;
+    left: 1%;
+    top: 25%;
+}
 #table_users{
     position: relative;
     left: 45%;
@@ -244,6 +280,12 @@ table.result tr:hover {
     left: 47.5%;
     /*top: 0.5cm;*/
     bottom: 2%;
+}
+
+#rules{
+    position: relative;
+    top: 10%;
+    width: 59.5em; 
 }
 
 #rulesButton {
