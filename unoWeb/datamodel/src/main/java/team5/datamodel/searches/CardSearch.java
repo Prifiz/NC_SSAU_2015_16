@@ -34,11 +34,11 @@ public class CardSearch implements Search {
                 resultOfSearch.add(card);
                 continue;
             }
-            m = p.matcher(card.getColor().toString());
-            if (m.matches()) {
-                resultOfSearch.add(card);
-                continue;
-            }
+//            m = p.matcher(card.getColor().toString());
+//            if (m.matches()) {
+//                resultOfSearch.add(card);
+//                continue;
+//            }//FIXME
         }
         if (resultOfSearch.isEmpty()) {
             throw new CardNotFoundException();
@@ -66,10 +66,10 @@ public class CardSearch implements Search {
                 resultOfSearch.add(card);
                 continue;
             }
-            if (SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
-                resultOfSearch.add(card);
-                continue;
-            }
+//            if (SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+//                resultOfSearch.add(card);
+//                continue;
+//            }//FIXME
         }
 
         if (resultOfSearch.isEmpty()) {
@@ -102,22 +102,22 @@ public class CardSearch implements Search {
             }
         }
 
-        if (field == FieldRequest.COLOR) {
-            for (Card card : cards) {
-                if (SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
-                    resultOfSearch.add(card);
-                }
-            }
-        }
+//        if (field == FieldRequest.COLOR) {
+//            for (Card card : cards) {
+//                if (SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+//                    resultOfSearch.add(card);
+//                }
+//            }
+        //}//FIXME
 
-        if (field == FieldRequest.ICONID_COLOR) {
-            for (Card card : cards) {
-                if (SearchServices.isStringIncludeSubstring(card.getIconId().toString(), request)
-                        && SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
-                    resultOfSearch.add(card);
-                }
-            }
-        }
+//        if (field == FieldRequest.ICONID_COLOR) {
+//            for (Card card : cards) {
+//                if (SearchServices.isStringIncludeSubstring(card.getIconId().toString(), request)
+//                        && SearchServices.isStringIncludeSubstring(card.getColor().toString(), request)) {
+//                    resultOfSearch.add(card);
+//                }
+//            }
+//        }//FIXME
 
         if (resultOfSearch.isEmpty()) {
             throw new CardNotFoundException();

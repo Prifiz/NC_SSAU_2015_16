@@ -86,7 +86,7 @@ public class ServerThread extends Thread {
                     //регистрация
                     //
                     case "Registration":
-                        registration();
+                      //  registration();//FIXME
                         break;
                     //
                     //выбор комнаты и ожидание игроков
@@ -104,10 +104,11 @@ public class ServerThread extends Thread {
         } catch (IOException ex) {
             f = false;
             logger.debug(ex.getMessage());
-        } catch (UserExistException ex) {
-            f = false;
-            logger.debug(ex.getMessage());
-        }
+        } 
+//        catch (UserExistException ex) {
+//            f = false;
+//            logger.debug(ex.getMessage());
+//        }//FIXME
     }
 
     private void login() throws IOException {
@@ -122,41 +123,41 @@ public class ServerThread extends Thread {
         gamer = new GamerController(login);
     }
 
-    private void registration() throws UserExistException, IOException {
-        Registration r = new Registration();
-        try {
-            boolean d = r.registrationUser(clientRequest.getUser().getPrivateInformation().getName(),
-                    clientRequest.getUser().getPrivateInformation().getSurname(),
-                    clientRequest.getUser().getAddress().getCountry(),
-                    clientRequest.getUser().getAddress().getCity(),
-                    clientRequest.getUser().getServiceInfo().getLogin(),
-                    clientRequest.getUser().getServiceInfo().getPassword(),
-                    clientRequest.getUser().getServiceInfo().getEmail(),
-                    clientRequest.getUser().getServiceInfo().getDateOfRegistration());
-            serverResponse = new Message(d);
-            if (!d) {
-                serverResponse.setChoice("Field");
-            }
-        } catch (UserExistException ex) {
-            logger.debug(ex.getMessage());
-            serverResponse = new Message(false);
-            serverResponse.setChoice("User");
-        }
-        try {
-            messageHandler.sendMessage(serverResponse);
-        } catch (JAXBException e) {
-            logger.debug(e.getMessage());
-        }
-        System.out.println("registration");
-        try {
-            WorkUser workUser = WorkUser.getWork();
-            FileHandler workWithFiles = FileHandler.getFileHandler();
-            //sd.serializableData("serializableData_WorkUser.bin", wu);
-            workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
-        } catch (JAXBException ex) {
-            java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);//TODO мы вроде другой логгер пользуем
-        }
-    }
+//    private void registration() throws UserExistException, IOException {
+//        Registration r = new Registration();
+//        try {
+//            boolean d = r.registrationUser(clientRequest.getUser().getPrivateInformation().getName(),
+//                    clientRequest.getUser().getPrivateInformation().getSurname(),
+//                    clientRequest.getUser().getAddress().getCountry(),
+//                    clientRequest.getUser().getAddress().getLogin(),
+//                    clientRequest.getUser().getServiceInfo().getLogin(),
+//                    clientRequest.getUser().getServiceInfo().getPassword(),
+//                    clientRequest.getUser().getServiceInfo().getEmail(),
+//                    clientRequest.getUser().getServiceInfo().getDateOfRegistration());
+//            serverResponse = new Message(d);
+//            if (!d) {
+//                serverResponse.setChoice("Field");
+//            }
+//        } catch (UserExistException ex) {
+//            logger.debug(ex.getMessage());
+//            serverResponse = new Message(false);
+//            serverResponse.setChoice("User");
+//        }
+//        try {
+//            messageHandler.sendMessage(serverResponse);
+//        } catch (JAXBException e) {
+//            logger.debug(e.getMessage());
+//        }
+//        System.out.println("registration");
+//        try {
+//            WorkUser workUser = WorkUser.getWork();
+//            FileHandler workWithFiles = FileHandler.getFileHandler();
+//            //sd.serializableData("serializableData_WorkUser.bin", wu);
+//            workWithFiles.marshalData("marshalData_WorkUser.xml", workUser);
+//        } catch (JAXBException ex) {
+//            java.util.logging.Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);//TODO мы вроде другой логгер пользуем
+//        }//FIXME
+//    }
 
     private void selectRoom(int roomNumber) throws IOException {
         if ((rooms[roomNumber].countGamers() < ServerConstants.MAX_NUMBER_OF_PLAYERS) && (rooms[roomNumber].isPlaying() == false)) {//если кол-во игроков в комнате меньше 4 и игра не начата то идем дальше
@@ -428,12 +429,12 @@ public class ServerThread extends Thread {
                                 break;
                             case "bDay":
                                 users.get(clientRequest.getValue()).getPrivateInformation().setbDay(WorkUser.getWork().stringToLocalDate(clientRequest.getChoice()));
-                            case "City":
-                                users.get(clientRequest.getValue()).getAddress().setCity(clientRequest.getChoice());
-                                break;
-                            case "Country":
-                                users.get(clientRequest.getValue()).getAddress().setCountry(clientRequest.getChoice());
-                                break;
+//                            case "City":
+//                                users.get(clientRequest.getValue()).getAddress()setLoginy(clientRequest.getChoice());
+//                                break;
+//                            case "Country":
+//                                users.get(clientRequest.getValue()).getAddress().setCountry(clientRequest.getChoice());
+//                                break;//FIXME
                             case "Email":
                                 users.get(clientRequest.getValue()).getServiceInfo().setEmail(clientRequest.getChoice());
                                 break;

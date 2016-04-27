@@ -61,7 +61,7 @@ public class CardTableModel extends AbstractTableModel {
             case 0:
                 return cards.get(rowIndex).getIconId();
             case 1:
-                return cards.get(rowIndex).getColor();
+                return cards.get(rowIndex).getColorId();
 
         }
         return null;
@@ -81,7 +81,7 @@ public class CardTableModel extends AbstractTableModel {
                 cards.get(rowIndex).setIconId((int) aValue);
                 break;
             case 1:
-                cards.get(rowIndex).setColor((String) aValue);
+                cards.get(rowIndex).setColorId((int) aValue);
                 break;
         }
     }

@@ -44,22 +44,23 @@ public class Sorting {
                     }
                 };
             }
-            case "Country": {
-                return new Comparator<User>() {
-                    @Override
-                    public int compare(User user1, User user2) {
-                        String str1 = user1.getAddress().getCountry();
-                        String str2 = user2.getAddress().getCountry();
-                        return str1.compareTo(str2);
-                    }
-                };
-            }
+//            case "Country": {
+//                return new Comparator<User>() {
+//                    @Override
+//                    public int compare(User user1, User user2) {
+//                        String str1 = user1.getAddress().getCountry();
+//                        String str2 = user2.getAddress().getCountry();
+//                        return str1.compareTo(str2);
+//                    }
+//                };
+//            }
+            ///FIXME Модель поменял-поправки надо внести
             case "City": {
                 return new Comparator<User>() {
                     @Override
                     public int compare(User user1, User user2) {
-                        String str1 = user1.getAddress().getCity();
-                        String str2 = user2.getAddress().getCity();
+                        String str1 = user1.getAddress().getLogin();
+                        String str2 = user2.getAddress().getLogin();
                         return str1.compareTo(str2);
                     }
                 };

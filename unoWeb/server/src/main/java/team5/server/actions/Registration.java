@@ -21,21 +21,22 @@ public class Registration {
 //            System.out.println("This user has already been created");
 //        
         // WorkUser workUser= new WorkUser();
-        try {
-            WorkUser workUser = WorkUser.getWork();
-            // apache commons-lang
-            // StringUtils.isBlank(String string)
-            if (("".equals(name)) || ("".equals(surname)) || ("".equals(login)) || ("".equals(password)) || ("".equals(email))) {
-                
-                return false;
-            } else {
-                workUser.addUser(name, surname, country, city, login, password, email, bDay);
-                return true;
-            }
-        } catch (UserExistException e) {
-            throw new UserExistException("Registration " + e.getMessage());
-            //return false;
-        }
+//        try {
+//            WorkUser workUser = WorkUser.getWork();
+//            // apache commons-lang
+//            // StringUtils.isBlank(String string)
+//            if (("".equals(name)) || ("".equals(surname)) || ("".equals(login)) || ("".equals(password)) || ("".equals(email))) {
+//                
+//                return false;
+//            } else {
+//                workUser.addUser(name, surname, country, city, login, password, email, bDay);
+//                return true;
+//            }
+//        } catch (UserExistException e) {
+//            throw new UserExistException("Registration " + e.getMessage());
+//            //return false;
+//        }//FIXME временно выпилил
+        return false;
     }
 
 //    private boolean checkOfExistenceOfUser(User user){

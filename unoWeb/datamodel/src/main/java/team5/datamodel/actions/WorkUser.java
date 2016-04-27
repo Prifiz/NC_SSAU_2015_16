@@ -62,8 +62,8 @@ public class WorkUser implements Serializable {
      *
      * @param name
      * @param surname
-     * @param country
-     * @param sity
+     * @param idCountry
+     * @param city
      * @param login
      * @param password
      * @param email
@@ -71,7 +71,7 @@ public class WorkUser implements Serializable {
      * @return
      * @throws UserExistException
      */
-    public User addUser(String name, String surname, String country, String sity, String login, String password, String email, LocalDate bDay)
+    public User addUser(String name, String surname, Integer idCountry, String city, String login, String password, String email, LocalDate bDay)
             throws UserExistException {
 //        if (this.search(login)!=null) {
 //            return null;
@@ -81,8 +81,8 @@ public class WorkUser implements Serializable {
             search.searchByField(login,FieldRequest.LOGIN);
             throw new UserExistException("User already exist");
         } catch (NotFoundException e) {
-            PrivateInformation privateInformation = new PrivateInformation(name, surname, bDay);
-            Address address = new Address(country, sity);
+            PrivateInformation privateInformation = new PrivateInformation(login,name, surname, bDay);
+            Address address = new Address(idCountry, city);
             ServiceInfo serviceInfo = new ServiceInfo(login, password, email);
             User us = new User(privateInformation, address, serviceInfo);
             arrUsers.add(us);

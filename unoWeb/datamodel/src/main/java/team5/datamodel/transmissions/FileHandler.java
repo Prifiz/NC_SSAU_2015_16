@@ -27,13 +27,13 @@ public class FileHandler {
 
     private static final FileHandler fileHandler = new FileHandler();
     private File file = null;
-    
-    public static FileHandler getFileHandler(){
+
+    public static FileHandler getFileHandler() {
         return fileHandler;
     }
-    
-    private FileHandler(){
-        
+
+    private FileHandler() {
+
     }
 
     /**
@@ -139,18 +139,20 @@ public class FileHandler {
         while (st.nextToken() != StreamTokenizer.TT_EOF) {
             String type = st.sval;
             st.nextToken();
-            String color = st.sval;
+            Integer idCard = (int) st.nval;
             st.nextToken();
-            int icon = (int) st.nval;
+            Integer colorId = (int) st.nval;
+            st.nextToken();
+            Integer iconId = (int) st.nval;
             if ("Numeric".equals(type)) {
-                card = new NumericCard(icon, color);
+                card = new NumericCard(idCard, colorId, iconId);
             }
             pack.add(card);
         }
         return pack;
     }
 
-    public  File getFile() {
+    public File getFile() {
         return file;
     }
 

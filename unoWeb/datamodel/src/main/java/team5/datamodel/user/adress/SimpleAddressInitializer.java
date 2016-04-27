@@ -20,7 +20,7 @@ public class SimpleAddressInitializer implements AddressInitializer, Serializabl
 
     public Address initDefaultAddress() {
 
-        return new Address("", "");
+        return new Address(-1, "");
     }
 
 }

@@ -20,12 +20,14 @@ import team5.datamodel.transmissions.LocalDateAdapter;
 @XmlRootElement
 public class PrivateInformation implements Serializable {
 
+    private String login;
     private String name;
     private String surname;
     private LocalDate bDay;
 
-    public PrivateInformation(String name, String surname, LocalDate bDay) {
+    public PrivateInformation(String login,String name, String surname, LocalDate bDay) {
         this.name = name;
+        this.login=login;
         this.surname = surname;
         this.bDay = bDay;
     }
@@ -34,6 +36,7 @@ public class PrivateInformation implements Serializable {
         this.name = "";
         this.surname = "";
         this.bDay = LocalDate.now();
+        this.login="";
     }
     
     
@@ -55,6 +58,13 @@ public class PrivateInformation implements Serializable {
         this.name = name;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
     public void setSurname(String surname) {
         this.surname = surname;
     }
@@ -76,7 +86,7 @@ public class PrivateInformation implements Serializable {
             return false;
         }
         PrivateInformation privateInformation = (PrivateInformation) object;
-        if ((name!= null)&&(name.equals(privateInformation.getName())) &&(surname!=null)&& (surname.equals(privateInformation.getSurname()))
+        if ((login!= null)&&(login.equals(privateInformation.getLogin())) &&(name!= null)&&(name.equals(privateInformation.getName())) &&(surname!=null)&& (surname.equals(privateInformation.getSurname()))
                 && (bDay!=null)&&(bDay.equals(privateInformation.bDay))){
             return true;
         }
@@ -87,14 +97,14 @@ public class PrivateInformation implements Serializable {
     public String toString() {
         StringBuilder builder = new StringBuilder(10);
         builder.append(" ").append(name).append(", ").append(surname).append(", ")
-                .append(bDay);
+                .append(bDay).append(login);
         return builder.toString();
     }
 
     @Override
     public int hashCode() {
         int result = 17;
-        result += 37 * result + name.hashCode() + surname.hashCode() + bDay.hashCode();
+        result += 37 * result + name.hashCode() + surname.hashCode() + bDay.hashCode()+login.hashCode();
         return result;
     }
 

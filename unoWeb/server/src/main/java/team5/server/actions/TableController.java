@@ -60,7 +60,7 @@ public class TableController {
      */
     public boolean isRightCard(Card card) {
         if (lastcard != null) {
-            if ((lastcard.getColor().equals(card.getColor())) || (lastcard.getIconId() == card.getIconId())) {
+            if ((lastcard.getColorId()==card.getColorId()) || (lastcard.getIconId() == card.getIconId())) {
                 lastcard = card;
                 return true;
             } else {

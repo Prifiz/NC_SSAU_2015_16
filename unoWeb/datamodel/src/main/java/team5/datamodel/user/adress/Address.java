@@ -17,33 +17,33 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 public class Address implements Serializable {
 
-    private String country;
-    private String city;
+    private Integer idCity;
+    private String login;
 
-    public Address(String country, String city) {
-        this.country = country;
-        this.city = city;
+    public Address(Integer idCity, String city) {
+        this.idCity = idCity;
+        this.login = city;
     }
 
     public Address() {
-        city = new String();
-        country = new String();
+        login = new String();
+        idCity = -1;
     }
 
-    public String getCity() {
-        return city;
+    public String getLogin() {
+        return login;
     }
 
-    public String getCountry() {
-        return country;
+    public Integer getIdCity() {
+        return idCity;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setIdCity(Integer idCity) {
+        this.idCity = idCity;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class Address implements Serializable {
             return false;
         }
         Address address = (Address) object;
-        if ((city!=null)&&(city.equals(address.getCity())) &&(country!=null)&& (country.equals(address.getCountry()))) {
+        if ((login!=null)&&(login.equals(address.getLogin())) &&(idCity!=null)&& (idCity.equals(address.getIdCity()))) {
             return true;
         }
         return false;
@@ -68,14 +68,14 @@ public class Address implements Serializable {
     @Override
     public int hashCode() {
         int result = 17;
-        result += 37 * result + city.hashCode() + country.hashCode();
+        result += 37 * result + login.hashCode() + idCity.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(10);
-        builder.append(" Address: ").append(city).append(", ").append(country).append(" ");
+        builder.append(" Address: ").append(login).append(", ").append(idCity).append(" ");
         return builder.toString();
     }
 

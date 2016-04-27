@@ -68,10 +68,10 @@ public class UserTableModel extends AbstractTableModel {
                 return users.get(rowIndex).getPrivateInformation().getSurname();
             case 2:
                 return users.get(rowIndex).getPrivateInformation().getbDay();
-            case 3:
-                return users.get(rowIndex).getAddress().getCountry();
+//            case 3:
+//                return users.get(rowIndex).getAddress().getCountry();//FIXME
             case 4:
-                return users.get(rowIndex).getAddress().getCity();
+                return users.get(rowIndex).getAddress().getLogin();
             case 5:
                 return users.get(rowIndex).getServiceInfo().getEmail();
             case 6:
@@ -112,12 +112,12 @@ public class UserTableModel extends AbstractTableModel {
                 break;
             case 2:
                 users.get(rowIndex).getPrivateInformation().setbDay(work.stringToLocalDate((String) aValue));
-            case 3:
-                users.get(rowIndex).getAddress().setCity((String) aValue);
-                break;
-            case 4:
-                users.get(rowIndex).getAddress().setCountry((String) aValue);
-                break;
+//            case 3:
+//                users.get(rowIndex).getAddress()setLoginy((String) aValue);
+//                break;
+//            case 4:
+//                users.get(rowIndex).getAddress().setCountry((String) aValue);
+//                break;//FIXME
             case 5:
                 users.get(rowIndex).getServiceInfo().setEmail((String) aValue);
                 break;

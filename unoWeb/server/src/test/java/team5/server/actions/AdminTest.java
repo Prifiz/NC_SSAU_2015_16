@@ -38,8 +38,8 @@ public class AdminTest {
     @Before
     public void setUp() throws Exception {
         serviceInfo = new ServiceInfo("a", "1", "admin@gmail.com");
-        privateInformation = new PrivateInformation("AA", "X", LocalDate.of(1995, Month.MARCH, 12));
-        address = new Address("Russia", "Samara");
+//        privateInformation = new PrivateInformation("AA", "X", LocalDate.of(1995, Month.MARCH, 12));
+//        address = new Address("Russia", "Samara");//FIXME
 
     }
 

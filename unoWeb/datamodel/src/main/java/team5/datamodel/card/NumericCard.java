@@ -19,22 +19,32 @@ public class NumericCard extends Card implements Serializable {
 //    public NumericCard(Integer iconId, String color) {
 //        super(iconId, color, CardType.NUMERIC);
 //    }
-
-    public NumericCard(Integer iconId, String color) {
-        super(iconId, color);
+    public NumericCard(Integer cardId, Integer colorId, Integer iconId) {
+        super(iconId, colorId, cardId);
     }
+
+    @Override
+    public void setCardId(Integer cardId) {
+        super.setCardId(cardId);
+    }
+
+    @Override
+    public Integer getCardId() {
+        return super.getCardId();
+    }
+
     public NumericCard() {
     }
 
     @Override
-    public void setColor(String color) {
-        super.setColor(color);
+    public void setColorId(Integer colorId) {
+        super.setColorId(colorId);
     }
 
     @XmlElement(name = "color")
     @Override
-    public String getColor() {
-        return super.getColor();
+    public Integer getColorId() {
+        return super.getColorId();
     }
 
     @Override
@@ -71,13 +81,14 @@ public class NumericCard extends Card implements Serializable {
 
     @Override
     public String toString() {
-        return getColor() + " " + getIconId();
+        return getCardId() + " " + getColorId() + " " + getIconId();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this.getClass() == obj.getClass()) {
-            if ((((NumericCard) obj).getColor().equals(this.getColor())) && ((NumericCard) obj).getIconId() == this.getIconId()) {
+            if ((((NumericCard) obj).getColorId()==this.getColorId()) && ((NumericCard) obj).getIconId() == this.getIconId()
+                    && ((NumericCard) obj).getCardId() == this.getCardId()) {
                 return true;
             } else {
                 return false;
@@ -89,7 +100,7 @@ public class NumericCard extends Card implements Serializable {
 
     @Override
     public int hashCode() {
-        return this.getIconId() ^ this.getColor().length();
+        return this.getIconId() ^ this.getColorId() ^ this.getCardId();
     }
 
 //    @Override

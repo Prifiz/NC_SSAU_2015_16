@@ -44,7 +44,7 @@ public class CityController extends AbstractController<Address, Integer>{
             while (resultSet.next()) {
                 AddressInitializer addressInitializer = new SimpleAddressInitializer();
                 Address address = addressInitializer.initDefaultAddress();
-                address.setCity(resultSet.getString("city_name"));
+                address.setLogin(resultSet.getString("city_name"));
                 list.add(address);
             }
         } catch (SQLException ex) {
@@ -66,7 +66,7 @@ public class CityController extends AbstractController<Address, Integer>{
             while (resultSet.next()) {
                 AddressInitializer addressInitializer = new SimpleAddressInitializer();
                 Address address = addressInitializer.initDefaultAddress();
-                address.setCity(resultSet.getString("city_name"));
+                address.setLogin(resultSet.getString("city_name"));
                 list.add(address);
             }
         } catch (SQLException ex) {
@@ -89,7 +89,7 @@ public class CityController extends AbstractController<Address, Integer>{
     public boolean updateByField(Address address, Integer idCity) {
         PreparedStatement preparedStatement = getPrepareStatement(UPDATE_BY_ID);
         try {
-            preparedStatement.setString(1, address.getCity());
+            preparedStatement.setString(1, address.getLogin());
            // preparedStatement.setString(2, address.getCity()); 
            //FIXME что-то надо делать с айдишниками стран.мю стоит их загнать в саму модель данных?
             preparedStatement.setString(3, idCity.toString());
@@ -126,7 +126,7 @@ public class CityController extends AbstractController<Address, Integer>{
         PreparedStatement preparedStatement = getPrepareStatement(INSERT_BY_ID);
         try {
             preparedStatement.setString(1, idCity.toString());
-            preparedStatement.setString(2, address.getCity());
+            preparedStatement.setString(2, address.getLogin());
            /// preparedStatement.setString(3, idCountry.toString());
            //FIXME та же проблема с айдишниками стран
             preparedStatement.executeUpdate();

@@ -34,8 +34,8 @@ public class WorkCard implements Serializable {
 
     }
 
-    public Card addCard(Integer icon, String color) {
-        Card card = new NumericCard(icon, color);
+    public Card addCard(Integer iconId, Integer colorId,Integer cardId) {
+        Card card = new NumericCard(iconId, colorId,cardId);
         arrCards.add(card);
         return card;
     }

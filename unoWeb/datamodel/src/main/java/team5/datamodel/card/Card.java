@@ -19,17 +19,27 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 public abstract class Card implements Serializable {
 
     private Integer iconId;
-    private String color;
+    private Integer colorId;
+    private Integer cardId;
     // private CardType cardType;
+   
+    public Integer getCardId() {
+        return cardId;
+    }
 
 //    public Card(Integer iconId, String color, CardType cardType) {
 //        this.color = color;
 //        this.iconId = iconId;
 //        this.cardType = cardType;
 //    }
-    public Card(Integer iconId, String color) {
-        this.color = color;
+    public void setCardId(Integer cardId) {   
+        this.cardId = cardId;
+    }
+
+    public Card(Integer cardId, Integer colorId, Integer iconId) {
         this.iconId = iconId;
+        this.colorId = colorId;
+        this.cardId = cardId;
     }
 
     public Card() {
@@ -47,13 +57,13 @@ public abstract class Card implements Serializable {
         this.iconId = iconId;
     }
 
-    @XmlElement(name = "color")
-    public String getColor() {
-        return color;
+    @XmlElement(name = "colorID")
+    public Integer getColorId() {
+        return colorId;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColorId(Integer colorId) {
+        this.colorId = colorId;
     }
 
 //    public void setCardType(CardType cardType) {

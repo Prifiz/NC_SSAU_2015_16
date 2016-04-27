@@ -30,16 +30,16 @@ public class UserSearch implements Search {
         Pattern p = Pattern.compile(request);
         Matcher m;
         for (User user : users) {
-            m = p.matcher(user.getAddress().getCity().toString());
+            m = p.matcher(user.getAddress().getLogin().toString());
             if (m.matches()) {
                 resultOfSearch.add(user);
                 continue;
             }
-            m = p.matcher(user.getAddress().getCountry().toString());
-            if (m.matches()) {
-                resultOfSearch.add(user);
-                continue;
-            }
+//            m = p.matcher(user.getAddress().getCountry().toString());
+//            if (m.matches()) {
+//                resultOfSearch.add(user);
+//                continue;
+//            }//FIXME
             m = p.matcher(user.getPrivateInformation().getName().toString());
             if (m.matches()) {
                 resultOfSearch.add(user);
@@ -100,14 +100,14 @@ public class UserSearch implements Search {
         ArrayList<User> resultOfSearch = new ArrayList<User>();
 
         for (User u : users) {
-            if (SearchServices.isStringIncludeSubstring(u.getAddress().getCity().toString(), request)) {
+            if (SearchServices.isStringIncludeSubstring(u.getAddress().getLogin().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
             }
-            if (SearchServices.isStringIncludeSubstring(u.getAddress().getCountry().toString(), request)) {
-                resultOfSearch.add(u);
-                continue;
-            }
+//            if (SearchServices.isStringIncludeSubstring(u.getAddress().getCountry().toString(), request)) {
+//                resultOfSearch.add(u);
+//                continue;
+//            }//FIXME
             if (SearchServices.isStringIncludeSubstring(u.getPrivateInformation().getName().toString(), request)) {
                 resultOfSearch.add(u);
                 continue;
@@ -159,19 +159,19 @@ public class UserSearch implements Search {
 
         if (field == FieldRequest.CITY) {
             for (User user : users) {
-                if (SearchServices.isStringIncludeSubstring(user.getAddress().getCity().toString(), request)) {
+                if (SearchServices.isStringIncludeSubstring(user.getAddress().getLogin().toString(), request)) {
                     resultOfSearch.add(user);
                 }
             }
         }
 
-        if (field == FieldRequest.COUNTRY) {
-            for (User user : users) {
-                if (SearchServices.isStringIncludeSubstring(user.getAddress().getCountry().toString(), request)) {
-                    resultOfSearch.add(user);
-                }
-            }
-        }
+//        if (field == FieldRequest.COUNTRY) {
+//            for (User user : users) {
+//                if (SearchServices.isStringIncludeSubstring(user.getAddress().getCountry().toString(), request)) {
+//                    resultOfSearch.add(user);
+//                }
+//            }
+//        }//FIXME
 
         if (field == FieldRequest.NAME) {
             for (User user : users) {

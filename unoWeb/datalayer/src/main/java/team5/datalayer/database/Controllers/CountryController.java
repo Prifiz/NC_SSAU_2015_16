@@ -45,7 +45,7 @@ public class CountryController extends AbstractController<Address, Integer> {
             while (resultSet.next()) {
                 AddressInitializer addressInitializer = new SimpleAddressInitializer();
                 Address address = addressInitializer.initDefaultAddress();
-                address.setCountry(resultSet.getString("country_name"));
+              //  address.setCountry(resultSet.getString("country_name"));//FIXME
                 list.add(address);
             }
         } catch (SQLException ex) {
@@ -67,7 +67,7 @@ public class CountryController extends AbstractController<Address, Integer> {
             while (resultSet.next()) {
                 AddressInitializer addressInitializer = new SimpleAddressInitializer();
                 Address address = addressInitializer.initDefaultAddress();
-                address.setCountry(resultSet.getString("country_name"));
+                //address.setCountry(resultSet.getString("country_name"));//FIXME
                 list.add(address);
             }
         } catch (SQLException ex) {
@@ -90,7 +90,7 @@ public class CountryController extends AbstractController<Address, Integer> {
     public boolean updateByField(Address address, Integer idCountry) {
         PreparedStatement preparedStatement = getPrepareStatement(UPDATE_BY_ID);
         try {
-            preparedStatement.setString(1, address.getCountry());
+            //preparedStatement.setString(1, address.getCountry());//FIXME
             preparedStatement.setString(2, idCountry.toString());
             preparedStatement.executeUpdate();
             return true;
@@ -125,7 +125,7 @@ public class CountryController extends AbstractController<Address, Integer> {
         PreparedStatement preparedStatement = getPrepareStatement(INSERT_BY_ID);
         try {
             preparedStatement.setString(1, idCountry.toString());
-            preparedStatement.setString(2, address.getCountry());
+           // preparedStatement.setString(2, address.getCountry());//FIXME
             preparedStatement.executeUpdate();
             return true;
 

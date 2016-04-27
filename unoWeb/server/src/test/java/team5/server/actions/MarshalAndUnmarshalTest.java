@@ -36,9 +36,9 @@ public class MarshalAndUnmarshalTest {
     @Test
     public void testMarshalData() throws Exception {
         WorkUser workUser = WorkUser.getWork();
-        workUser.addUser("bob4", "Clark", "Usa", "XX", "1", "1", "email@gmail.com", LocalDate.parse("2012-12-19",DateTimeFormatter.ISO_LOCAL_DATE));
-        workUser.addUser("bob", "Cl", "UCanada", "XxxxX", "sffscsdf", "1ds234", "email1234@gmail.com", LocalDate.parse("2002-07-13",DateTimeFormatter.ISO_LOCAL_DATE));
-        workWithFiles.marshalData(fileName, workUser);
+//        workUser.addUser("bob4", "Clark", "Usa", "XX", "1", "1", "email@gmail.com", LocalDate.parse("2012-12-19",DateTimeFormatter.ISO_LOCAL_DATE));
+//        workUser.addUser("bob", "Cl", "UCanada", "XxxxX", "sffscsdf", "1ds234", "email1234@gmail.com", LocalDate.parse("2002-07-13",DateTimeFormatter.ISO_LOCAL_DATE));
+//        workWithFiles.marshalData(fileName, workUser);//FIXME
     }
 
     /**

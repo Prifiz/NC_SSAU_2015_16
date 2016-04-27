@@ -26,8 +26,8 @@ public final class Admin extends User {
         super.getServiceInfo().setLogin(Constants.LOGIN_ADMIN);
         super.getServiceInfo().setPassword(Constants.PASSWORD_ADMIN);
         super.getServiceInfo().setEmail(Constants.EMAIL_ADMIN);
-        super.getAddress().setCity(Constants.CITY_ADMIN);
-        super.getAddress().setCountry(Constants.COUNTRY_ADMIN);
+        super.getAddress().setLogin(Constants.CITY_ADMIN);
+        //super.getAddress().setCountry(Constants.COUNTRY_ADMIN);FIXME
         super.getPrivateInformation().setName(Constants.NAME_ADMIN);
         super.getPrivateInformation().setSurname(Constants.SURNAME_ADMIN);
         super.getPrivateInformation().setbDay(Constants.B_DAY_ADMIN);
