@@ -14,12 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Dmitry
  */
 public class ResultXmlServlet extends HttpServlet {
+    
+    Logger logger;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +37,7 @@ public class ResultXmlServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            
             DataBaseRequest requestWork = (DataBaseRequest) request.getSession().getAttribute("searchRequest");
             if (requestWork == null) {
                 requestWork = new DataBaseRequest("Пусто");
@@ -44,8 +47,7 @@ public class ResultXmlServlet extends HttpServlet {
                 Marshaller marsh = jaxb.createMarshaller();
                 marsh.marshal(requestWork, out);
             } catch (JAXBException ex) {
-                out.println("Ошибка!");
-                out.println(ex.getLocalizedMessage());
+                logger.debug(ex);
             }
         }
     }
