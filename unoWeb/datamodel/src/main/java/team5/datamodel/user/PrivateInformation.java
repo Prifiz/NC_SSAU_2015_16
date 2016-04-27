@@ -10,8 +10,7 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Table;
+import org.hibernate.annotations.*;
 import team5.datamodel.transmissions.LocalDateAdapter;
 
 /**
@@ -21,9 +20,11 @@ import team5.datamodel.transmissions.LocalDateAdapter;
 @XmlType(propOrder = {/* "name", "surname", "bDay"*/}, name = "privateInformation")
 @XmlRootElement
 @Entity
-@Table(name = "private_information")
+//@Table(name = "private_information")
 public class PrivateInformation implements Serializable {
 
+  //  @Id
+    //@Column(name="login")
     private String login;
     private String name;
     private String surname;
