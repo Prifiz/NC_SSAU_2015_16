@@ -14,9 +14,167 @@
     </head>
     <body>
         <%@ include file="header.jsp" %>
-        
+
         <h3 class="title">User table</h3>
-        
+        <div id="userTable" > 
+            <table id="scroll-table">
+                <tr>
+                <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                </tr>
+                <tr>
+                <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                </tr><tr>
+                <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                </tr>
+                <tr>
+                <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                </tr>
+                <tr>
+                <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                </tr>
+                <tr>
+                <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div id="userTableSearch">
             <form name="fuctional">
                 <table>
@@ -24,7 +182,7 @@
                         <td>
                             <input type="text" name="SearchUser" placeholder="enter login to search" id="searchText">                  
                         </td>
-                    
+
                         <td> <input type="submit" name="Search" value="Search" id="searchButtom"> 
                         </td>
                     </tr>
