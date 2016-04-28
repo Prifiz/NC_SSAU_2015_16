@@ -23,7 +23,7 @@ import team5.datamodel.transmissions.LocalDateAdapter;
 //@Table(name = "private_information")
 public class PrivateInformation implements Serializable {
 
-  //  @Id
+    //@Id
     //@Column(name="login")
     private String login;
     private String name;
