@@ -3,11 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package team5.datamodel.user;
 
 import java.time.LocalDate;
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -15,13 +23,22 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author chanta
  */
-
 @XmlType(propOrder = {/*"login", "password","dateOfRegistration", "email"*/}, name = "serviceInfo")
 @XmlRootElement
+@Entity
+@Table(name = "servise_info")//Граматеи:D service - правильный вариант
 public class ServiceInfo implements Serializable {
 
+    @Id
+    @OneToOne
+    @PrimaryKeyJoinColumn(name="login")
     private String login;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "data_of_registration")
+    @Temporal(value = TemporalType.DATE)
     private final LocalDate dateOfRegistration;
     private String email;
 
@@ -33,12 +50,11 @@ public class ServiceInfo implements Serializable {
     }
 
     public ServiceInfo() {
-        this.login="";
+        this.login = "";
         this.password = "";
         this.dateOfRegistration = LocalDate.now();
         this.email = "";
     }
-    
 
     public LocalDate getDateOfRegistration() {
         return dateOfRegistration;
@@ -82,8 +98,8 @@ public class ServiceInfo implements Serializable {
             return false;
         }
         ServiceInfo serviceInfo = (ServiceInfo) object;
-        if ((login!=null)&&(login.equals(serviceInfo.getLogin())) && (password!=null)&&(password.equals(serviceInfo.getPassword()))
-                &&(dateOfRegistration!=null)&& (dateOfRegistration.equals(serviceInfo.getDateOfRegistration())) && (email!=null)&&(email.equals(serviceInfo.email))) {
+        if ((login != null) && (login.equals(serviceInfo.getLogin())) && (password != null) && (password.equals(serviceInfo.getPassword()))
+                && (dateOfRegistration != null) && (dateOfRegistration.equals(serviceInfo.getDateOfRegistration())) && (email != null) && (email.equals(serviceInfo.email))) {
             return true;
         }
 

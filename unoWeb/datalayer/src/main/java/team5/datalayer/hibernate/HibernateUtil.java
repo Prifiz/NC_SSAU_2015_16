@@ -5,27 +5,28 @@
  */
 package team5.datalayer.hibernate;
 
-import org.hibernate.cfg.AnnotationConfiguration;
+import java.io.File;
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
- * Hibernate Utility class with a convenient method to get Session Factory
- * object.
  *
- * @author Дмитрий
+ * @author андрей
  */
 public class HibernateUtil {
-
-    private static final SessionFactory sessionFactory;
+    
+    private static SessionFactory sessionFactory;
+    private static Logger logger = Logger.getLogger(HibernateUtil.class);
     
     static {
         try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
-            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+            //File file = new File("src/main/java/team5/datalayer/hibernate/config/hibernate.cfg.xml");
+            sessionFactory = configureSessionFactory();//new Configuration().configure(file).buildSessionFactory();
         } catch (Throwable ex) {
-            // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            // logger.debug(ex.getMessage());//FIXME
+            System.out.println("Ошибка hibernate");
             throw new ExceptionInInitializerError(ex);
         }
     }
@@ -33,4 +34,39 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
+    
+    private static SessionFactory configureSessionFactory()
+            throws HibernateException {
+
+        // Настройки hibernate
+        Configuration configuration = new Configuration()
+                .setProperty("hibernate.connection.driver_class",
+                        "org.postgresql.Driver")
+                .setProperty("hibernate.connection.url",
+                        "jdbc:postgresql://localhost:5432/postgres")
+                .setProperty("hibernate.connection.username",
+                        "postgres")
+                .setProperty("hibernate.connection.password",
+                        "team5sql")
+                .setProperty("hibernate.connection.pool_size", "1")
+                .setProperty("hibernate.connection.autocommit", "false")
+                .setProperty("hibernate.cache.provider_class",
+                        "org.hibernate.cache.NoCacheProvider")
+                .setProperty("hibernate.cache.use_second_level_cache",
+                        "false")
+                .setProperty("hibernate.cache.use_query_cache", "false")
+                .setProperty("hibernate.dialect",
+                        "org.hibernate.dialect.PostgreSQLDialect")
+                .setProperty("hibernate.show_sql", "true")
+                .setProperty("hibernate.current_session_context_class",
+                        "thread")
+                //.addPackage( "ru.miralab.db" )
+                .addAnnotatedClass(team5.datamodel.user.PrivateInformation.class)
+                .addAnnotatedClass(team5.datamodel.user.ServiceInfo.class)
+                .addAnnotatedClass(team5.datamodel.user.adress.Address.class);
+        //serviceRegistry = new ServiceRegistryBuilder().applySettings(
+          //      configuration.getProperties()).buildServiceRegistry();
+        return configuration.buildSessionFactory();
+    }
+    
 }

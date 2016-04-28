@@ -7,10 +7,15 @@ package team5.datamodel.user;
 
 import java.time.LocalDate;
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.hibernate.annotations.*;
 import team5.datamodel.transmissions.LocalDateAdapter;
 
 /**
@@ -20,13 +25,18 @@ import team5.datamodel.transmissions.LocalDateAdapter;
 @XmlType(propOrder = {/* "name", "surname", "bDay"*/}, name = "privateInformation")
 @XmlRootElement
 @Entity
-//@Table(name = "private_information")
+@Table(name = "private_information")
 public class PrivateInformation implements Serializable {
 
-    //@Id
-    //@Column(name="login")
+    @Id
+    @JoinColumn(name="login",unique=true)
+    @OneToOne(mappedBy="login")
     private String login;
+    
+    @Column(name="name")
     private String name;
+    
+    @Column(name="surname")
     private String surname;
     private LocalDate bDay;
 

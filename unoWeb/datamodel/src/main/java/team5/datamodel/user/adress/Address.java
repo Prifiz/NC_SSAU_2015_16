@@ -6,6 +6,11 @@
 package team5.datamodel.user.adress;
 
 import java.io.Serializable;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,8 +22,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 public class Address implements Serializable {
 
-    private Integer idCity;
+    @Id
+    @OneToOne
+    @PrimaryKeyJoinColumn(name = "login")
     private String login;
+
+    @JoinColumn(name="id_city")
+    @ManyToOne
+    private Integer idCity;
 
     public Address(Integer idCity, String city) {
         this.idCity = idCity;
@@ -59,7 +70,7 @@ public class Address implements Serializable {
             return false;
         }
         Address address = (Address) object;
-        if ((login!=null)&&(login.equals(address.getLogin())) &&(idCity!=null)&& (idCity.equals(address.getIdCity()))) {
+        if ((login != null) && (login.equals(address.getLogin())) && (idCity != null) && (idCity.equals(address.getIdCity()))) {
             return true;
         }
         return false;

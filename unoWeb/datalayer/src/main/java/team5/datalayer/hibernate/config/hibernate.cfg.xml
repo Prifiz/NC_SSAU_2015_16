@@ -9,11 +9,7 @@
     <property name="hibernate.connection.password">team5sql</property>
     
     <mapping class="team5.datamodel.user.adress.Address" />
-    <mapping class="team5.datamodel.user.adress.City" />
-    <mapping class="team5.datamodel.user.adress.Country" />
     <mapping class="team5.datamodel.user.PrivateInformation" />
     <mapping class="team5.datamodel.user.ServiceInfo" />
-    <mapping class="team5.datamodel.card.NumericCard" />
-    <mapping class="team5.datamodel.card.Color" />
   </session-factory>
 </hibernate-configuration>
