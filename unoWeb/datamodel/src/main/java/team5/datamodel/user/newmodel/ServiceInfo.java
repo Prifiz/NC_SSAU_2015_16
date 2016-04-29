@@ -6,16 +6,33 @@
 package team5.datamodel.user.newmodel;
 
 import java.time.LocalDate;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author андрей
  */
+@Entity
+@Table(name = "servise_info")//Граматеи:D service - правильный вариант
 public class ServiceInfo {
 
+    @Id
+    @OneToOne
+    @PrimaryKeyJoinColumn(name = "login")
     private String login;
+    @Column(name = "password")
     private String password;
+    @Column(name = "email")
     private String email;
+    @Column(name = "data_of_registration")
+    @Temporal(value = TemporalType.DATE)
     private LocalDate dateOfRegistration;
 
     public ServiceInfo(String login, String password, String email) {
@@ -49,13 +66,14 @@ public class ServiceInfo {
         this.password = password;
     }
 
-     public void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
     public String getEmail() {
         return email;
     }
+
     public LocalDate getDateOfRegistration() {
         return dateOfRegistration;
     }
