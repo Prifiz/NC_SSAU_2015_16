@@ -13,20 +13,17 @@ public class PrivateInformation {
     private String login;
     private String name;
     private String surname;
-    private String email;
 
-    public PrivateInformation(String login, String name, String surname, String email) {
+    public PrivateInformation(String login, String name, String surname) {
         this.login = login;
         this.name = name;
         this.surname = surname;
-        this.email = email;
     }
     
     public PrivateInformation(){
         login = "";
         name = "";
         surname="";
-        email="";
     }
 
     public String getLogin() {
@@ -53,11 +50,4 @@ public class PrivateInformation {
         this.surname = surname;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

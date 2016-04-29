@@ -10,15 +10,17 @@ package team5.datamodel.user.newmodel;
  * @author андрей
  */
 public class City {
+
+    public final static int DEFAULT = 2;//todo как я понимаю, это значение потом будет где-то присваваиться
     private String cityName;
     private int id_country;
 
-    public City(String city_name, int id_country) {
+    public City(String city_name) {
         this.cityName = city_name;
-        this.id_country = id_country;
+        this.id_country = DEFAULT;
     }
-    
-    public City(){
+
+    public City() {
         cityName = "";
         id_country = 0;
     }

@@ -10,6 +10,7 @@ package team5.datamodel.user.newmodel;
  * @author андрей
  */
 public class Country {
+    
     private String countryName;
 
     public Country(String countryName) {
