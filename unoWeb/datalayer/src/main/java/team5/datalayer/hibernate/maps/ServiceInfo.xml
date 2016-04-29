@@ -11,7 +11,8 @@ and open the template in the editor.
     <hibernate-mapping>
         <class name="team5.datamodel.user.newmodel.ServiceInfo" table="service_info">
             <property column="login" name="login" type="java.lang.String"/>
-            <property column="password" name="name" type="java.lang.String"/>
+            <property column="password" name="password" type="java.lang.String"/>
+            <property column="email" name="email" type="java.lang.String"/>
             <property column="data_of_registration" name="dateOfRegistration" type="date"/>
             <one-to-one column="login" name="private_information" />
             <one-to-one column="login" name="addresses" />
