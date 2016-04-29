@@ -1,0 +1,207 @@
+10:26:48,450 DEBUG main logging:messageLogger:28 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+10:26:48,472 DEBUG main IntegratorServiceImpl:addIntegrator:46 - Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+10:26:48,472 DEBUG main IntegratorServiceImpl:addIntegrator:46 - Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+10:26:48,488 DEBUG main IntegratorServiceImpl:addIntegrator:46 - Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+10:26:48,504 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Cache71] -> [org.hibernate.dialect.Cache71Dialect]
+10:26:48,504 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [CUBRID] -> [org.hibernate.dialect.CUBRIDDialect]
+10:26:48,504 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [DB2] -> [org.hibernate.dialect.DB2Dialect]
+10:26:48,504 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [DB2390] -> [org.hibernate.dialect.DB2390Dialect]
+10:26:48,504 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [DB2400] -> [org.hibernate.dialect.DB2400Dialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [DerbyTenFive] -> [org.hibernate.dialect.DerbyTenFiveDialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [DerbyTenSix] -> [org.hibernate.dialect.DerbyTenSixDialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [DerbyTenSeven] -> [org.hibernate.dialect.DerbyTenSevenDialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Firebird] -> [org.hibernate.dialect.FirebirdDialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [FrontBase] -> [org.hibernate.dialect.FrontBaseDialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [H2] -> [org.hibernate.dialect.H2Dialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [HSQL] -> [org.hibernate.dialect.HSQLDialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Informix] -> [org.hibernate.dialect.InformixDialect]
+10:26:48,519 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Ingres] -> [org.hibernate.dialect.IngresDialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Ingres9] -> [org.hibernate.dialect.Ingres9Dialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Ingres10] -> [org.hibernate.dialect.Ingres10Dialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Interbase] -> [org.hibernate.dialect.InterbaseDialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [JDataStore] -> [org.hibernate.dialect.JDataStoreDialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Mckoi] -> [org.hibernate.dialect.MckoiDialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [MimerSQL] -> [org.hibernate.dialect.MimerSQLDialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [MySQL5] -> [org.hibernate.dialect.MySQL5Dialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [MySQL5InnoDB] -> [org.hibernate.dialect.MySQL5InnoDBDialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [MySQL57InnoDB] -> [org.hibernate.dialect.MySQL57InnoDBDialect]
+10:26:48,535 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Oracle8i] -> [org.hibernate.dialect.Oracle8iDialect]
+10:26:48,551 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Oracle9i] -> [org.hibernate.dialect.Oracle9iDialect]
+10:26:48,551 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Oracle10g] -> [org.hibernate.dialect.Oracle10gDialect]
+10:26:48,551 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Pointbase] -> [org.hibernate.dialect.PointbaseDialect]
+10:26:48,551 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [PostgresPlus] -> [org.hibernate.dialect.PostgresPlusDialect]
+10:26:48,551 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [PostgreSQL81] -> [org.hibernate.dialect.PostgreSQL81Dialect]
+10:26:48,551 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [PostgreSQL82] -> [org.hibernate.dialect.PostgreSQL82Dialect]
+10:26:48,551 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [PostgreSQL9] -> [org.hibernate.dialect.PostgreSQL9Dialect]
+10:26:48,551 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Progress] -> [org.hibernate.dialect.ProgressDialect]
+10:26:48,566 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [SAPDB] -> [org.hibernate.dialect.SAPDBDialect]
+10:26:48,569 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [SQLServer] -> [org.hibernate.dialect.SQLServerDialect]
+10:26:48,573 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [SQLServer2005] -> [org.hibernate.dialect.SQLServer2005Dialect]
+10:26:48,573 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [SQLServer2008] -> [org.hibernate.dialect.SQLServer2008Dialect]
+10:26:48,588 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Sybase11] -> [org.hibernate.dialect.Sybase11Dialect]
+10:26:48,588 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [SybaseAnywhere] -> [org.hibernate.dialect.SybaseAnywhereDialect]
+10:26:48,588 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [SybaseASE15] -> [org.hibernate.dialect.SybaseASE15Dialect]
+10:26:48,588 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [SybaseASE157] -> [org.hibernate.dialect.SybaseASE157Dialect]
+10:26:48,588 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [Teradata] -> [org.hibernate.dialect.TeradataDialect]
+10:26:48,588 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.dialect.Dialect] : [TimesTen] -> [org.hibernate.dialect.TimesTenDialect]
+10:26:48,604 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [Borland] -> [org.hibernate.engine.transaction.jta.platform.internal.BorlandEnterpriseServerJtaPlatform]
+10:26:48,604 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.BorlandEnterpriseServerJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.BorlandEnterpriseServerJtaPlatform]
+10:26:48,604 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [Bitronix] -> [org.hibernate.engine.transaction.jta.platform.internal.BitronixJtaPlatform]
+10:26:48,604 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.BitronixJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.BitronixJtaPlatform]
+10:26:48,604 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [JBossAS] -> [org.hibernate.engine.transaction.jta.platform.internal.JBossAppServerJtaPlatform]
+10:26:48,604 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.JBossAppServerJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [JBossTS] -> [org.hibernate.engine.transaction.jta.platform.internal.JBossStandAloneJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.JBossStandAloneJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [JOnAS] -> [org.hibernate.engine.transaction.jta.platform.internal.JOnASJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.JOnASJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.JOnASJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [JOTM] -> [org.hibernate.engine.transaction.jta.platform.internal.JOTMJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.JOTMJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.JOTMJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [JRun4] -> [org.hibernate.engine.transaction.jta.platform.internal.JRun4JtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.JRun4JtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.JRun4JtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [OC4J] -> [org.hibernate.engine.transaction.jta.platform.internal.OC4JJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.OC4JJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.OC4JJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [Orion] -> [org.hibernate.engine.transaction.jta.platform.internal.OrionJtaPlatform]
+10:26:48,620 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.OrionJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.OrionJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [Resin] -> [org.hibernate.engine.transaction.jta.platform.internal.ResinJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.ResinJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.ResinJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [SunOne] -> [org.hibernate.engine.transaction.jta.platform.internal.SunOneJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.SunOneJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.SunOneJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [Weblogic] -> [org.hibernate.engine.transaction.jta.platform.internal.WeblogicJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.WeblogicJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.WeblogicJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [WebSphere] -> [org.hibernate.engine.transaction.jta.platform.internal.WebSphereJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.WebSphereJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.WebSphereJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [WebSphereExtended] -> [org.hibernate.engine.transaction.jta.platform.internal.WebSphereExtendedJtaPlatform]
+10:26:48,635 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform] : [org.hibernate.service.jta.platform.internal.WebSphereExtendedJtaPlatform] -> [org.hibernate.engine.transaction.jta.platform.internal.WebSphereExtendedJtaPlatform]
+10:26:48,651 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.resource.transaction.TransactionCoordinatorBuilder] : [jdbc] -> [org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorBuilderImpl]
+10:26:48,651 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.resource.transaction.TransactionCoordinatorBuilder] : [jta] -> [org.hibernate.resource.transaction.backend.jta.internal.JtaTransactionCoordinatorBuilderImpl]
+10:26:48,651 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.resource.transaction.TransactionCoordinatorBuilder] : [org.hibernate.transaction.JDBCTransactionFactory] -> [org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorBuilderImpl]
+10:26:48,651 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.resource.transaction.TransactionCoordinatorBuilder] : [org.hibernate.transaction.JTATransactionFactory] -> [org.hibernate.resource.transaction.backend.jta.internal.JtaTransactionCoordinatorBuilderImpl]
+10:26:48,651 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.resource.transaction.TransactionCoordinatorBuilder] : [org.hibernate.transaction.CMTTransactionFactory] -> [org.hibernate.resource.transaction.backend.jta.internal.JtaTransactionCoordinatorBuilderImpl]
+10:26:48,651 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.hql.spi.id.MultiTableBulkIdStrategy] : [persistent] -> [org.hibernate.hql.spi.id.persistent.PersistentTableBulkIdStrategy]
+10:26:48,667 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.hql.spi.id.MultiTableBulkIdStrategy] : [global_temporary] -> [org.hibernate.hql.spi.id.global.GlobalTemporaryTableBulkIdStrategy]
+10:26:48,671 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.hql.spi.id.MultiTableBulkIdStrategy] : [local_temporary] -> [org.hibernate.hql.spi.id.local.LocalTemporaryTableBulkIdStrategy]
+10:26:48,673 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.event.spi.EntityCopyObserver] : [disallow] -> [org.hibernate.event.internal.EntityCopyNotAllowedObserver]
+10:26:48,673 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.event.spi.EntityCopyObserver] : [allow] -> [org.hibernate.event.internal.EntityCopyAllowedObserver]
+10:26:48,673 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.event.spi.EntityCopyObserver] : [log] -> [org.hibernate.event.internal.EntityCopyAllowedLoggedObserver]
+10:26:48,673 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.boot.model.naming.ImplicitNamingStrategy] : [default] -> [org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl]
+10:26:48,673 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.boot.model.naming.ImplicitNamingStrategy] : [jpa] -> [org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl]
+10:26:48,673 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.boot.model.naming.ImplicitNamingStrategy] : [legacy-jpa] -> [org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl]
+10:26:48,673 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.boot.model.naming.ImplicitNamingStrategy] : [legacy-hbm] -> [org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl]
+10:26:48,689 TRACE main StrategySelectorImpl:registerStrategyImplementor:53 - Registering named strategy selector [org.hibernate.boot.model.naming.ImplicitNamingStrategy] : [component-path] -> [org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl]
+10:26:48,835  INFO main Version:logVersion:37 - HHH000412: Hibernate Core {5.1.0.Final}
+10:26:48,835  INFO main Environment:<clinit>:213 - HHH000206: hibernate.properties not found
+10:26:48,835  INFO main Environment:buildBytecodeProvider:317 - HHH000021: Bytecode provider name : javassist
+10:26:48,873 DEBUG main Configuration:buildSessionFactory:722 - Building session factory using internal StandardServiceRegistryBuilder
+10:26:48,904 DEBUG main ServiceBinding:setService:68 - Overriding existing service binding [org.hibernate.secure.spi.JaccService]
+10:26:48,904 DEBUG main Configuration:buildSessionFactory:653 - Building session factory using provided StandardServiceRegistry
+10:26:48,951 TRACE main AbstractServiceRegistryImpl:initializeService:204 - Initializing service [role=org.hibernate.engine.config.spi.ConfigurationService]
+10:26:48,973 TRACE main AbstractServiceRegistryImpl:initializeService:204 - Initializing service [role=org.hibernate.cache.spi.RegionFactory]
+10:26:48,973 DEBUG main RegionFactoryInitiator:initiateService:88 - Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
+10:26:49,020  INFO main Version:<clinit>:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+10:26:49,036 TRACE main AbstractServiceRegistryImpl:initializeService:204 - Initializing service [role=org.hibernate.boot.cfgxml.spi.CfgXmlAccessService]
+10:26:49,121 DEBUG main BasicTypeRegistry:register:135 - Adding type registration boolean -> org.hibernate.type.BooleanType@57536d79
+10:26:49,121 DEBUG main BasicTypeRegistry:register:135 - Adding type registration boolean -> org.hibernate.type.BooleanType@57536d79
+10:26:49,121 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@57536d79
+10:26:49,125 DEBUG main BasicTypeRegistry:register:135 - Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@7791a895
+10:26:49,129 DEBUG main BasicTypeRegistry:register:135 - Adding type registration true_false -> org.hibernate.type.TrueFalseType@61f8bee4
+10:26:49,133 DEBUG main BasicTypeRegistry:register:135 - Adding type registration yes_no -> org.hibernate.type.YesNoType@5b87ed94
+10:26:49,141 DEBUG main BasicTypeRegistry:register:135 - Adding type registration byte -> org.hibernate.type.ByteType@43814d18
+10:26:49,141 DEBUG main BasicTypeRegistry:register:135 - Adding type registration byte -> org.hibernate.type.ByteType@43814d18
+10:26:49,141 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@43814d18
+10:26:49,141 DEBUG main BasicTypeRegistry:register:135 - Adding type registration character -> org.hibernate.type.CharacterType@551aa95a
+10:26:49,141 DEBUG main BasicTypeRegistry:register:135 - Adding type registration char -> org.hibernate.type.CharacterType@551aa95a
+10:26:49,141 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@551aa95a
+10:26:49,157 DEBUG main BasicTypeRegistry:register:135 - Adding type registration short -> org.hibernate.type.ShortType@cd2dae5
+10:26:49,157 DEBUG main BasicTypeRegistry:register:135 - Adding type registration short -> org.hibernate.type.ShortType@cd2dae5
+10:26:49,157 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Short -> org.hibernate.type.ShortType@cd2dae5
+10:26:49,157 DEBUG main BasicTypeRegistry:register:135 - Adding type registration integer -> org.hibernate.type.IntegerType@3224f60b
+10:26:49,157 DEBUG main BasicTypeRegistry:register:135 - Adding type registration int -> org.hibernate.type.IntegerType@3224f60b
+10:26:49,173 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@3224f60b
+10:26:49,174 DEBUG main BasicTypeRegistry:register:135 - Adding type registration long -> org.hibernate.type.LongType@7c29daf3
+10:26:49,174 DEBUG main BasicTypeRegistry:register:135 - Adding type registration long -> org.hibernate.type.LongType@7c29daf3
+10:26:49,174 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Long -> org.hibernate.type.LongType@7c29daf3
+10:26:49,189 DEBUG main BasicTypeRegistry:register:135 - Adding type registration float -> org.hibernate.type.FloatType@614ddd49
+10:26:49,189 DEBUG main BasicTypeRegistry:register:135 - Adding type registration float -> org.hibernate.type.FloatType@614ddd49
+10:26:49,189 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Float -> org.hibernate.type.FloatType@614ddd49
+10:26:49,205 DEBUG main BasicTypeRegistry:register:135 - Adding type registration double -> org.hibernate.type.DoubleType@51cdd8a
+10:26:49,205 DEBUG main BasicTypeRegistry:register:135 - Adding type registration double -> org.hibernate.type.DoubleType@51cdd8a
+10:26:49,205 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@51cdd8a
+10:26:49,205 DEBUG main BasicTypeRegistry:register:135 - Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@5a1c0542
+10:26:49,221 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@5a1c0542
+10:26:49,221 DEBUG main BasicTypeRegistry:register:135 - Adding type registration big_integer -> org.hibernate.type.BigIntegerType@1e965684
+10:26:49,221 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@1e965684
+10:26:49,221 DEBUG main BasicTypeRegistry:register:135 - Adding type registration string -> org.hibernate.type.StringType@6acdbdf5
+10:26:49,221 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.String -> org.hibernate.type.StringType@6acdbdf5
+10:26:49,221 DEBUG main BasicTypeRegistry:register:135 - Adding type registration nstring -> org.hibernate.type.StringNVarcharType@27a8c74e
+10:26:49,236 DEBUG main BasicTypeRegistry:register:135 - Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@e320068
+10:26:49,236 DEBUG main BasicTypeRegistry:register:135 - Adding type registration url -> org.hibernate.type.UrlType@2781e022
+10:26:49,236 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.net.URL -> org.hibernate.type.UrlType@2781e022
+10:26:49,236 DEBUG main BasicTypeRegistry:register:135 - Adding type registration date -> org.hibernate.type.DateType@ea1a8d5
+10:26:49,236 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.sql.Date -> org.hibernate.type.DateType@ea1a8d5
+10:26:49,236 DEBUG main BasicTypeRegistry:register:135 - Adding type registration time -> org.hibernate.type.TimeType@17d677df
+10:26:49,252 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.sql.Time -> org.hibernate.type.TimeType@17d677df
+10:26:49,252 DEBUG main BasicTypeRegistry:register:135 - Adding type registration timestamp -> org.hibernate.type.TimestampType@480bdb19
+10:26:49,252 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@480bdb19
+10:26:49,252 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.util.Date -> org.hibernate.type.TimestampType@480bdb19
+10:26:49,252 DEBUG main BasicTypeRegistry:register:135 - Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@467aecef
+10:26:49,269 DEBUG main BasicTypeRegistry:register:135 - Adding type registration calendar -> org.hibernate.type.CalendarType@6f195bc3
+10:26:49,269 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@6f195bc3
+10:26:49,270 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@6f195bc3
+10:26:49,272 DEBUG main BasicTypeRegistry:register:135 - Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@c46bcd4
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration locale -> org.hibernate.type.LocaleType@37d31475
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@37d31475
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration currency -> org.hibernate.type.CurrencyType@2c039ac6
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@2c039ac6
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration timezone -> org.hibernate.type.TimeZoneType@687080dc
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@687080dc
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration class -> org.hibernate.type.ClassType@e874448
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Class -> org.hibernate.type.ClassType@e874448
+10:26:49,274 DEBUG main BasicTypeRegistry:register:135 - Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@12cdcf4
+10:26:49,290 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@12cdcf4
+10:26:49,290 DEBUG main BasicTypeRegistry:register:135 - Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@4923ab24
+10:26:49,305 DEBUG main BasicTypeRegistry:register:135 - Adding type registration binary -> org.hibernate.type.BinaryType@262b2c86
+10:26:49,305 DEBUG main BasicTypeRegistry:register:135 - Adding type registration byte[] -> org.hibernate.type.BinaryType@262b2c86
+10:26:49,305 DEBUG main BasicTypeRegistry:register:135 - Adding type registration [B -> org.hibernate.type.BinaryType@262b2c86
+10:26:49,305 DEBUG main BasicTypeRegistry:register:135 - Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@a38d7a3
+10:26:49,305 DEBUG main BasicTypeRegistry:register:135 - Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@a38d7a3
+10:26:49,305 DEBUG main BasicTypeRegistry:register:135 - Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@a38d7a3
+10:26:49,321 DEBUG main BasicTypeRegistry:register:135 - Adding type registration image -> org.hibernate.type.ImageType@87f383f
+10:26:49,321 DEBUG main BasicTypeRegistry:register:135 - Adding type registration characters -> org.hibernate.type.CharArrayType@11758f2a
+10:26:49,321 DEBUG main BasicTypeRegistry:register:135 - Adding type registration char[] -> org.hibernate.type.CharArrayType@11758f2a
+10:26:49,321 DEBUG main BasicTypeRegistry:register:135 - Adding type registration [C -> org.hibernate.type.CharArrayType@11758f2a
+10:26:49,321 DEBUG main BasicTypeRegistry:register:135 - Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@757942a1
+10:26:49,321 DEBUG main BasicTypeRegistry:register:135 - Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@757942a1
+10:26:49,337 DEBUG main BasicTypeRegistry:register:135 - Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@757942a1
+10:26:49,337 DEBUG main BasicTypeRegistry:register:135 - Adding type registration text -> org.hibernate.type.TextType@b7dd107
+10:26:49,337 DEBUG main BasicTypeRegistry:register:135 - Adding type registration ntext -> org.hibernate.type.NTextType@569cfc36
+10:26:49,352 DEBUG main BasicTypeRegistry:register:135 - Adding type registration blob -> org.hibernate.type.BlobType@78ac1102
+10:26:49,352 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@78ac1102
+10:26:49,352 DEBUG main BasicTypeRegistry:register:135 - Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@7e0e6aa2
+10:26:49,373 DEBUG main BasicTypeRegistry:register:135 - Adding type registration clob -> org.hibernate.type.ClobType@67b467e9
+10:26:49,374 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@67b467e9
+10:26:49,374 DEBUG main BasicTypeRegistry:register:135 - Adding type registration nclob -> org.hibernate.type.NClobType@319b92f3
+10:26:49,374 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@319b92f3
+10:26:49,374 DEBUG main BasicTypeRegistry:register:135 - Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@5579bb86
+10:26:49,374 DEBUG main BasicTypeRegistry:register:135 - Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@2fd66ad3
+10:26:49,374 DEBUG main BasicTypeRegistry:register:135 - Adding type registration serializable -> org.hibernate.type.SerializableType@10d59286
+10:26:49,406 DEBUG main BasicTypeRegistry:register:135 - Adding type registration object -> org.hibernate.type.ObjectType@543788f3
+10:26:49,406 DEBUG main BasicTypeRegistry:register:135 - Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@543788f3
+10:26:49,421 DEBUG main BasicTypeRegistry:register:135 - Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@44a3ec6b
+10:26:49,437 DEBUG main BasicTypeRegistry:register:135 - Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@768b970c
+10:26:49,437 DEBUG main BasicTypeRegistry:register:135 - Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@15b3e5b
+10:26:49,437 DEBUG main BasicTypeRegistry:register:135 - Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@4b53f538
+10:26:49,437 DEBUG main BasicTypeRegistry:register:135 - Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@4bb4de6a
+10:26:49,437 DEBUG main BasicTypeRegistry:register:135 - Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@2f8f5f62
+10:26:49,437 DEBUG main BasicTypeRegistry:register:135 - Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@7dc222ae
+10:26:49,437 DEBUG main BasicTypeRegistry:register:135 - Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@5fcd892a
+10:26:49,437 TRACE main AbstractServiceRegistryImpl:initializeService:204 - Initializing service [role=org.hibernate.engine.jdbc.spi.JdbcServices]
+10:26:49,475 TRACE main AbstractServiceRegistryImpl:initializeService:204 - Initializing service [role=org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+10:26:49,475 TRACE main AbstractServiceRegistryImpl:initializeService:204 - Initializing service [role=org.hibernate.engine.jdbc.dialect.spi.DialectFactory]
+10:26:49,478 TRACE main AbstractServiceRegistryImpl:initializeService:204 - Initializing service [role=org.hibernate.engine.jdbc.dialect.spi.DialectResolver]
+10:26:49,501 TRACE main AbstractServiceRegistryImpl:initializeService:204 - Initializing service [role=org.hibernate.engine.jdbc.connections.spi.ConnectionProvider]
+10:26:49,513  WARN main connections:configure:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+10:26:49,626  INFO main connections:buildCreator:127 - HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://localhost:5432/postgres]
+10:26:49,628  INFO main connections:buildCreator:133 - HHH10001001: Connection properties: {user=postgres, password=team5sql, autocommit=false}
+10:26:49,630  INFO main connections:buildCreator:141 - HHH10001003: Autocommit mode: false
+10:26:49,662 DEBUG main DriverManagerConnectionProviderImpl:debugf:384 - Initializing Connection pool with 1 Connections
+10:26:49,667  INFO main DriverManagerConnectionProviderImpl:<init>:39 - HHH000115: Hibernate connection pool size: 1 (min=1)
