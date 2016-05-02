@@ -19,8 +19,8 @@ import javax.persistence.TemporalType;
  *
  * @author андрей
  */
-@Entity
-@Table(name = "servise_info")//Граматеи:D service - правильный вариант
+//@Entity
+//@Table(name = "servise_info")//Граматеи:D service - правильный вариант
 public class ServiceInfo {
 
     @Id

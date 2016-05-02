@@ -47,7 +47,7 @@ public class HibernateUtil {
                 .setProperty("hibernate.connection.username",
                         "postgres")
                 .setProperty("hibernate.connection.password",
-                        "team5sql")
+                        "2536")
                 .setProperty("hibernate.connection.pool_size", "1")
                 .setProperty("hibernate.connection.autocommit", "false")
                 .setProperty("hibernate.cache.provider_class",

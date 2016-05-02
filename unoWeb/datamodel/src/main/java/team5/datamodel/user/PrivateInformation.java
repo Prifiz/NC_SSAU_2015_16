@@ -24,8 +24,8 @@ import team5.datamodel.transmissions.LocalDateAdapter;
  */
 @XmlType(propOrder = {/* "name", "surname", "bDay"*/}, name = "privateInformation")
 @XmlRootElement
-//@Entity
-//@Table(name = "private_information")
+@Entity
+@Table(name = "private_information")
 public class PrivateInformation implements Serializable {
 
     @Id

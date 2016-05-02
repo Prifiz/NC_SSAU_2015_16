@@ -17,8 +17,8 @@ import javax.persistence.Table;
  *
  * @author андрей
  */
-@Entity
-@Table(name = "private_information")
+//@Entity
+//@Table(name = "private_information")
 public class PrivateInformation implements Serializable {
     @Id
     @JoinColumn(name="login",unique=true)

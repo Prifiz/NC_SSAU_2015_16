@@ -8,7 +8,7 @@ package team5.datalayer.database;
 import org.apache.log4j.Logger;
 import team5.datalayer.hibernate.HibernateUtil;
 import team5.datalayer.hibernate.dao.PrivateInformationDao;
-import team5.datamodel.user.newmodel.PrivateInformation;
+import team5.datamodel.user.PrivateInformation;
 
 /**
  *
