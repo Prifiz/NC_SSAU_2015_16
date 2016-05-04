@@ -1,5 +1,6 @@
-﻿
 package team5.datalayer.database;
+
+
 
 import org.apache.log4j.Logger;
 import team5.datalayer.hibernate.HibernateUtil;
