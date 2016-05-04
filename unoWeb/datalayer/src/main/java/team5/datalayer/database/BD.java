@@ -2,10 +2,9 @@ package team5.datalayer.database;
 
 
 
-import org.apache.log4j.Logger;
-import team5.datalayer.hibernate.HibernateUtil;
 import team5.datalayer.hibernate.dao.PrivateInformationDao;
-import team5.datamodel.user.PrivateInformation;
+import team5.datamodel.user.newmodel.PrivateInformation;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -15,7 +14,7 @@ public class BD {
 
     public static void main(String[] args) {
 
-//        Logger logger;
+        Logger logger = Logger.getLogger(BD.class);
         // Creator creator = new Creator();
         //Droper droper=new Droper();
         // Searcher searcher=new Searcher();
@@ -31,8 +30,8 @@ public class BD {
             PrivateInformation privateInformation = privateInformationDao.getPrivateInformationByLogin("Bob");
             System.out.println("Инфа по Бобу " + privateInformation.getLogin() + " " + privateInformation.getName());
         } catch (ExceptionInInitializerError ex) {
-//            logger.debug(ex.getMessage());
-            System.out.println("Ошибка!!!!! " + ex.getMessage());
+            logger.error(ex.getMessage(),ex);
+            System.out.println(ex.getStackTrace().toString());
         }
     }
 

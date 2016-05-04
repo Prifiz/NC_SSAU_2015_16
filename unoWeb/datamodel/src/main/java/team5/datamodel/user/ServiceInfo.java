@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = {/*"login", "password","dateOfRegistration", "email"*/}, name = "serviceInfo")
 @XmlRootElement
-@Entity
-@Table(name = "service_info")//Граматеи:D service - правильный вариант
+//@Entity
+//@Table(name = "service_info")//Граматеи:D service - правильный вариант
 public class ServiceInfo implements Serializable {
 
     @Id

@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import team5.datalayer.hibernate.HibernateUtil;
 
-import team5.datamodel.user.PrivateInformation;
+import team5.datamodel.user.newmodel.PrivateInformation;
 
 /**
  *

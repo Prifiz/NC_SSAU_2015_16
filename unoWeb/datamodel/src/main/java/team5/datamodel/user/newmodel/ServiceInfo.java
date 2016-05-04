@@ -5,6 +5,7 @@
  */
 package team5.datamodel.user.newmodel;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,9 +20,9 @@ import javax.persistence.TemporalType;
  *
  * @author андрей
  */
-//@Entity
-//@Table(name = "servise_info")//Граматеи:D service - правильный вариант
-public class ServiceInfo {
+@Entity
+@Table(name = "servise_info")//Граматеи:D service - правильный вариант
+public class ServiceInfo implements Serializable{
 
     @Id
     @OneToOne
@@ -32,7 +33,7 @@ public class ServiceInfo {
     @Column(name = "email")
     private String email;
     @Column(name = "data_of_registration")
-    @Temporal(value = TemporalType.DATE)
+    //@Temporal(value = TemporalType.DATE)
     private LocalDate dateOfRegistration;
 
     public ServiceInfo(String login, String password, String email) {
