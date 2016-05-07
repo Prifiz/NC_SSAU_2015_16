@@ -25,21 +25,23 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = {/*"login", "password","dateOfRegistration", "email"*/}, name = "serviceInfo")
 @XmlRootElement
-//@Entity
-//@Table(name = "service_info")//Граматеи:D service - правильный вариант
+@Entity
+@Table(name = "service_info")//Граматеи:D service - правильный вариант
 public class ServiceInfo implements Serializable {
 
     @Id
     @OneToOne
-    @PrimaryKeyJoinColumn(name="login")
+    @JoinColumn(name="login")
+    //@PrimaryKeyJoinColumn(name="login")
     private String login;
 
     @Column(name = "password")
     private String password;
 
     @Column(name = "data_of_registration")
-    //@Temporal(value = TemporalType.DATE)
+    @Temporal(value = TemporalType.DATE)
     private LocalDate dateOfRegistration;
+    @Column(name="email")
     private String email;
 
     public ServiceInfo(String login, String password, String email) {

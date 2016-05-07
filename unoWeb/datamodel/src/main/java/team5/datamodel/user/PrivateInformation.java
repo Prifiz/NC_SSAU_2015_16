@@ -29,9 +29,9 @@ import team5.datamodel.transmissions.LocalDateAdapter;
 public class PrivateInformation implements Serializable {
 
     @Id
-    //@JoinColumn(name="login",unique=true,referencedColumnName = "")
+    //@JoinColumn(name="login",unique=true,referencedColumnName = "login")
     @Column(name="login")
-   // @OneToOne(mappedBy="login")
+    @OneToOne(mappedBy="login")
     private String login;
     
     @Column(name="name")

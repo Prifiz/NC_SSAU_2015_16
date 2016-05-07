@@ -22,13 +22,14 @@ public class ServiceInfoDao {
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(serviceInfo);
+            session.saveOrUpdate(serviceInfo);
             session.getTransaction().commit();
         }catch(Exception ex){
             logger.debug(ex.getMessage());
         }finally{
             if(session!=null && session.isOpen()){
                 session.close();
+                session=null;
             }
         }
     }
@@ -44,24 +45,25 @@ public class ServiceInfoDao {
         }finally{
             if(session!=null && session.isOpen()){
                 session.close();
+                session=null;
             }
         }
         return serviceInfo;
     }
-    public void updateServiceInfo(ServiceInfo serviceInfo) {
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.update(serviceInfo);
-        } catch (Exception ex) {
-            logger.debug(ex.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-    }
-    
+//    public void updateServiceInfo(ServiceInfo serviceInfo) {
+//        Session session = null;
+//        try {
+//            session = HibernateUtil.getSessionFactory().openSession();
+//            session.update(serviceInfo);
+//        } catch (Exception ex) {
+//            logger.debug(ex.getMessage());
+//        } finally {
+//            if (session != null && session.isOpen()) {
+//                session.close();
+//            }
+//        }
+//    }
+//    
     public void deletePrivateInformation(ServiceInfo serviceInfo){
          Session session = null;
         try{
@@ -74,6 +76,7 @@ public class ServiceInfoDao {
         }finally{
             if(session!=null && session.isOpen()){
                 session.close();
+                session=null;
             }
         }
     }

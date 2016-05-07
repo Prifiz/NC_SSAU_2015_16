@@ -24,10 +24,8 @@ public class HibernateUtil {
         try {
             File file = new File("src/main/java/team5/datalayer/hibernate/config/hibernate.cfg.xml");
             sessionFactory = new Configuration().configure(file).buildSessionFactory();
-            System.out.println(" дошел");
         } catch (Throwable ex) {
-            logger.error(ex.getMessage(), ex);//FIXME
-            System.out.println("Ошибка hibernate");
+            logger.error(ex.getMessage(), ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
