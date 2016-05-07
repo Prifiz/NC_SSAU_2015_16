@@ -25,32 +25,30 @@
             <version>1.2.12</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>4.3.10.Final</version>
-            <type>jar</type>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.21</version>
         </dependency>
 
+
+        
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>datamodel</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        
+        
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>postgresql-9.2-1002.jdbc4</artifactId>
+            <version>SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.1.0.Final</version>
             <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.1.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>postgresql-9.2-1002.jdbc4</artifactId>
-            <version>SNAPSHOT</version>
         </dependency>
     </dependencies>
     <repositories>

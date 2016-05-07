@@ -17,16 +17,16 @@ import javax.persistence.Table;
  *
  * @author андрей
  */
-@Entity
-@Table(name = "private_information")
+//@Entity
+//@Table(name = "private_information")
 public class PrivateInformation implements Serializable {
-    @Id
-    @JoinColumn(name="login",unique=true)
-    @OneToOne(mappedBy="login")
+    //@Id
+    //@JoinColumn(name="login",unique=true)
+    //@OneToOne(mappedBy="login")
     private String login;
-    @Column(name="name")
+    //@Column(name="name")
     private String name;
-    @Column(name="surname")
+    //@Column(name="surname")
     private String surname;
 
     public PrivateInformation(String login, String name, String surname) {

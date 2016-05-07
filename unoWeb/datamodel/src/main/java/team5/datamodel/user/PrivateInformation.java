@@ -24,13 +24,14 @@ import team5.datamodel.transmissions.LocalDateAdapter;
  */
 @XmlType(propOrder = {/* "name", "surname", "bDay"*/}, name = "privateInformation")
 @XmlRootElement
-//@Entity
-//@Table(name = "private_information")
+@Entity
+@Table(name = "private_information")
 public class PrivateInformation implements Serializable {
 
     @Id
-    @JoinColumn(name="login",unique=true)
-    @OneToOne(mappedBy="login")
+    //@JoinColumn(name="login",unique=true,referencedColumnName = "")
+    @Column(name="login")
+   // @OneToOne(mappedBy="login")
     private String login;
     
     @Column(name="name")

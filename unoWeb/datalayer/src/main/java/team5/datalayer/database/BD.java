@@ -2,8 +2,9 @@ package team5.datalayer.database;
 
 
 
+import java.time.LocalDate;
 import team5.datalayer.hibernate.dao.PrivateInformationDao;
-import team5.datamodel.user.newmodel.PrivateInformation;
+import team5.datamodel.user.PrivateInformation;
 import org.apache.log4j.Logger;
 
 /**
@@ -27,7 +28,9 @@ public class BD {
         //System.out.println(searcher.search("Bob"));
         try {
             PrivateInformationDao privateInformationDao = new PrivateInformationDao();
-            PrivateInformation privateInformation = privateInformationDao.getPrivateInformationByLogin("Bob");
+            PrivateInformation privateInformationTest = new PrivateInformation("Boblogin","Bob","Bobov",LocalDate.now());
+            privateInformationDao.savePrivateInformation(privateInformationTest);
+            PrivateInformation privateInformation = privateInformationDao.getPrivateInformationByLogin("Boblogin");
             System.out.println("Инфа по Бобу " + privateInformation.getLogin() + " " + privateInformation.getName());
         } catch (ExceptionInInitializerError ex) {
             logger.error(ex.getMessage(),ex);

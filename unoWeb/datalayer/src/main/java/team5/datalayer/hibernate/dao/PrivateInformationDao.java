@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import team5.datalayer.hibernate.HibernateUtil;
 
-import team5.datamodel.user.newmodel.PrivateInformation;
+import team5.datamodel.user.PrivateInformation;
 
 /**
  *
@@ -19,18 +19,19 @@ public class PrivateInformationDao {
 
     private static Logger logger = Logger.getLogger(PrivateInformationDao.class);
 
-    public void addPrivateInformation(PrivateInformation privateInformation) {
+    public void savePrivateInformation(PrivateInformation privateInformation) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(privateInformation);
+            session.saveOrUpdate(privateInformation);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
+                session=null;
             }
         }
     }
@@ -40,30 +41,31 @@ public class PrivateInformationDao {
         PrivateInformation privateInformation = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            privateInformation = (PrivateInformation) session.load(PrivateInformation.class, login);
+            privateInformation = (PrivateInformation) session.get(PrivateInformation.class, login);
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
+                session=null;
             }
         }
         return privateInformation;
     }
 
-    public void updatePrivateInformation(PrivateInformation privateInformation) {
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.update(privateInformation);
-        } catch (Exception ex) {
-            logger.debug(ex.getMessage());
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-    }
+//    public void updatePrivateInformation(PrivateInformation privateInformation) {
+//        Session session = null;
+//        try {
+//            session = HibernateUtil.getSessionFactory().openSession();
+//            session.update(privateInformation);
+//        } catch (Exception ex) {
+//            logger.debug(ex.getMessage());
+//        } finally {
+//            if (session != null && session.isOpen()) {
+//                session.close();
+//            }
+//        }
+//    }
 
     public void deletePrivateInformation(PrivateInformation privateInformation) {
         Session session = null;
@@ -77,6 +79,7 @@ public class PrivateInformationDao {
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
+                session=null;
             }
         }
     }
