@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 public class ServiceInfo implements Serializable {
 
     @Id
-    @OneToOne
+    @OneToOne(mappedBy="login")
     @JoinColumn(name="login")
     //@PrimaryKeyJoinColumn(name="login")
     private String login;
@@ -39,7 +39,7 @@ public class ServiceInfo implements Serializable {
     private String password;
 
     @Column(name = "data_of_registration")
-    @Temporal(value = TemporalType.DATE)
+    //@Temporal(value = TemporalType.DATE)
     private LocalDate dateOfRegistration;
     @Column(name="email")
     private String email;

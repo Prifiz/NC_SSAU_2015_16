@@ -9,6 +9,13 @@ import team5.datamodel.user.adress.Address;
 import team5.datamodel.user.adress.AddressInitializer;
 import team5.datamodel.user.adress.SimpleAddressInitializer;
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,11 +25,23 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = {/* "privateInformation", "address", "serviceInfo"*/ }, name = "User")
 @XmlRootElement
+@Entity
+@Table(name="user_table")
 public class User implements Serializable {
+    
 
+    @Id 
+    @Column(name="login")
+    private String login;
+    
+    
+    @OneToOne(mappedBy="userColomn")
     private PrivateInformation privateInformation;
+    @Transient
     AddressInitializer addressInitializer = new SimpleAddressInitializer();
+    @Transient
     private Address address = addressInitializer.initDefaultAddress();
+    @Transient
     private ServiceInfo serviceInfo;
 
     public User() {
@@ -35,10 +54,19 @@ public class User implements Serializable {
         this.privateInformation = privateInformation;
         this.address = address;
         this.serviceInfo = serviceInfo;
+        this.login=serviceInfo.getLogin();
     }
 
     public PrivateInformation getPrivateInformation() {
         return privateInformation;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public Address getAddress() {

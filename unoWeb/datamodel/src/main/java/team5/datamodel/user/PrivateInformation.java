@@ -7,12 +7,14 @@ package team5.datamodel.user;
 
 import java.time.LocalDate;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -29,16 +31,21 @@ import team5.datamodel.transmissions.LocalDateAdapter;
 public class PrivateInformation implements Serializable {
 
     @Id
-    //@JoinColumn(name="login",unique=true,referencedColumnName = "login")
     @Column(name="login")
-    @OneToOne(mappedBy="login")
+   // @Transient
     private String login;
     
-    @Column(name="name")
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "user_col")
+    private User userColomn;
+
+    @Column(name = "name")
     private String name;
-    
-    @Column(name="surname")
+
+    @Column(name = "surname")
     private String surname;
+    //@Column(name="bday")
+    @Transient
     private LocalDate bDay;
 
     public PrivateInformation(String login, String name, String surname, LocalDate bDay) {
@@ -70,6 +77,14 @@ public class PrivateInformation implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getUserColomn() {
+        return userColomn;
+    }
+
+    public void setUserColomn(User userColomn) {
+        this.userColomn = userColomn;
     }
 
     public String getLogin() {
