@@ -4,8 +4,14 @@
     Author     : chanta
 --%>
 
+<%@page import="org.apache.log4j.Logger"%>
+<%@page import="java.io.IOException"%>
+<%@page import="java.io.FileNotFoundException"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,7 +19,7 @@
         <title>template</title>
     </head>
     <body>
-        
+
         <div id="header">
             <div id="header_wrapper">
                 <!--                //todo вставить ссылку на возврат на стартовую страницу-->
@@ -32,12 +38,32 @@
                 </div>
                 <!--<div class="content"><a href="//todo вставить ссылку на регистрацию" title="registration">registration</a>-->
 
-             
-                <input type="button" value="view rules" name="rulesButton" id="rulesButton">
- 
+
                 <div id="work-zone"> 
                     <div id="container-work-zone">
                     </div>
+                </div>
+                <%!private String textRule(String fileName) {
+                        String text = "";
+                        String s;
+                        try {
+                            BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName)));
+                            while ((s = br.readLine()) != null) {
+                                text += s;
+                            }
+                        } catch (FileNotFoundException ex) {
+                            //todo вствить обработчик эксепшена log.debug(ex.getMessage());
+                        } catch (IOException ex) {
+                            //todo вствить обработчик эксепшена log.debug(ex.getMessage());
+                        }
+                        return text;
+
+                    }
+                %>
+
+                <div id="rules">
+                    <h4>Rules of the game UNO </h4>
+                    <%=textRule("/textRule.txt")%>
                 </div>
 
                 <input type="button" value="BACK" name="backButton" id="backButton">

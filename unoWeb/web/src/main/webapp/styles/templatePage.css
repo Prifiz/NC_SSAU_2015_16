@@ -334,15 +334,16 @@ table.result tr:hover {
     width: 59.5em; 
 }
 
-#rulesButton {
-    position: relative;
-    text-align: center;
-    border-top: 1px solid #140ead;
-    margin: 0 0 10px 0;
-    left: 10%;
-    top: 10%;
-}
 
+#rules{
+    width: 39.5em; 
+    background-color:  antiquewhite;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0; 
+     border: 1px solid lightsalmon;
+}
 
 
 
