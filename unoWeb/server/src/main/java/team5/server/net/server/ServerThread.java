@@ -313,7 +313,7 @@ public class ServerThread extends Thread {
                                 rooms[roomNumber].getGamer(order).setAct(command);
                                 break;
                             case "END TURN":
-                                card = rooms[roomNumber].getGamer(gamer.getGamerLogin()).searchCardInHand(clientRequest.getChoice());
+//                                card = rooms[roomNumber].getGamer(gamer.getGamerLogin()).searchCardInHand(clientRequest.getChoice());
                                 serverResponse.setCard(card);
                                 if (card != null) {
                                     serverResponse.setConfirmation(table.isRightCard(card));

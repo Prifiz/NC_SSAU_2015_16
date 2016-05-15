@@ -84,16 +84,15 @@ public class GamerController {
         return login;
     }
     
-    public Card searchCardInHand(String s)
+    public boolean searchCardInHand(Card card)
     {
-        String[] str = s.split(" ");
-        Card card = null;
+       // String[] str = s.split(" ");
+        boolean b = false;
         for (Card handscard : handscards) {
-            if ((handscard.getColorId()==Integer.getInteger(str[0])) && (handscard.getIconId() == Integer.parseInt(str[1]))) {
-                card =  handscard;
-            }
+            if (handscard.equals(card))//((handscard.getColorId()==Integer.getInteger(str[0])) && (handscard.getIconId() == Integer.parseInt(str[1]))) {
+                b = true;
         }
-        return card;
+        return b;
     }
     
 }
