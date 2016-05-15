@@ -54,7 +54,7 @@ public class User implements Serializable {
         this.privateInformation = privateInformation;
         this.address = address;
         this.serviceInfo = serviceInfo;
-        this.login=serviceInfo.getLogin();
+        this.login=privateInformation.getLogin();
     }
 
     public PrivateInformation getPrivateInformation() {

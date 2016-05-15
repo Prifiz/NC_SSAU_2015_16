@@ -27,8 +27,9 @@
                             SignIn in = new SignIn();
                             boolean b = in.sign(login, password);
                             if (b) {
-                                response.sendRedirect("selectRoomPage.jsp");
-                            } else {%>
+                                session.setAttribute("login", login);%>
+                                <jsp:forward page="selectRoomPage.jsp"/>
+                            <%} else {%>
                             <tr>
                                 <td></td>
                                 <td id="loginException">

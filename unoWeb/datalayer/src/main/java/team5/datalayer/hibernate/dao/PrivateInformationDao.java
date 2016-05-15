@@ -27,7 +27,7 @@ public class PrivateInformationDao {
             session.saveOrUpdate(privateInformation);
             session.getTransaction().commit();
         } catch (Exception ex) {
-            logger.debug(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
