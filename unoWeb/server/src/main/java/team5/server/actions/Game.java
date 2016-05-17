@@ -20,9 +20,18 @@ public class Game {
     
     
     
-    public Game(RoomController room, TableController table){
+    public Game(RoomController room){
         this.room = room;
-        this.table = table;
+        this.table = this.room.getTableController();
+        table.loadNewPack();
+    }
+    
+    public Card [] distribCard(){
+        Card [] cards = new Card[7];
+        for (int i = 0; i < 7; i++) {
+            cards[i] = table.getCardFromPack();
+        }
+        return cards;
     }
     
     public String gameProcess(String login, Card card){

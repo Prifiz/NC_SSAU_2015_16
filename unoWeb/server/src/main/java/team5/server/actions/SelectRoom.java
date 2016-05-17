@@ -24,15 +24,22 @@ public class SelectRoom {
 
     private int[] waitTime;
     private RoomController[] rooms;
-
-    
+    private Game [] games;    
     private Logger logger = Logger.getLogger(SelectRoom.class);
 
     public SelectRoom() {
+        games = new Game[ServerConstants.NUMBER_OF_ROOMS];
+        rooms = new RoomController[ServerConstants.NUMBER_OF_ROOMS];
+        waitTime = new int [ServerConstants.NUMBER_OF_ROOMS];
+        for (int i = 0; i < ServerConstants.NUMBER_OF_ROOMS; i++) {
+            rooms[i] = new RoomController();
+        }
+        
+        
 
     }
 
-    public boolean select(int roomNumber, String login) {
+    public boolean select(int roomNumber) {
         boolean b = false;
         if ((rooms[roomNumber].countGamers() < ServerConstants.MAX_NUMBER_OF_PLAYERS) && (rooms[roomNumber].isPlaying() == false)) {
             b = true;
@@ -59,11 +66,12 @@ public class SelectRoom {
         }
         waitTime[roomNumber] = 0;//обнуляем таймер для этой комнаты
         if (rooms[roomNumber].countGamers() > 1) {//если игроков больше 1
-//                                            dataE.writeBool(true);//разрешаем клиенту начать игру
+//                                            //разрешаем клиенту начать игру
             rooms[roomNumber].setPlaying(true);//устанавливаем, что в комнате идет игра
+            games[roomNumber] = new Game(rooms[roomNumber]);
             
         } else {
-//                                            dataE.writeBool(false);//иначе запрещаем начинать игру в этой комнате
+//                                           //иначе запрещаем начинать игру в этой комнате
 
         }
 
@@ -81,7 +89,13 @@ public class SelectRoom {
     public void setRooms(RoomController rooms, int i) {
         this.rooms[i] = rooms;
     }
-    
+    public Game getGames(int i) {
+        return games[i];
+    }
+
+    public void setGames(Game games, int i) {
+        this.games[i] = games;
+    }
     
 }
 

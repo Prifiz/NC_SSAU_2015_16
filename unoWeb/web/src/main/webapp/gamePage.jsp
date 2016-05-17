@@ -4,6 +4,9 @@
     Author     : chanta
 --%>
 
+<%@page import="team5.server.actions.SelectRoom"%>
+<%@page import="team5.server.actions.Game"%>
+<%@page import="team5.datamodel.card.Card"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +19,7 @@
 
         <%@ include file="header.jsp" %>
         <div id="infoPanel">
-            
+
         </div>
         <div id="listUsers">
             <form name="userForm">
@@ -33,20 +36,31 @@
                     <tr>
                         <td>name 4</td>
                     </tr>
-                    
+
                 </table>
             </form>
         </div>
         <div class="clear">  
         </div>
+        <%
+            Game game = SelectRoom.getSelectRoom().getGames((int) session.getAttribute("room"));
+            Card[] cards = game.distribCard();
+        %>
         <div id="cardPanel">
-<!--            вставить карту-->
+            <!--            вставить карту-->
         </div>
         <div id="cardsHandPanel">
-<!--            вставить карты-->
+            <form name="handCards" action="gamePage.jsp">
+                <%
+                    for (int i = 0; i < cards.length; i++) {%>
+                    <input type<%=cards[i].getCardId()%> src=""
+                    <%}
+                %>
+                <!--            вставить карты-->
+            </form>
         </div>
-        
+
         <div id="cardsDeskPanel">
-<!--            вставить карты-->
+            <!--            вставить карты-->
         </div>
         <%@ include file="footer.jsp" %>

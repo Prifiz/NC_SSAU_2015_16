@@ -22,7 +22,6 @@
                     <%
                         String login = request.getParameter("login");
                         String password = request.getParameter("password");
-                        System.out.println(login + " " + password);
                         if ((login != null) && (password != null)) {
                             SignIn in = new SignIn();
                             boolean b = in.sign(login, password);
