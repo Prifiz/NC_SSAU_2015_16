@@ -52,50 +52,60 @@
                             int room = 0;
                             SelectRoom selectRoom = SelectRoom.getSelectRoom();
                             boolean b = false;
-                            System.out.println(room1);
                             if ((room1 != null) && (b == false)) {
                                 b = selectRoom.select(0);
-                                System.out.println(session.getAttribute("login"));
                                 room = 0;
-                                selectRoom.waitGamers(room, (String) session.getAttribute("login"));
                             } else if ((room2 != null) && (b == false)) {
                                 b = selectRoom.select(1);
                                 room = 1;
-                                selectRoom.waitGamers(room, (String) session.getAttribute("login"));
                             } else if ((room3 != null) && (b == false)) {
                                 b = selectRoom.select(2);
                                 room = 2;
-                                selectRoom.waitGamers(room, (String) session.getAttribute("login"));
                             } else if ((room4 != null) && (b == false)) {
                                 b = selectRoom.select(3);
                                 room = 3;
-
-                                selectRoom.waitGamers(room, (String) session.getAttribute("login"));
                             }
-                            System.out.println(b);
-                            if (b) {
+                            if (b == true) {
                         %>
                         <tr>
-                            < td> Ожидайте < %= selectRoom.getWaitTime(room)%> секунд других игроков
+                            <td> 
+                                Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
                             </td>
                         </tr>  
                         <%
-                            while (selectRoom.getWaitTime(room) != 30) {
-                            }
-                            if (selectRoom.getRooms(room).isPlaying()) {
+                            boolean game = selectRoom.waitGamers(room, (String) session.getAttribute("login"));
+                            System.out.println(game);
+                            //while (selectRoom.getWaitTime(room) != 30) {
+                            //}
+                            if (game) {
                                 session.setAttribute("room", room);
 
                         %>
 
                         <jsp:forward page="gamePage.jsp"/>
                         <%} else {
-                                    b = false;
-//сообщение о том. что в комнату зайти нельзя
-                                }
-                            } else {
-                                b = false;
+                            b = false;
+                        %>
+                        <tr>
+                            <td> 
+                                Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
+                            </td>
+                        </tr>  
+                        <%
 //сообщение о том. что в комнату зайти нельзя
                             }
+                        } else {
+                        %>
+                        <tr>
+                            <td> 
+                                Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
+                            </td>
+                        </tr>  
+                        <%
+                                }
+                                b = false;
+//сообщение о том. что в комнату зайти нельзя
+                            
                         %>
 
                     </table>

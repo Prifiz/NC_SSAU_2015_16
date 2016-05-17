@@ -42,20 +42,21 @@
         </div>
         <div class="clear">  
         </div>
-        <%
+        <%--<%
             Game game = SelectRoom.getSelectRoom().getGames((int) session.getAttribute("room"));
             Card[] cards = game.distribCard();
-        %>
+        %>--%>
         <div id="cardPanel">
             <!--            вставить карту-->
         </div>
         <div id="cardsHandPanel">
             <form name="handCards" action="gamePage.jsp">
-                <%
+                <%--<%
                     for (int i = 0; i < cards.length; i++) {%>
-                    <input type<%=cards[i].getCardId()%> src=""
+                    
                     <%}
-                %>
+                %>--%>
+                <input type="image" src="src/main/webapp/styles/uno_cards/1-yellow.jpg">
                 <!--            вставить карты-->
             </form>
         </div>

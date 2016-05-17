@@ -33,6 +33,7 @@ public class SelectRoom {
         waitTime = new int [ServerConstants.NUMBER_OF_ROOMS];
         for (int i = 0; i < ServerConstants.NUMBER_OF_ROOMS; i++) {
             rooms[i] = new RoomController();
+            waitTime[i]=0;
         }
         
         
@@ -47,7 +48,8 @@ public class SelectRoom {
         return b;
     }
 
-    public void waitGamers(int roomNumber, String login) {
+    public boolean waitGamers(int roomNumber, String login) {
+        boolean b = false;
         GamerController gamer = new GamerController(login);
         rooms[roomNumber].addGamer(gamer);//добавляем игрока в комнату(нужно будет очистить комнату после игры)
         int i;
@@ -69,12 +71,13 @@ public class SelectRoom {
 //                                            //разрешаем клиенту начать игру
             rooms[roomNumber].setPlaying(true);//устанавливаем, что в комнате идет игра
             games[roomNumber] = new Game(rooms[roomNumber]);
+            b = true;
             
         } else {
 //                                           //иначе запрещаем начинать игру в этой комнате
 
         }
-
+        return b;
     }
     
     public int getWaitTime(int i) {
