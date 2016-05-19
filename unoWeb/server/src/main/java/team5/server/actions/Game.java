@@ -6,12 +6,16 @@
 package team5.server.actions;
 
 import team5.datamodel.card.Card;
+import team5.datamodel.card.Cards;
+import team5.server.net.server.ServerConstants;
 
 /**
  *
  * @author андрей
  */
 public class Game {
+    
+    private boolean[] firstDistrib;
     
     private int gamerNumber;
     private String gamerLogin;
@@ -21,24 +25,39 @@ public class Game {
     
     
     public Game(RoomController room){
+        firstDistrib = new boolean [ServerConstants.MAX_NUMBER_OF_PLAYERS];
+        for (int i = 0; i < firstDistrib.length; i++) {
+            firstDistrib[i] = false;
+        }
         this.room = room;
         this.table = this.room.getTableController();
         table.loadNewPack();
     }
     
-    public Card [] distribCard(){
-        Card [] cards = new Card[7];
-        for (int i = 0; i < 7; i++) {
-            cards[i] = table.getCardFromPack();
+    public void distribCard(String login){
+        for (int i = 0; i < ServerConstants.START_NUMBER_OF_CARDS; i++) {
+           room.getGamer(login).addCardToHand(table.getCardFromPack());
         }
-        return cards;
+        firstDistrib[room.getGamerNumber(room.getGamer(login))] = true;
+        
+    }
+    public boolean takeCard(String login){
+        boolean b = room.getGamer(login).isCanTakeCard();
+        if(room.getGamer(login).isCanTakeCard()){
+            room.getGamer(login).addCardToHand(table.getCardFromPack());
+            room.getGamer(login).setCanTakeCard(false);
+        }
+        return b;
     }
     
-    public String gameProcess(String login, Card card){
+    public String gameProcess(String login, Integer cardId){
+        Card card = Cards.getCardById(cardId);
         if(gamerLogin.equals(login)){
+            room.getGamer(login).setCanTakeCard(true);
             if(room.getGamer(login).searchCardInHand(card)){
                 if(table.isRightCard(card)){
                     table.setLastCard(card);
+                    room.getGamer(login).removeCardInHand(card);
                     if(gamerNumber+1<room.countGamers())
                     {
                         gamerNumber++;
@@ -47,6 +66,7 @@ public class Game {
                         gamerNumber=0;
                     }
                     gamerLogin = room.getGamer(gamerNumber).getGamerLogin();
+                    room.getGamer(login).setCanTakeCard(false);
                     return "Success";
                 }else{
                     return "Wrong card";
@@ -62,5 +82,44 @@ public class Game {
     
     public Card getLastCard(){
         return table.getLastCard();
+    }
+    public int getGamerNumber() {
+        return gamerNumber;
+    }
+
+    public void setGamerNumber(int gamerNumber) {
+        this.gamerNumber = gamerNumber;
+    }
+
+    public String getGamerLogin() {
+        return gamerLogin;
+    }
+
+    public void setGamerLogin(String gamerLogin) {
+        this.gamerLogin = gamerLogin;
+    }
+
+    public RoomController getRoom() {
+        return room;
+    }
+
+    public void setRoom(RoomController room) {
+        this.room = room;
+    }
+
+    public TableController getTable() {
+        return table;
+    }
+
+    public void setTable(TableController table) {
+        this.table = table;
+    }
+    
+    public boolean getFirstDistrib(int i) {
+        return firstDistrib[i];
+    }
+
+    public void setFirstDistrib(boolean firstDistrib, int i) {
+        this.firstDistrib[i] = firstDistrib;
     }
 }

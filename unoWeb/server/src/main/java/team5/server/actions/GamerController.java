@@ -18,6 +18,15 @@ public class GamerController {
     private String login;
     private String act;
     private int readCount;
+    private boolean canTakeCard = false;
+
+    public boolean isCanTakeCard() {
+        return canTakeCard;
+    }
+
+    public void setCanTakeCard(boolean canTakeCard) {
+        this.canTakeCard = canTakeCard;
+    }
 
     public int getReadCount() {
         return readCount;
@@ -50,6 +59,13 @@ public class GamerController {
     public void addCardToHand(Card card)
     {
         handscards.add(card);
+    }
+    public void removeCardInHand(Card card){
+        for(Card card2: handscards){
+            if(card2.equals(card)){
+                handscards.remove(card2);
+            }
+        }
     }
     
     public void pullCardFromHand(Card card) throws CardNotFoundException

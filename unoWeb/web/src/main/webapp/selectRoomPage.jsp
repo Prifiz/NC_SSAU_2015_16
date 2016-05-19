@@ -11,6 +11,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
         <title>template</title>
+        <script type="text/javascript">
+            function wait(){
+                alert('Ожидание других игроков < 30 секунд');
+            }
+        </script>
     </head>
     <body>
 
@@ -26,21 +31,21 @@
                     <table>
                         <tr>
                             <td>
-                                <input type="submit" name="Room1" value="Room 1">
+                                <input type="submit" onclick="wait()" name="Room1" value="Room 1">
                             </td>
                         <tr>
                             <td>
-                                <input type="submit" name="Room2" value="Room 2">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="submit" name="Room3" value="Room 3">
+                                <input type="submit" onclick="wait()"  name="Room2" value="Room 2">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="submit" name="Room4" value="Room 4">
+                                <input type="submit" onclick="wait()"  name="Room3" value="Room 3">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" onclick="wait()"  name="Room4" value="Room 4">
                             </td>
                         </tr>
 
@@ -67,11 +72,13 @@
                             }
                             if (b == true) {
                         %>
-                        <tr>
+                        <!--<tr>
                             <td> 
                                 Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
                             </td>
-                        </tr>  
+                        </tr>-->
+                        
+                            
                         <%
                             boolean game = selectRoom.waitGamers(room, (String) session.getAttribute("login"));
                             System.out.println(game);
@@ -86,21 +93,21 @@
                         <%} else {
                             b = false;
                         %>
-                        <tr>
+                       <!--<tr>
                             <td> 
                                 Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
                             </td>
-                        </tr>  
+                        </tr>-->  
                         <%
 //сообщение о том. что в комнату зайти нельзя
                             }
                         } else {
                         %>
-                        <tr>
+                        <!--<tr>
                             <td> 
                                 Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
                             </td>
-                        </tr>  
+                        </tr>-->  
                         <%
                                 }
                                 b = false;
