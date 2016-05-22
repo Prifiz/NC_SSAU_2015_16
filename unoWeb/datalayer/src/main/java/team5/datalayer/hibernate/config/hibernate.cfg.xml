@@ -13,6 +13,7 @@
     <property name="show_sql">true</property>
     
     <mapping class="team5.datamodel.user.PrivateInformation" />
+    <mapping class="team5.datamodel.user.ServiceInfo" />
     <mapping class="team5.datamodel.user.User" />
     
   </session-factory>

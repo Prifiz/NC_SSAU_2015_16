@@ -17,7 +17,7 @@ import team5.datamodel.user.ServiceInfo;
  */
 public class ServiceInfoDao {
      private static Logger logger = Logger.getLogger(ServiceInfoDao.class);
-    public void addServiceInfo(ServiceInfo serviceInfo){
+    public void saveServiceInfo(ServiceInfo serviceInfo){
         Session session = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
@@ -34,12 +34,28 @@ public class ServiceInfoDao {
         }
     }
     
+    
+//    Session session = null;
+//        PrivateInformation privateInformation = null;
+//        try {
+//            session = HibernateUtil.getSessionFactory().openSession();
+//            privateInformation = (PrivateInformation) session.get(PrivateInformation.class, login);
+//        } catch (Exception ex) {
+//            logger.debug(ex.getMessage());
+//        } finally {
+//            if (session != null && session.isOpen()) {
+//                session.close();
+//                session=null;
+//            }
+//        }
+//        return privateInformation;
+//    }
     public ServiceInfo getServiceInfoByLogin(String login){
         Session session=null;
         ServiceInfo serviceInfo = null;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
-            serviceInfo = (ServiceInfo) session.load(ServiceInfo.class, login);
+            serviceInfo = (ServiceInfo) session.get(ServiceInfo.class, login);
         }catch(Exception ex){
             logger.debug(ex.getMessage());
         }finally{

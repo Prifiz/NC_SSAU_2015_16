@@ -10,12 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -26,23 +22,22 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {/*"login", "password","dateOfRegistration", "email"*/}, name = "serviceInfo")
 @XmlRootElement
 @Entity
-@Table(name = "service_info")//Граматеи:D service - правильный вариант
+@Table(name = "servise_info")//Граматеи:D service - правильный вариант
 public class ServiceInfo implements Serializable {
 
     @Id
-    @OneToOne(mappedBy="login")
-    @JoinColumn(name="login")
-    //@PrimaryKeyJoinColumn(name="login")
+    @Column(name = "login")
     private String login;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "data_of_registration")
-    //@Temporal(value = TemporalType.DATE)
-    private LocalDate dateOfRegistration;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "data_of_registration")
+    @Transient
+    private LocalDate dateOfRegistration;
 
     public ServiceInfo(String login, String password, String email) {
         this.login = login;
