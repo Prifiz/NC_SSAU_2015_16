@@ -5,37 +5,36 @@
  */
 package team5.datamodel.user.adress;
 
-import team5.datamodel.user.newmodel.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author андрей
  */
+@Entity
+@Table(name = "city")
 public class City {
-    private String cityName;
-    private Integer idCountry;
+
+    @Id @GeneratedValue
+    @Column(name = "id_city")
     private Integer idCity;
 
-    public Integer getIdCity() {
-        return idCity;
-    }
+    @Column(name = "city_name")
+    private String cityName;
 
-    public void setIdCity(Integer idCity) {
-        this.idCity = idCity;
-    }
+    @Column(name = "id_country")
+    private Integer idCountry;
 
-   
-    
-    public City(){
+    public City() {
         cityName = "";
-        idCountry = -1;
-        idCity=-1;
     }
 
-    public City(String cityName, Integer idCountry, Integer idCity) {
+    public City(String cityName) {
         this.cityName = cityName;
-        this.idCountry = idCountry;
-        this.idCity = idCity;
     }
 
     public String getCityName() {
@@ -50,8 +49,8 @@ public class City {
         return idCountry;
     }
 
-    public void setIdCountry(Integer idCountry) {
-        this.idCountry = idCountry;
+    public Integer getIdCity() {
+        return idCity;
     }
 
     @Override
@@ -67,8 +66,8 @@ public class City {
             return false;
         }
         City city = (City) object;
-        if ((cityName!=null)&&(cityName.equals(city.getCityName())) &&(idCity!=null)&& (idCity.equals(city.getIdCity()))
-                &&(idCountry!=null)&& (idCountry.equals(city.getIdCountry()))) {
+        if ((cityName != null) && (cityName.equals(city.getCityName())) && (idCity != null) && (idCity.equals(city.getIdCity()))
+                && (idCountry != null) && (idCountry.equals(city.getIdCountry()))) {
             return true;
         }
         return false;
@@ -77,7 +76,7 @@ public class City {
     @Override
     public int hashCode() {
         int result = 17;
-        result += 37 * result + cityName.hashCode() + idCity.hashCode()+idCountry.hashCode();
+        result += 37 * result + cityName.hashCode() + idCity.hashCode() + idCountry.hashCode();
         return result;
     }
 
