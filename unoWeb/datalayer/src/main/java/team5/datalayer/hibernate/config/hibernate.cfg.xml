@@ -14,6 +14,7 @@
     
     <mapping class="team5.datamodel.user.PrivateInformation" />
     <mapping class="team5.datamodel.user.ServiceInfo" />
+    <mapping class="team5.datamodel.user.adress.Address" />
     <mapping class="team5.datamodel.user.User" />
     
   </session-factory>

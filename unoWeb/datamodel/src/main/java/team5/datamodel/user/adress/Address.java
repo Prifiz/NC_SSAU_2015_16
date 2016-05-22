@@ -6,11 +6,10 @@
 package team5.datamodel.user.adress;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -20,25 +19,23 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = { /*"country", "city"*/}, name = "address")
 @XmlRootElement
+@Entity
+@Table(name = "addresses")
 public class Address implements Serializable {
 
     @Id
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "login")
+    @Column(name = "login")
     private String login;
 
-    @JoinColumn(name="id_city")
-    @ManyToOne
+    @Column(name = "id_city")
     private Integer idCity;
 
-    public Address(Integer idCity, String city) {
-        this.idCity = idCity;
+    public Address(String city) {
         this.login = city;
     }
 
     public Address() {
         login = new String();
-        idCity = -1;
     }
 
     public String getLogin() {
@@ -51,10 +48,6 @@ public class Address implements Serializable {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public void setIdCity(Integer idCity) {
-        this.idCity = idCity;
     }
 
     @Override
