@@ -15,9 +15,9 @@ import team5.datamodel.user.adress.City;
  * @author chanta
  */
 public class CityDao {
-     private static Logger logger = Logger.getLogger(PrivateInformationDao.class);
-     
-     public void saveCity(City city) {
+    private static Logger logger = Logger.getLogger(PrivateInformationDao.class);
+
+    public void saveCity(City city) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -34,7 +34,7 @@ public class CityDao {
         }
     }
 
-public City getCityById(Integer id) {
+    public City getCityById(Integer id) {
         Session session = null;
         City city = null;
         try {
@@ -51,7 +51,7 @@ public City getCityById(Integer id) {
         return city;
     }
 
-public void deleteCity(City city) {
+    public void deleteCity(City city) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -67,5 +67,5 @@ public void deleteCity(City city) {
             }
         }
     }
-    
+
 }

@@ -5,33 +5,38 @@
  */
 package team5.datamodel.user.adress;
 
-import team5.datamodel.user.newmodel.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author андрей
  */
+@Entity
+@Table(name = "country")
 public class Country {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id_country")
     private Integer idCountry;
+
+    @Column(name = "country_name")
     private String countryName;
 
-    public Country(Integer idCountry, String countryName) {
-        this.idCountry = idCountry;
+    public Country(String countryName) {
         this.countryName = countryName;
     }
 
     public Country() {
         countryName = "";
-        idCountry = -1;
     }
 
     public Integer getIdCountry() {
         return idCountry;
-    }
-
-    public void setIdCountry(Integer idCountry) {
-        this.idCountry = idCountry;
     }
 
     public String getCountryName() {
