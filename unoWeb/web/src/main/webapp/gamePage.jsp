@@ -59,8 +59,11 @@
                         game.distribCard((String) session.getAttribute("login"));
                     }
                     ArrayList<Card> cards = game.getRoom().getGamer((String) session.getAttribute("login")).getHandscards();
-                    for (int i = 0; i < cards.size(); i++) {%>
-                <input type="image" name="card"  alt="cards" src="/styles/uno_cards/2-yellow.jpg"  height='50' weight= "40"><!--<%=cards.get(i).getIconId()%>-<%=colors.getColorById(cards.get(i).getColorId())%>  value="<%=cards.get(i).getCardId()%>"-->
+                    for (int i = 0; i < cards.size(); i++) {
+                        String s = "styles/uno_cards/"+cards.get(i).getIconId()+"-"+colors.getColorById(cards.get(i).getColorId()).getColorName()+".jpg";
+                %>
+
+<input type="image" name="card"  alt="cards" src="<%=s%>" height='60' width="50" ><!--value="<%=cards.get(i).getCardId()%>"  -->
                 <%}%>
                 <!--            вставить карты-->
             </form> 
