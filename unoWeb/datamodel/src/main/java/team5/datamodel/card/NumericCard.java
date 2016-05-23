@@ -20,7 +20,7 @@ public class NumericCard extends Card implements Serializable {
 //        super(iconId, color, CardType.NUMERIC);
 //    }
     public NumericCard(Integer cardId, Integer colorId, Integer iconId) {
-        super(iconId, colorId, cardId);
+        super(cardId, colorId, iconId);
     }
 
     @Override

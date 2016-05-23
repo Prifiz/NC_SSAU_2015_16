@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  *
  * @author Пользователь
  */
-@XmlRootElement(name="Card")
+@XmlRootElement(name = "Card")
 @XmlSeeAlso(NumericCard.class)
 public abstract class Card implements Serializable {
 
@@ -22,7 +22,7 @@ public abstract class Card implements Serializable {
     private Integer colorId;
     private Integer cardId;
     // private CardType cardType;
-   
+
     public Integer getCardId() {
         return cardId;
     }
@@ -32,14 +32,15 @@ public abstract class Card implements Serializable {
 //        this.iconId = iconId;
 //        this.cardType = cardType;
 //    }
-    public void setCardId(Integer cardId) {   
+    public void setCardId(Integer cardId) {
         this.cardId = cardId;
     }
 
-    public Card(Integer cardId, Integer colorId, Integer iconId) {
-        this.iconId = iconId;
-        this.colorId = colorId;
+    public Card(int cardId, int colorId, int iconId) {
         this.cardId = cardId;
+        this.colorId = colorId;
+        this.iconId = iconId;
+
     }
 
     public Card() {

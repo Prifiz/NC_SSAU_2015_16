@@ -20,7 +20,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Refresh" content="2;text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--;text/html; charset=UTF-8-->
         <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
         <title>Game page</title>
     </head>
@@ -47,7 +47,7 @@
 
         <div id="cardPanel">
             <form name="tableCard" action="gamePage.jsp">
-                <%if(game.getLastCard()!=null){%>
+                <%if (game.getLastCard() != null) {%>
                 <input type="image" name="card" value="<%=game.getLastCard().getCardId()%>" src="src/main/webapp/styles/uno_cards/<%=game.getLastCard().getIconId()%>-<%=colors.getColorById(game.getLastCard().getColorId())%>.jpg">
                 <%}%>
             </form>
@@ -60,37 +60,42 @@
                     }
                     ArrayList<Card> cards = game.getRoom().getGamer((String) session.getAttribute("login")).getHandscards();
                     for (int i = 0; i < cards.size(); i++) {%>
-                <input type="image" name="card" value="<%=cards.get(i).getCardId()%>" src="styles/uno_cards/<%=cards.get(i).getIconId()%>-<%=colors.getColorById(cards.get(i).getColorId())%>.jpg">
+                <input type="image" name="card"  alt="cards" src="/styles/uno_cards/2-yellow.jpg"  height='50' weight= "40"><!--<%=cards.get(i).getIconId()%>-<%=colors.getColorById(cards.get(i).getColorId())%>  value="<%=cards.get(i).getCardId()%>"-->
                 <%}%>
-                    <!--            вставить карты-->
+                <!--            вставить карты-->
             </form> 
-                    <%String[] values = request.getParameterValues("card");
+            <%String[] values = null;
+                values = request.getParameterValues("card");
+                if (values != null) {
                     for (int i = 0; i < values.length; i++) {
                         if (values[i] != null) {
                             String s = game.gameProcess((String) session.getAttribute("login"), Integer.getInteger(values[i]));
                             if (s.equals("Wrong card")) {%>
-                            <!--вывод сообщения о неправильной карте-->
-                <%}
-if(s.equals("Is not your turn")){%>
-<!--вывод сообщения о том, что не твой ход-->
-<%}
+            <!--вывод сообщения о неправильной карте-->
+            <%}
+                if (s.equals("Is not your turn")) {%>
+            <!--вывод сообщения о том, что не твой ход-->
+            <%}
                         }
                     }
-                %>
-                </div>
+                }
+            %>
+        </div>
 
-                <div id="cardsDeskPanel">
-                    <form name="takeCard" action="gamePage.jsp">
-                        <input type="submit" name="takeCard" value="TakeCard">
-                    </form>
-                    <%
-                        if(request.getParameter("takeCard").equals("TakeCard")){
-                            if(!game.takeCard((String)session.getAttribute("login"))){
-                                // вывод сообщения о невозможности взять карту
-                            }
-                            
+        <div id="cardsDeskPanel">
+            <form name="takeCard" action="gamePage.jsp">
+                <input type="submit" name="takeCard" value="TakeCard">
+            </form>
+            <%
+                if (request.getParameter("takeCard") != null) {
+                    if (request.getParameter("takeCard").equals("TakeCard")) {
+                        if (!game.takeCard((String) session.getAttribute("login"))) {
+                            // вывод сообщения о невозможности взять карту
                         }
-                        %>
-                </div>
 
-                <%@ include file="footer.jsp" %>
+                    }
+                }
+            %>
+        </div>
+
+        <%@ include file="footer.jsp" %>

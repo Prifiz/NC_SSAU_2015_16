@@ -134,18 +134,21 @@ public class FileHandler {
      */
     public static ArrayList<Card> readCards(Reader in) throws IOException {
         StreamTokenizer st = new StreamTokenizer(in);
+        int cardId;
+        int colorId;
+        int iconId;
         Card card = null;
         ArrayList<Card> pack = new ArrayList();
         while (st.nextToken() != StreamTokenizer.TT_EOF) {
-            Integer idCard = (int) st.nval;
+            cardId = (int) st.nval;
             st.nextToken();
             String type = st.sval;
             st.nextToken();
-            Integer colorId = (int) st.nval;
+            colorId = (int) st.nval;
             st.nextToken();
-            Integer iconId = (int) st.nval;
+            iconId = (int) st.nval;
             if ("Numeric".equals(type)) {
-                card = new NumericCard(idCard, colorId, iconId);
+                card = new NumericCard(cardId, colorId, iconId);
             }
             pack.add(card);
         }
