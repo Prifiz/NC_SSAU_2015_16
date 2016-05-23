@@ -6,7 +6,8 @@
 package sessionBeans;
 
 import javax.ejb.Stateless;
-import team5.datamodel.user.newmodel.User;
+import team5.datamodel.user.User;
+
 
 
 /**

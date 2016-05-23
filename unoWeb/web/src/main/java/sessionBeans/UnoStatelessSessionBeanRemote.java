@@ -6,7 +6,7 @@
 package sessionBeans;
 
 import javax.ejb.Remote;
-import team5.datamodel.user.newmodel.User;
+import team5.datamodel.user.User;
 
 /**
  *
