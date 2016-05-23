@@ -14,7 +14,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Game game = SelectRoom.getSelectRoom().getGames((int) session.getAttribute("room"));
-    Colors colors = new Colors(new ArrayList<Color>());
+    System.out.println(game);
+    Colors colors = new Colors();
 %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +36,7 @@
                     <!--todo вставить пользователей-->
                     <% for (int i = 0; i < game.getRoom().countGamers(); i++) {%>
                     <tr>
-                        <td><%=game.getRoom().getGamer(i)%></td>
+                        <td><%=game.getRoom().getGamer(i).getGamerLogin()%></td>
                     </tr>                        
                     <%}%>
                 </table>
@@ -46,18 +47,20 @@
 
         <div id="cardPanel">
             <form name="tableCard" action="gamePage.jsp">
+                <%if(game.getLastCard()!=null){%>
                 <input type="image" name="card" value="<%=game.getLastCard().getCardId()%>" src="src/main/webapp/styles/uno_cards/<%=game.getLastCard().getIconId()%>-<%=colors.getColorById(game.getLastCard().getColorId())%>.jpg">
+                <%}%>
             </form>
         </div>
         <div id="cardsHandPanel">
             <form name="handCards" action="gamePage.jsp">
                 <%
-                    if (game.getFirstDistrib(game.getRoom().getGamerNumber(game.getRoom().getGamer((String) session.getAttribute("login"))))) {
+                    if (!game.getFirstDistrib(game.getRoom().getGamerNumber(game.getRoom().getGamer((String) session.getAttribute("login"))))) {
                         game.distribCard((String) session.getAttribute("login"));
                     }
                     ArrayList<Card> cards = game.getRoom().getGamer((String) session.getAttribute("login")).getHandscards();
                     for (int i = 0; i < cards.size(); i++) {%>
-                <input type="image" name="card" value="<%=cards.get(i).getCardId()%>" src="src/main/webapp/styles/uno_cards/<%=cards.get(i).getIconId()%>-<%=colors.getColorById(cards.get(i).getColorId())%>.jpg">
+                <input type="image" name="card" value="<%=cards.get(i).getCardId()%>" src="styles/uno_cards/<%=cards.get(i).getIconId()%>-<%=colors.getColorById(cards.get(i).getColorId())%>.jpg">
                 <%}%>
                     <!--            вставить карты-->
             </form> 

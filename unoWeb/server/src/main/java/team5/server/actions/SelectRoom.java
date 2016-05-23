@@ -67,7 +67,7 @@ public class SelectRoom {
             }
         }
         waitTime[roomNumber] = 0;//обнуляем таймер для этой комнаты
-        if (rooms[roomNumber].countGamers() > 1) {//если игроков больше 1
+        if (rooms[roomNumber].countGamers() >= 1) {//если игроков больше 1
 //                                            //разрешаем клиенту начать игру
             rooms[roomNumber].setPlaying(true);//устанавливаем, что в комнате идет игра
             games[roomNumber] = new Game(rooms[roomNumber]);

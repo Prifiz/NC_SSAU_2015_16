@@ -5,19 +5,29 @@
  */
 package team5.datamodel.card;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import team5.datamodel.transmissions.FileHandler;
 
 /**
  *
  * @author андрей
  */
 public class Cards {
-     static private ArrayList<Card> cards;
+     static private ArrayList<Card> cards ;
 
    
     
-    public Cards(ArrayList<Card> cards){
-        this.cards = cards;
+    public Cards(){
+         try {
+             this.cards = FileHandler.readCards(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/Cards.txt"))));
+         } catch (IOException ex) {
+             Logger.getLogger(Cards.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
    static public void addCard(Card card){

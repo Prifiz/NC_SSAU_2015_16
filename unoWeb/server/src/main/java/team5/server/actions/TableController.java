@@ -28,7 +28,7 @@ public class TableController {
 
     public TableController() {
         loadNewPack();
-        counterForRandom = 75;
+        counterForRandom = 56;
     }
 
     public boolean isCardDeal() {

@@ -52,7 +52,7 @@ public class TableControllerTest {
     /**
      * Test of setNewPack method, of class TableController.
      */
-    @Test
+    /*@Test
     public void testSetNewPack() throws FileNotFoundException {
         System.out.println("setNewPack");
         Reader in = new FileReader("Cards.txt");
@@ -61,6 +61,6 @@ public class TableControllerTest {
 //        Card expResult = new NumericCard(9, "green");
 //        Card result = instance.getPack().get(instance.getPack().size() - 1);
 //        assertEquals(expResult, result);//FIXME
-    }
+    }*/
 
 }

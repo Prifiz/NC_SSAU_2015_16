@@ -16,8 +16,12 @@ public class Colors {
 
    
     
-    public Colors(ArrayList<Color> colors){
-        this.colors = colors;
+    public Colors(){
+        this.colors = new ArrayList<Color>();
+        colors.add(new Color(0,"red"));
+        colors.add(new Color(1,"green"));
+        colors.add(new Color(2,"blue"));
+        colors.add(new Color(3,"yellow"));
     }
 
    public void addColor(Color color){

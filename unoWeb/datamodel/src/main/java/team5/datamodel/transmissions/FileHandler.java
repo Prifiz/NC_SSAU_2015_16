@@ -137,9 +137,9 @@ public class FileHandler {
         Card card = null;
         ArrayList<Card> pack = new ArrayList();
         while (st.nextToken() != StreamTokenizer.TT_EOF) {
-            String type = st.sval;
-            st.nextToken();
             Integer idCard = (int) st.nval;
+            st.nextToken();
+            String type = st.sval;
             st.nextToken();
             Integer colorId = (int) st.nval;
             st.nextToken();
