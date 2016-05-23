@@ -6,11 +6,10 @@
 package team5.datamodel.user.adress;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -20,41 +19,57 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(propOrder = { /*"country", "city"*/}, name = "address")
 @XmlRootElement
+@Entity
+@Table(name = "addresses")
 public class Address implements Serializable {
 
     @Id
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "login")
+    @Column(name = "login")
     private String login;
 
-    @JoinColumn(name="id_city")
-    @ManyToOne
-    private Integer idCity;
+    @Column(name = "city")
+    private String city;
+    
+    @Column(name = "country")
+    private String country;
+    
 
-    public Address(Integer idCity, String city) {
-        this.idCity = idCity;
-        this.login = city;
+    public Address(String city, String country) {
+        this.city = city;
+        this.country = country;
     }
 
     public Address() {
-        login = new String();
-        idCity = -1;
+        city = new String();
+        country = new String();
     }
+
+    
 
     public String getLogin() {
         return login;
     }
 
-    public Integer getIdCity() {
-        return idCity;
+    public String getCity() {
+        return city;
     }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public void setIdCity(Integer idCity) {
-        this.idCity = idCity;
     }
 
     @Override
@@ -70,7 +85,7 @@ public class Address implements Serializable {
             return false;
         }
         Address address = (Address) object;
-        if ((login != null) && (login.equals(address.getLogin())) && (idCity != null) && (idCity.equals(address.getIdCity()))) {
+        if ((login != null) && (login.equals(address.getLogin())) && (city.equals(address.getCity())) && (country.equals(address.getCountry()))) {
             return true;
         }
         return false;
@@ -79,14 +94,14 @@ public class Address implements Serializable {
     @Override
     public int hashCode() {
         int result = 17;
-        result += 37 * result + login.hashCode() + idCity.hashCode();
+        result += 37 * result + login.hashCode() + city.hashCode()+country.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(10);
-        builder.append(" Address: ").append(login).append(", ").append(idCity).append(" ");
+        builder.append(" Address: ").append(login).append(", ").append(city).append(" ").append(", ").append(country).append(" ");
         return builder.toString();
     }
 
