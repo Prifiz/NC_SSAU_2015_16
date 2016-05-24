@@ -50,6 +50,7 @@
                         </tr>
 
                         <%
+                            System.out.println(session.getAttribute("login"));
                             String room1 = request.getParameter("Room1");
                             String room2 = request.getParameter("Room2");
                             String room3 = request.getParameter("Room3");
@@ -86,10 +87,10 @@
                             //}
                             if (game) {
                                 session.setAttribute("room", room);
-
+                                response.sendRedirect("gamePage.jsp");
                         %>
 
-                        <jsp:forward page="gamePage.jsp"/>
+                        <!--<jsp:forward page="gamePage.jsp"/>-->
                         <%} else {
                             b = false;
                         %>

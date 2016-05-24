@@ -14,15 +14,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Game game = SelectRoom.getSelectRoom().getGames((int) session.getAttribute("room"));
-    System.out.println(game);
     Colors colors = new Colors();
+    if (request.getParameter("takeCard") != null) {
+        if (request.getParameter("takeCard").equals("TakeCard")) {
+            game.takeCard((String) session.getAttribute("login"));
+            response.sendRedirect("gamePage.jsp");
+        }
+    }
+
 %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--;text/html; charset=UTF-8-->
+        <meta http-equiv="Refresh" content="3"><!--;text/html; charset=UTF-8-->
         <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
         <title>Game page</title>
+        <script type="text/javascript">
+            function reloadPage()
+            {
+                window.location.reload();
+            }
+        </script>
     </head>
     <body>
 
@@ -44,14 +56,15 @@
         </div>
         <div class="clear">  
         </div>
-
         <div id="cardPanel">
             <form name="tableCard" action="gamePage.jsp">
-                <%if (game.getLastCard() != null) {%>
-                <input type="image" name="card" value="<%=game.getLastCard().getCardId()%>" src="src/main/webapp/styles/uno_cards/<%=game.getLastCard().getIconId()%>-<%=colors.getColorById(game.getLastCard().getColorId())%>.jpg">
+                <%if (game.getLastCard() != null) {
+                        String s = "styles/uno_cards/" + game.getLastCard().getIconId() + "-" + colors.getColorById(game.getLastCard().getColorId()).getColorName() + ".jpg";%>
+                <input type="image" name="card" value="<%=game.getLastCard().getCardId()%>" alt="cards" src="<%=s%>" height='60' width="50">
                 <%}%>
             </form>
         </div>
+
         <div id="cardsHandPanel">
             <form name="handCards" action="gamePage.jsp">
                 <%
@@ -60,20 +73,24 @@
                     }
                     ArrayList<Card> cards = game.getRoom().getGamer((String) session.getAttribute("login")).getHandscards();
                     for (int i = 0; i < cards.size(); i++) {
-                        String s = "styles/uno_cards/"+cards.get(i).getIconId()+"-"+colors.getColorById(cards.get(i).getColorId()).getColorName()+".jpg";
+                        String s = "styles/uno_cards/" + cards.get(i).getIconId() + "-" + colors.getColorById(cards.get(i).getColorId()).getColorName() + ".jpg";
                 %>
 
-<input type="image" name="card"  alt="cards" src="<%=s%>" height='60' width="50" ><!--value="<%=cards.get(i).getCardId()%>"  -->
+                <input type="image" name="card" value="<%=cards.get(i).getCardId()%>"  alt="cards" src="<%=s%>" height='60' width="50" >
                 <%}%>
-                <!--            вставить карты-->
             </form> 
+
             <%String[] values = null;
                 values = request.getParameterValues("card");
                 if (values != null) {
                     for (int i = 0; i < values.length; i++) {
                         if (values[i] != null) {
-                            String s = game.gameProcess((String) session.getAttribute("login"), Integer.getInteger(values[i]));
-                            if (s.equals("Wrong card")) {%>
+                            String s = game.gameProcess((String) session.getAttribute("login"), Integer.parseInt(values[i]));
+                            if (s.equals("Success")) {
+                                response.sendRedirect("gamePage.jsp");
+            %>
+            <%}
+                if (s.equals("Wrong card")) {%>
             <!--вывод сообщения о неправильной карте-->
             <%}
                 if (s.equals("Is not your turn")) {%>
@@ -84,21 +101,10 @@
                 }
             %>
         </div>
-
-        <div id="cardsDeskPanel">
-            <form name="takeCard" action="gamePage.jsp">
-                <input type="submit" name="takeCard" value="TakeCard">
+        <div id = "cardsDeskPanel" >
+            <form name = "takeCard" action = "gamePage.jsp" >
+                <input type = "submit" name = "takeCard" value = "TakeCard" onclick="reloadPage()" >
             </form>
-            <%
-                if (request.getParameter("takeCard") != null) {
-                    if (request.getParameter("takeCard").equals("TakeCard")) {
-                        if (!game.takeCard((String) session.getAttribute("login"))) {
-                            // вывод сообщения о невозможности взять карту
-                        }
-
-                    }
-                }
-            %>
         </div>
 
         <%@ include file="footer.jsp" %>
