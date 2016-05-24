@@ -6,12 +6,18 @@
 package team5.datamodel.user.adress;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import team5.datamodel.user.User;
 
 /**
  *
@@ -27,16 +33,20 @@ public class Address implements Serializable {
     @Column(name = "login")
     private String login;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "user_col")
+    private User userAdressColomn;
+
     @Column(name = "city")
     private String city;
-    
+
     @Column(name = "country")
     private String country;
-    
 
-    public Address(String city, String country) {
+    public Address(String login, String city, String country) {
         this.city = city;
         this.country = country;
+        this.login = login;
     }
 
     public Address() {
@@ -44,11 +54,14 @@ public class Address implements Serializable {
         country = new String();
     }
 
-    
-
     public String getLogin() {
         return login;
     }
+
+    public User getUserAdressColomn() {
+        return userAdressColomn;
+    }
+    
 
     public String getCity() {
         return city;
@@ -65,8 +78,6 @@ public class Address implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
-
-    
 
     public void setLogin(String login) {
         this.login = login;
@@ -94,7 +105,7 @@ public class Address implements Serializable {
     @Override
     public int hashCode() {
         int result = 17;
-        result += 37 * result + login.hashCode() + city.hashCode()+country.hashCode();
+        result += 37 * result + login.hashCode() + city.hashCode() + country.hashCode();
         return result;
     }
 

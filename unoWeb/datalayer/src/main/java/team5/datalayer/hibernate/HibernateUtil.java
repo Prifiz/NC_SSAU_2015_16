@@ -33,7 +33,7 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-
+        
 //    private static SessionFactory configureSessionFactory() {
 //
 //        // Настройки hibernate

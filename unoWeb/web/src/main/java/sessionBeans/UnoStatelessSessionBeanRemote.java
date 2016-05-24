@@ -15,8 +15,8 @@ import team5.datamodel.user.User;
 @Remote
 public interface UnoStatelessSessionBeanRemote {
 
-    void addUser(User user);
+    void  addUser(String name, String surname, String login, String password, String email, String city, String Country);
 
-    String getUser(User user);
+    User getUser(String login);
     
 }

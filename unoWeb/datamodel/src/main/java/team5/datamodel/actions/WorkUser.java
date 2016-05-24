@@ -82,7 +82,7 @@ public class WorkUser implements Serializable {
             throw new UserExistException("User already exist");
         } catch (NotFoundException e) {
             PrivateInformation privateInformation = new PrivateInformation(login,name, surname, bDay);
-            Address address = new Address(city,country);
+            Address address = new Address(login,city,country);
             ServiceInfo serviceInfo = new ServiceInfo(login, password, email);
             User us = new User(privateInformation, address, serviceInfo);
             arrUsers.add(us);

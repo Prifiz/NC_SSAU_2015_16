@@ -36,7 +36,7 @@ public class PrivateInformation implements Serializable {
     @Column(name="login")
    // @Transient
     private String login;
-    
+
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_col")
     private User userColomn;
@@ -46,8 +46,8 @@ public class PrivateInformation implements Serializable {
 
     @Column(name = "surname")
     private String surname;
-    //@Column(name="bday")
-    @Transient
+    
+    @Column(name="b_date")
     private LocalDate bDay;
 
     public PrivateInformation(String login, String name, String surname, LocalDate bDay) {
@@ -84,7 +84,7 @@ public class PrivateInformation implements Serializable {
     public User getUserColomn() {
         return userColomn;
     }
-
+    
     public void setUserColomn(User userColomn) {
         this.userColomn = userColomn;
     }
@@ -129,7 +129,7 @@ public class PrivateInformation implements Serializable {
     public String toString() {
         StringBuilder builder = new StringBuilder(10);
         builder.append(" ").append(name).append(", ").append(surname).append(", ")
-                .append(bDay).append(login);
+                .append(bDay).append(", ").append(login);
         return builder.toString();
     }
 
