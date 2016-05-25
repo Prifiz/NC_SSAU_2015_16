@@ -30,9 +30,9 @@
         <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
         <title>Game page</title>
         <script type="text/javascript">
-            function reloadPage()
-            {
-                window.location.reload();
+            window.setInterval("refreshDiv()", 5000);
+            function refreshDiv() {
+                document.getElementById("cardPanel".innerHTML);
             }
         </script>
     </head>

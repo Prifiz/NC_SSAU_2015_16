@@ -64,6 +64,9 @@ public class Game {
                     } catch (CardNotFoundException ex) {
                         logger.debug(ex.getMessage());
                     }
+                    if (room.getGamer(login).getHandscards().isEmpty()){
+                        room.cleanRoom();
+                    }
                     if (gamerNumber + 1 < room.countGamers()) {
                         gamerNumber++;
                     } else {
