@@ -16,6 +16,8 @@
         <mapping class="team5.datamodel.user.ServiceInfo" />
         <mapping class="team5.datamodel.user.adress.Address" />
         <mapping class="team5.datamodel.user.User" />
-    
+  
+        <mapping class="team5.datamodel.card.Card" />
+        <mapping class="team5.datamodel.card.Color" />
     </session-factory>
 </hibernate-configuration>

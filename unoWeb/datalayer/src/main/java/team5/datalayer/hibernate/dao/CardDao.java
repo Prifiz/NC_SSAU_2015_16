@@ -8,63 +8,65 @@ package team5.datalayer.hibernate.dao;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import team5.datalayer.hibernate.HibernateUtil;
-import team5.datamodel.user.adress.Address;
+import team5.datamodel.card.Card;
 
 /**
  *
  * @author chanta
  */
-public class AddressDao {
-    private static Logger logger = Logger.getLogger(AddressDao.class);
-public void saveAddress(Address address) {
+public class CardDao {
+
+    private static Logger logger = Logger.getLogger(CardDao.class);
+
+    public void saveCard(Card card) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.saveOrUpdate(address);
+            session.saveOrUpdate(card);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.error(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
     }
 
-public Address getAddressByLogin(String login) {
+    public Card getCardById(Integer cardId) {
         Session session = null;
-        Address address = null;
+        Card card = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            address = (Address) session.get(Address.class, login);
+            card = (Card) session.get(Card.class, cardId);
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
-        return address;
+        return card;
     }
 
-public void deleteAddress(Address address) {
+    public void deleteCard(Card card) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(address);
+            session.delete(card);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
     }
-    
+
 }

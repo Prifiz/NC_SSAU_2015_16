@@ -5,13 +5,35 @@
  */
 package team5.datamodel.card;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author Дмитрий
  */
+@Entity
+@Table(name = "color")
 public class Color {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = " id_color")
     private Integer colorId;
+
+    @Column(name = "color_name")
     private String colorName;
+
+//    @OneToOne(cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "card_col")
+//    private Card cardColomn;
 
     public Color() {
     }
@@ -36,10 +58,16 @@ public class Color {
     public void setColorName(String colorName) {
         this.colorName = colorName;
     }
-    
+
+//    public Card getCardColomn() {
+//        return cardColomn;
+//    }
+
     @Override
     public String toString() {
-        return getColorId() + " " + getColorName();
+        StringBuilder builder = new StringBuilder(10);
+        builder.append(" Color: ").append(colorId).append(", ").append(colorName).append(" ");
+        return builder.toString();
     }
 
     @Override
@@ -60,5 +88,4 @@ public class Color {
         return this.getColorId() ^ this.getColorName().length();
     }
 
-    
 }

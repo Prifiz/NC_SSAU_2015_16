@@ -8,63 +8,65 @@ package team5.datalayer.hibernate.dao;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import team5.datalayer.hibernate.HibernateUtil;
-import team5.datamodel.user.adress.Address;
+import team5.datamodel.card.Color;
 
 /**
  *
  * @author chanta
  */
-public class AddressDao {
-    private static Logger logger = Logger.getLogger(AddressDao.class);
-public void saveAddress(Address address) {
+public class ColorDao {
+
+    private static Logger logger = Logger.getLogger(ColorDao.class);
+
+    public void saveColor(Color color) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.saveOrUpdate(address);
+            session.saveOrUpdate(color);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.error(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
     }
 
-public Address getAddressByLogin(String login) {
+    public Color getColorById(Integer id) {
         Session session = null;
-        Address address = null;
+        Color color = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            address = (Address) session.get(Address.class, login);
+            color = (Color) session.get(Color.class, id);
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
-        return address;
+        return color;
     }
 
-public void deleteAddress(Address address) {
+    public void deleteColor(Color color) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(address);
+            session.delete(color);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
     }
-    
+
 }
