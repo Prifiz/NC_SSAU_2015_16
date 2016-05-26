@@ -6,6 +6,7 @@
 package team5.server.actions;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import team5.datamodel.card.Card;
 import team5.datamodel.exceptions.CardNotFoundException;
 
@@ -73,7 +74,7 @@ public class GamerController {
         if(!handscards.isEmpty())
         {
             for (int i = 0; i < handscards.size(); i++) {
-                if(card.equals(handscards.get(i)))
+                if(Objects.equals(card.getCardId(), handscards.get(i).getCardId()))
                 {
                     handscards.remove(i);
                 }
@@ -100,13 +101,13 @@ public class GamerController {
         return login;
     }
     
-    public boolean searchCardInHand(Card card)
+    public Card searchCardInHand(int cardId)
     {
        // String[] str = s.split(" ");
-        boolean b = false;
+        Card b = null;
         for (Card handscard : handscards) {
-            if (handscard.equals(card))//((handscard.getColorId()==Integer.getInteger(str[0])) && (handscard.getIconId() == Integer.parseInt(str[1]))) {
-                b = true;
+            if (handscard.getCardId()==cardId)//((handscard.getColorId()==Integer.getInteger(str[0])) && (handscard.getIconId() == Integer.parseInt(str[1]))) {
+                b = handscard;
         }
         return b;
     }

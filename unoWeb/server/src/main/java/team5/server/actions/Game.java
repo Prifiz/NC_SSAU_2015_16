@@ -5,84 +5,90 @@
  */
 package team5.server.actions;
 
+import java.util.logging.Level;
+import org.apache.log4j.Logger;
 import team5.datamodel.card.Card;
 import team5.datamodel.card.Cards;
+import team5.datamodel.exceptions.CardNotFoundException;
 import team5.server.net.server.ServerConstants;
+import team5.server.net.server.ServerThread;
 
 /**
  *
  * @author андрей
  */
 public class Game {
-    
+
     private boolean[] firstDistrib;
-    
+    private Logger logger = Logger.getLogger(Game.class);
     private int gamerNumber;
     private String gamerLogin;
     private RoomController room;
     private TableController table;
-    
-    
-    
-    public Game(RoomController room){
-        firstDistrib = new boolean [ServerConstants.MAX_NUMBER_OF_PLAYERS];
+
+    public Game(RoomController room) {
+
+        firstDistrib = new boolean[ServerConstants.MAX_NUMBER_OF_PLAYERS];
         for (int i = 0; i < firstDistrib.length; i++) {
             firstDistrib[i] = false;
         }
         this.room = room;
         this.table = this.room.getTableController();
+        gamerLogin = room.getGamer(0).getGamerLogin();
+        room.getGamer(gamerLogin).setCanTakeCard(true);
         table.loadNewPack();
     }
-    
-    public void distribCard(String login){
+
+    public void distribCard(String login) {
         for (int i = 0; i < ServerConstants.START_NUMBER_OF_CARDS; i++) {
-           room.getGamer(login).addCardToHand(table.getCardFromPack());
+            room.getGamer(login).addCardToHand(table.getCardFromPack());
         }
         firstDistrib[room.getGamerNumber(room.getGamer(login))] = true;
-        
+
     }
-    public boolean takeCard(String login){
-        boolean b = room.getGamer(login).isCanTakeCard();
-        if(room.getGamer(login).isCanTakeCard()){
+
+    public void takeCard(String login) {
+        if (gamerLogin.equals(login)) {
             room.getGamer(login).addCardToHand(table.getCardFromPack());
-            room.getGamer(login).setCanTakeCard(false);
         }
-        return b;
     }
-    
-    public String gameProcess(String login, Integer cardId){
-        Card card = Cards.getCardById(cardId);
-        if(gamerLogin.equals(login)){
-            room.getGamer(login).setCanTakeCard(true);
-            if(room.getGamer(login).searchCardInHand(card)){
-                if(table.isRightCard(card)){
+
+    public String gameProcess(String login, Integer cardId) {
+        Card card = room.getGamer(login).searchCardInHand(cardId);
+        if (gamerLogin.equals(login)) {
+            if (card != null) {
+                if (table.isRightCard(card)) {
                     table.setLastCard(card);
-                    room.getGamer(login).removeCardInHand(card);
-                    if(gamerNumber+1<room.countGamers())
-                    {
-                        gamerNumber++;
+                    try {
+                        room.getGamer(login).pullCardFromHand(card);
+                    } catch (CardNotFoundException ex) {
+                        logger.debug(ex.getMessage());
                     }
-                    else{
-                        gamerNumber=0;
+                    if (room.getGamer(login).getHandscards().isEmpty()){
+                        room.cleanRoom();
+                    }
+                    if (gamerNumber + 1 < room.countGamers()) {
+                        gamerNumber++;
+                    } else {
+                        gamerNumber = 0;
                     }
                     gamerLogin = room.getGamer(gamerNumber).getGamerLogin();
-                    room.getGamer(login).setCanTakeCard(false);
                     return "Success";
-                }else{
+                } else {
                     return "Wrong card";
                 }
-            }
-            else{
+            } else {
                 return "Gamer use chit code";
             }
-        }else{
+        } else {
             return "Is not your turn";
         }
     }
-    
-    public Card getLastCard(){
+
+    public Card getLastCard() {
         return table.getLastCard();
     }
+
     public int getGamerNumber() {
         return gamerNumber;
     }
@@ -114,7 +120,7 @@ public class Game {
     public void setTable(TableController table) {
         this.table = table;
     }
-    
+
     public boolean getFirstDistrib(int i) {
         return firstDistrib[i];
     }

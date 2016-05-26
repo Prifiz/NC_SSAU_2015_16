@@ -26,16 +26,17 @@
                             SignIn in = new SignIn();
                             boolean b = in.sign(login, password);
                             if (b) {
-                                session.setAttribute("login", login);%>
-                                <jsp:forward page="selectRoomPage.jsp"/>
-                            <%} else {%>
-                            <tr>
-                                <td></td>
-                                <td id="loginException">
-                                    Incorrect login/password
-                                </td>
-                            </tr>
-                            <%}
+                                session.setAttribute("login", login);
+                                response.sendRedirect("selectRoomPage.jsp"); %>
+                    <!--<jsp:forward page="selectRoomPage.jsp"/>-->
+                    <%} else {%>
+                    <tr>
+                        <td></td>
+                        <td id="loginException">
+                            Incorrect login/password
+                        </td>
+                    </tr>
+                    <%}
                         }
                     %>
                     <tr>
