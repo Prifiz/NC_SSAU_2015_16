@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+import java.time.LocalDate;
 import javax.ejb.Remote;
 import team5.datamodel.user.User;
 
@@ -15,7 +16,7 @@ import team5.datamodel.user.User;
 @Remote
 public interface UnoStatelessSessionBeanRemote {
 
-    void  addUser(String name, String surname, String login, String password, String email, String city, String Country);
+    void  addUser(String name, String surname,  LocalDate BDay, String login, String password, String email, String city, String Country);
 
     User getUser(String login);
     
