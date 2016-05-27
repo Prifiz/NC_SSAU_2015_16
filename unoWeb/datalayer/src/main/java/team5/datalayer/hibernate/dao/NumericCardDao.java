@@ -5,25 +5,47 @@
  */
 package team5.datalayer.hibernate.dao;
 
+import java.util.ArrayList;
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import team5.datalayer.hibernate.HibernateUtil;
 import team5.datamodel.card.Card;
+import team5.datamodel.card.NumericCard;
+import team5.datamodel.user.User;
 
 /**
  *
  * @author chanta
  */
-public class CardDao {
+public class NumericCardDao {
 
-    private static Logger logger = Logger.getLogger(CardDao.class);
+    private static Logger logger = Logger.getLogger(NumericCardDao.class);
+    
+    public ArrayList<User> findAll() {
+        Session session = null;
+        ArrayList<User> users = new ArrayList() ;
+        try {
+        Query query = HibernateUtil.getSessionFactory().openSession().createQuery("SELECT a FROM Abilities a");
+        users = (ArrayList<User> ) query.list();
+        
+        } catch (Exception ex) {
+            logger.debug(ex.getMessage());
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+                session=null;
+            }
+        }
+        return users;
+    }
 
-    public void saveCard(Card card) {
+    public void saveNumericCard(NumericCard numericCard) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.saveOrUpdate(card);
+            session.saveOrUpdate(numericCard);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.error(ex.getMessage());
@@ -35,12 +57,12 @@ public class CardDao {
         }
     }
 
-    public Card getCardById(Integer cardId) {
+    public NumericCard getNumericCardById(Integer cardId) {
         Session session = null;
-        Card card = null;
+        NumericCard numericCard = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            card = (Card) session.get(Card.class, cardId);
+            numericCard = (NumericCard) session.get(NumericCard.class, cardId);
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
@@ -49,15 +71,15 @@ public class CardDao {
                 session = null;
             }
         }
-        return card;
+        return numericCard;
     }
 
-    public void deleteCard(Card card) {
+    public void deleteNumericCard(NumericCard numericCard) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(card);
+            session.delete(numericCard);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.debug(ex.getMessage());

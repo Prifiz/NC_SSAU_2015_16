@@ -5,7 +5,10 @@
  */
 package team5.datalayer.hibernate.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import team5.datalayer.hibernate.HibernateUtil;
 
@@ -34,6 +37,24 @@ public class UserDao {
                 session=null;
             }
         }
+    }
+    
+    public ArrayList<User> findAll() {
+        Session session = null;
+        ArrayList<User> users = new ArrayList() ;
+        try {
+        Query query = HibernateUtil.getSessionFactory().openSession().createQuery("SELECT a FROM Abilities a");
+        users = (ArrayList<User> ) query.list();
+        
+        } catch (Exception ex) {
+            logger.debug(ex.getMessage());
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+                session=null;
+            }
+        }
+        return users;
     }
 
     public User getUserByLogin(String login) {

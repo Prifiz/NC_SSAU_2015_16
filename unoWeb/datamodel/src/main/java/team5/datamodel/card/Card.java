@@ -25,21 +25,21 @@ import org.hibernate.annotations.Entity;
  */
 @XmlRootElement(name = "Card")
 @XmlSeeAlso(NumericCard.class)
-@Entity
-@Table(name = "cards")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Entity
+//@Table(name = "cards")
+//@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Card implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_card")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id_card")
     private Integer cardId;
 
-    @Column(name = "icon_id")
+//    @Column(name = "icon_id")
     private Integer iconId;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @Column(name = "id_color")
+//    @OneToOne(cascade = {CascadeType.ALL})
+//    @Column(name = "id_color")
     private Integer colorId;
     
    
