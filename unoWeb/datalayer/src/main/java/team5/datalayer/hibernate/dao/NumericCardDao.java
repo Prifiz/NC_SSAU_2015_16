@@ -22,12 +22,12 @@ public class NumericCardDao {
 
     private static Logger logger = Logger.getLogger(NumericCardDao.class);
     
-    public ArrayList<User> findAll() {
+    public ArrayList<NumericCard> findAll() {
         Session session = null;
-        ArrayList<User> users = new ArrayList() ;
+        ArrayList<NumericCard> users = new ArrayList() ;
         try {
         Query query = HibernateUtil.getSessionFactory().openSession().createQuery("SELECT a FROM Abilities a");
-        users = (ArrayList<User> ) query.list();
+        users = (ArrayList<NumericCard> ) query.list();
         
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
