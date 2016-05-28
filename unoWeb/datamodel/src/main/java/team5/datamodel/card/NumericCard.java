@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,12 +28,16 @@ import org.hibernate.annotations.Entity;
 @XmlRootElement(name = "Numeric Card")
 @Entity
 @Table(name = "cards")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
 public class NumericCard extends Card implements Serializable {
 
 //    public NumericCard(Integer iconId, String color) {
 //        super(iconId, color, CardType.NUMERIC);
 //    }
+//    @JoinColumn(name = "id_color", referencedColumnName = "id_color")
+//    @ManyToOne(optional = false)
+//    private Integer colorId;
+    
     public NumericCard(Integer cardId, Integer colorId, Integer iconId) {
         super(cardId, colorId, iconId);
     }

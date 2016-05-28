@@ -5,6 +5,7 @@
  */
 package team5.datamodel.card;
 
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,10 +33,22 @@ public class Color {
     @Column(name = "color_name")
     private String colorName;
 
-//    @OneToOne(cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "card_col")
-//    private Card cardColomn;
+    
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id_color")
+//    private List<NumericCard> listOfCards;
+////    @OneToOne(cascade = {CascadeType.ALL})
+////    @JoinColumn(name = "card_col")
+////    private Card cardColomn;
+//
+//    public List<NumericCard> getListOfCards() {
+//        return listOfCards;
+//    }
+//
+//    public void setListOfCards(List<NumericCard> listOfCards) {
+//        this.listOfCards = listOfCards;
+//    }
 
+   
     public Color() {
     }
 

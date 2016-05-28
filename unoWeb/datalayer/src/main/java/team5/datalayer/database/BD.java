@@ -53,9 +53,9 @@ public class BD {
             System.out.println(privateInformation.toString());
             System.out.println(address.toString());
 
-            ColorDao colorDao = new ColorDao();
-            Color color = colorDao.getColorById(1);
-            System.out.println(color.toString());
+//            ColorDao colorDao = new ColorDao();
+//            Color color = colorDao.getColorById(1);
+//            System.out.println(color.toString());
             
 //            NumericCardDao numeriCardDao = new NumericCardDao();
 //            NumericCard card = numeriCardDao.getNumericCardById(10);

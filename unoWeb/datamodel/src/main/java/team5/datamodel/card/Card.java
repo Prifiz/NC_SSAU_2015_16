@@ -13,8 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -28,11 +30,12 @@ import org.hibernate.annotations.Entity;
 //@Entity
 //@Table(name = "cards")
 //@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Card implements Serializable {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id_card")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_card")
     private Integer cardId;
 
 //    @Column(name = "icon_id")
@@ -44,6 +47,7 @@ public abstract class Card implements Serializable {
     
    
     // private CardType cardType;
+    @Transient
     public Integer getCardId() {
         return cardId;
     }
@@ -75,11 +79,13 @@ public abstract class Card implements Serializable {
 //    public CardType getCardType() {
 //        return cardType;
 //    }
+    
     public void setIconId(Integer iconId) {
         this.iconId = iconId;
     }
 
     @XmlElement(name = "colorID")
+    @Transient
     public Integer getColorId() {
         return colorId;
     }
