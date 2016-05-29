@@ -6,6 +6,7 @@
 package team5.datalayer.hibernate.dao;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -34,24 +35,24 @@ public class UserDao {
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
     }
-    
-    public ArrayList<User> findAll() {
+
+    public Collection findAll() {
         Session session = null;
-        ArrayList<User> users = new ArrayList() ;
+        List users = new ArrayList<User>();
         try {
-        Query query = HibernateUtil.getSessionFactory().openSession().createQuery("SELECT a FROM Abilities a");
-        users = (ArrayList<User> ) query.list();
-        
+            session = HibernateUtil.getSessionFactory().openSession();
+            users = session.createCriteria(User.class).list();
+            session.getTransaction().commit();
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
         return users;
@@ -68,7 +69,7 @@ public class UserDao {
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
         return user;
@@ -87,7 +88,6 @@ public class UserDao {
 //            }
 //        }
 //    }
-
     public void deleteUser(User user) {
         Session session = null;
         try {
@@ -100,7 +100,7 @@ public class UserDao {
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
     }

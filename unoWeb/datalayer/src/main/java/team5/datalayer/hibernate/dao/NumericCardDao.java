@@ -6,6 +6,8 @@
 package team5.datalayer.hibernate.dao;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -22,13 +24,13 @@ public class NumericCardDao {
 
     private static Logger logger = Logger.getLogger(NumericCardDao.class);
     
-    public ArrayList<NumericCard> findAll() {
+    public Collection findAll() {
         Session session = null;
-        ArrayList<NumericCard> users = new ArrayList() ;
+        List сards = new ArrayList<NumericCard>() ;
         try {
-        Query query = HibernateUtil.getSessionFactory().openSession().createQuery("SELECT a FROM Abilities a");
-        users = (ArrayList<NumericCard> ) query.list();
-        
+        session = HibernateUtil.getSessionFactory().openSession();
+            сards = session.createCriteria(NumericCard.class).list();
+            session.getTransaction().commit();
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
@@ -37,7 +39,7 @@ public class NumericCardDao {
                 session=null;
             }
         }
-        return users;
+        return сards;
     }
 
     public void saveNumericCard(NumericCard numericCard) {
