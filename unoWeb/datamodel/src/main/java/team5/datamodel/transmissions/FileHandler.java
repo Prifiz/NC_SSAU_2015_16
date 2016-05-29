@@ -1,23 +1,15 @@
 package team5.datamodel.transmissions;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Reader;
-import java.io.StreamTokenizer;
-import java.io.Writer;
-import java.util.ArrayList;
+import team5.datamodel.actions.WorkCard;
+import team5.datamodel.actions.WorkUser;
+import team5.datamodel.card.Card;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import team5.datamodel.actions.WorkCard;
-import team5.datamodel.actions.WorkUser;
-import team5.datamodel.card.Card;
-import team5.datamodel.card.NumericCard;
+import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -148,7 +140,7 @@ public class FileHandler {
             st.nextToken();
             iconId = (int) st.nval;
             if ("Numeric".equals(type)) {
-                card = new NumericCard(cardId, colorId, iconId);
+                card = new Card(cardId, colorId, iconId);
             }
             pack.add(card);
         }

@@ -5,17 +5,7 @@
  */
 package team5.datamodel.card;
 
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -28,36 +18,20 @@ public class Color {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = " id_color")
-    private Integer colorId;
+    private int colorId;
 
     @Column(name = "color_name")
     private String colorName;
 
-    
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id_color")
-//    private List<NumericCard> listOfCards;
-////    @OneToOne(cascade = {CascadeType.ALL})
-////    @JoinColumn(name = "card_col")
-////    private Card cardColomn;
-//
-//    public List<NumericCard> getListOfCards() {
-//        return listOfCards;
-//    }
-//
-//    public void setListOfCards(List<NumericCard> listOfCards) {
-//        this.listOfCards = listOfCards;
-//    }
-
-   
     public Color() {
     }
 
-    public Color(Integer colorId, String colorName) {
+    public Color(int colorId, String colorName) {
         this.colorId = colorId;
         this.colorName = colorName;
     }
 
-    public Integer getColorId() {
+    public int getColorId() {
         return colorId;
     }
 
@@ -73,33 +47,26 @@ public class Color {
         this.colorName = colorName;
     }
 
-//    public Card getCardColomn() {
-//        return cardColomn;
-//    }
-
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(10);
-        builder.append(" Color: ").append(colorId).append(", ").append(colorName).append(" ");
-        return builder.toString();
+        return "Color: " + colorId + ", " + colorName + " ";
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this.getClass() == obj.getClass()) {
-            if ((((Color) obj).getColorName().equals(this.getColorName())) && ((Color) obj).getColorId() == this.getColorId()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Color color = (Color) o;
+
+        if (colorId != color.colorId) return false;
+        return colorName != null ? colorName.equals(color.colorName) : color.colorName == null;
     }
 
     @Override
     public int hashCode() {
-        return this.getColorId() ^ this.getColorName().length();
+        int result = colorId;
+        result = 31 * result + (colorName != null ? colorName.hashCode() : 0);
+        return result;
     }
-
 }

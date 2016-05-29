@@ -5,14 +5,13 @@
  */
 package team5.server.actions;
 
+import org.junit.Test;
+import team5.datamodel.card.Card;
+import team5.datamodel.transmissions.FileHandler;
+
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import team5.datamodel.transmissions.FileHandler;
-import team5.datamodel.card.Card;
-import team5.datamodel.card.NumericCard;
 
 /**
  *
@@ -32,7 +31,7 @@ public class WorkWithFilesTest {
         Reader in = new FileReader("Cards.txt");
         ArrayList<Card> pack = FileHandler.readCards(in);;
         Card result = pack.get(pack.size() - 1);
-//        Card expResult = new NumericCard(9, "green");//FIXME
+//        Card expResult = new Card(9, "green");//FIXME
         in.close();
         //assertEquals(expResult, result);//FIXME
         //fail("The test case is a prototype.");

@@ -29,20 +29,15 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.21</version>
         </dependency>
-
-
-        
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>datamodel</artifactId>
             <version>${project.version}</version>
         </dependency>
-        
-        
         <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>postgresql-9.2-1002.jdbc4</artifactId>
-            <version>SNAPSHOT</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.2-1002-jdbc4</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -75,6 +70,7 @@
                 <directory>${basedir}\src\main\resources\</directory>
                 <includes>
                     <include>log4j.properties</include>
+                    <include>hibernate.cfg.xml</include>
                 </includes>
             </resource>
         </resources>

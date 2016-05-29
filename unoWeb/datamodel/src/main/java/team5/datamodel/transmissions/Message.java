@@ -1,12 +1,11 @@
 package team5.datamodel.transmissions;
 
-import java.io.Serializable;
+import team5.datamodel.card.Card;
+import team5.datamodel.user.User;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import team5.datamodel.card.Card;
-//import team5.datamodel.card.Card.CardType;
-import team5.datamodel.card.NumericCard;
-import team5.datamodel.user.User;
+import java.io.Serializable;
 
 /**
  * Use for request transmission from client to server
@@ -23,9 +22,7 @@ public class Message implements Serializable {
     private String choice;
     private int value;
     @XmlElement
-    private NumericCard numericCard;
-    //private CardType cardType;
-    // private String cardType;
+    private Card numericCard;
 
     public Message(String command) {
         this.command = command;
@@ -42,22 +39,8 @@ public class Message implements Serializable {
         this.value = value;
     }
 
-//    public Message(Card card) {
-//        cardType = card.getCardType();
-//        switch (cardType) {
-//            case NUMERIC:
-//                this.numericCard = (NumericCard) card;
-////            case SPECIAL:
-////                break;
-//            default:
-//                this.numericCard = (NumericCard) card;
-//
-//        }
-//    }
     public Message(Card card) {
-
-        this.numericCard = (NumericCard) card;
-
+        this.numericCard = card;
     }
 
     public Message() {
@@ -105,51 +88,11 @@ public class Message implements Serializable {
         this.value = value;
     }
 
-    public NumericCard getCard() {
-
-        return numericCard;//заглушка временная
-
+    public Card getCard() {
+        return numericCard; //заглушка временная
     }
 
-//    public NumericCard getCard() {
-//        switch (cardType) {
-//            case NUMERIC:
-//                return numericCard;
-////            case SPECIAL:
-////                break;
-//            default:
-//                return numericCard;//заглушка временная
-//        }
-//
-//    }
     public void setCard(Card card) {
-
-        this.numericCard = (NumericCard) card;//TODO заглушка
-
+        this.numericCard = card;//TODO заглушка
     }
-
-//    public void setCard(Card card) {
-//        cardType = card.getCardType();
-//        switch (cardType) {
-//            case NUMERIC:
-//                this.numericCard = (NumericCard) card;
-////            case SPECIAL:
-////                break;
-//            default:
-//                this.numericCard = (NumericCard) card;
-//
-//        }
-//    }
-//    public void setCardType(String cardType) {
-//        this.cardType = cardType;
-//    }
-//
-//    @XmlElement(name = "card type")
-//    public String getCardType() {
-//        return cardType;
-//    }
-//    private enum CardType {
-//        NUMERIC,
-//        SPECIAL;
-//    }
 }

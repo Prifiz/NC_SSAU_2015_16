@@ -5,15 +5,15 @@
  */
 package team5.datamodel.actions;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import team5.datamodel.card.Card;
-import team5.datamodel.card.NumericCard;
 import team5.datamodel.exceptions.CardNotFoundException;
 import team5.datamodel.exceptions.NotFoundException;
 import team5.datamodel.searches.CardSearch;
 import team5.datamodel.searches.FieldRequest;
 import team5.datamodel.searches.Search;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,7 +35,7 @@ public class WorkCard implements Serializable {
     }
 
     public Card addCard(Integer iconId, Integer colorId,Integer cardId) {
-        Card card = new NumericCard(iconId, colorId,cardId);
+        Card card = new Card(iconId, colorId,cardId);
         arrCards.add(card);
         return card;
     }

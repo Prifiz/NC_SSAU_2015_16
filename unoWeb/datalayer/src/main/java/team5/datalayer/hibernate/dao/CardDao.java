@@ -8,22 +8,44 @@ package team5.datalayer.hibernate.dao;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import team5.datalayer.hibernate.HibernateUtil;
-import team5.datamodel.card.Color;
+import team5.datamodel.card.Card;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  *
  * @author chanta
  */
-public class ColorDao {
+public class CardDao {
 
-    private static Logger logger = Logger.getLogger(ColorDao.class);
+    private static Logger logger = Logger.getLogger(CardDao.class);
+    
+    public Collection findAll() {
+        Session session = null;
+        List сards = new ArrayList<Card>() ;
+        try {
+        session = HibernateUtil.getSessionFactory().openSession();
+            сards = session.createCriteria(Card.class).list();
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            logger.debug(ex.getMessage());
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+                session=null;
+            }
+        }
+        return сards;
+    }
 
-    public void saveColor(Color color) {
+    public void saveNumericCard(Card card) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.saveOrUpdate(color);
+            session.saveOrUpdate(card);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.error(ex.getMessage());
@@ -35,12 +57,12 @@ public class ColorDao {
         }
     }
 
-    public Color getColorById(Integer id) {
+    public Card getCardById(Integer cardId) {
         Session session = null;
-        Color color = null;
+        Card numericCard = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            color = session.get(Color.class, id);
+            numericCard = session.get(Card.class, cardId);
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {
@@ -49,15 +71,15 @@ public class ColorDao {
                 session = null;
             }
         }
-        return color;
+        return numericCard;
     }
 
-    public void deleteColor(Color color) {
+    public void deleteNumericCard(Card card) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(color);
+            session.delete(card);
             session.getTransaction().commit();
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
@@ -68,4 +90,5 @@ public class ColorDao {
             }
         }
     }
+
 }

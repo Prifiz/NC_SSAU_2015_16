@@ -5,13 +5,14 @@
  */
 package team5.datamodel.card;
 
+import team5.datamodel.transmissions.FileHandler;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import team5.datamodel.transmissions.FileHandler;
 
 /**
  *
@@ -20,8 +21,6 @@ import team5.datamodel.transmissions.FileHandler;
 public class Cards {
      static private ArrayList<Card> cards ;
 
-   
-    
     public Cards(){
          try {
              this.cards = FileHandler.readCards(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/Cards.txt"))));

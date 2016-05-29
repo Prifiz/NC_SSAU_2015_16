@@ -5,13 +5,10 @@
  */
 package team5.server.actions;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import team5.datamodel.card.Card;
-import team5.datamodel.card.NumericCard;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -28,12 +25,6 @@ public class TableControllerTest {
     @Test
     public void testIsRightCard() {
         System.out.println("isRightCard");
-////        Card card = new NumericCard(9, "green");
-////        TableController instance = new TableController();
-////        instance.setLastCard(new NumericCard(9, "green"));
-//        boolean expResult = true;
-//        boolean result = instance.isRightCard(card);
-//        assertEquals(expResult, result);//FIXME
     }
 
     /**
@@ -48,19 +39,4 @@ public class TableControllerTest {
         int result = instance.getPack().size();
         assertEquals(expResult, result);
     }
-
-    /**
-     * Test of setNewPack method, of class TableController.
-     */
-    /*@Test
-    public void testSetNewPack() throws FileNotFoundException {
-        System.out.println("setNewPack");
-        Reader in = new FileReader("Cards.txt");
-        TableController instance = new TableController();
-        instance.loadNewPack();
-//        Card expResult = new NumericCard(9, "green");
-//        Card result = instance.getPack().get(instance.getPack().size() - 1);
-//        assertEquals(expResult, result);//FIXME
-    }*/
-
 }

@@ -31,7 +31,7 @@ public class PrivateInformationDao {
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
-                session=null;
+                session = null;
             }
         }
     }
@@ -41,7 +41,7 @@ public class PrivateInformationDao {
         PrivateInformation privateInformation = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            privateInformation = (PrivateInformation) session.get(PrivateInformation.class, login);
+            privateInformation = session.get(PrivateInformation.class, login);
         } catch (Exception ex) {
             logger.debug(ex.getMessage());
         } finally {

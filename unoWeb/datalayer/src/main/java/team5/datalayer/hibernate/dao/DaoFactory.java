@@ -15,15 +15,15 @@ public class DaoFactory {
     private static PrivateInformationDao privateInformationDao;
     
     public static UserDao getUserDao(){
-        if (userDao==null) {
-            userDao=new UserDao();
+        if (userDao == null) {
+            userDao = new UserDao();
         }
         return userDao;
     }
 
     public static PrivateInformationDao getPrivateInformationDao() {
-        if (privateInformationDao==null) {
-            privateInformationDao=new PrivateInformationDao();
+        if (privateInformationDao == null) {
+            privateInformationDao = new PrivateInformationDao();
         }
         return privateInformationDao;
     }

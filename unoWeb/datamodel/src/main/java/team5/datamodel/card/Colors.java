@@ -14,10 +14,8 @@ import java.util.ArrayList;
 public class Colors {
     private ArrayList<Color> colors;
 
-   
-    
     public Colors(){
-        this.colors = new ArrayList<Color>();
+        this.colors = new ArrayList<>();
         colors.add(new Color(0,"red"));
         colors.add(new Color(1,"green"));
         colors.add(new Color(2,"blue"));
@@ -29,10 +27,10 @@ public class Colors {
    }
    
    public Color getColorById(Integer id){
-       Color color2= null;
-       for(Color color:colors){
-           if(color.getColorId().equals(id)){
-               color2=color;
+       Color color2 = null;
+       for (Color color : colors){
+           if(color.getColorId() == id){
+               color2 = color;
            }
        }
        return color2;

@@ -5,87 +5,50 @@
  */
 package team5.datamodel.card;
 
-import java.io.Serializable;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import org.hibernate.annotations.Entity;
+import javax.persistence.*;
 /**
  *
  * @author Пользователь
  */
-@XmlRootElement(name = "Card")
-@XmlSeeAlso(NumericCard.class)
-//@Entity
-//@Table(name = "cards")
-//@Inheritance(strategy = InheritanceType.JOINED)
-@MappedSuperclass
-public abstract class Card implements Serializable {
+@Entity
+@Table(name = "cards")
+public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_card")
     private Integer cardId;
 
-//    @Column(name = "icon_id")
+    @Column(name = "icon_id")
     private Integer iconId;
 
-//    @OneToOne(cascade = {CascadeType.ALL})
-//    @Column(name = "id_color")
+    @Column(name = "id_color")
     private Integer colorId;
-    
-   
-    // private CardType cardType;
-    @Transient
-    public Integer getCardId() {
-        return cardId;
-    }
 
-//    public Card(Integer iconId, String color, CardType cardType) {
-//        this.color = color;
-//        this.iconId = iconId;
-//        this.cardType = cardType;
-//    }
-    public void setCardId(Integer cardId) {
-        this.cardId = cardId;
-    }
+    public Card() { }
 
     public Card(int cardId, int colorId, int iconId) {
         this.cardId = cardId;
         this.colorId = colorId;
         this.iconId = iconId;
-
     }
 
-    public Card() {
+    public Integer getCardId() {
+        return cardId;
     }
 
-    @XmlElement(name = "iconID")
+    public void setCardId(Integer cardId) {
+        this.cardId = cardId;
+    }
+
     public Integer getIconId() {
         return iconId;
     }
 
-//    public CardType getCardType() {
-//        return cardType;
-//    }
-    
     public void setIconId(Integer iconId) {
         this.iconId = iconId;
     }
 
-    @XmlElement(name = "colorID")
-    @Transient
     public Integer getColorId() {
         return colorId;
     }
@@ -94,13 +57,28 @@ public abstract class Card implements Serializable {
         this.colorId = colorId;
     }
 
-//    public void setCardType(CardType cardType) {
-//        this.cardType = cardType;
-//    }
-//TODO не понятно атк вообще можно делать или делать отдельную оболочку?
-//    public enum CardType {
-//        NUMERIC,
-//        SPECIAL;
-//    }
-    
+    @Override
+    public String toString() {
+        return getCardId() + " " + getColorId() + " " + getIconId();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Card card = (Card) o;
+
+        if (!cardId.equals(card.cardId)) return false;
+        if (iconId != null ? !iconId.equals(card.iconId) : card.iconId != null) return false;
+        return colorId != null ? colorId.equals(card.colorId) : card.colorId == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = cardId.hashCode();
+        result = 31 * result + (iconId != null ? iconId.hashCode() : 0);
+        result = 31 * result + (colorId != null ? colorId.hashCode() : 0);
+        return result;
+    }
 }
