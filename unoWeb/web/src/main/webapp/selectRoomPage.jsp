@@ -13,7 +13,7 @@
         <title>template</title>
         <script type="text/javascript">
             function wait(){
-                alert('Ожидание других игроков < 30 секунд');
+                alert('Wait other players < 30 seconds');
             }
         </script>
     </head>

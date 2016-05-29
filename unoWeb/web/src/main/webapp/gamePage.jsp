@@ -58,9 +58,13 @@
         </div>
         <div id="cardPanel">
             <form name="tableCard" action="gamePage.jsp">
-                <%if (game.getLastCard() != null) {
-                        String s = "styles/uno_cards/" + game.getLastCard().getIconId() + "-" + colors.getColorById(game.getLastCard().getColorId()).getColorName() + ".jpg";%>
+                <%if (game.getWinner().equals("no")) {
+                        if (game.getLastCard() != null) {
+                            String s = "styles/uno_cards/" + game.getLastCard().getIconId() + "-" + colors.getColorById(game.getLastCard().getColorId()).getColorName() + ".jpg";%>
                 <input type="image" name="card" value="<%=game.getLastCard().getCardId()%>" alt="cards" src="<%=s%>" height='60' width="50">
+                <%}
+                } else {%>
+                <%=request.getSession().getAttribute("login")%> win!
                 <%}%>
             </form>
         </div>
@@ -90,11 +94,19 @@
                                 response.sendRedirect("gamePage.jsp");
             %>
             <%}
-                if (s.equals("Wrong card")) {%>
+                if (s.equals("Wrong card")) {
+            s = "no information";%>
             <!--вывод сообщения о неправильной карте-->
+            <script type="text/javascript">
+                alert('Wrong card');
+            </script>
             <%}
-                if (s.equals("Is not your turn")) {%>
+                if (s.equals("Is not your turn")) {
+            s = "no information";%>
             <!--вывод сообщения о том, что не твой ход-->
+            <script type="text/javascript">
+                alert('Is not you turn');
+            </script>
             <%}
                         }
                     }
@@ -103,7 +115,7 @@
         </div>
         <div id = "cardsDeskPanel" >
             <form name = "takeCard" action = "gamePage.jsp" >
-                <input type = "submit" name = "takeCard" value = "TakeCard" onclick="reloadPage()" >
+                <input type = "image" name = "takeCard" value = "TakeCard" onclick="reloadPage()" alt="cards" src="styles/uno_cards/back_of_cards.jpg" height='60' width="50" >
             </form>
         </div>
 

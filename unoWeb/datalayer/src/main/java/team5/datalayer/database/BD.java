@@ -3,8 +3,10 @@ package team5.datalayer.database;
 import org.apache.log4j.Logger;
 import team5.datalayer.hibernate.dao.CardDao;
 import team5.datalayer.hibernate.dao.ColorDao;
+import team5.datalayer.hibernate.dao.ServiceInfoDao;
 import team5.datamodel.card.Card;
 import team5.datamodel.card.Color;
+import team5.datamodel.user.ServiceInfo;
 
 /**
  *
@@ -51,6 +53,9 @@ public class BD {
             CardDao cardDao = new CardDao();
             Card card = cardDao.getCardById(10);
             System.out.println(card.getCardId() + " " + card.getColorId() + " " + card.getIconId());
+            ServiceInfoDao serv = new ServiceInfoDao();
+            ServiceInfo info = serv.getServiceInfoByLogin("Andrew");
+            System.out.println(info.getLogin()+" "+info.getPassword()+" "+info.getEmail());
         } catch (ExceptionInInitializerError ex) {
             logger.error(ex.getMessage(), ex);
             System.out.println(ex.getStackTrace().toString());

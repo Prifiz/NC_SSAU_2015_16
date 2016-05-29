@@ -25,10 +25,12 @@ public class Game {
     private String gamerLogin;
     private RoomController room;
     private TableController table;
+    private String winner;
 
     public Game(RoomController room) {
 
         firstDistrib = new boolean[ServerConstants.MAX_NUMBER_OF_PLAYERS];
+        winner = "no";
         for (int i = 0; i < firstDistrib.length; i++) {
             firstDistrib[i] = false;
         }
@@ -64,7 +66,8 @@ public class Game {
                     } catch (CardNotFoundException ex) {
                         logger.debug(ex.getMessage());
                     }
-                    if (room.getGamer(login).getHandscards().isEmpty()){
+                    if (room.getGamer(login).getHandscards().isEmpty()) {
+                        winner = login;
                         room.cleanRoom();
                     }
                     if (gamerNumber + 1 < room.countGamers()) {
@@ -127,5 +130,13 @@ public class Game {
 
     public void setFirstDistrib(boolean firstDistrib, int i) {
         this.firstDistrib[i] = firstDistrib;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 }

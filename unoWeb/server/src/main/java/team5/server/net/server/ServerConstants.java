@@ -14,6 +14,6 @@ public class ServerConstants {
     public static final int PORT = 8081;
     public static final int NUMBER_OF_ROOMS = 4;
     public static final int MAX_NUMBER_OF_PLAYERS = 4;
-    public static final int WAITING_TIME = 30;
+    public static final int WAITING_TIME = 4;
     public static final int START_NUMBER_OF_CARDS = 7;
 }

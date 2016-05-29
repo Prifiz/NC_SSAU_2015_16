@@ -17,10 +17,11 @@ public class RoomController {
     private ArrayList<GamerController> gamers;
     private boolean playing = false;
     private boolean finish = false;
-    private String command;
+    private String winner;
     private int readCount;
 
     public RoomController() {
+        winner="no";
         table = new TableController();
         gamers = new ArrayList();
     }
@@ -42,11 +43,11 @@ public class RoomController {
     }
 
     public String getCommand() {
-        return command;
+        return winner;
     }
 
     public void setCommand(String command) {
-        this.command = command;
+        this.winner = command;
     }
 
     public boolean isPlaying() {
@@ -110,6 +111,7 @@ public class RoomController {
             gamers.remove(i);
         }
         playing = false;
+        winner = "no";
         table.cleanTable();
     }
 
