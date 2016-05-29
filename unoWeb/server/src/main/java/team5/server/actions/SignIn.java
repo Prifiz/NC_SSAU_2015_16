@@ -23,7 +23,7 @@ public class SignIn {
      */
     //На данный момент использований не обнаружено
     public boolean sign(String login, String password) {
-        Searcher searcher = new Searcher();
+        //Searcher searcher = new Searcher();
         ServiceInfoDao dao = new ServiceInfoDao();
         ServiceInfo info = dao.getServiceInfoByLogin(login);
         boolean b = false;
