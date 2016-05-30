@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 import team5.datamodel.actions.WorkUser;
 import team5.server.actions.DataExchanger;
 import team5.server.actions.GamerController;
-import team5.server.actions.Registration;
+import team5.server.actions.Registrations;
 import team5.server.actions.RoomController;
 import team5.server.actions.SignIn;
 import team5.server.actions.TableController;

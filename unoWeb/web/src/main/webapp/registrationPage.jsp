@@ -4,6 +4,7 @@
     Author     : андрей
 --%>
 
+<%@page import="team5.server.actions.Registrations"%>
 <%@page import="team5.datamodel.user.User"%>
 <%@page import="team5.datamodel.user.adress.Address"%>
 <%@page import="team5.datamodel.user.ServiceInfo"%>
@@ -74,6 +75,8 @@
                                     ServiceInfo service = new ServiceInfo(login,password,email);
                                     Address address = new Address(login,city, country);
                                     User user = new User(privateInf,address, service);
+                                    Registrations reg = new Registrations();
+                                    reg.registrationUser(privateInf, service, address, user);
                                 }
                             %>
                             <form action="homePage.jsp">
