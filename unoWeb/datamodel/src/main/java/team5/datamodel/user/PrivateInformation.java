@@ -50,11 +50,11 @@ public class PrivateInformation implements Serializable {
     @Column(name="b_date")
     private LocalDate bDay;
 
-    public PrivateInformation(String login, String name, String surname, LocalDate bDay) {
+    public PrivateInformation(String login, String name, String surname) {
         this.name = name;
         this.login = login;
         this.surname = surname;
-        this.bDay = bDay;
+        this.bDay = LocalDate.now();
     }
 
     public PrivateInformation() {

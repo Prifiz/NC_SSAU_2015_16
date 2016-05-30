@@ -4,6 +4,10 @@
     Author     : андрей
 --%>
 
+<%@page import="team5.datamodel.user.User"%>
+<%@page import="team5.datamodel.user.adress.Address"%>
+<%@page import="team5.datamodel.user.ServiceInfo"%>
+<%@page import="team5.datamodel.user.PrivateInformation"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -65,6 +69,12 @@
                                 String surname = request.getParameter("surname");
                                 String country = request.getParameter("country");
                                 String city = request.getParameter("city");
+                                if(login!=null){
+                                    PrivateInformation privateInf = new PrivateInformation(login,name,surname);
+                                    ServiceInfo service = new ServiceInfo(login,password,email);
+                                    Address address = new Address(login,city, country);
+                                    User user = new User(privateInf,address, service);
+                                }
                             %>
                             <form action="homePage.jsp">
                                 <input type="submit" name="cancel" value="Cancel" id="cancelButtom">

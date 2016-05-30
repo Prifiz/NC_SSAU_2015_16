@@ -32,9 +32,9 @@ public class UnoStatelessSessionBean implements UnoStatelessSessionBeanRemote {
     }
 
     @Override
-    public void addUser(String name, String surname, LocalDate BDay, String login, String password, String email, String city, String Country) {
+    public void addUser(String name, String surname, String login, String password, String email, String city, String Country) {
 
-        PrivateInformation privateInformation = new PrivateInformation(login, name, surname, BDay);
+        PrivateInformation privateInformation = new PrivateInformation(login, name, surname);
         privateInformationDao.savePrivateInformation(privateInformation);
         ServiceInfo serviceInfo = new ServiceInfo(login, password, email);
         serviceInfoDao.saveServiceInfo(serviceInfo);
