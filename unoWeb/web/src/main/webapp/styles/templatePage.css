@@ -295,6 +295,12 @@ h4 {
     top: 40%;
 }
 
+#home1{
+   position: relative;
+    left: 20%;
+    top: 20%; 
+}
+
 /*для авторизации и регистрации*/
 #table_result {
     position: relative;

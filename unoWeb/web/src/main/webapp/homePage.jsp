@@ -21,4 +21,6 @@
     </h4>
 <h4>We wish you enjoy the game and have a good time!</h4>
 
+<input type="image" name="home1"  alt="home1" src="styles/home1.jpg" height='400' width='380' id="home1">
+               
 <%@ include file="footer.jsp" %>
