@@ -4,6 +4,17 @@
     Author     : chanta
 --%>
 
+<%@page import="team5.datamodel.user.adress.Address"%>
+<%@page import="team5.datamodel.user.ServiceInfo"%>
+<%@page import="team5.datamodel.user.PrivateInformation"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="team5.datamodel.user.User"%>
+<%@page import="team5.datamodel.user.User"%>
+<%@page import="team5.datalayer.hibernate.dao.UserDao"%>
+<%@page import="team5.datalayer.hibernate.dao.AddressDao"%>
+<%@page import="team5.datalayer.hibernate.dao.ServiceInfoDao"%>
+<%@page import="team5.datalayer.hibernate.dao.DaoFactory"%>
+<%@page import="team5.datalayer.hibernate.dao.PrivateInformationDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,8 +29,25 @@
         <h3 class="title">User table</h3>
         <div id="userTable" > 
             <table id="scroll-table">
+                <%
+                    PrivateInformationDao privateInformationDao = DaoFactory.getPrivateInformationDao();
+                    ServiceInfoDao serviceInfoDao = new ServiceInfoDao();
+                    AddressDao addressDao = new AddressDao();
+                    UserDao userDao = new UserDao();
+                     ServiceInfo serviceInfo = serviceInfoDao.getServiceInfoByLogin("Bob");
+//                    ArrayList<User> users_dao = (ArrayList<User>) userDao.findAll();
+//                    ArrayList<User> users = new ArrayList<>();
+//                    for (int i = 0; i < users_dao.size(); i++) {
+//                        PrivateInformation privateInformation = privateInformationDao.getPrivateInformationByLogin(users.get(i).getLogin());
+//                        ServiceInfo serviceInfo = serviceInfoDao.getServiceInfoByLogin(users.get(i).getLogin());
+//                        Address address = addressDao.getAddressByLogin(users.get(i).getLogin());
+//                        users.set(i, new User(privateInformation, address, serviceInfo));
+//
+//                    }
+                %>
+
                 <tr>
-                <td width="20">
+                    <td width="20">
                         //todo
                     </td>
                     <td width="20">
@@ -45,7 +73,7 @@
                     </td>
                 </tr>
                 <tr>
-                <td width="20">
+                    <td width="20">
                         //todo
                     </td>
                     <td width="20">
@@ -70,33 +98,7 @@
                         //todo
                     </td>
                 </tr><tr>
-                <td width="20">
-                        //todo
-                    </td>
                     <td width="20">
-                        //todo
-                    </td>
-                    <td width="20">
-                        //todo
-                    </td>
-                    <td width="20">
-                        //todo
-                    </td>
-                    <td width="20">
-                        //todo
-                    </td>
-                    <td width="20">
-                        //todo
-                    </td>
-                    <td width="20">
-                        //todo
-                    </td>
-                    <td width="20">
-                        //todo
-                    </td>
-                </tr>
-                <tr>
-                <td width="20">
                         //todo
                     </td>
                     <td width="20">
@@ -122,7 +124,7 @@
                     </td>
                 </tr>
                 <tr>
-                <td width="20">
+                    <td width="20">
                         //todo
                     </td>
                     <td width="20">
@@ -148,7 +150,33 @@
                     </td>
                 </tr>
                 <tr>
-                <td width="20">
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                    <td width="20">
+                        //todo
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20">
                         //todo
                     </td>
                     <td width="20">
