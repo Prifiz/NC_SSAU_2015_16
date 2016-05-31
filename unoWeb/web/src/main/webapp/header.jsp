@@ -8,7 +8,7 @@
         
         <div id="header">
             <div id="header_wrapper">
-                <h1>UNO</h1>
+                <a href="homePage.jsp" id ="go_homePage" ><h1>UNO</h1></a>
                 <h2>Uno is an American card game</h2>  
             </div>
         </div>

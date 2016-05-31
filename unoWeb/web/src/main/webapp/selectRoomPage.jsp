@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
-        <title>template</title>
+        <title>Uno_game</title>
         <script type="text/javascript">
             function wait(){
                 alert('Wait other players < 30 seconds');

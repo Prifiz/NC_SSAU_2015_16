@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
-        <title>template</title>
+        <title>Uno_game</title>
     </head>
     <body>
         <%@ include file="header.jsp" %>

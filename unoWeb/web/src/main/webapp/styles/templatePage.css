@@ -143,6 +143,10 @@ h1{
     top: 20px;
 }
 
+#go_homePage{
+    text-decoration: none;
+}
+
 h2{
     position: relative;
     color:  gold;
