@@ -13,6 +13,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import team5.datamodel.user.PrivateInformation;
 
 /**
  *
@@ -28,12 +30,23 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
 //    static {
         try {
-//        String configFile = "hibernate.cfg.xml";
-            StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+              Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+           StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
+                    configuration.getProperties()).build();
+            return configuration.buildSessionFactory(serviceRegistry);
+//             String configFile = "hibernate.cfg.xml";
+//           return new Configuration().configure(configFile).buildSessionFactory();
 
-            Metadata metadata = new MetadataSources(standardRegistry).getMetadataBuilder().build();
 
-            return metadata.getSessionFactoryBuilder().build();
+//            Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+//            cfg.addAnnotatedClass(team5.datamodel.user.PrivateInformation);
+//            
+////        String configFile = "hibernate.cfg.xml";
+//            StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").applySettings(cfg.getProperties()).build();
+//
+//            Metadata metadata = new MetadataSources(standardRegistry).getMetadataBuilder().build();
+
+            //return metadata.getSessionFactoryBuilder().build();
 
 //    static {
 //        try {

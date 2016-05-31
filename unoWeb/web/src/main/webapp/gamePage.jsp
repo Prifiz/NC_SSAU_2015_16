@@ -40,7 +40,7 @@
 
         <%@ include file="header.jsp" %>
         <div id="infoPanel">
-
+            <%=game.getGamerLogin()%> turn
         </div>
         <div id="listUsers">
             <form name="userForm">

@@ -69,13 +69,14 @@ public class Game {
                     if (room.getGamer(login).getHandscards().isEmpty()) {
                         winner = login;
                         room.cleanRoom();
-                    }
-                    if (gamerNumber + 1 < room.countGamers()) {
-                        gamerNumber++;
                     } else {
-                        gamerNumber = 0;
+                        if (gamerNumber + 1 < room.countGamers()) {
+                            gamerNumber++;
+                        } else {
+                            gamerNumber = 0;
+                        }
+                        gamerLogin = room.getGamer(gamerNumber).getGamerLogin();
                     }
-                    gamerLogin = room.getGamer(gamerNumber).getGamerLogin();
                     return "Success";
                 } else {
                     return "Wrong card";
