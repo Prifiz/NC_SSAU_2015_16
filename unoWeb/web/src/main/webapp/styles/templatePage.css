@@ -293,6 +293,11 @@ h4 {
     top: 30%;
 }
 
+#admin_image{
+   position: relative;
+    left: 0%;
+    top: 10%; 
+}
 #table_result_admin{
     position: relative;
     left: 50%;
@@ -319,7 +324,7 @@ h4 {
 
 #home2{
     position: relative;
-    left: 20%;
+    left: 25%;
     /*top: 80%;*/ 
     bottom: 10%;
 }

@@ -23,16 +23,15 @@
                     <tr>
                         <td>Users table</td>
                         <td>
-                            <input type="button" name="usersTable" value="select" id="usersTableButtom" id="backButton" onClick='location.href="userTabletPage.jsp"'>                 
+                            <input type="button" name="usersTable" value="select" id="usersTableButtom" id="backButton" onClick='location.href = "userTabletPage.jsp"'>                 
                         </td>
                     </tr>
-
                 </table>
             </form>
         </div>
-        
-        <!--<input type="image" name="home2"  alt="home2" src="styles/home2.jpg" height='350' width='330' id="home2">-->
- 
+        <div id="admin_image">
+            <input type="image" name="home2"  alt="home2" src="styles/home2.jpg" height='350' width='330' id="home2">
+        </div>
         <%@ include file="rules.jsp" %>
-        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href="homePage.jsp"'>
+        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href = "homePage.jsp"'>
         <%@ include file="footer.jsp" %>
