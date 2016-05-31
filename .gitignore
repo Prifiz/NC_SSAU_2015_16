@@ -4,3 +4,7 @@
 /desktop/target/
 /client/myproject.log
 /server/myproject.log
+/unoWeb/server/target/
+/unoWeb/datamodel/target/
+/unoWeb/datalayer/target/
+/unoWeb/web/target/

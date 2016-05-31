@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workUser>
+    <arrUsers>
+        <address>
+            <city>XX</city>
+            <country>Usa</country>
+        </address>
+        <privateInformation>
+            <name>bob4</name>
+            <surname>Clark</surname>
+            <bDay>2012-12-19</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>email@gmail.com</email>
+            <login>1</login>
+            <password>1</password>
+        </serviceInfo>
+    </arrUsers>
+    <arrUsers>
+        <address>
+            <city>XxxxX</city>
+            <country>UCanada</country>
+        </address>
+        <privateInformation>
+            <name>bob</name>
+            <surname>Cl</surname>
+            <bDay>2002-07-13</bDay>
+        </privateInformation>
+        <serviceInfo>
+            <email>email1234@gmail.com</email>
+            <login>sffscsdf</login>
+            <password>1ds234</password>
+        </serviceInfo>
+    </arrUsers>
+</workUser>

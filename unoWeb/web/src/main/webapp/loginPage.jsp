@@ -1,0 +1,70 @@
+<%-- 
+    Document   : loginPage
+    Created on : 07.04.2016, 14:08:03
+    Author     : андрей
+--%>
+
+<%@page import="team5.server.actions.SignIn"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
+        <title>Uno_game</title>
+    </head>
+    <body>
+        <%@ include file="header.jsp" %>
+        <div id="table_result">
+            <form name="signInForm" action="loginPage.jsp">
+                <table>
+                    <%
+                        String login = request.getParameter("login");
+                        String password = request.getParameter("password");
+                        if ((login != null) && (password != null)) {
+                            SignIn in = new SignIn();
+                            boolean b = in.sign(login, password);
+                            if (b) {
+                                session.setAttribute("login", login);
+                                response.sendRedirect("selectRoomPage.jsp"); %>
+                    <!--<jsp:forward page="selectRoomPage.jsp"/>-->
+                    <%} else {%>
+                    <tr>
+                        <td></td>
+                        <td id="loginException">
+                            Incorrect login/password
+                        </td>
+                    </tr>
+                    <%}
+                        }
+                    %>
+                    <tr>
+                        <td>Login</td>
+                        <td>
+                            <input type="text" name="login" placeholder="login" id="loginText" value=${param.login}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" name="password" placeholder="password" id="passwordText" value=${param.password}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="signIN" value="Sign in" id="signInButtom">
+
+                        </td>
+                    </tr>
+                </table>
+
+<!--            <input type="text" name="login" placeholder="login" id="loginText" value=${param.string}>
+    <input type="password" name="password" placeholder="password" id="passwordText" value=${param.string2}>
+    <input type="submit" name="signIN" value="Sign in" id="signInButtom">-->
+            </form>
+
+        </div>
+        <%@ include file="rules.jsp" %>
+        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href="homePage.jsp"'>
+        <%@ include file="footer.jsp" %>

@@ -1,0 +1,219 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07.04.2016, 14:19:15
+    Author     : андрей
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100.01%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+body {
+    line-height: 1;
+    color: black;
+    background: papayawhip;
+}
+#header { /* Header Formatting */
+    background-color: #cccccc;
+    /*background-image: url("uno_spotlight.jpg");*/
+    background-image: url("background.jpg");
+    height: 8em;
+}
+#header_wrapper {
+    margin: 0 auto;
+    width: 60em;
+    text-align: left;
+}
+
+/*область в центре*/
+
+#container-shadows {
+    width: 60em; /* 960px */
+    background-color:  tomato;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+#container {
+    width: 59.5em;  /* 952px */
+    height: inherit;
+    background-color: antiquewhite;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    /*overflow: ;*/
+}
+
+#work-zone {
+    width: 40em; /* 960px */
+    background-color:  antiquewhite;/*#666666*/
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+#container-work-zone{
+    width: 39.5em;  /* 952px */
+    height: 29.5em;
+    background-color: white;/*#fffff*/
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    /*overflow: ;*/
+}
+
+
+
+#content {
+    display:block;
+    float:left;
+    overflow:hidden; 
+    padding:0 0.75em 0 1.5em;
+    width:40.625em;
+    margin:0 0 2em 0;       
+}
+/*регистрация и логин*/ 
+.tile {
+    display: none;
+}
+
+.tile.show {
+    display: block;
+}
+
+.tile li {
+    display: inline-block;
+    padding: -5px 0;
+    margin-right: 5px;
+    float: right;
+}
+
+.tile li a {
+    display: inline-block;
+    color: #1D71B8;
+    text-decoration: none;
+    padding: 2px 7px;
+}
+
+.tile li a:hover {
+    text-decoration: underline;
+}
+
+.tile a.active {
+    background: #B25538;
+    background: #767769;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.tile a.active:hover {
+    text-decoration: none;
+} 
+
+#topmenu .show, .tile {
+    background: antiquewhite;
+    float: right;
+}
+
+h1{
+    color:  gold;
+    font-family:  "Times New Roman", cursive;
+    font-style: italic;
+    font-weight:   700;
+    font-size:  60px;
+    left: 100px;
+    top: 20px;
+}
+
+h2{
+    color:  gold;
+    font-family:  cursive;
+    font-style: italic;
+    font-weight:   700;
+    font-size:  30px;
+    left: 30px;
+    top: 10px;
+}
+
+/*
+#loginText{
+    position: relative;
+    margin:  0 0 10px 0;
+    left:  36%;
+    bottom: -180px;
+}
+#passwordText{
+    position: relative;
+    margin:  0 0 10px 0;
+    left:  8.1%;
+    bottom: -220px;
+}
+#signInButtom{
+    position: relative;
+    margin:  0 0 10px 0;
+    left:  -10.8%;
+    bottom: -270px;
+}*/
+#backButton {
+    position: relative;
+    text-align: center;
+    border-top: 1px solid #140ead;
+    margin: 0 0 10px 0;
+    left: 47.5%;
+    bottom: 2%;
+}
+
+#rulesButton {
+    position: relative;
+    text-align: center;
+    border-top: 1px solid #140ead;
+    margin: 0 0 10px 0;
+    left: 10%;
+    top: 10%;
+}
+
+table.result td,
+table.result th {
+    border: 1px solid #AAAAAA;
+    padding: 3px;
+}
+table.result tr:hover {
+    background: #fffaf5;
+}
+
+
+
+/*копирайт*/
+#footer {
+    clear: both;
+    width: 59.5em;
+    height: 4em;
+    background-color: #cccccc;
+}
+
+div#copyright {
+    text-align: center;
+    font-size: 0.625em;
+    padding: 1em 0;
+}
