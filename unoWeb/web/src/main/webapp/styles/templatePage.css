@@ -235,6 +235,12 @@ h4 {
     background: blanchedalmond;
 }
 
+#card_on_the_panel{
+    position: relative;
+    left: 35%;
+    top: 45%; 
+}
+
 #cardsHandPanel{
     position: relative;
     left: 5%;
@@ -253,6 +259,12 @@ h4 {
     height: 25%;
     background: blanchedalmond;
     float: left;
+}
+
+#card_on_the_cardsDeskPanel{
+    position: relative;
+    left: 30%;
+    top: 20%; 
 }
 #userTable{
     position: relative;
@@ -296,7 +308,7 @@ h4 {
 }
 
 #home1{
-   position: relative;
+    position: relative;
     left: 20%;
     top: 20%; 
 }

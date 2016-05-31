@@ -61,7 +61,7 @@
                 <%if (game.getWinner().equals("no")) {
                         if (game.getLastCard() != null) {
                             String s = "styles/uno_cards/" + game.getLastCard().getIconId() + "-" + colors.getColorById(game.getLastCard().getColorId()).getColorName() + ".jpg";%>
-                <input type="image" name="card" value="<%=game.getLastCard().getCardId()%>" alt="cards" src="<%=s%>" height='60' width="50">
+                <input type="image" name="card" value="<%=game.getLastCard().getCardId()%>" alt="cards" id="card_on_the_panel" src="<%=s%>" height='60' width="50">
                 <%}
                 } else {%>
                 <%=request.getSession().getAttribute("login")%> win!
@@ -115,7 +115,7 @@
         </div>
         <div id = "cardsDeskPanel" >
             <form name = "takeCard" action = "gamePage.jsp" >
-                <input type = "image" name = "takeCard" value = "TakeCard" onclick="reloadPage()" alt="cards" src="styles/uno_cards/back_of_cards.jpg" height='60' width="50" >
+                <input type = "image" name = "takeCard" value = "TakeCard" onclick="reloadPage()" alt="cards" id="card_on_the_cardsDeskPanel" src="styles/uno_cards/back_of_cards.jpg" height='60' width="50" >
             </form>
         </div>
 
