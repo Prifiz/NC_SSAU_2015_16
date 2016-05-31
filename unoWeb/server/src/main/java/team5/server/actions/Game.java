@@ -65,7 +65,6 @@ public class Game {
                     }
                     if (room.getGamer(login).getHandscards().isEmpty()) {
                         winner = login;
-                        room.cleanRoom();
                     } else {
                         if (gamerNumber + 1 < room.countGamers()) {
                             gamerNumber++;
