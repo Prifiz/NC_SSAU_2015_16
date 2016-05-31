@@ -11,7 +11,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-//import org.apache.log4j.Logger;
 import team5.datamodel.exceptions.UserNotFoundException;
 import team5.datamodel.searches.FieldRequest;
 import team5.datamodel.user.adress.Address;

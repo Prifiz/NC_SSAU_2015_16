@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.apache.log4j.Logger;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import team5.datalayer.hibernate.HibernateUtil;
 

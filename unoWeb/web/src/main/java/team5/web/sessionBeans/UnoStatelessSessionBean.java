@@ -5,7 +5,6 @@
  */
 package team5.web.sessionBeans;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
 import team5.datalayer.hibernate.dao.AddressDao;

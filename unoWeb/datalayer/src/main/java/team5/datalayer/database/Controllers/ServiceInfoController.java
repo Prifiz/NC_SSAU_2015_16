@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
-import team5.datamodel.user.PrivateInformation;
 import team5.datamodel.user.ServiceInfo;
 
 /**
