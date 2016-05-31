@@ -65,4 +65,6 @@
             </form>
 
         </div>
+        <%@ include file="rules.jsp" %>
+        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href="homePage.jsp"'>
         <%@ include file="footer.jsp" %>

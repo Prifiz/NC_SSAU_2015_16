@@ -41,8 +41,11 @@
 
                 <div id="work-zone"> 
                     <div id="container-work-zone">
+                        
                     </div>
+                    
                 </div>
+                 <input type="button" value="BACK" name="backButton" id="backButton">
                 <%!private String textRule(String fileName) {
                         String text = "";
                         String s;
@@ -66,7 +69,7 @@
                     <%=textRule("/textRule.txt")%>
                 </div>
 
-                <input type="button" value="BACK" name="backButton" id="backButton">
+               
                 <div id="footer">
                     <div id="copyright">2015-2016 &copy; TEAM5</div>
                 </div>

@@ -95,14 +95,14 @@
             %>
             <%}
                 if (s.equals("Wrong card")) {
-            s = "no information";%>
+                    s = "no information";%>
             <!--вывод сообщения о неправильной карте-->
             <script type="text/javascript">
                 alert('Wrong card');
             </script>
             <%}
                 if (s.equals("Is not your turn")) {
-            s = "no information";%>
+                    s = "no information";%>
             <!--вывод сообщения о том, что не твой ход-->
             <script type="text/javascript">
                 alert('Is not you turn');
@@ -118,5 +118,6 @@
                 <input type = "image" name = "takeCard" value = "TakeCard" onclick="reloadPage()" alt="cards" id="card_on_the_cardsDeskPanel" src="styles/uno_cards/back_of_cards.jpg" height='60' width="50" >
             </form>
         </div>
-
+        <%@ include file="rules.jsp" %>
+        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href="selectRoomPage.jsp"'>
         <%@ include file="footer.jsp" %>

@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="styles/templatePage.css"/>
         <title>Uno_game</title>
         <script type="text/javascript">
-            function wait(){
+            function wait() {
                 alert('Wait other players < 30 seconds');
             }
         </script>
@@ -78,8 +78,8 @@
                                 Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
                             </td>
                         </tr>-->
-                        
-                            
+
+
                         <%
                             boolean game = selectRoom.waitGamers(room, (String) session.getAttribute("login"));
                             System.out.println(game);
@@ -94,11 +94,11 @@
                         <%} else {
                             b = false;
                         %>
-                       <!--<tr>
-                            <td> 
-                                Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
-                            </td>
-                        </tr>-->  
+                        <!--<tr>
+                             <td> 
+                                 Ожидайте <%=30 - selectRoom.getWaitTime(room)%> секунд других игроков
+                             </td>
+                         </tr>-->  
                         <%
 //сообщение о том. что в комнату зайти нельзя
                             }
@@ -110,10 +110,10 @@
                             </td>
                         </tr>-->  
                         <%
-                                }
-                                b = false;
+                            }
+                            b = false;
 //сообщение о том. что в комнату зайти нельзя
-                            
+
                         %>
 
                     </table>
@@ -124,5 +124,6 @@
         </div>
 
 
-
+        <%@ include file="rules.jsp" %>
+        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href="homePage.jsp"'>
         <%@ include file="footer.jsp" %>

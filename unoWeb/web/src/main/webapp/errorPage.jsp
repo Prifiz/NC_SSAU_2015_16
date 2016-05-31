@@ -14,12 +14,13 @@
     </head>
     <body>
 
-<%@ include file="header.jsp" %>
+        <%@ include file="header.jsp" %>
 
-<h3 class="title">WHOOOOOPS...</h3><div class="tabs"></div>
-<h3 class="title">Sorry!:(</h3>
-<h3 class="title">The page you were looking for can't be found</h3>
-<p></p>
-<div id="return"><a href="/homePage.jsp" >RETURN TO THE HOME PAGE</a></div>
+        <h3 class="title">WHOOOOOPS...</h3><div class="tabs"></div>
+        <h3 class="title">Sorry!:(</h3>
+        <h3 class="title">The page you were looking for can't be found</h3>
+        <p></p>
+        <div id="return"><a href="/homePage.jsp" >RETURN TO THE HOME PAGE</a></div>
 
-<%@ include file="footer.jsp" %>
+        <%@ include file="rules.jsp" %>
+        <%@ include file="footer.jsp" %>

@@ -9,7 +9,6 @@
 <%@page import="team5.datamodel.user.PrivateInformation"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="team5.datamodel.user.User"%>
-<%@page import="team5.datamodel.user.User"%>
 <%@page import="team5.datalayer.hibernate.dao.UserDao"%>
 <%@page import="team5.datalayer.hibernate.dao.AddressDao"%>
 <%@page import="team5.datalayer.hibernate.dao.ServiceInfoDao"%>
@@ -29,12 +28,13 @@
         <h3 class="title">User table</h3>
         <div id="userTable" > 
             <table id="scroll-table">
-                <%
+           
+     <%
                     PrivateInformationDao privateInformationDao = DaoFactory.getPrivateInformationDao();
                     ServiceInfoDao serviceInfoDao = new ServiceInfoDao();
                     AddressDao addressDao = new AddressDao();
                     UserDao userDao = new UserDao();
-                     ServiceInfo serviceInfo = serviceInfoDao.getServiceInfoByLogin("Bob");
+//                    ServiceInfo serviceInfo = serviceInfoDao.getServiceInfoByLogin("Bob");
 //                    ArrayList<User> users_dao = (ArrayList<User>) userDao.findAll();
 //                    ArrayList<User> users = new ArrayList<>();
 //                    for (int i = 0; i < users_dao.size(); i++) {
@@ -44,8 +44,7 @@
 //                        users.set(i, new User(privateInformation, address, serviceInfo));
 //
 //                    }
-                %>
-
+%>
                 <tr>
                     <td width="20">
                         //todo
@@ -263,4 +262,7 @@
                 </table>
             </form>
         </div>
+
+        <%@ include file="rules.jsp" %>
+        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href="adminPage.jsp"'>
         <%@ include file="footer.jsp" %>

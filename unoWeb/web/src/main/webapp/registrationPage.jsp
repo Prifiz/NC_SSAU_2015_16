@@ -70,11 +70,11 @@
                                 String surname = request.getParameter("surname");
                                 String country = request.getParameter("country");
                                 String city = request.getParameter("city");
-                                if(login!=null){
-                                    PrivateInformation privateInf = new PrivateInformation(login,name,surname);
-                                    ServiceInfo service = new ServiceInfo(login,password,email);
-                                    Address address = new Address(login,city, country);
-                                    User user = new User(privateInf,address, service);
+                                if (login != null) {
+                                    PrivateInformation privateInf = new PrivateInformation(login, name, surname);
+                                    ServiceInfo service = new ServiceInfo(login, password, email);
+                                    Address address = new Address(login, city, country);
+                                    User user = new User(privateInf, address, service);
                                     Registrations reg = new Registrations();
                                     reg.registrationUser(privateInf, service, address, user);
                                 }
@@ -88,4 +88,6 @@
 
             </form>
         </div>
+        <%@ include file="rules.jsp" %>
+        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href="homePage.jsp"'>
         <%@ include file="footer.jsp" %>

@@ -14,19 +14,25 @@
     </head>
     <body>
         <%@ include file="header.jsp" %>
-        
+
         <h3 class="title">Hello, Admin! Welcome!</h3>
         <div id="table_result_admin">
             <form name="adminForm">
                 <table>
+                    <!--<h4>Users table</h4>-->
                     <tr>
                         <td>Users table</td>
                         <td>
-                            <input type="submit" name="usersTable" value="select" id="usersTableButtom">                 
+                            <input type="button" name="usersTable" value="select" id="usersTableButtom" id="backButton" onClick='location.href="userTabletPage.jsp"'>                 
                         </td>
                     </tr>
 
                 </table>
             </form>
         </div>
+        
+        <!--<input type="image" name="home2"  alt="home2" src="styles/home2.jpg" height='350' width='330' id="home2">-->
+ 
+        <%@ include file="rules.jsp" %>
+        <input type="button" value="BACK" name="backButton" id="backButton" onClick='location.href="homePage.jsp"'>
         <%@ include file="footer.jsp" %>
